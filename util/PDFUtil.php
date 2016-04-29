@@ -71,5 +71,54 @@
 			return $pdfImageWidthHeight;
 		}
 		
+		function generatePDF($html, $id)
+		{
+			$ini_array = parse_ini_file("config/dinamo.ini");
+			$pdf_folder = $ini_array["pdf_folder"];
+			
+			// create new PDF document
+			$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+			
+			// set document information
+			$pdf->SetCreator(PDF_CREATOR);
+			/*
+			$pdf->SetAuthor('Nicola Asuni');
+			$pdf->SetTitle('TCPDF Example 002');
+			$pdf->SetSubject('TCPDF Tutorial');
+			$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+			*/
+			// set font
+			$pdf->SetFont('dejavusans', '', 10);
+			
+			// remove default header/footer
+			$pdf->setPrintHeader(false);
+			$pdf->setPrintFooter(false);
+			
+			// set default monospaced font
+			$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+			
+			// set margins
+			$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+			
+			// set auto page breaks
+			$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+			
+			// set image scale factor
+			$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+			
+			
+			// ---------------------------------------------------------
+					
+			// add a page
+			$pdf->AddPage();
+			
+			// set some text to print
+			
+			// output the HTML content
+			//echo "Writing HTML ".$html;
+			$pdf->writeHTML($html, true, false, true, false, '');
+			$pdf->Output($pdf_folder.'/'.$id.'.pdf', 'F');
+		}
 	}
+		
 ?>

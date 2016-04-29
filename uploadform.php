@@ -1,15 +1,23 @@
+<html>
+<body>
 <table>
 <?php include_once("util/FileUtil.php"); ?>
 <?php include_once("util/HTMLUtil.php"); ?>
 <?php include_once("util/PDFUtil.php"); ?>
+<?php include_once("util/WebUtil.php"); ?>
 <?php include_once("util/CollectionsUtil.php"); ?>
 <?php include_once("beans/SelectedOption.php"); ?>
 <?php include_once("beans/UploadedImage.php"); ?>
 <?php include_once("beans/PDFImageWidthHeight.php"); ?>
+<?php require_once('tcpdf/tcpdf.php');?>
+
 <?php
 
 	//print_r($_FILES);
+	$pdfUtil = new PDFUtil();
 	$fileUtil = new FileUtil();
+    $webUtil = new WebUtil();
+    
 	$target_dir = $fileUtil->getImageFolder();
 	$num_images = $fileUtil->getNumberOfUploadFiles();
 	
@@ -48,15 +56,14 @@
 			//create image link for web page and PDF		
 			$uploadedImage = new UploadedImage();
 			$uploadedImage->name = $newname;
-			$uploadedImage->imageURL = "../".$target;
+			$uploadedImage->imageURL = $webUtil->getBaseURI()."/".$target;
 			$uploadedImage->width = $image_info[0];
 			$uploadedImage->height = $image_info[1];
 
 			//perform ratio calculation if image too big
-			$pdfUtil = new PDFUtil();
-			$pdfImageWidthHeight = $pdfUtil->getBestPDFWidthHeight($uploadedImage);
+			/*$pdfImageWidthHeight = $pdfUtil->getBestPDFWidthHeight($uploadedImage);
 			$uploadedImage->width = $pdfImageWidthHeight->width;
-			$uploadedImage->height = $pdfImageWidthHeight->height;
+			$uploadedImage->height = $pdfImageWidthHeight->height;*/
 				
 			$images->add($uploadedImage);
 		} else {
@@ -77,12 +84,22 @@
     }
 
     $htmlUtil = new HTMLUtil();
+    
+    $optionsHTML = $htmlUtil->getOptionsTable($options);
+    $imageHTML = $htmlUtil->getImageTable($images);
+    
     $html = "<html><body> ";
-    $html = $html.$htmlUtil->getOptionsTable($options);
-    $html = $html.$htmlUtil->getImageTable($images);
+    $html = $html.$optionsHTML;
+    $html = $html.'<br/><br/><h1>IMAGES</h1><hr/><br/>';
+    $html = $html.$imageHTML;
     $html = $html." <html><body>";
     
     $link = $fileUtil->saveHTMLToWebFile($html, $milliseconds);
-    echo "<a href='".$link.">".$link."</a>"
+    echo "<a href='".$link.">".$link."</a>";
+
+	$pdfUtil->generatePDF($html, $milliseconds);
+	
 ?>
+</body>
+</html>
 </table>

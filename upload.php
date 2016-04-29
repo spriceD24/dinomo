@@ -2,6 +2,12 @@
 <?php
 	$fileUtil = new FileUtil();
 	//echo $fileUtil->getNumberOfUploadFiles()
+	
+	//print_r($_SERVER);
+	//$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	
+	//echo $actual_link;
+	//echo "$_SERVER[HTTP_HOST]";
 ?>
 
 

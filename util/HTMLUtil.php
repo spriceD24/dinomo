@@ -20,11 +20,10 @@
 		{
 			$html = "<table>";
 			while($image = $images->iterate()) {
-				$html = $html.'<tr><td><img src="'.$image->imageURL.'" style="width:'.$image->width.';height:'.$image->height.'"><td></tr>';
+				$html = $html.'<tr><td><img src="'.$image->imageURL.'" style="width:'.$image->width.';height:'.$image->height.'"></td></tr>';
 			}
 			$html = $html."</table>";
 			return $html;
 		}
-	
 	}
 ?>
