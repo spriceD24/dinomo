@@ -1,9 +1,11 @@
 <table>
-<?php include("util/FileUtil.php"); ?>
-<?php include("util/HTMLUtil.php"); ?>
-<?php include("util/CollectionsUtil.php"); ?>
-<?php include("beans/SelectedOption.php"); ?>
-<?php include("beans/UploadedImage.php"); ?>
+<?php include_once("util/FileUtil.php"); ?>
+<?php include_once("util/HTMLUtil.php"); ?>
+<?php include_once("util/PDFUtil.php"); ?>
+<?php include_once("util/CollectionsUtil.php"); ?>
+<?php include_once("beans/SelectedOption.php"); ?>
+<?php include_once("beans/UploadedImage.php"); ?>
+<?php include_once("beans/PDFImageWidthHeight.php"); ?>
 <?php
 
 	//print_r($_FILES);
@@ -50,7 +52,12 @@
 			$uploadedImage->width = $image_info[0];
 			$uploadedImage->height = $image_info[1];
 
-			//TODO perform ratio calculation
+			//perform ratio calculation if image too big
+			$pdfUtil = new PDFUtil();
+			$pdfImageWidthHeight = $pdfUtil->getBestPDFWidthHeight($uploadedImage);
+			$uploadedImage->width = $pdfImageWidthHeight->width;
+			$uploadedImage->height = $pdfImageWidthHeight->height;
+				
 			$images->add($uploadedImage);
 		} else {
 			//echo "File is not an image. ".$currentImage;
