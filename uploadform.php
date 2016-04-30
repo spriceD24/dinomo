@@ -61,9 +61,9 @@
 			$uploadedImage->height = $image_info[1];
 
 			//perform ratio calculation if image too big
-			/*$pdfImageWidthHeight = $pdfUtil->getBestPDFWidthHeight($uploadedImage);
+			$pdfImageWidthHeight = $pdfUtil->getBestPDFWidthHeight($uploadedImage);
 			$uploadedImage->width = $pdfImageWidthHeight->width;
-			$uploadedImage->height = $pdfImageWidthHeight->height;*/
+			$uploadedImage->height = $pdfImageWidthHeight->height;
 				
 			$images->add($uploadedImage);
 		} else {
@@ -90,7 +90,7 @@
     
     $html = "<html><body> ";
     $html = $html.$optionsHTML;
-    $html = $html.'<br/><br/><h1>IMAGES</h1><hr/><br/>';
+    $html = $html.'<br/><br/><h1>PHOTOS</h1><hr/><br/>';
     $html = $html.$imageHTML;
     $html = $html." <html><body>";
     
@@ -99,6 +99,8 @@
 
 	$pdfUtil->generatePDF($html, $milliseconds);
 	
+	header("Location: upload_success.php?id=".$milliseconds);
+	exit;
 ?>
 </body>
 </html>

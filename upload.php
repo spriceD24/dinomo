@@ -2,7 +2,7 @@
 <?php
 	$fileUtil = new FileUtil();
 	//echo $fileUtil->getNumberOfUploadFiles()
-	
+	//echo realpath('.');
 	//print_r($_SERVER);
 	//$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	
@@ -23,8 +23,8 @@
 <div ng-app="myApp" ng-controller="myCtrl">
 
    `<div  class="basic-grey" style="background:white;padding:0px;border:0px">
-	<span class="button-selected" id="slab-span" name="slab-span"><a href="#" onclick="switchForms('slab','vertical')" id="slab-link" style="color:black;text-decoration: none;">&nbsp;Slab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
-	<span class="button-not-selected" id="vertical-span" name="vertical-span"><a href="#" onclick="switchForms('vertical','slab')" id="vertical-link" style="color:#888;text-decoration: none;">&nbsp;Verticals&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+	<!-- <span class="button-selected" id="slab-span" name="slab-span"><a href="#" onclick="switchForms('slab','vertical')" id="slab-link" style="color:black;text-decoration: none;">&nbsp;Slab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+	<span class="button-not-selected" id="vertical-span" name="vertical-span"><a href="#" onclick="switchForms('vertical','slab')" id="vertical-link" style="color:#888;text-decoration: none;">&nbsp;Verticals&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span> -->
 	</div>
    <form action="uploadform.php" id="uploadform" method="post" class="basic-grey" enctype="multipart/form-data">
    <div id="slab-form">
@@ -32,7 +32,7 @@
       		<table style="border:0px">
 			<tr>
 				<td style="vertical-align:top"><img src="img/dinamo_small.png"/></td>
-				<td><h1>Quality Assurance<br/>Pre Pour Checklist</h1></td>
+				<td><h1>Test Upload</h1></td>
 			</tr>
 		</table>
 	  </h1>

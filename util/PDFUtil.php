@@ -117,7 +117,9 @@
 			// output the HTML content
 			//echo "Writing HTML ".$html;
 			$pdf->writeHTML($html, true, false, true, false, '');
-			$pdf->Output($pdf_folder.'/'.$id.'.pdf', 'F');
+			$path = realpath('.');
+				
+			$pdf->Output($path.'/'.$pdf_folder.'/'.$id.'.pdf', 'F');
 		}
 	}
 		
