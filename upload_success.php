@@ -1,6 +1,6 @@
-<?php include_once("util/FileUtil.php"); ?>
+<?php include_once("util/ConfigUtil.php"); ?>
 <?php
-	$fileUtil = new FileUtil();
+	$configUtil = new ConfigUtil();
 	//echo $fileUtil->getNumberOfUploadFiles()
 	//echo realpath('.');
 	//print_r($_SERVER);
@@ -10,8 +10,8 @@
 	//echo "$_SERVER[HTTP_HOST]";
 	
 	$id = $_GET['id'];
-	$webUrl = $fileUtil->getWebFolder()."/".urlencode($id).".html";
-	$pdfUrl = $fileUtil->getPDFFolder()."/".urlencode($id).".pdf";
+	$webUrl = $configUtil->getWebFolder()."/".urlencode($id).".html";
+	$pdfUrl = $configUtil->getPDFFolder()."/".urlencode($id).".pdf";
 	
 ?>
 

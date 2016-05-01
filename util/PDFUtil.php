@@ -7,26 +7,7 @@
 	 */
 	class PDFUtil
 	{
-		/*
-		 * returns max recommended width for PDF
-		 */
-		function getMaxPDFWidth()
-		{
-			$ini_array = parse_ini_file("config/dinamo.ini");
-			$max_pdf_width = $ini_array["pdf_max_width"];
-			return $max_pdf_width;
-		}
-
-		/*
-		 * returns max recommended height for PDF
-		 */
-		function getMaxPDFHeight()
-		{
-			$ini_array = parse_ini_file("config/dinamo.ini");
-			$max_pdf_height = $ini_array["pdf_max_height"];
-			return $max_pdf_height;
-		}
-		
+	
 		/**
 		 * calculates aspect ratio height
 		 */
@@ -42,8 +23,9 @@
 		function getBestPDFWidthHeight($image)
 		{
 			//get boundaries for PDF
-			$maxPDFWidth = $this->getMaxPDFWidth();
-			$maxPDFHeight = $this->getMaxPDFHeight();
+			$configUtil = new ConfigUtil();
+			$maxPDFWidth = $configUtil->getMaxPDFWidth();
+			$maxPDFHeight = $configUtil->getMaxPDFHeight();
 			$pdfImageWidthHeight = new PDFImageWidthHeight;
 
 			//set the default width/height
@@ -51,6 +33,7 @@
 			$pdfImageWidthHeight->height = $image->height;
 			
 			//check if image is taller than PDF page
+			
 			if($pdfImageWidthHeight->height > $maxPDFHeight)
 			{
 				//resize the width

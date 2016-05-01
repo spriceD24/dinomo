@@ -5,6 +5,7 @@
 <?php include_once("util/HTMLUtil.php"); ?>
 <?php include_once("util/PDFUtil.php"); ?>
 <?php include_once("util/WebUtil.php"); ?>
+<?php include_once("util/ConfigUtil.php"); ?>
 <?php include_once("util/CollectionsUtil.php"); ?>
 <?php include_once("beans/SelectedOption.php"); ?>
 <?php include_once("beans/UploadedImage.php"); ?>
@@ -17,9 +18,10 @@
 	$pdfUtil = new PDFUtil();
 	$fileUtil = new FileUtil();
     $webUtil = new WebUtil();
+    $configUtil = new ConfigUtil();
     
-	$target_dir = $fileUtil->getImageFolder();
-	$num_images = $fileUtil->getNumberOfUploadFiles();
+	$target_dir = $configUtil->getImageFolder();
+	$num_images = $configUtil->getNumberOfUploadFiles();
 	
 	//add images to collection
 	$images = new Collection;
