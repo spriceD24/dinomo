@@ -10,8 +10,9 @@
 		public $formOptions;
 		public $isRequired;
 		public $errorMessage;
+		public $styleClass;
 		
-		function __construct($projectID, $categoryID, $categoryOptionID, $order, $formType, $formOptions, $isRequired, $errorMessage) 
+		function __construct($projectID, $categoryID, $categoryOptionID, $order, $formType, $formOptions, $isRequired, $errorMessage, $styleClass) 
 		{	
 			$this->projectID = $projectID;	
 			$this->categoryID = $categoryID;	
@@ -21,6 +22,7 @@
 			$this->formOptions = $formOptions;
 			$this->isRequired = $isRequired;
 			$this->errorMessage = $errorMessage;
+			$this->styleClass = $styleClass;
 		} 
 	}
 
