@@ -25,5 +25,36 @@
 			$html = $html."</table>";
 			return $html;
 		}
+
+
+		function generateUploadEmail($webUrl,$pdfUrl)
+		{
+
+			$html = "<html><body><table>";
+			$html = $html."<tr>";
+			$html = $html."<td colspan='2'>";
+			$html = $html."<b>QA Report for XX attached</b>";
+			$html = $html."</td>";
+			$html = $html."</tr>";
+			$html = $html."<tr>";
+			$html = $html."<td>";
+			$html = $html."<b>Uploaded by:</b>";
+			$html = $html."</td>";
+			$html = $html."<td>";
+			$html = $html."Test User";
+			$html = $html."</td>";
+			$html = $html."</tr>";
+			$html = $html."<tr>";
+			$html = $html."<td>";
+			$html = $html."<b>Web Preview:</b>";
+			$html = $html."</td>";
+			$html = $html."<td>";
+			$html = $html."<a href='".$webUrl."'>".$webUrl."</a>";
+			$html = $html."</td>";
+			$html = $html."</tr>";
+			$html = $html."</table></body></html>";
+			return $html;
+
+		}
 	}
 ?>

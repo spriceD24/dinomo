@@ -56,8 +56,9 @@
 		
 		function generatePDF($html, $id)
 		{
-			$ini_array = parse_ini_file("config/dinamo.ini");
-			$pdf_folder = $ini_array["pdf_folder"];
+			$configUtil = new ConfigUtil();
+			$pdf_folder = $configUtil->getPDFFolder();
+			$path = realpath('.');
 			
 			// create new PDF document
 			$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -100,7 +101,6 @@
 			// output the HTML content
 			//echo "Writing HTML ".$html;
 			$pdf->writeHTML($html, true, false, true, false, '');
-			$path = realpath('.');
 				
 			$pdf->Output($path.'/'.$pdf_folder.'/'.$id.'.pdf', 'F');
 		}

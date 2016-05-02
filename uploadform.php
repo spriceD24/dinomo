@@ -11,6 +11,7 @@
 <?php include_once("beans/UploadedImage.php"); ?>
 <?php include_once("beans/PDFImageWidthHeight.php"); ?>
 <?php require_once('tcpdf/tcpdf.php');?>
+<?php require_once('mail/PHPMailer.php');?>
 
 <?php
 
@@ -26,7 +27,7 @@
 	//add images to collection
 	$images = new Collection;
 	
-	$milliseconds = round(microtime(true) * 1000);
+	$unique_id = round(microtime(true) * 1000);
 	//echo "checking files";
 	//loop through possible uploaded files and save
 	for ($x = 1; $x <= $num_images; $x++) {
@@ -47,9 +48,9 @@
 			$uploadOk = 1;
 			$info = pathinfo($_FILES[$currentImage]['name']);
 			$ext = $info['extension']; // get the extension of the file
-			$newname = $currentImage."_".$milliseconds.".".$ext;
+			$newname = $currentImage."_".$unique_id.".".$ext;
 			
-			//$target = $target_dir."/".$milliseconds."/".$newname;
+			//$target = $target_dir."/".$unique_id."/".$newname;
 			//mkdir("testing");
 			$target = $target_dir."/".$newname;
 			//echo $target_dir;
@@ -94,14 +95,43 @@
     $html = $html.$optionsHTML;
     $html = $html.'<br/><br/><h1>PHOTOS</h1><hr/><br/>';
     $html = $html.$imageHTML;
-    $html = $html." <html><body>";
+    $html = $html." </html></body>";
     
-    $link = $fileUtil->saveHTMLToWebFile($html, $milliseconds);
+    $link = $fileUtil->saveHTMLToWebFile($html, $unique_id);
     echo "<a href='".$link.">".$link."</a>";
 
-	$pdfUtil->generatePDF($html, $milliseconds);
+	$pdfUtil->generatePDF($html, $unique_id);
 	
-	header("Location: upload_success.php?id=".$milliseconds);
+	//now send the email
+	$email = new PHPMailer();
+
+	$webUrl = $configUtil->getWebFolder()."/".urlencode($unique_id).".html";
+	$pdfUrl = $configUtil->getPDFFolder()."/".urlencode($unique_id).".pdf";
+
+	$webUrl = $webUtil->getBaseURI()."/".$webUrl;
+	$pdfUrl = $webUtil->getBaseURI()."/".$pdfUrl;
+
+	$emailHTML = $htmlUtil->generateUploadEmail($webUrl,$pdfUrl);
+
+	$email->From      = 'sprice_D24@yahoo.com';
+	$email->FromName  = 'Stephen Price';
+	$email->Subject   = 'Document Uploaded';
+	$email->Body      = $emailHTML;
+	$email->IsHTML(true);
+
+	$email->AddAddress( 'stephen.price@credit-suisse.com' );
+	$email->AddAddress( 'sprice_D24@yahoo.com' );
+
+	$pdf_folder = $configUtil->getPDFFolder();
+	$path = realpath('.');
+
+	$file_to_attach = $path.'/'.$pdf_folder.'/'.$unique_id.'.pdf';
+
+	$email->AddAttachment( $file_to_attach , 'Test_File.pdf' );
+	
+	$email->Send();
+
+	header("Location: upload_success.php?id=".$unique_id);
 	exit;
 ?>
 </body>
