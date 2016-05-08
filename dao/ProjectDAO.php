@@ -92,7 +92,7 @@
 				$categoryOptions->add(new CategoryOption(1,1,20,20,'I confirm that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).','','CONFIRM','',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,1,21,21,'I confirm the deck has been inspected to ensure that all required actions and controls have been implemented.','','CONFIRM','',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,1,22,22,'Verified By:','','TEXT','',true,'','',''));
-				$categoryOptions->add(new CategoryOption(1,1,1,1,'Verified On','','DATETIME','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,1,23,23,'Verified On','','DATETIME','',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,1,24,24,'Photos','','PHOTOS','',true,'','',''));
 			}
 			
