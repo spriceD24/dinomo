@@ -1,7 +1,7 @@
-<?php include("util/FileUtil.php"); ?>
+<?php include("util/WebUtil.php"); ?>
 <?php
-	$fileUtil = new FileUtil();
-	//echo $fileUtil->getNumberOfUploadFiles()
+	$webUtil = new WebUtil();
+	//echo $webUtil->isProduction();
 	//echo realpath('.');
 	//print_r($_SERVER);
 	//$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";

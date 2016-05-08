@@ -111,14 +111,3 @@
     -moz-box-shadow: inset 0px 1px 4px #ECECEC;
     -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
 }
-
-.controls-textarea{
-    width:360px;
-}
-
-.errorLabel
-{
-	font-size:10px;
-	color:red;
-	font-weight:bold;
-}

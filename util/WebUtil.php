@@ -20,6 +20,13 @@
 			return 1;
 		}
 		
+		function getLoggedInUser()
+		{
+			$user = new User(2,'Pat Noonan','patricknoonan@dinomoformwork.com.au','0303040450','');
+			return $user;
+		}
+		
+		
 		
 	}	
 ?>

@@ -11,18 +11,22 @@
 		public $isRequired;
 		public $errorMessage;
 		public $styleClass;
+		public $labelStyleClass;
 		
-		function __construct($projectID, $categoryID, $categoryOptionID, $order, $formType, $formOptions, $isRequired, $errorMessage, $styleClass) 
+		function __construct($projectID, $categoryID, $categoryOptionID, $order, $title, $pdfTitle, $formType, $formOptions, $isRequired, $errorMessage, $styleClass, $labelStyleClass) 
 		{	
 			$this->projectID = $projectID;	
 			$this->categoryID = $categoryID;	
 			$this->categoryOptionID = $categoryOptionID;
 			$this->order = $order;
+			$this->title = $title;
+			$this->pdfTitle = $pdfTitle;
 			$this->formType = $formType;
 			$this->formOptions = $formOptions;
 			$this->isRequired = $isRequired;
 			$this->errorMessage = $errorMessage;
 			$this->styleClass = $styleClass;
+			$this->labelStyleClass = $labelStyleClass;
 		} 
 	}
 
