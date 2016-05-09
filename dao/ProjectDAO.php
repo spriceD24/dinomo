@@ -41,10 +41,10 @@
 				
 				//replace with call to Database
 				$categories->add(new Category(1, 1,'Deck Handover', new Collection()));
-				//$categories->add(new Category(1, 2,'Lift & Stair Boxes', new Collection()));
-				//$categories->add(new Category(1, 3,'Pre Pour Checklist', new Collection()));
-				//$categories->add(new Category(1, 4,'Stairs', new Collection()));
-				//$categories->add(new Category(1, 5,'Verticals', new Collection()));
+				$categories->add(new Category(1, 2,'Lift & Stair Boxes', new Collection()));
+				$categories->add(new Category(1, 3,'Pre Pour Checklist', new Collection()));
+				$categories->add(new Category(1, 4,'Stairs', new Collection()));
+				$categories->add(new Category(1, 5,'Verticals', new Collection()));
 			}			
 			
 			return $categories;
@@ -60,6 +60,24 @@
 				//Deck Handover
 				return new Category(1, 1,'Deck Handover', new Collection());
 			}
+			if($categoryID == 2)
+			{
+				//Lift & Stair Boxes
+				return new Category(1, 2,'Lift & Stair Boxes', new Collection());
+			}
+			if($categoryID == 3)
+			{
+				return new Category(1, 3,'Pre Pour Checklist', new Collection());
+			}
+			if($categoryID == 4)
+			{
+				return new Category(1, 4,'Stairs', new Collection());
+			}
+			if($categoryID == 5)
+			{
+				return new Category(1, 5,'Verticals', new Collection());
+			}
+				
 		}
 	
 		function getCategoryOptions($projectID, $categoryID)
@@ -88,10 +106,10 @@
 				$categoryOptions->add(new CategoryOption(1,1,16,16,'Slip/trip hazards removed (excess materials, timber etc.)','','RADIO','Yes,No,N/A',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,1,17,17,'Deck swept and cleaned of all debris','','RADIO','Yes,No,N/A',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,1,18,18,'Engineer Sign off','','RADIO','Yes,No,N/A',true,'','',''));
-				$categoryOptions->add(new CategoryOption(1,1,19,19,'Comments:','','TEXTAREA','',true,'','',''));
-				$categoryOptions->add(new CategoryOption(1,1,20,20,'I confirm that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).','','CONFIRM','',true,'','',''));
-				$categoryOptions->add(new CategoryOption(1,1,21,21,'I confirm the deck has been inspected to ensure that all required actions and controls have been implemented.','','CONFIRM','',true,'','',''));
-				$categoryOptions->add(new CategoryOption(1,1,22,22,'Verified By:','','TEXT','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,1,19,19,'Comments','','TEXTAREA','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,1,20,20,'I confirm that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).','The submitter of this report has confirmed that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).','CONFIRM','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,1,21,21,'I confirm the deck has been inspected to ensure that all required actions and controls have been implemented.','The person who has verified this report has confirmed the deck has been inspected to ensure that all required actions and controls have been implemented.','CONFIRM','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,1,22,22,'Verified By','','TEXT','',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,1,23,23,'Verified On','','DATETIME','',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,1,24,24,'Photos','','PHOTOS','',true,'','',''));
 			}

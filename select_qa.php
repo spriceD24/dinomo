@@ -12,16 +12,7 @@
 	//echo $actual_link;
 	//echo "$_SERVER[HTTP_HOST]";
 	$projectDAO = new ProjectDAO ();
-	$projectID = intval($_GET["projectID"]); 
-	$categoryID = intval($_GET["categoryID"]); 
-	//get the data
-	$project = $projectDAO->getProject($projectID);
-	$currentCategory = $projectDAO->getCategory($projectID, $categoryID );
-	
-	//print_r($project);
-	$id = $_GET['id'];
-	$webUrl = $configUtil->getWebFolder()."/".urlencode($id).".html";
-	$pdfUrl = $configUtil->getPDFFolder()."/".urlencode($id).".pdf";
+	$projects = $projectDAO->getAllProjectsLite();
 	
 ?>
 
@@ -56,6 +47,47 @@
 	
 	<link href="css/pages/signin.css" rel="stylesheet" type="text/css">
 	
+	
+<script>
+
+function getSelectedVaue(id)
+{
+	var e = document.getElementById(id);
+	return e.options[e.selectedIndex].value;
+}
+
+function setCategoryDropdown()
+{
+	hideAllCategories();
+	var selected = getSelectedVaue('projectID');
+	if(selected && selected != '')
+	{
+		document.getElementById('project_row_'+selected).style.display='';
+	}
+}
+
+function hideAllCategories()
+{
+	<?php 
+	while ( $project = $projects->iterate () ) 
+	
+	{							
+				?>
+	document.getElementById('project_row_<?=$project->projectID?>').style.display='none';								
+				<?php 
+	}?>
+	
+}
+
+function selectCategory(projectID)
+{
+	var selected = getSelectedVaue('project_'+projectID);
+	window.location="upload_qa.php?projectID="+projectID+"&categoryID="+selected;
+}
+
+setCategoryDropdown();
+
+</script>	
 
 </head>
 
@@ -84,10 +116,7 @@
 
 						<li class=""></li>
 
-						<li class="" style="padding-top: 20px"><a href="select_qa.php"
-							class=""> <i class="icon-chevron-left"></i> Back to Projects
-
-						</a></li>
+						<li class="" style="padding-top: 20px"></li>
 
 					</ul>
 
@@ -112,24 +141,59 @@
 	
 	<div class="content clearfix">
 				
-			<h3>QA Report Submitted Succesfully</h3>		
+			<h3>Select QA Project/Report Type</h3>		
 			
 			<div class="login-fields">
 				<p></p>
-				<table style="font-size:14px; border 1px solid;padding-top:10px;padding-bottom:10px;width:80%">
+				<table style="font-size:14px; border 1px solid;padding-top:10px;padding-bottom:10px;width:100%">
 					<tr>
-						<td style="font-weight:bold">Project:</td><td align="right"><?=$project->projectName;?></td>
+						<td style="font-weight:bold;width:50%;padding-bottom:10px">Project:</td>
+						<td>
+							<select name="projectID" id="projectID" onchange="setCategoryDropdown()">
+								<option value="" selected></option>
+							<?php 
+							while ( $project = $projects->iterate () ) 
+							
+							{							
+							?>
+								<option value="<?=$project->projectID?>"><?=$project->projectName?></option>
+							<?php 		
+							}
+							?>
+							</select>
+						</td>
 					</tr>
-					<tr>
-						<td style="font-weight:bold">Report Type:</td><td align="right"><?=$currentCategory->categoryName;?></td>
-					</tr>
+							<?php 
+							while ( $project = $projects->iterate () ) 
+							
+							{							
+							?>
+								<tr id="project_row_<?=$project->projectID?>" style="display:none">
+									<td style="font-weight:bold;width:50%;padding-bottom:10px">Report Type:</td>
+									<td align="right">
+								<select name="project_<?=$project->projectID?>" id="project_<?=$project->projectID?>" onchange="selectCategory(<?=$project->projectID?>)">
+								<option value="" selected></option>
+								<?php 
+									while ( $category = $project->categories->iterate () ) 
+									
+									{							
+									?>
+										<option value="<?=$category->categoryID?>"><?=$category->categoryName?></option>
+									<?php 		
+									}
+									?>					
+									</td>
+								</tr>
+								
+							<?php 		
+							}
+							?>					
 				</table>
 				<p></p>
-				<p style="font-size:15px">
-				Click <a href='<?=$pdfUrl?>.' target='_blank'>here <img src="img/pdf.png"/></a> to view submitted report.
+				
 			</div> <!-- /login-fields -->
 			
-\	</div> <!-- /content -->
+	</div> <!-- /content -->
 	
 </div> <!-- /account-container -->
 

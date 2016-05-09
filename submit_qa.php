@@ -12,6 +12,13 @@
 <?php include_once("beans/PDFImageWidthHeight.php"); ?>
 <?php require_once('tcpdf/tcpdf.php');?>
 <?php require_once('mail/PHPMailer.php');?>
+<?php include_once("dao/model/Category.php"); ?>
+<?php include_once("dao/model/CategoryOption.php"); ?>
+<?php include_once("dao/model/Project.php"); ?>
+<?php include_once("dao/ProjectDAO.php"); ?>
+<?php include_once("dao/model/User.php"); ?>
+<?php include_once("dao/UserDAO.php"); ?>
+<?php include("util/HTMLConst.php"); ?>
 
 <?php
 
@@ -24,6 +31,10 @@
 	$target_dir = $configUtil->getImageFolder();
 	$num_images = $configUtil->getNumberOfUploadFiles();
 	
+	$setOptionPrefix = HTMLConst::STANDARD_OPT_ID_PREFIX;
+	$projectDAO = new ProjectDAO ();
+	$userDAO = new UserDAO ();
+	
 	//add images to collection
 	$images = new Collection;
 	
@@ -32,6 +43,17 @@
 	//loop through possible uploaded files and save
 	
 	//print_r($_FILES);
+	
+	//get the uploaded user
+	$uploadedUserID = intval($_POST["uploadedBy"]); 
+	$projectID = intval($_POST["projectID"]); 
+	$categoryID = intval($_POST["categoryID"]); 
+	
+	//get the data
+	$uploadedUser = $userDAO->getUser($uploadedUserID);
+	$project = $projectDAO->getProject($projectID);
+	$currentCategory = $projectDAO->getCategory($projectID, $categoryID );
+	$categoryOptions = $projectDAO->getCategoryOptions($projectID, $categoryID );
 	
 	//$count = count($_FILES['files']['tmp_name']);
 	foreach($_FILES as $file) {
@@ -87,6 +109,7 @@
 	
 	$options = new Collection;
 	
+	/*
 	//$value =  $_POST['subject'];
     foreach ($_POST as $key => $value) {
 		$selectedOption = new SelectedOption();
@@ -95,22 +118,61 @@
 		//TODO get label from Database
 		$options->add($selectedOption);
     }
+*/
 
+$selectedOption = new SelectedOption();
+$selectedOption->valueOnly = false;
+$selectedOption->optionFormID = "Project";
+$selectedOption->optionValue = $project->projectName;
+$options->add($selectedOption);
+	
+while ( $categoryOption = $categoryOptions->iterate () ) 
+
+{
+	if (isset($_POST[$setOptionPrefix.$categoryOption->categoryOptionID]))
+	{
+		$value = $_POST[$setOptionPrefix.$categoryOption->categoryOptionID];
+		//echo $setOptionPrefix.$categoryOption->categoryOptionID.' = '.$value.'<br/>';
+		if(!is_null($value))
+		{
+			$selectedOption = new SelectedOption();
+			$label = $categoryOption->title;
+			$selectedOption->valueOnly = false;
+			$selectedOption->formType = $categoryOption->formType;
+			if(!is_null($categoryOption->pdfTitle) && !empty($categoryOption->pdfTitle))
+			{
+				$label = $categoryOption->pdfTitle;
+			}
+			$selectedOption->optionFormID = $label;
+			$selectedOption->optionValue = $value;
+			if ($categoryOption->formType == 'CONFIRM')
+			
+			{
+				$selectedOption->valueOnly = true;
+				$selectedOption->optionValue = $label;
+			}
+			
+
+			$options->add($selectedOption);
+		}
+	}
+}
+	
+	
     $htmlUtil = new HTMLUtil();
     
     $optionsHTML = $htmlUtil->getOptionsTable($options);
-    $imageHTML = $htmlUtil->getImageTable($images);
-    
-    $html = "<html><body> ";
-    $html = $html.$optionsHTML;
-    $html = $html.'<br/><br/><h1>PHOTOS</h1><hr/><br/>';
-    $html = $html.$imageHTML;
-    $html = $html." </html></body>";
+	$imageHTML = $htmlUtil->getImageTable($images);
+	$html = "<html><body> ";
+	$html = $html.$optionsHTML;
+	$html = $html.'<br/><br/><h2>PHOTOS</h2><hr/><br/>';
+	$html = $html.$imageHTML;
+	$html = $html." </html></body>";
     
     $link = $fileUtil->saveHTMLToWebFile($html, $unique_id);
     echo "<a href='".$link.">".$link."</a>";
 
-	$pdfUtil->generatePDF($html, $unique_id);
+	$pdfUtil->generatePDF($optionsHTML,$imageHTML, $unique_id, 'Quality Assurance - '.$currentCategory->categoryName);
 	
 	//now send the email
 	$email = new PHPMailer();
@@ -121,29 +183,34 @@
 	$webUrl = $webUtil->getBaseURI()."/".$webUrl;
 	$pdfUrl = $webUtil->getBaseURI()."/".$pdfUrl;
 
-	$emailHTML = $htmlUtil->generateUploadEmail($webUrl,$pdfUrl);
+	$emailHTML = $htmlUtil->generateUploadEmail($webUrl,$pdfUrl,$project,$currentCategory,$uploadedUser);
 
-	$email->From      = 'sprice_D24@yahoo.com';
-	$email->FromName  = 'Stephen Price';
-	$email->Subject   = 'Document Uploaded';
+	$email->From      = $uploadedUser->email;
+	$email->FromName  = $uploadedUser->name;	
+	$email->Subject   = 'QA Report - '.$project->projectName.': '.$currentCategory->categoryName;
 	$email->Body      = $emailHTML;
 	$email->IsHTML(true);
 
 	$email->AddAddress( 'stephen.price@credit-suisse.com' );
 	$email->AddAddress( 'sprice_D24@yahoo.com' );
+	$email->AddAddress( 'stefdogd24@gmail.com' );
 
 	$pdf_folder = $configUtil->getPDFFolder();
 	$path = realpath('.');
 
+	$day = date("j");
+	$month = date("M");
+	$year = date('Y');
+	$pdfName = "Report_".$project->projectName."_".$currentCategory->categoryName."_".$day."_".$month."_".$year;
+	
 	$file_to_attach = $path.'/'.$pdf_folder.'/'.$unique_id.'.pdf';
 
-	$email->AddAttachment( $file_to_attach , 'Test_File.pdf' );
+	$email->AddAttachment( $file_to_attach , $pdfName.'.pdf' );
 	
 	$email->Send();
 
-	header("Location: upload_success.php?id=".$unique_id);
+	header("Location: upload_success.php?id=".$unique_id."&projectID=".$projectID."&categoryID=".$categoryID);
 	exit;
 ?>
 </body>
 </html>
-</table>

@@ -10,5 +10,8 @@
 		public $optionFormID;
 		public $optionLabel;
 		public $optionValue;
+		public $colspan;
+		public $valueOnly;
+		public $formType;
 	}
 ?>

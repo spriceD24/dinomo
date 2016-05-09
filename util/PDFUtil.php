@@ -1,3 +1,4 @@
+<?php require_once('tcpdf/tcpdf.php');?>
 <?php
 
 	/**
@@ -54,14 +55,16 @@
 			return $pdfImageWidthHeight;
 		}
 		
-		function generatePDF($html, $id)
+		function generatePDF($optionsHTML,$imageHTML, $id, $title)
 		{
+		
 			$configUtil = new ConfigUtil();
 			$pdf_folder = $configUtil->getPDFFolder();
 			$path = realpath('.');
 			
 			// create new PDF document
-			$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+			$pdf = new DinamoPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+			$pdf->headerText = $title;
 			
 			// set document information
 			$pdf->SetCreator(PDF_CREATOR);
@@ -75,8 +78,8 @@
 			$pdf->SetFont('dejavusans', '', 10);
 			
 			// remove default header/footer
-			$pdf->setPrintHeader(false);
-			$pdf->setPrintFooter(false);
+			//$pdf->setPrintHeader(false);
+			//$pdf->setPrintFooter(false);
 			
 			// set default monospaced font
 			$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -99,11 +102,56 @@
 			// set some text to print
 			
 			// output the HTML content
-			//echo "Writing HTML ".$html;
+			$html = "<html><body> ";
+			$html = $html.$optionsHTML;
+			if(!empty($imageHTML))
+			{
+				$html = $html.'<br/><br/><span style="font-style:italic">Photos On Next Page.............</span>';
+			}
+			//$html = $html."</html></body>";
 			$pdf->writeHTML($html, true, false, true, false, '');
+			//echo "Writing HTML ".$html;
 				
+			if(!empty($imageHTML))
+			{
+				$html = $imageHTML;
+				$pdf->AddPage();
+				$pdf->writeHTML($html, true, false, true, false, '');
+				
+			}
+			
+			$pdf->writeHTML("</html></body>", true, false, true, false, '');
+		
 			$pdf->Output($path.'/'.$pdf_folder.'/'.$id.'.pdf', 'F');
 		}
 	}
 		
+	
+
+	// Extend the TCPDF class to create custom Header and Footer
+	class DinamoPDF extends TCPDF {
+	
+		public $headerText;
+		
+		//Page header
+		public function Header() {
+			// Logo
+			$image_file = 'img/dinamo_small.png';
+			$this->Image($image_file, 10, 5, 25, '', 'PNG', '', 'M', false, 300, '', false, false, 0, false, false, true);
+			// Set font
+			$this->SetFont('helvetica', 'B', 13);
+			// Title
+			$this->Cell(0, 15,$this->headerText, 0, false, 'C', 0, '', 0, false, 'M', 'M');
+		}
+	
+		// Page footer
+		public function Footer() {
+			// Position at 15 mm from bottom
+			$this->SetY(-15);
+			// Set font
+			$this->SetFont('helvetica', 'I', 8);
+			// Page number
+			$this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+		}
+	}
 ?>
