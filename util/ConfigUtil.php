@@ -68,8 +68,34 @@
 			$pdf_folder = $this->ini_array["pdf_folder"];
 			return $pdf_folder;
 		}
+
+		function getMobileTextStyle()
+		{
+			$this->loadINIArray();
+			$mobile_text = $this->ini_array["mobile_text"];
+			return $mobile_text;
+		}
 		
+		function getMobileLabelStyle()
+		{
+			$this->loadINIArray();
+			$mobile_label = $this->ini_array["mobile_label"];
+			return $mobile_label;
+		}		
+
+		function getMobileTextAreaStyle()
+		{
+			$this->loadINIArray();
+			$mobile_textarea = $this->ini_array["mobile_textarea"];
+			return $mobile_textarea;
+		}	
 		
+			function getMobileDropDownStyle()
+		{
+			$this->loadINIArray();
+			$mobile_dropdown = $this->ini_array["mobile_dropdown"];
+			return $mobile_dropdown;
+		}			
 	}
 
 ?>

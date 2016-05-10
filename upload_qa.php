@@ -10,6 +10,7 @@
 <?php include_once("dao/ProjectDAO.php"); ?>
 <?php include_once("dao/model/User.php"); ?>
 <?php include_once("dao/UserDAO.php"); ?>
+<?php include_once("mobile_detect/Mobile_Detect.php");?>
 
 <?php
 
@@ -17,10 +18,16 @@ $webUtil = new WebUtil ();
 $htmlUtil = new HTMLUtil ();
 $stringUtils = new StringUtils ();
 $configUtil = new ConfigUtil ();
+$detect = new Mobile_Detect();
 
 $setCurrentProjectID = intval($_GET["projectID"]);
 $setCurrentCategoryID = intval($_GET["categoryID"]);
 
+if(empty($setCurrentProjectID) || empty($setCurrentCategoryID))
+{
+	header("Location: select_qa.php");
+	exit;
+}
 
 $setOptionPrefix = HTMLConst::STANDARD_OPT_ID_PREFIX;
 
@@ -33,6 +40,10 @@ $currentCategory = $projectDAO->getCategory ( $setCurrentProjectID, $setCurrentC
 $categoryOptions = $projectDAO->getCategoryOptions ( $setCurrentProjectID, $setCurrentCategoryID );
 
 // get user info
+$mobileTextStyle = $configUtil->getMobileTextStyle();
+$mobileLabelStyle = $configUtil->getMobileLabelStyle();
+$mobileTextAreaStyle = $configUtil->getMobileTextAreaStyle();
+$mobileDropDownStyle = $configUtil->getMobileDropDownStyle();
 
 $userDAO = new UserDAO ();
 $users = $userDAO->getAllUsers ();
@@ -144,6 +155,20 @@ function setDate(id)
 	document.getElementById(id).value = day+"-"+month+"-"+year+" "+time;
 	validDate(id);
 }
+
+function checkTime(id)
+{
+	var idx = document.getElementById(id).selectedIndex;
+	if(idx == 0)
+	{
+		setErrorDiv(id);
+	}
+	else{
+		clearErrorDiv(id);
+	}
+	
+}
+
 
 function validDate(id)
 {
@@ -278,7 +303,24 @@ while ( $categoryOption = $categoryOptions->iterate () )
 	 		}
  		<?php 
 		}
-				
+		if ($categoryOption->formType == 'TIME')
+		
+		{
+			?>
+			checkedVal = document.getElementById("<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").selectedIndex;
+	 		if(!checkedVal || checkedVal == 0)
+	 		{
+		 		//alert('Select - <?=$categoryOption->title?>');
+		 		setErrorDiv('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>')
+		 		if(errorAnchor == '')
+		 		{
+		 			errorAnchor = 'anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>';	
+		 			hasError = true;
+		 		}
+		 		//return false;
+	 		}
+ 		<?php 
+		}				
 	}
 }
 
@@ -292,6 +334,7 @@ while ( $categoryOption = $categoryOptions->iterate () )
 	if(!hasError)
 	{
 		//submit form
+		document.getElementById("submitButton").disabled = true; 
 		document.getElementById('uploadform').submit();
 	}	 	
 }
@@ -438,7 +481,21 @@ while ( $categoryOption = $categoryOptions->iterate () )
 																<?php if ($categoryOption->isRequired)
 																{	
 																	print ' onkeyup="clearErrorDivText(\''.$setOptionPrefix.$categoryOption->categoryOptionID.'\')" ';
-																}?>>
+																}?>
+																
+																<?php 
+																if (!$detect->isMobile() && !empty($categoryOption->styleClass))
+																{	
+																	print " style='$categoryOption->styleClass'";
+																}
+																
+																if ($detect->isMobile() && !$detect->isTablet())
+																{
+																	print " style='".$mobileTextStyle."'";
+																}
+																
+																?>
+																>
 
 														</div>
 
@@ -477,7 +534,16 @@ while ( $categoryOption = $categoryOptions->iterate () )
 										<a name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
 											<div class="control-group"  id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
 
-														<div class="controls" style="font-weight: bold">
+														<div class="controls" 
+														<?php 
+														if ($detect->isMobile() && !$detect->isTablet())
+														{
+															print " style='".$mobileLabelStyle."'";
+														}else{
+															print 'style="font-weight: bold"';
+														}
+														?>
+														>
 												<?=$categoryOption->title;?>
 												</div>
 
@@ -540,7 +606,12 @@ while ( $categoryOption = $categoryOptions->iterate () )
 																rows="5" <?php if ($categoryOption->isRequired)
 																{	
 																	print ' onkeyup="clearErrorDivText(\''.$setOptionPrefix.$categoryOption->categoryOptionID.'\')" ';
-																}?>></textarea>
+																} 
+																if ($detect->isMobile() && !$detect->isTablet())
+																{
+																	print " style='".$mobileLabelStyle."'";
+																}
+																?>																></textarea>
 
 														</div>
 
@@ -564,7 +635,13 @@ while ( $categoryOption = $categoryOptions->iterate () )
 
 															<select
 																id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>">
+																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																<?php 
+																if ($detect->isMobile() && !$detect->isTablet())
+																{
+																	print " style='".$mobileDropDownStyle."'";
+																}
+																?>>
 
 													<?php
 									
@@ -613,7 +690,11 @@ if ($user->userID == $currentUser->userID)
 
 															<select
 																id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>">
+																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																<?php if ($detect->isMobile() && !$detect->isTablet())
+																{
+																	print " style='".$mobileDropDownStyle."'";
+																}?>>
 
 																<option value=""></option>
 
@@ -658,7 +739,12 @@ if ($user->userID == $currentUser->userID)
 
 
 
-														<div class="controls">
+														<div class="controls" 
+														<?php 
+																if ($detect->isMobile() && !$detect->isTablet())
+																{
+																	print " style='".$mobileLabelStyle."'";
+																}?>>
 
 															<label class="checkbox inline"> <input type="checkbox" id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" 
 															 name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
@@ -796,26 +882,112 @@ if ($user->userID == $currentUser->userID)
 									?>
 
 											
-
-											<div class="control-group">
+											<a name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
+											<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
 
 														<label class="control-label"
-															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"><?=$categoryOption->title;?></label>
-
+															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"><?=$categoryOption->title;?>
+												<div id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" class="errorLabel" style="display:none">
+													* Invalid Date
+												</div>															
+															<?php
+																$day = date("j");
+																$month = date("M");
+																$year = date('Y');
+															?>
+															</label>
+														<input type="hidden" id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" value="<?=$day.'-'.$month.'-'.$year?>"/>
 														<div class="controls">
+														<?php
+																$dayDrop = $htmlUtil->getDayDropdown ( $setOptionPrefix.$categoryOption->categoryOptionID );
+																$monthDrop = $htmlUtil->getMonthDropdown ($setOptionPrefix.$categoryOption->categoryOptionID );
+																$yearDrop = $htmlUtil->getYearDropdown ( $setOptionPrefix.$categoryOption->categoryOptionID );
+																
+																print $dayDrop."&nbsp;".$monthDrop."&nbsp;".$yearDrop;
+														?>	
+	
 
-															<input type="text"
-																name="date_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																id="date_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" />
+												</div>
+													</div>
 
-														</div>
+											<?php
+								}
+								
+								
+							if ($categoryOption->formType == 'TIME') 
 
+								{
+									
+									?>
+								
+											<a name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
+											<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+
+														<label class="control-label"
+															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"><?=$categoryOption->title;?>
+												<div id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" class="errorLabel" style="display:none">
+													* Required Field
+												</div>															
+															</label>
+														<div class="controls">
+													<?php
+									
+									$timeDrop = $htmlUtil->getTimeDropdownOnly($setOptionPrefix . $categoryOption->categoryOptionID );
+									
+									print $timeDrop;
+									
+									?>
+
+												</div>
 													</div>
 
 											
 
 											<?php
 								}
+							
+							if ($categoryOption->formType == 'LABEL') 
+
+								{
+									
+									?>
+											<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+											<input type="hidden" id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" value="<?=$categoryOption->formOptions;?>"/>
+
+											<?php 
+											if ($detect->isMobile() && !$detect->isTablet())
+											{?>
+														<label class="control-label" style="padding-top:2px"
+															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>">
+															</label>
+
+														<div class="controls">
+															<span class="dinamo-label" style="font-weight:bold;font-style:italic">
+															<?=$categoryOption->title;?>/<?=$categoryOption->formOptions;?>
+															</span>
+														</div>
+											<?php }else{?>
+																
+														<label class="control-label" style="padding-top:2px"
+															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>">
+															<span style="font-weight:bold;font-style:italic"><?=$categoryOption->title;?></span>
+															</label>
+
+														<div class="controls">
+															<span class="dinamo-label" style="font-weight:bold;font-style:italic">
+															<?=$categoryOption->formOptions;?>
+															</span>
+														</div>
+											<?php } ?>
+											</div>
+											
+
+											<?php
+								}
+																		
+
+											
+								
 							}
 							
 							?>										
@@ -824,7 +996,7 @@ if ($user->userID == $currentUser->userID)
 
 										<div class="form-actions">
 
-														<button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+														<button type="button" class="btn btn-primary" id="submitButton" name="submitButton" onclick="submitForm()">Submit</button>
 
 														<!-- <button class="btn">Cancel</button>-->
 
@@ -1029,4 +1201,3 @@ while ( $categoryOption = $categoryOptions->iterate () )
 
 
 </html>
-

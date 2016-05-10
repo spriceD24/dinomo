@@ -22,11 +22,9 @@
 		
 		function getLoggedInUser()
 		{
-			$user = new User(2,'Pat Noonan','patricknoonan@dinomoformwork.com.au','0303040450','');
+			$user = new User(2,'Patrick Noonan','pnoonan','patricknoonan@dinomoformwork.com.au','0303040450','');
 			return $user;
 		}
-		
-		
 		
 	}	
 ?>

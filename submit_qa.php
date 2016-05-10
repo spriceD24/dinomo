@@ -6,6 +6,8 @@
 <?php include_once("util/PDFUtil.php"); ?>
 <?php include_once("util/WebUtil.php"); ?>
 <?php include_once("util/ConfigUtil.php"); ?>
+<?php include_once("util/DateUtil.php"); ?>
+<?php include_once("util/StringUtils.php"); ?>
 <?php include_once("util/CollectionsUtil.php"); ?>
 <?php include_once("beans/SelectedOption.php"); ?>
 <?php include_once("beans/UploadedImage.php"); ?>
@@ -27,6 +29,7 @@
 	$fileUtil = new FileUtil();
     $webUtil = new WebUtil();
     $configUtil = new ConfigUtil();
+    $dateUtil = new DateUtil();
     
 	$target_dir = $configUtil->getImageFolder();
 	$num_images = $configUtil->getNumberOfUploadFiles();
@@ -38,7 +41,7 @@
 	//add images to collection
 	$images = new Collection;
 	
-	$unique_id = round(microtime(true) * 1000);
+	
 	//echo "checking files";
 	//loop through possible uploaded files and save
 	
@@ -54,6 +57,12 @@
 	$project = $projectDAO->getProject($projectID);
 	$currentCategory = $projectDAO->getCategory($projectID, $categoryID );
 	$categoryOptions = $projectDAO->getCategoryOptions($projectID, $categoryID );
+	
+	$dateStr = $dateUtil->getCurrentDateString();
+	$dateTimeStr = $dateUtil->getCurrentDateTimeString();
+	$pdfName = "Report_".$project->projectName."_".$currentCategory->categoryName."_".$dateStr;
+	$unique_id = $fileUtil->getFilename($uploadedUser,$pdfName);
+	
 	
 	//$count = count($_FILES['files']['tmp_name']);
 	foreach($_FILES as $file) {
@@ -124,6 +133,13 @@ $selectedOption = new SelectedOption();
 $selectedOption->valueOnly = false;
 $selectedOption->optionFormID = "Project";
 $selectedOption->optionValue = $project->projectName;
+$options->add($selectedOption);
+
+
+$selectedOption = new SelectedOption();
+$selectedOption->valueOnly = false;
+$selectedOption->optionFormID = "Submitted On";
+$selectedOption->optionValue = $dateTimeStr;
 $options->add($selectedOption);
 	
 while ( $categoryOption = $categoryOptions->iterate () ) 
@@ -198,10 +214,6 @@ while ( $categoryOption = $categoryOptions->iterate () )
 	$pdf_folder = $configUtil->getPDFFolder();
 	$path = realpath('.');
 
-	$day = date("j");
-	$month = date("M");
-	$year = date('Y');
-	$pdfName = "Report_".$project->projectName."_".$currentCategory->categoryName."_".$day."_".$month."_".$year;
 	
 	$file_to_attach = $path.'/'.$pdf_folder.'/'.$unique_id.'.pdf';
 

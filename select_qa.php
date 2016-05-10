@@ -2,8 +2,11 @@
 <?php include_once("dao/model/Category.php"); ?>
 <?php include_once("dao/model/Project.php"); ?>
 <?php include_once("dao/ProjectDAO.php"); ?>
+<?php include_once("mobile_detect/Mobile_Detect.php");?>
+
 <?php
 	$configUtil = new ConfigUtil();
+	$detect = new Mobile_Detect();
 	//echo $fileUtil->getNumberOfUploadFiles()
 	//echo realpath('.');
 	//print_r($_SERVER);
@@ -13,6 +16,7 @@
 	//echo "$_SERVER[HTTP_HOST]";
 	$projectDAO = new ProjectDAO ();
 	$projects = $projectDAO->getAllProjectsLite();
+	$mobileDropDownStyle = $configUtil->getMobileDropDownStyle();
 	
 ?>
 
@@ -50,6 +54,7 @@
 	
 <script>
 
+
 function getSelectedVaue(id)
 {
 	var e = document.getElementById(id);
@@ -85,7 +90,18 @@ function selectCategory(projectID)
 	window.location="upload_qa.php?projectID="+projectID+"&categoryID="+selected;
 }
 
-setCategoryDropdown();
+window.onload = function() {
+	document.getElementById('projectID').selectedIndex = 0;
+	<?php 
+	while ( $project = $projects->iterate () ) 
+	
+	{							
+				?>
+	document.getElementById('project_<?=$project->projectID?>').selectedIndex=0;								
+				<?php 
+	}?>
+	
+};
 
 </script>	
 
@@ -149,7 +165,12 @@ setCategoryDropdown();
 					<tr>
 						<td style="font-weight:bold;width:50%;padding-bottom:10px">Project:</td>
 						<td>
-							<select name="projectID" id="projectID" onchange="setCategoryDropdown()">
+							<select name="projectID" id="projectID" onchange="setCategoryDropdown()" <?php 
+																if ($detect->isMobile() && !$detect->isTablet())
+																{
+																	print " style='".$mobileDropDownStyle."'";
+																}
+																?>>
 								<option value="" selected></option>
 							<?php 
 							while ( $project = $projects->iterate () ) 
@@ -171,7 +192,12 @@ setCategoryDropdown();
 								<tr id="project_row_<?=$project->projectID?>" style="display:none">
 									<td style="font-weight:bold;width:50%;padding-bottom:10px">Report Type:</td>
 									<td align="right">
-								<select name="project_<?=$project->projectID?>" id="project_<?=$project->projectID?>" onchange="selectCategory(<?=$project->projectID?>)">
+								<select name="project_<?=$project->projectID?>" id="project_<?=$project->projectID?>" onchange="selectCategory(<?=$project->projectID?>)" <?php 
+																if ($detect->isMobile() && !$detect->isTablet())
+																{
+																	print " style='".$mobileDropDownStyle."'";
+																}
+																?>>
 								<option value="" selected></option>
 								<?php 
 									while ( $category = $project->categories->iterate () ) 
@@ -181,7 +207,8 @@ setCategoryDropdown();
 										<option value="<?=$category->categoryID?>"><?=$category->categoryName?></option>
 									<?php 		
 									}
-									?>					
+									?>		
+									</select>			
 									</td>
 								</tr>
 								

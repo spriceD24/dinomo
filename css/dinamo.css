@@ -122,3 +122,25 @@
 	color:red;
 	font-weight:bold;
 }
+
+.dinamo-label {
+	width: 140px;
+	padding-top: 5px;
+	margin-bottom: 5px;
+	color: #333333;
+}
+
+.mobile-label
+{
+	width:100px;
+}
+
+.mobile-text
+{
+	width:100px;
+}
+
+.mobile-textarea
+{
+	width:100px;
+}

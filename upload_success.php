@@ -129,7 +129,7 @@
 				Click <a href='<?=$pdfUrl?>' target='_blank'>here <img src="img/pdf.png"/></a> to view submitted report.
 			</div> <!-- /login-fields -->
 			
-\	</div> <!-- /content -->
+	</div> <!-- /content -->
 	
 </div> <!-- /account-container -->
 

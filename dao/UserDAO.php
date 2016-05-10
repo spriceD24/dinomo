@@ -6,7 +6,16 @@
 	{
 		function getUser($userID)
 		{
-			$user = new User(2,'Pat Noonan','patricknoonan@dinomoformwork.com.au','0303040450','');
+			$allUsers = $this->getAllUsers();
+			while ( $user = $allUsers->iterate () )
+			{
+				if($user->userID == $userID)
+				{
+					return $user;
+				}
+			}
+			//default for TEMP
+			$user = new User(2,'Pat Noonan','pnoonan','patricknoonan@dinomoformwork.com.au','0303040450','');
 			return $user;
 		}
 		
@@ -15,9 +24,9 @@
 		{
 			$users = new Collection;
 			
-			$users->add(new User(1,'Stephen Price','sprice_D24@yahoo.com','343433440450',''));
-			$users->add(new User(2,'Pat Noonan','patricknoonan@dinomoformwork.com.au','0303040450',''));
-			$users->add(new User(3,'John Smith','john@johnsite.com','3434343',''));
+			$users->add(new User(1,'Stephen Price','sprice','sprice_D24@yahoo.com','343433440450',''));
+			$users->add(new User(2,'Patrick Noonan','pnoonan','patricknoonan@dinomoformwork.com.au','0303040450',''));
+			$users->add(new User(3,'John Smith','jsmith','john@johnsite.com','3434343',''));
 			
 			return $users;
 		}
