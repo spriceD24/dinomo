@@ -87,6 +87,10 @@ function hideAllCategories()
 function selectCategory(projectID)
 {
 	var selected = getSelectedVaue('project_'+projectID);
+	try{
+		$('.modal').css('margin',0);
+		$(".modal").show();
+	}catch(e){}
 	window.location="upload_qa.php?projectID="+projectID+"&categoryID="+selected;
 }
 
@@ -97,13 +101,51 @@ window.onload = function() {
 	
 	{							
 				?>
-	document.getElementById('project_<?=$project->projectID?>').selectedIndex=0;								
+	document.getElementById('project_<?=$project->projectID?>').selectedIndex=0;		
+	try{
+		$(".modal").hide();
+	}catch(e){}						
 				<?php 
 	}?>
 	
 };
 
 </script>	
+
+
+<style>
+	.modal
+	{
+		position: fixed;
+		z-index: 999;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		background-color: Black;
+		filter: alpha(opacity=60);
+		opacity: 0.6;
+		-moz-opacity: 0.8;
+	}
+	.center
+	{
+		z-index: 1000;
+		margin: 300px auto;
+		padding: 10px;
+		width: 330px;
+		background-color: White;
+		border-radius: 10px;
+		filter: alpha(opacity=100);
+		opacity: 1;
+		-moz-opacity: 1;
+	}
+	.center img
+	{
+		height: 128px;
+		width: 128px;
+	}
+</style>
+
 
 </head>
 
@@ -219,7 +261,13 @@ window.onload = function() {
 				<p></p>
 				
 			</div> <!-- /login-fields -->
-			
+
+	<div class="modal" style="display: none">
+		<div class="center">
+			<img alt="" src="img/loader.gif" />
+		</div>
+	</div>
+				
 	</div> <!-- /content -->
 	
 </div> <!-- /account-container -->

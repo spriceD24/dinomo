@@ -208,7 +208,8 @@ while ( $categoryOption = $categoryOptions->iterate () )
 	$email->IsHTML(true);
 
 	$email->AddAddress( 'stephen.price@credit-suisse.com' );
-	$email->AddAddress( 'sprice_D24@yahoo.com' );
+	//$email->AddAddress( 'sprice_D24@yahoo.com' );
+	$email->AddAddress( 'patricknoonan@dinomoformwork.com.au' );
 	$email->AddAddress( 'stefdogd24@gmail.com' );
 
 	$pdf_folder = $configUtil->getPDFFolder();
