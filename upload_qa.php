@@ -338,6 +338,7 @@ while ( $categoryOption = $categoryOptions->iterate () )
 			//$('.modal').css('margin',0);
 			//$(".modal").show();
 		}catch(e){}
+		//document.getElementById("submitSpan").style.display='';
 		document.getElementById("submitButton").disabled = true; 
 		document.getElementById('uploadform').submit();
 	}	 	
@@ -351,6 +352,7 @@ while ( $categoryOption = $categoryOptions->iterate () )
 window.onload = function() {
 	try{
 		//$(".modal").hide();
+		document.getElementById("submitSpan").style.display='none';
 	}catch(e){}						
 };
 
@@ -1042,7 +1044,7 @@ if ($user->userID == $currentUser->userID)
 														<button type="button" class="btn btn-primary" id="submitButton" name="submitButton" onclick="submitForm()">Submit</button>
 
 														<!-- <button class="btn">Cancel</button>-->
-
+														<span id="submitSpan" name="submitSpan" style="display:none"><img src="img/squares.gif"/></span>
 													</div>
 													<!-- /form-actions -->
 
