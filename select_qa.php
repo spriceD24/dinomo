@@ -1,12 +1,21 @@
 <?php include_once("util/ConfigUtil.php"); ?>
+<?php include_once("util/WebUtil.php"); ?>
 <?php include_once("dao/model/Category.php"); ?>
 <?php include_once("dao/model/Project.php"); ?>
-<?php include_once("dao/ProjectDAO.php"); ?>
+<?php include_once("delegate/ProjectDelegate.php"); ?>
 <?php include_once("mobile_detect/Mobile_Detect.php");?>
 
 <?php
-	$configUtil = new ConfigUtil();
+    $webUtil = new WebUtil();
+    $webUtil->srcPage = "select_qa.php";
+    set_error_handler(array($webUtil, 'handleError'));
+    
 	$detect = new Mobile_Detect();
+	
+	$user = $webUtil->getLoggedInUser();
+	//refresh the cookie
+	$webUtil->addLoggedInUser($user->login, ConfigUtil::getCookieExpDays());
+		
 	//echo $fileUtil->getNumberOfUploadFiles()
 	//echo realpath('.');
 	//print_r($_SERVER);
@@ -14,16 +23,16 @@
 	
 	//echo $actual_link;
 	//echo "$_SERVER[HTTP_HOST]";
-	$projectDAO = new ProjectDAO ();
-	$projects = $projectDAO->getAllProjectsLite();
-	$mobileDropDownStyle = $configUtil->getMobileDropDownStyle();
+	$projectDelegate = new ProjectDelegate ();
+	$projects = $projectDelegate->getAllProjectsLite();
+	$mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle();
 	
 ?>
 
 
 <html>
 <head>
-<!DOCTYPE html>
+
 <html lang="en">
   
 <head>

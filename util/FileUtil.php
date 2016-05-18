@@ -1,3 +1,4 @@
+<?php include_once("util/LogUtil.php"); ?>
 <?php
 
 	/**
@@ -12,8 +13,7 @@
 		 */
 		function saveHTMLToWebFile($html,$filename)
 		{
-			$configUtil = new ConfigUtil();
-			$folder = $configUtil->getWebFolder();
+			$folder = ConfigUtil::getWebFolder();
 			$file = $folder."/".$filename.".html";
 			$myfile = fopen($file, "w");
 			fwrite($myfile, $html);
@@ -24,24 +24,24 @@
 		
 		function getFilename($user,$prefix)
 		{
-			$configUtil = new ConfigUtil();
-			$folder = $configUtil->getWebFolder();
+			LogUtil::debug("FileUtil", "Getting file name for ".$user->login.", prefix = ".$prefix);
+			$folder = ConfigUtil::getWebFolder();
 			for ($x = 0; $x <= 10; $x++) {
 				$uniqueID = urlencode($this->getUniqueName($user,$prefix,$x));
 				if(!file_exists($folder."/".$uniqueID.".html"))
 				{
+					LogUtil::debug("FileUtil", "returning ID = ".$uniqueID);
 					return $uniqueID;
 				}
 			} 
 			
+				
 			return round(microtime(true));
 		}
 		
 		function getUniqueName($user,$prefix,$add)
 		{
-			$stringUtil = new StringUtils();
-			str_replace(' ', '-', $string);
-			return $user->login.'_'.$stringUtil->cleanString($prefix).'_'.(rand()+$add);
+			return $user->login.'_'.StringUtils::cleanString($prefix).'_'.(rand()+$add);
 		}
 		
 	}

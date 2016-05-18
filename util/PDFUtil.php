@@ -24,9 +24,8 @@
 		function getBestPDFWidthHeight($image)
 		{
 			//get boundaries for PDF
-			$configUtil = new ConfigUtil();
-			$maxPDFWidth = $configUtil->getMaxPDFWidth();
-			$maxPDFHeight = $configUtil->getMaxPDFHeight();
+			$maxPDFWidth = ConfigUtil::getMaxPDFWidth();
+			$maxPDFHeight = ConfigUtil::getMaxPDFHeight();
 			$pdfImageWidthHeight = new PDFImageWidthHeight;
 
 			//set the default width/height
@@ -58,8 +57,7 @@
 		function generatePDF($optionsHTML,$imageHTML, $id, $title)
 		{
 		
-			$configUtil = new ConfigUtil();
-			$pdf_folder = $configUtil->getPDFFolder();
+			$pdf_folder = ConfigUtil::getPDFFolder();
 			$path = realpath('.');
 			
 			// create new PDF document

@@ -8,7 +8,7 @@
 	{
 		function getOptionsTable($options)
 		{
-			$userDAO = new UserDAO();
+			$userDelegate = new UserDelegate();
 			$html = "<table>";
 			while($option = $options->iterate()) {
 				if(!is_null($option->formType) && $option->formType == 'LABEL_AREA')
@@ -26,7 +26,7 @@
 				}
 				else if(!is_null($option->formType) && $option->formType == 'USERLIST')
 				{
-					$user = $userDAO->getUser($option->optionValue);
+					$user = $userDelegate->getUser($option->optionValue);
 					$html = $html.'<tr><td style="border:1px dashed black;"><span style="padding-left:15px">'.$option->optionFormID.'</span></td><td style="border:1px dashed black;"><span style="padding-left:15px">&nbsp;'.$user->name.'</span></td></tr>';
 				}
 				else if(!is_null($option->valueOnly) && $option->valueOnly == true)

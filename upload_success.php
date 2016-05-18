@@ -1,35 +1,33 @@
 <?php include_once("util/ConfigUtil.php"); ?>
+<?php include_once("util/WebUtil.php"); ?>
+<?php include_once("util/LogUtil.php"); ?>
 <?php include_once("dao/model/Category.php"); ?>
 <?php include_once("dao/model/Project.php"); ?>
-<?php include_once("dao/ProjectDAO.php"); ?>
+<?php include_once("delegate/ProjectDelegate.php"); ?>
 <?php
-	$configUtil = new ConfigUtil();
-	//echo $fileUtil->getNumberOfUploadFiles()
-	//echo realpath('.');
-	//print_r($_SERVER);
-	//$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-	
-	//echo $actual_link;
-	//echo "$_SERVER[HTTP_HOST]";
-	$projectDAO = new ProjectDAO ();
+    $webUtil = new WebUtil();
+    $webUtil->srcPage = "upload_success.php";
+    set_error_handler(array($webUtil, 'handleError'));
+    $currentUser = $webUtil->getLoggedInUser();
+    
+    $projectDelegate = new ProjectDelegate();
 	$projectID = intval($_GET["projectID"]); 
 	$categoryID = intval($_GET["categoryID"]); 
 	//get the data
-	$project = $projectDAO->getProject($projectID);
-	$currentCategory = $projectDAO->getCategory($projectID, $categoryID );
+	$project = $projectDelegate->getProject($projectID);
+	$currentCategory = $projectDelegate->getCategory($projectID, $categoryID );
+	
+	LogUtil::debug("upload_success", "Upload success for project = ".$project->projectName.", category = ".$currentCategory->categoryName.", user = ".$currentUser->login);
 	
 	//print_r($project);
 	$id = $_GET['id'];
-	$webUrl = $configUtil->getWebFolder()."/".urlencode($id).".html";
-	$pdfUrl = $configUtil->getPDFFolder()."/".urlencode($id).".pdf";
+	$webUrl = ConfigUtil::getWebFolder()."/".urlencode($id).".html";
+	$pdfUrl = ConfigUtil::getPDFFolder()."/".urlencode($id).".pdf";
 	
 ?>
 
 
 <html>
-<head>
-<!DOCTYPE html>
-<html lang="en">
   
 <head>
     <meta charset="utf-8">

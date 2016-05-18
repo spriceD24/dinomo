@@ -6,96 +6,124 @@
 		/*
 		 * returns max recommended width for PDF
 		 */
-		function getMaxPDFWidth()
+		static function getMaxPDFWidth()
 		{
-			$this->loadINIArray();
-			$max_pdf_width = $this->ini_array["pdf_max_width"];
+			self::loadINIArray();
+			$max_pdf_width = self::$ini_array["pdf_max_width"];
 			return $max_pdf_width;
 		}
 		
 		/*
 		 * returns max recommended height for PDF
 		 */
-		function getMaxPDFHeight()
+		static function getMaxPDFHeight()
 		{
-			$this->loadINIArray();
-			$max_pdf_height = $this->ini_array["pdf_max_height"];
+			self::loadINIArray();
+			$max_pdf_height = self::$ini_array["pdf_max_height"];
 			return $max_pdf_height;
 		}
 		
-		function loadINIArray()
+		static function loadINIArray()
 		{
-			if(empty($this->ini_array))
+			if(empty(self::$ini_array))
 			{
-				$this->ini_array = parse_ini_file("config/dinamo.ini");
+				self::$ini_array = parse_ini_file("config/dinamo.ini");
 			}
 		}
 		
 		/*
 		 * returns number of images which can be uploaded to server
 		 */
-		function getNumberOfUploadFiles()
+		static function getNumberOfUploadFiles()
 		{
-			$this->loadINIArray();
-			$numFiles = $this->ini_array["number_of_images"];
+			self::loadINIArray();
+			$numFiles = self::$ini_array["number_of_images"];
 			return $numFiles;
 		}
 		/*
 		 * returns image folder location
 		 */
-		function getImageFolder()
+		static function getImageFolder()
 		{
-			$this->loadINIArray();
-			$image_folder = $this->ini_array["image_folder"];
+			self::loadINIArray();
+			$image_folder = self::$ini_array["image_folder"];
 			return $image_folder;
 		}
 		/*
 		 * returns web folder location
 		 */
-		function getWebFolder()
+		static function getWebFolder()
 		{
-			$this->loadINIArray();
-			$image_folder = $this->ini_array["web_folder"];
+			self::loadINIArray();
+			$image_folder = self::$ini_array["web_folder"];
 			return $image_folder;
 		}
 		
 		/*
 		 * returns image folder location
 		 */
-		function getPDFFolder()
+		static function getPDFFolder()
 		{
-			$this->loadINIArray();
-			$pdf_folder = $this->ini_array["pdf_folder"];
+			self::loadINIArray();
+			$pdf_folder = self::$ini_array["pdf_folder"];
 			return $pdf_folder;
 		}
 
-		function getMobileTextStyle()
+		static function getMobileTextStyle()
 		{
-			$this->loadINIArray();
-			$mobile_text = $this->ini_array["mobile_text"];
+			self::loadINIArray();
+			$mobile_text = self::$ini_array["mobile_text"];
 			return $mobile_text;
 		}
 		
-		function getMobileLabelStyle()
+		static function getMobileLabelStyle()
 		{
-			$this->loadINIArray();
-			$mobile_label = $this->ini_array["mobile_label"];
+			self::loadINIArray();
+			$mobile_label = self::$ini_array["mobile_label"];
 			return $mobile_label;
 		}		
 
-		function getMobileTextAreaStyle()
+		static function getMobileTextAreaStyle()
 		{
-			$this->loadINIArray();
-			$mobile_textarea = $this->ini_array["mobile_textarea"];
+			self::loadINIArray();
+			$mobile_textarea = self::$ini_array["mobile_textarea"];
 			return $mobile_textarea;
 		}	
 		
-			function getMobileDropDownStyle()
+		static function getMobileDropDownStyle()
 		{
-			$this->loadINIArray();
-			$mobile_dropdown = $this->ini_array["mobile_dropdown"];
+			self::loadINIArray();
+			$mobile_dropdown = self::$ini_array["mobile_dropdown"];
 			return $mobile_dropdown;
 		}			
+
+		static function isCacheActive()
+		{
+			self::loadINIArray();
+			$cache_active = self::$ini_array["cache_active"];
+			return (!empty($cache_active) && ($cache_active == "true" || $cache_active == true));
+		}			
+	
+		static function getCookieExpDays()
+		{
+			self::loadINIArray();
+			$cookie_exp_days = self::$ini_array["cookie_exp_days"];
+			return intval($cookie_exp_days);
+		}			
+		
+		static function getLogLevel()
+		{
+			self::loadINIArray();
+			$log_level = self::$ini_array["log_level"];
+			return intval($log_level);
+		}		
+
+		static function getLogFolder()
+		{
+			self::loadINIArray();
+			$log_folder = self::$ini_array["log_folder"];
+			return $log_folder;
+		}		
 	}
 
 ?>

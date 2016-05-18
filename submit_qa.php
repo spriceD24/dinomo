@@ -1,6 +1,5 @@
 <html>
 <body>
-<table>
 <?php include_once("util/FileUtil.php"); ?>
 <?php include_once("util/HTMLUtil.php"); ?>
 <?php include_once("util/PDFUtil.php"); ?>
@@ -17,27 +16,31 @@
 <?php include_once("dao/model/Category.php"); ?>
 <?php include_once("dao/model/CategoryOption.php"); ?>
 <?php include_once("dao/model/Project.php"); ?>
-<?php include_once("dao/ProjectDAO.php"); ?>
+<?php include_once("delegate/ProjectDelegate.php"); ?>
 <?php include_once("dao/model/User.php"); ?>
-<?php include_once("dao/UserDAO.php"); ?>
-<?php include("util/HTMLConst.php"); ?>
+<?php include_once("delegate/UserDelegate.php"); ?>
+<?php include_once("util/HTMLConst.php"); ?>
+<?php include_once("util/LogUtil.php"); ?>
 
 <?php
+
+	$webUtil = new WebUtil();
+	$webUtil->srcPage = "submit_qa.php";
+	set_error_handler(array($webUtil, 'handleError'));
 
 	//print_r($_FILES);
 	$pdfUtil = new PDFUtil();
 	$fileUtil = new FileUtil();
-    $webUtil = new WebUtil();
-    $configUtil = new ConfigUtil();
     $dateUtil = new DateUtil();
-    
-	$target_dir = $configUtil->getImageFolder();
-	$num_images = $configUtil->getNumberOfUploadFiles();
+
+    $target_dir = ConfigUtil::getImageFolder();
+	$num_images = ConfigUtil::getNumberOfUploadFiles();
 	
 	$setOptionPrefix = HTMLConst::STANDARD_OPT_ID_PREFIX;
-	$projectDAO = new ProjectDAO ();
-	$userDAO = new UserDAO ();
+	$projectDelegate = new ProjectDelegate ();
+	$userDelegate = new UserDelegate ();
 	
+
 	//add images to collection
 	$images = new Collection;
 	
@@ -52,17 +55,26 @@
 	$projectID = intval($_POST["projectID"]); 
 	$categoryID = intval($_POST["categoryID"]); 
 	
-	//get the data
-	$uploadedUser = $userDAO->getUser($uploadedUserID);
-	$project = $projectDAO->getProject($projectID);
-	$currentCategory = $projectDAO->getCategory($projectID, $categoryID );
-	$categoryOptions = $projectDAO->getCategoryOptions($projectID, $categoryID );
+	LogUtil::debug("submit_qa", "Uploading details for project ID = ".$projectID.", category id = ".$categoryID.",upload user ID = ".$uploadedUserID);
 	
+	//get the data
+	$uploadedUser = $userDelegate->getUser($uploadedUserID);
+	$project = $projectDelegate->getProject($projectID);
+	$currentCategory = $projectDelegate->getCategory($projectID, $categoryID );
+	$categoryOptions = $projectDelegate->getCategoryOptions($projectID, $categoryID );
+	
+	LogUtil::debug("submit_qa", "Submitting details for user = ".$uploadedUser->login.", project = ".$project->projectName.", category = ".$currentCategory->categoryName.", num options = ".$categoryOptions->getNumObjects());
+	
+	
+	LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", getting date details");
 	$dateStr = $dateUtil->getCurrentDateString();
 	$dateTimeStr = $dateUtil->getCurrentDateTimeString();
 	$pdfName = "Report_".$project->projectName."_".$currentCategory->categoryName."_".$dateStr;
+	LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", pdf shall be = ".$pdfName);
+	
 	$unique_id = $fileUtil->getFilename($uploadedUser,$pdfName);
 	
+	LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", checking for attached images");
 	
 	//$count = count($_FILES['files']['tmp_name']);
 	foreach($_FILES as $file) {
@@ -72,6 +84,7 @@
 		$file_size = $file['size'];
 		$file_tmp_name = $file['tmp_name'];
 		
+		LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", checking image = ".$file_name);
 		if($file_size)
 		{
 			$check = getimagesize($file_tmp_name);
@@ -82,6 +95,7 @@
 				$image_height = $image_info[1];
 				
 				//echo "File  is ok. ".$currentImage;
+						
 				//lets save to folder
 				$uploadOk = 1;
 				$info = pathinfo($file_name);
@@ -91,6 +105,7 @@
 				//$target = $target_dir."/".$unique_id."/".$newname;
 				//mkdir("testing");
 				$target = $target_dir."/".$newname;
+				LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", image ".$file_name." OK, saving to ".$target);
 				//echo $target_dir;
 				move_uploaded_file($file_tmp_name, $target);
 				
@@ -105,14 +120,18 @@
 				$pdfImageWidthHeight = $pdfUtil->getBestPDFWidthHeight($uploadedImage);
 				$uploadedImage->width = $pdfImageWidthHeight->width;
 				$uploadedImage->height = $pdfImageWidthHeight->height;
-					
+				LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", original image width =  ".$image_info[0].", original height = ".$image_info[1].", modified image width =  ".$pdfImageWidthHeight->width.", modified height = ".$pdfImageWidthHeight->height);
+				
 				$images->add($uploadedImage);
 				
 			}else{
 				//file is not an image
+				LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", File ".$file_name." is NOT an image ");
+				
 			}
 		}else{
 			//file is empty
+			LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", File ".$file_name." is EMPTY ");
 		}
 	}
 	
@@ -151,6 +170,8 @@ while ( $categoryOption = $categoryOptions->iterate () )
 		//echo $setOptionPrefix.$categoryOption->categoryOptionID.' = '.$value.'<br/>';
 		if(!is_null($value))
 		{
+			LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", Adding value id = ".$setOptionPrefix.$categoryOption->categoryOptionID.", name =  ".$categoryOption->title.", value = ".$value);
+			
 			$selectedOption = new SelectedOption();
 			$label = $categoryOption->title;
 			$selectedOption->valueOnly = false;
@@ -177,6 +198,7 @@ while ( $categoryOption = $categoryOptions->iterate () )
 	
     $htmlUtil = new HTMLUtil();
     
+    LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", Generating HTML, id = ".$unique_id);
     $optionsHTML = $htmlUtil->getOptionsTable($options);
 	$imageHTML = $htmlUtil->getImageTable($images);
 	$html = "<html><body> ";
@@ -187,18 +209,20 @@ while ( $categoryOption = $categoryOptions->iterate () )
     
     $link = $fileUtil->saveHTMLToWebFile($html, $unique_id);
     echo "<a href='".$link.">".$link."</a>";
-
+    LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", Generating PDF, id = ".$unique_id);
+    
 	$pdfUtil->generatePDF($optionsHTML,$imageHTML, $unique_id, 'Quality Assurance - '.$currentCategory->categoryName);
 	
 	//now send the email
 	$email = new PHPMailer();
 
-	$webUrl = $configUtil->getWebFolder()."/".urlencode($unique_id).".html";
-	$pdfUrl = $configUtil->getPDFFolder()."/".urlencode($unique_id).".pdf";
+	$webUrl = ConfigUtil::getWebFolder()."/".urlencode($unique_id).".html";
+	$pdfUrl = ConfigUtil::getPDFFolder()."/".urlencode($unique_id).".pdf";
 
-	$webUrl = $webUtil->getBaseURI()."/".$webUrl;
+    $webUrl = $webUtil->getBaseURI()."/".$webUrl;
 	$pdfUrl = $webUtil->getBaseURI()."/".$pdfUrl;
 
+ 	LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", Generating Email, Web URL = ".$webUtil->getBaseURI()."/".$webUrl);
 	$emailHTML = $htmlUtil->generateUploadEmail($webUrl,$pdfUrl,$project,$currentCategory,$uploadedUser);
 
 	$email->From      = $uploadedUser->email;
@@ -207,21 +231,33 @@ while ( $categoryOption = $categoryOptions->iterate () )
 	$email->Body      = $emailHTML;
 	$email->IsHTML(true);
 
+	$recipients = "";
 	$email->AddAddress( 'stephen.price@credit-suisse.com' );
+	$recipients=$recipients." stephen.price@credit-suisse.com";
 	//$email->AddAddress( 'sprice_D24@yahoo.com' );
 	$email->AddAddress( 'patricknoonan@dinomoformwork.com.au' );
+	$recipients=$recipients.", patricknoonan@dinomoformwork.com.au";
 	$email->AddAddress( 'stefdogd24@gmail.com' );
-
-	$pdf_folder = $configUtil->getPDFFolder();
+	$recipients=$recipients.", stefdogd24@gmail.com";
+	
+	$pdf_folder = ConfigUtil::getPDFFolder();
 	$path = realpath('.');
 
 	
 	$file_to_attach = $path.'/'.$pdf_folder.'/'.$unique_id.'.pdf';
 
+ 	LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", Generating Email, Add attachment = ".$file_to_attach);
 	$email->AddAttachment( $file_to_attach , $pdfName.'.pdf' );
 	
-	$email->Send();
+ 	LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", Sending Email to ".$recipients);
+ 	if($webUtil->isProduction())
+ 	{
+		$email->Send();
+ 	}else{
+ 		LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", Not Sending Email to ".$recipients." as not in PRODUCTION"); 		
+ 	}
 
+ 	LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", Sent Email OK");
 	header("Location: upload_success.php?id=".$unique_id."&projectID=".$projectID."&categoryID=".$categoryID);
 	exit;
 ?>

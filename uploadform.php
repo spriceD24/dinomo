@@ -19,10 +19,9 @@
 	$pdfUtil = new PDFUtil();
 	$fileUtil = new FileUtil();
     $webUtil = new WebUtil();
-    $configUtil = new ConfigUtil();
     
-	$target_dir = $configUtil->getImageFolder();
-	$num_images = $configUtil->getNumberOfUploadFiles();
+	$target_dir = ConfigUtil::getImageFolder();
+	$num_images = ConfigUtil::getNumberOfUploadFiles();
 	
 	//add images to collection
 	$images = new Collection;
@@ -105,8 +104,8 @@
 	//now send the email
 	$email = new PHPMailer();
 
-	$webUrl = $configUtil->getWebFolder()."/".urlencode($unique_id).".html";
-	$pdfUrl = $configUtil->getPDFFolder()."/".urlencode($unique_id).".pdf";
+	$webUrl = ConfigUtil::getWebFolder()."/".urlencode($unique_id).".html";
+	$pdfUrl = ConfigUtil::getPDFFolder()."/".urlencode($unique_id).".pdf";
 
 	$webUrl = $webUtil->getBaseURI()."/".$webUrl;
 	$pdfUrl = $webUtil->getBaseURI()."/".$pdfUrl;
@@ -122,7 +121,7 @@
 	$email->AddAddress( 'stephen.price@credit-suisse.com' );
 	$email->AddAddress( 'sprice_D24@yahoo.com' );
 
-	$pdf_folder = $configUtil->getPDFFolder();
+	$pdf_folder = ConfigUtil::getPDFFolder();
 	$path = realpath('.');
 
 	$file_to_attach = $path.'/'.$pdf_folder.'/'.$unique_id.'.pdf';

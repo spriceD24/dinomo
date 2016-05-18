@@ -1,4 +1,4 @@
-<?php include("util/WebUtil.php"); ?>
+<?php include_once("util/WebUtil.php"); ?>
 <?php
 	$webUtil = new WebUtil();
 	//echo $webUtil->isProduction();

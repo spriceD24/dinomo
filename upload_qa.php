@@ -1,8 +1,9 @@
-<?php include("util/WebUtil.php"); ?>
-<?php include("util/HTMLUtil.php"); ?>
-<?php include("util/HTMLConst.php"); ?>
-<?php include("util/StringUtils.php"); ?>
+<?php include_once("util/WebUtil.php"); ?>
+<?php include_once("util/HTMLUtil.php"); ?>
+<?php include_once("util/HTMLConst.php"); ?>
+<?php include_once("util/StringUtils.php"); ?>
 <?php include_once("util/ConfigUtil.php"); ?>
+<?php include_once("util/LogUtil.php"); ?>
 <?php include_once("util/CollectionsUtil.php"); ?>
 <?php include_once("dao/model/Category.php"); ?>
 <?php include_once("dao/model/CategoryOption.php"); ?>
@@ -15,13 +16,19 @@
 <?php
 
 $webUtil = new WebUtil ();
+$webUtil->srcPage = "upload_qa.php";
+set_error_handler(array($webUtil, 'handleError'));
+
+$currentUser = $webUtil->getLoggedInUser();
+
 $htmlUtil = new HTMLUtil ();
 $stringUtils = new StringUtils ();
-$configUtil = new ConfigUtil ();
 $detect = new Mobile_Detect();
 
 $setCurrentProjectID = intval($_GET["projectID"]);
 $setCurrentCategoryID = intval($_GET["categoryID"]);
+
+LogUtil::debug("upload_qa", "Opening details for project ID = ".$setCurrentProjectID.", category id = ".$setCurrentCategoryID.", user = ".$currentUser->login);
 
 if(empty($setCurrentProjectID) || empty($setCurrentCategoryID))
 {
@@ -39,16 +46,18 @@ $project = $projectDAO->getProject ( $setCurrentProjectID );
 $currentCategory = $projectDAO->getCategory ( $setCurrentProjectID, $setCurrentCategoryID );
 $categoryOptions = $projectDAO->getCategoryOptions ( $setCurrentProjectID, $setCurrentCategoryID );
 
+LogUtil::debug("upload_qa", "Opening ALL details for project = ".$project->projectName.", category = ".$currentCategory->categoryName.", num options = ".$categoryOptions->getNumObjects().", user = ".$currentUser->login);
+
 // get user info
-$mobileTextStyle = $configUtil->getMobileTextStyle();
-$mobileLabelStyle = $configUtil->getMobileLabelStyle();
-$mobileTextAreaStyle = $configUtil->getMobileTextAreaStyle();
-$mobileDropDownStyle = $configUtil->getMobileDropDownStyle();
+$mobileTextStyle = ConfigUtil::getMobileTextStyle();
+$mobileLabelStyle = ConfigUtil::getMobileLabelStyle();
+$mobileTextAreaStyle = ConfigUtil::getMobileTextAreaStyle();
+$mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle();
 
 $userDAO = new UserDAO ();
 $users = $userDAO->getAllUsers ();
-$currentUser = $webUtil->getLoggedInUser ();
-$num_images = $configUtil->getNumberOfUploadFiles ();
+
+$num_images = ConfigUtil::getNumberOfUploadFiles ();
 ?>
 
 

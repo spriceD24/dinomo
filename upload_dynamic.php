@@ -1,4 +1,4 @@
-<?php include("util/WebUtil.php"); ?>
+<?php include_once("util/WebUtil.php"); ?>
 <?php include_once("util/CollectionsUtil.php"); ?>
 <?php include_once("dao/model/Category.php"); ?>
 <?php include_once("dao/model/CategoryOption.php"); ?>
