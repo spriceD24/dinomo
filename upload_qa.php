@@ -17,7 +17,7 @@
 
 $webUtil = new WebUtil ();
 $webUtil->srcPage = "upload_qa.php";
-set_error_handler(array($webUtil, 'handleError'));
+//set_error_handler(array($webUtil, 'handleError'));
 
 $currentUser = $webUtil->getLoggedInUser();
 
@@ -1223,15 +1223,6 @@ if ($user->userID == $currentUser->userID)
 
 <?php
 
-while ( $categoryOption = $categoryOptions->iterate () ) 
-
-{
-	
-	if ($categoryOption->$isRequired) 
-
-	{
-	}
-}
 
 /*
  *

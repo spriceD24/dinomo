@@ -26,7 +26,7 @@
 
 	$webUtil = new WebUtil();
 	$webUtil->srcPage = "submit_qa.php";
-	set_error_handler(array($webUtil, 'handleError'));
+	//set_error_handler(array($webUtil, 'handleError'));
 
 	//print_r($_FILES);
 	$pdfUtil = new PDFUtil();
