@@ -226,8 +226,9 @@
 				$categoryOptions->add(new CategoryOption(1,4,109,9,'Stairs cleaned','','RADIO','Yes,No',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,4,110,10,'I confirm that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour).','The submitter of this report has confirmed that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour).','CONFIRM','',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,4,112,11,'I have inspected the Stairs and confirm that all required actions and controls have been implemented.','The person who has submitted this report has inspected the Stairs and confirms that all required actions and controls have been implemented.','CONFIRM','',true,'','',''));
-				$categoryOptions->add(new CategoryOption(1,4,113,12,'Verified By','','TEXT','',true,'','',''));
-				$categoryOptions->add(new CategoryOption(1,4,114,13,'Photos','','PHOTOS','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,4,113,12,'Comments','','TEXTAREA','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,4,114,13,'Verified By','','TEXT','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,4,115,14,'Photos','','PHOTOS','',true,'','',''));
 			}
 			if($categoryID == 5)
 			{
@@ -252,8 +253,9 @@
 				$categoryOptions->add(new CategoryOption(1,5,137,18,'Foam filler required','','RADIO','Yes,No',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,5,138,19,'Z bars tied off','','RADIO','Yes,No',true,'','',''));
 				$categoryOptions->add(new CategoryOption(1,5,139,20,'Stop end nailed','','RADIO','Yes,No',true,'','',''));
-				$categoryOptions->add(new CategoryOption(1,5,140,12,'Verified By','','TEXT','',true,'','',''));
-				$categoryOptions->add(new CategoryOption(1,5,141,13,'Photos','','PHOTOS','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,5,140,21,'Comments','','TEXTAREA','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,5,141,22,'Verified By','','TEXT','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(1,5,142,23,'Photos','','PHOTOS','',true,'','',''));
 			}
 			
 			if($categoryID == 6)
@@ -361,8 +363,9 @@
 				$categoryOptions->add(new CategoryOption(2,9,11109,9,'Stairs cleaned','','RADIO','Yes,No',true,'','',''));
 				$categoryOptions->add(new CategoryOption(2,9,11110,10,'I confirm that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour).','The submitter of this report has confirmed that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour).','CONFIRM','',true,'','',''));
 				$categoryOptions->add(new CategoryOption(2,9,11112,11,'I have inspected the Stairs and confirm that all required actions and controls have been implemented.','The person who has submitted this report has inspected the Stairs and confirms that all required actions and controls have been implemented.','CONFIRM','',true,'','',''));
-				$categoryOptions->add(new CategoryOption(2,9,11113,12,'Verified By','','TEXT','',true,'','',''));
-				$categoryOptions->add(new CategoryOption(2,9,11114,13,'Photos','','PHOTOS','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(2,9,11113,12,'Comments','','TEXTAREA','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(2,9,11114,13,'Verified By','','TEXT','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(2,9,11115,14,'Photos','','PHOTOS','',true,'','',''));
 			}
 			if($categoryID == 10)
 			{
@@ -387,8 +390,9 @@
 				$categoryOptions->add(new CategoryOption(2,10,11137,18,'Foam filler required','','RADIO','Yes,No',true,'','',''));
 				$categoryOptions->add(new CategoryOption(2,10,11138,19,'Z bars tied off','','RADIO','Yes,No',true,'','',''));
 				$categoryOptions->add(new CategoryOption(2,10,11139,20,'Stop end nailed','','RADIO','Yes,No',true,'','',''));
-				$categoryOptions->add(new CategoryOption(2,10,11140,12,'Verified By','','TEXT','',true,'','',''));
-				$categoryOptions->add(new CategoryOption(2,10,11141,13,'Photos','','PHOTOS','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(2,10,11140,21,'Comments','','TEXTAREA','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(2,10,11141,22,'Verified By','','TEXT','',true,'','',''));
+				$categoryOptions->add(new CategoryOption(2,10,11142,23,'Photos','','PHOTOS','',true,'','',''));
 			}
 				
 				

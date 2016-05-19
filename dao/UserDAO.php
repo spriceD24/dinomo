@@ -4,22 +4,6 @@
 
 	class UserDAO
 	{
-		function getUser($userID)
-		{
-			$allUsers = $this->getAllUsers();
-			while ( $user = $allUsers->iterate () )
-			{
-				if($user->userID == $userID)
-				{
-					return $user;
-				}
-			}
-			//default for TEMP
-			$user = new User(2,'Pat Noonan','pnoonan','patricknoonan@dinomoformwork.com.au','0303040450','');
-			return $user;
-		}
-		
-	
 		function getAllUsers()
 		{
 			$users = new Collection;
@@ -30,6 +14,13 @@
 			
 			return $users;
 		}
+		
+		function isValidLogin($login,$password)
+		{
+			//TODO add DB query
+			return ($login == $password);
+		
+		}		
 	}
 
 ?>
