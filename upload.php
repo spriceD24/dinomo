@@ -319,7 +319,7 @@
 			<td colspan="2"><hr/></td>
 		</tr>
 		<tr>
-			<td colspan="2"><i></b>CAST INS</i></b></td>
+			<td colspan="2"><i><b>CAST INS</b></i></td>
 		</tr>
 		<tr>
 			<td colspan="2"><hr/></td>

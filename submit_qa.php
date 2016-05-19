@@ -26,7 +26,7 @@
 
 	$webUtil = new WebUtil();
 	$webUtil->srcPage = "submit_qa.php";
-	//set_error_handler(array($webUtil, 'handleError'));
+	set_error_handler(array($webUtil, 'handleError'));
 
 	//print_r($_FILES);
 	$pdfUtil = new PDFUtil();
@@ -148,53 +148,53 @@
     }
 */
 
-$selectedOption = new SelectedOption();
-$selectedOption->valueOnly = false;
-$selectedOption->optionFormID = "Project";
-$selectedOption->optionValue = $project->projectName;
-$options->add($selectedOption);
-
-
-$selectedOption = new SelectedOption();
-$selectedOption->valueOnly = false;
-$selectedOption->optionFormID = "Submitted On";
-$selectedOption->optionValue = $dateTimeStr;
-$options->add($selectedOption);
-	
-while ( $categoryOption = $categoryOptions->iterate () ) 
-
-{
-	if (isset($_POST[$setOptionPrefix.$categoryOption->categoryOptionID]))
-	{
-		$value = $_POST[$setOptionPrefix.$categoryOption->categoryOptionID];
-		//echo $setOptionPrefix.$categoryOption->categoryOptionID.' = '.$value.'<br/>';
-		if(!is_null($value))
+		$selectedOption = new SelectedOption();
+		$selectedOption->valueOnly = false;
+		$selectedOption->optionFormID = "Project";
+		$selectedOption->optionValue = $project->projectName;
+		$options->add($selectedOption);
+		
+		
+		$selectedOption = new SelectedOption();
+		$selectedOption->valueOnly = false;
+		$selectedOption->optionFormID = "Submitted On";
+		$selectedOption->optionValue = $dateTimeStr;
+		$options->add($selectedOption);
+			
+		while ( $categoryOption = $categoryOptions->iterate () ) 
+		
 		{
-			LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", Adding value id = ".$setOptionPrefix.$categoryOption->categoryOptionID.", name =  ".$categoryOption->title.", value = ".$value);
-			
-			$selectedOption = new SelectedOption();
-			$label = $categoryOption->title;
-			$selectedOption->valueOnly = false;
-			$selectedOption->formType = $categoryOption->formType;
-			if(!is_null($categoryOption->pdfTitle) && !empty($categoryOption->pdfTitle))
+			if (isset($_POST[$setOptionPrefix.$categoryOption->categoryOptionID]))
 			{
-				$label = $categoryOption->pdfTitle;
+				$value = $_POST[$setOptionPrefix.$categoryOption->categoryOptionID];
+				//echo $setOptionPrefix.$categoryOption->categoryOptionID.' = '.$value.'<br/>';
+				if(!is_null($value))
+				{
+					LogUtil::debug("submit_qa", "user = ".$uploadedUser->login.", Adding value id = ".$setOptionPrefix.$categoryOption->categoryOptionID.", name =  ".$categoryOption->title.", value = ".$value);
+					
+					$selectedOption = new SelectedOption();
+					$label = $categoryOption->title;
+					$selectedOption->valueOnly = false;
+					$selectedOption->formType = $categoryOption->formType;
+					if(!is_null($categoryOption->pdfTitle) && !empty($categoryOption->pdfTitle))
+					{
+						$label = $categoryOption->pdfTitle;
+					}
+					$selectedOption->optionFormID = $label;
+					$selectedOption->optionValue = $value;
+					if ($categoryOption->formType == 'CONFIRM')
+					
+					{
+						$selectedOption->valueOnly = true;
+						$selectedOption->optionValue = $label;
+					}
+					
+		
+					$options->add($selectedOption);
+				}
 			}
-			$selectedOption->optionFormID = $label;
-			$selectedOption->optionValue = $value;
-			if ($categoryOption->formType == 'CONFIRM')
-			
-			{
-				$selectedOption->valueOnly = true;
-				$selectedOption->optionValue = $label;
-			}
-			
-
-			$options->add($selectedOption);
 		}
-	}
-}
-	
+			
 	
     $htmlUtil = new HTMLUtil();
     

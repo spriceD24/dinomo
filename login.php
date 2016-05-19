@@ -48,7 +48,7 @@
 	
 	if(isset($_GET["forgot"]))
 	{
-		$error = "You should receive an email with your Username/Password details";
+		$error = "EMAIL SENT !!<br/>You should receive an email with your Username/Password details";
 	}
 	
 	$detect = new Mobile_Detect();

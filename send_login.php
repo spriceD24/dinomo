@@ -5,6 +5,8 @@
 <?php include_once("util/StringUtils.php"); ?>
 <?php include_once("dao/model/User.php"); ?>
 <?php include_once("delegate/UserDelegate.php"); ?>
+<?php include_once("util/HTMLUtil.php"); ?>
+<?php require_once('mail/PHPMailer.php');?>
 
 <?php
 
@@ -39,19 +41,34 @@
 	
 	
 	//send email
+	$pass = $userDelegate->getUserPass($user->userID);
+
+	$htmlUtil = new HTMLUtil();
+	LogUtil::debug("send_login", "user = ".$user->login.", Generating Login/Pass Email to send to ".$user->email);
+	$emailHTML = $htmlUtil->generateForgotDetailsEmail($user->login, $pass);
+	
+	$emailToSend = new PHPMailer();
+	$emailToSend->From      = ConfigUtil::getDinamoFromEmail();
+	$emailToSend->FromName  = ConfigUtil::getDinamoFromName();
+	$emailToSend->Subject   = 'Dinamo Login Details';
+	$emailToSend->Body      = $emailHTML;
+	$emailToSend->IsHTML(true);
+	
+
+	$emailToSend->AddAddress( $user->email);
+
+	if($webUtil->isProduction())
+	{
+		$emailToSend->Send();
+	}else{
+		LogUtil::debug("send_login", "user = ".$user->login.", Not Sending Credentials Email to ".$user->email." as not in PRODUCTION");
+	}
+	
+	LogUtil::debug("send_login", "user = ".$user->login.", Sent Credentials Email OK");
+	
 	
 	header("Location: login.php?forgot=1");
 	exit;
 ?>
-</body>
-</html><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-</head>
-<body>
-<script type="text/javascript">
-    parent.processForm('&ftpAction=openFolder');
-</script>
 </body>
 </html>

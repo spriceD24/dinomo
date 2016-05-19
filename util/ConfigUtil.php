@@ -124,6 +124,21 @@
 			$log_folder = self::$ini_array["log_folder"];
 			return $log_folder;
 		}		
+		
+		static function getDinamoFromEmail()
+		{
+			self::loadINIArray();
+			$email_dinamo_from_email = self::$ini_array["email_dinamo_from_email"];
+			return $email_dinamo_from_email;
+		}	
+		
+		static function getDinamoFromName()
+		{
+			self::loadINIArray();
+			$email_dinamo_from_name = self::$ini_array["email_dinamo_from_name"];
+			return $email_dinamo_from_name;
+		}
+
 	}
 
 ?>

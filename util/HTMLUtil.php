@@ -1,3 +1,4 @@
+<?php include_once("util/DateUtil.php"); ?>
 <?php
 	/**
 	 * Manages file interactions
@@ -338,5 +339,32 @@
 			$html = $html."</select>";
 			return $html;
 		}
+
+		function generateForgotDetailsEmail($login,$pass)
+		{
+			$dateUtil = new DateUtil();
+			$html = "<html><body><table>";
+			$html = $html."<tr>";
+			$html = $html."<td>";
+			$html = $html."<b>Login:</b>";
+			$html = $html."</td>";
+			$html = $html."<td>";
+			$html = $html.$login;
+			$html = $html."</td>";
+			$html = $html."</tr>";
+			$html = $html."<tr>";
+			$html = $html."<td>";
+			$html = $html."<b>Password:</b>";
+			$html = $html."</td>";
+			$html = $html."<td>";
+			$html = $html.$pass;
+			$html = $html."</td>";
+			$html = $html."</tr>";
+			$html = $html."<tr>";
+			$html = $html."</table></body></html>";
+			return $html;
+		
+		}
+		
 	}
 ?>

@@ -54,6 +54,11 @@
 			}
 		}
 		
+		function getUserPass($userID)
+		{
+			return $this->userDAO->getUserPass($userID);
+		}
+		
 		function getAllUsers()
 		{
 			return $this->userDAO->getAllUsers();
