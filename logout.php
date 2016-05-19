@@ -7,13 +7,13 @@
 	$webUtil->srcPage = "logout.php";
 	set_error_handler(array($webUtil, 'handleError'));
 
-	echo "Before = ".$_COOKIE[WebUtil::DINAMO_USER]."<br/>";
+	//echo "Before = ".$_COOKIE[WebUtil::DINAMO_USER]."<br/>";
 	//setcookie(WebUtil::DINAMO_USER, "XX", time());
 	$webUtil->addLoggedInUser("",1);
-	echo "After = ".$_COOKIE[WebUtil::DINAMO_USER]."<br/>";
+	//echo "After = ".$_COOKIE[WebUtil::DINAMO_USER]."<br/>";
 	
-	//header("Location: login.p,1\hp");
-	//exit;
+	header("Location: login.php?");
+	exit;
 	
 ?>
 </body>

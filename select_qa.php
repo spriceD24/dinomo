@@ -31,9 +31,7 @@
 
 
 <html>
-<head>
 
-<html lang="en">
   
 <head>
     <meta charset="utf-8">
@@ -181,9 +179,10 @@ window.onload = function() {
 
 					<ul class="nav pull-right">
 
-						<li class=""></li>
+						<li class="" style="float:none"></li>
 
-						<li class="" style="padding-top: 20px"></li>
+						<li class="" style="padding-top: 20px"><span style="color:white;font-size:11px">User: <?=$user->name?> (<span style="font-style:italic"><a href="logout.php">logout</a></span>)</span></li>
+
 
 					</ul>
 
@@ -285,4 +284,4 @@ window.onload = function() {
 </body>
 
 </html>
-</html>
+

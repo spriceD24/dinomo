@@ -432,10 +432,12 @@ window.onload = function() {
 
 					<ul class="nav pull-right">
 
-						<li class=""></li>
+						<li class="" style="float:none"><span style="color:white;font-size:11px">User: <?=$currentUser->name?> (<span style="font-style:italic"><a href="logout.php">logout</a></span>)</span></li>
 
-						<li class="" style="padding-top: 20px"><a href="select_qa.php"
-							class=""> <i class="icon-chevron-left"></i> Back to Projects
+						<li class="" style="padding-top: 10px"><a href="select_qa.php"
+							style="padding: 0px 0px 0px 0px"
+							class="">
+							<i class="icon-chevron-left"></i> Back to Project Select
 
 						</a></li>
 
@@ -1247,7 +1249,5 @@ if ($user->userID == $currentUser->userID)
 
 
 </body>
-
-
 
 </html>

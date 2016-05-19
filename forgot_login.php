@@ -7,10 +7,10 @@
 <?php
 
 	$webUtil = new WebUtil();
-	$webUtil->srcPage = "login.php";
+	$webUtil->srcPage = "send_login.php";
 	set_error_handler(array($webUtil, 'handleError'));
 
-	LogUtil::debug('login.php','Opening Login Page');
+	LogUtil::debug('forgot_login.php','Opening Login Page');
 	
 	$login = "";
 	$error = "";
@@ -26,31 +26,13 @@
 		
 		if($errorNum == 1)
 		{
-			$error = "Please enter Login and Password";
+			$error = "Please enter valid email address";
 		}
 		if($errorNum == 2)
 		{
-			$error = "Please enter Login";
-		}
-		if($errorNum == 3)
-		{
-			$error = "Please enter Password";
-		}
-		if($errorNum == 4)
-		{
-			$error = "Login does not exist";
-		}
-		if($errorNum == 5)
-		{
-			$error = "Password is incorrect";
+			$error = "No users matching this email address in the system";
 		}
 	}	
-	
-	if(isset($_GET["forgot"]))
-	{
-		$error = "You should receive an email with your Username/Password details";
-	}
-	
 	$detect = new Mobile_Detect();
 	$mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle();
 ?>
@@ -133,9 +115,9 @@
 	
 	<div class="content clearfix">
 		
-		<form action="submit_login.php" method="post">
+		<form action="send_login.php" method="post">
 		
-			<h1>Login</h1>		
+			<h1>Email Address</h1>		
 			
 			<div class="login-fields">
 				<?php 
@@ -146,13 +128,13 @@
 				<?php 
 				}else{
 				?>
-				<p>Please provide your details</p>
+				<p>Please provide your email address</p>
 				<?php 
 				}
 				?>
 				<div class="field">
-					<label for="login">Username</label>
-					<input type="text" id="login" name="login" value="<?=$login;?>" placeholder="Username" class="login username-field"  <?php 
+					<label for="login">Email</label>
+					<input type="text" id="email" name="email" value="<?=$login;?>" placeholder="Email" class="login username-field"  <?php 
 																if ($detect->isMobile() && !$detect->isTablet())
 																{
 																	print " style='".$mobileDropDownStyle."'";
@@ -160,21 +142,11 @@
 																?>/>
 				</div> <!-- /field -->
 				
-				<div class="field">
-					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field"  <?php 
-																if ($detect->isMobile() && !$detect->isTablet())
-																{
-																	print " style='".$mobileDropDownStyle."'";
-																}
-																?>/>
-				</div> <!-- /password -->
-				
 			</div> <!-- /login-fields -->
 			
 			<div class="login-actions">
 										
-				<button class="button btn btn-success btn-large">Sign In</button>
+				<button class="button btn btn-success btn-large">Submit</button>
 				
 			</div> <!-- .actions -->
 			
@@ -186,11 +158,6 @@
 	
 </div> <!-- /account-container -->
 
-
-
-<div class="login-extra">
-	<a href="forgot_login.php">Forgot Username/Password</a>
-</div> <!-- /login-extra -->
 
 </body>
 
