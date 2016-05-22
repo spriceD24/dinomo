@@ -8,53 +8,51 @@
 
 <?php
 
-	//print_r($_FILES);
-    $webUtil = new WebUtil();
-	$userDelegate = new UserDelegate ();
+// print_r($_FILES);
+$webUtil = new WebUtil ();
+$userDelegate = new UserDelegate ();
 
-	$webUtil->srcPage = "submit_login.php";
-	set_error_handler(array($webUtil, 'handleError'));
-	
-	//get the login details
-	$login = $_POST["login"]; 
-	$password = $_POST["password"]; 
-	
-	if(empty($login) && empty($password))
-	{
-		header("Location: login.php?errorcode=1");
-		exit;
-	}
-	
-	if(empty($login))
-	{
-		header("Location: login.php?errorcode=2&login=".$login);
-		exit;
-	}
-	
-	if(empty($password))
-	{
-		header("Location: login.php?errorcode=3&login=".$login);
-		exit;
-	}
-	
-	$user = $userDelegate->getUserByLogin($login);
-	if(empty($user))
-	{
-		header("Location: login.php?errorcode=4&login=".$login);
-		exit;	
-	}
-	
-	if(!$userDelegate->isValidLogin($login, $password))
-	{
-		header("Location: login.php?errorcode=5&login=".$login);
-		exit;
-	}
-	
-	//login OK, now add to cookies
-	$webUtil->addLoggedInUser($login, ConfigUtil::getCookieExpDays());
-	
-	header("Location: select_qa.php");
-	exit;
+$webUtil->srcPage = "submit_login.php";
+set_error_handler ( array (
+		$webUtil,
+		'handleError' 
+) );
+
+// get the login details
+$login = $_POST ["login"];
+$password = $_POST ["password"];
+
+if (empty ( $login ) && empty ( $password )) {
+	header ( "Location: login.php?errorcode=1" );
+	exit ();
+}
+
+if (empty ( $login )) {
+	header ( "Location: login.php?errorcode=2&login=" . $login );
+	exit ();
+}
+
+if (empty ( $password )) {
+	header ( "Location: login.php?errorcode=3&login=" . $login );
+	exit ();
+}
+
+$user = $userDelegate->getUserByLogin ( $login );
+if (empty ( $user )) {
+	header ( "Location: login.php?errorcode=4&login=" . $login );
+	exit ();
+}
+
+if (! $userDelegate->isValidLogin ( $login, $password )) {
+	header ( "Location: login.php?errorcode=5&login=" . $login );
+	exit ();
+}
+
+// login OK, now add to cookies
+$webUtil->addLoggedInUser ( $login, ConfigUtil::getCookieExpDays () );
+
+header ( "Location: select_qa.php" );
+exit ();
 ?>
 </body>
 </html>

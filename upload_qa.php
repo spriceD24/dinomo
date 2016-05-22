@@ -17,23 +17,22 @@
 
 $webUtil = new WebUtil ();
 $webUtil->srcPage = "upload_qa.php";
-//set_error_handler(array($webUtil, 'handleError'));
+// set_error_handler(array($webUtil, 'handleError'));
 
-$currentUser = $webUtil->getLoggedInUser();
+$currentUser = $webUtil->getLoggedInUser ();
 
 $htmlUtil = new HTMLUtil ();
 $stringUtils = new StringUtils ();
-$detect = new Mobile_Detect();
+$detect = new Mobile_Detect ();
 
-$setCurrentProjectID = intval($_GET["projectID"]);
-$setCurrentCategoryID = intval($_GET["categoryID"]);
+$setCurrentProjectID = intval ( $_GET ["projectID"] );
+$setCurrentCategoryID = intval ( $_GET ["categoryID"] );
 
-LogUtil::debug("upload_qa", "Opening details for project ID = ".$setCurrentProjectID.", category id = ".$setCurrentCategoryID.", user = ".$currentUser->login);
+LogUtil::debug ( "upload_qa", "Opening details for project ID = " . $setCurrentProjectID . ", category id = " . $setCurrentCategoryID . ", user = " . $currentUser->login );
 
-if(empty($setCurrentProjectID) || empty($setCurrentCategoryID))
-{
-	header("Location: select_qa.php");
-	exit;
+if (empty ( $setCurrentProjectID ) || empty ( $setCurrentCategoryID )) {
+	header ( "Location: select_qa.php" );
+	exit ();
 }
 
 $setOptionPrefix = HTMLConst::STANDARD_OPT_ID_PREFIX;
@@ -46,13 +45,13 @@ $project = $projectDAO->getProject ( $setCurrentProjectID );
 $currentCategory = $projectDAO->getCategory ( $setCurrentProjectID, $setCurrentCategoryID );
 $categoryOptions = $projectDAO->getCategoryOptions ( $setCurrentProjectID, $setCurrentCategoryID );
 
-LogUtil::debug("upload_qa", "Opening ALL details for project = ".$project->projectName.", category = ".$currentCategory->categoryName.", num options = ".$categoryOptions->getNumObjects().", user = ".$currentUser->login);
+LogUtil::debug ( "upload_qa", "Opening ALL details for project = " . $project->projectName . ", category = " . $currentCategory->categoryName . ", num options = " . $categoryOptions->getNumObjects () . ", user = " . $currentUser->login );
 
 // get user info
-$mobileTextStyle = ConfigUtil::getMobileTextStyle();
-$mobileLabelStyle = ConfigUtil::getMobileLabelStyle();
-$mobileTextAreaStyle = ConfigUtil::getMobileTextAreaStyle();
-$mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle();
+$mobileTextStyle = ConfigUtil::getMobileTextStyle ();
+$mobileLabelStyle = ConfigUtil::getMobileLabelStyle ();
+$mobileTextAreaStyle = ConfigUtil::getMobileTextAreaStyle ();
+$mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
 
 $userDAO = new UserDAO ();
 $users = $userDAO->getAllUsers ();
@@ -89,11 +88,14 @@ $num_images = ConfigUtil::getNumberOfUploadFiles ();
 
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet"
+	type="text/css" />
 <link rel="stylesheet" type="text/css" href="css/dinamo.css">
 
 <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	rel="stylesheet">
 
 <link href="css/style.css" rel="stylesheet" type="text/css">
 
@@ -215,18 +217,18 @@ function submitForm()
 	var hasError = false;
 	var hasError = false;
 	<?php
-
-while ( $categoryOption = $categoryOptions->iterate () ) 
-
-{
 	
-	if ($categoryOption->isRequired) 
+	while ( $categoryOption = $categoryOptions->iterate () ) 
 
 	{
-		if ($categoryOption->formType == 'RADIO') 
+		
+		if ($categoryOption->isRequired) 
 
 		{
-		?>	
+			if ($categoryOption->formType == 'RADIO') 
+
+			{
+				?>	
 			selectedRadio = $("input[name=<?=$setOptionPrefix.$categoryOption->categoryOptionID?>]:checked").length;
 	 		if(selectedRadio == 0)
 	 		{
@@ -239,12 +241,12 @@ while ( $categoryOption = $categoryOptions->iterate () )
 		 		setErrorDiv('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>')
 		 		//return false;
 	 		}
- 		<?php 
-		}
-		if ($categoryOption->formType == 'TEXT')
-		
-		{
-		?>
+ 		<?php
+			}
+			if ($categoryOption->formType == 'TEXT') 
+
+			{
+				?>
 			selectedVal = document.getElementById("<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").value;
 	 		if(!selectedVal || selectedVal == '')
 	 		{
@@ -257,12 +259,12 @@ while ( $categoryOption = $categoryOptions->iterate () )
 		 		setErrorDiv('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>')
 		 		//return false;
 	 		}
- 		<?php 
-		}
-		if ($categoryOption->formType == 'TEXTAREA')
-		
-		{
-			?>
+ 		<?php
+			}
+			if ($categoryOption->formType == 'TEXTAREA') 
+
+			{
+				?>
 			selectedVal = document.getElementById("<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").value;
 	 		if(!selectedVal || selectedVal == '')
 	 		{
@@ -275,12 +277,12 @@ while ( $categoryOption = $categoryOptions->iterate () )
 		 		}
 		 		//return false;
 	 		}
- 		<?php 
-		}
-		if ($categoryOption->formType == 'CONFIRM')
-		
-		{
-			?>
+ 		<?php
+			}
+			if ($categoryOption->formType == 'CONFIRM') 
+
+			{
+				?>
 			checkedVal = document.getElementById("<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").checked;
 	 		if(!checkedVal || checkedVal == false)
 	 		{
@@ -293,12 +295,12 @@ while ( $categoryOption = $categoryOptions->iterate () )
 		 		}
 		 		//return false;
 	 		}
- 		<?php 
-		}
-		if ($categoryOption->formType == 'DATETIME' || $categoryOption->formType == 'DATE')
-		
-		{
-			?>
+ 		<?php
+			}
+			if ($categoryOption->formType == 'DATETIME' || $categoryOption->formType == 'DATE') 
+
+			{
+				?>
 			
 	 		if(!validDate('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>'))
 	 		{
@@ -310,12 +312,12 @@ while ( $categoryOption = $categoryOptions->iterate () )
 		 		}
 		 		//return false;
 	 		}
- 		<?php 
-		}
-		if ($categoryOption->formType == 'TIME')
-		
-		{
-			?>
+ 		<?php
+			}
+			if ($categoryOption->formType == 'TIME') 
+
+			{
+				?>
 			checkedVal = document.getElementById("<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").selectedIndex;
 	 		if(!checkedVal || checkedVal == 0)
 	 		{
@@ -328,12 +330,12 @@ while ( $categoryOption = $categoryOptions->iterate () )
 		 		}
 		 		//return false;
 	 		}
- 		<?php 
-		}				
+ 		<?php
+			}
+		}
 	}
-}
-
-		?>
+	
+	?>
 		//alert(errorAnchor);
 	if(errorAnchor != '')
 	{
@@ -344,18 +346,26 @@ while ( $categoryOption = $categoryOptions->iterate () )
 	{
 		//submit form
 		try{
-			//$('.modal').css('margin',0);
-			//$(".modal").show();
+			$('.modal').css('margin',0);
+			$('.modal').show();
 		}catch(e){}
 		//document.getElementById("submitSpan").style.display='';
-		document.getElementById("submitButton").disabled = true; 
-		document.getElementById('uploadform').submit();
+		//$("#id").css("display", "none");
+		$('#submitButton').attr("disabled", true); 
+		$('#submitButton').prop("disabled", true); 
+		$('#uploadform').submit();
 	}	 	
 }
 
 //Extra Javascript goes here
 
-
+$(window).bind("pageshow", function(event) {
+    if (event.originalEvent.persisted) {
+    	$('.modal').hide();
+    	$('#submitButton').attr("disabled", false); 
+		$('#submitButton').prop("disabled",false);
+    }
+});
 
 //Extra Javascript ENDS here
 window.onload = function() {
@@ -368,36 +378,35 @@ window.onload = function() {
 </script>
 
 <style>
-	.modal
-	{
-		position: fixed;
-		z-index: 999;
-		height: 100%;
-		width: 100%;
-		top: 0;
-		left: 0;
-		background-color: Black;
-		filter: alpha(opacity=60);
-		opacity: 0.6;
-		-moz-opacity: 0.8;
-	}
-	.center
-	{
-		z-index: 1000;
-		margin: 300px auto;
-		padding: 10px;
-		width: 330px;
-		background-color: White;
-		border-radius: 10px;
-		filter: alpha(opacity=100);
-		opacity: 1;
-		-moz-opacity: 1;
-	}
-	.center img
-	{
-		height: 128px;
-		width: 128px;
-	}
+.modal {
+	position: fixed;
+	z-index: 999;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: Black;
+	filter: alpha(opacity = 60);
+	opacity: 0.6;
+	-moz-opacity: 0.8;
+}
+
+.center {
+	z-index: 1000;
+	margin: 300px auto;
+	padding: 10px;
+	width: 330px;
+	background-color: White;
+	border-radius: 10px;
+	filter: alpha(opacity = 100);
+	opacity: 1;
+	-moz-opacity: 1;
+}
+
+.center img {
+	height: 128px;
+	width: 128px;
+}
 </style>
 
 
@@ -432,12 +441,14 @@ window.onload = function() {
 
 					<ul class="nav pull-right">
 
-						<li class="" style="float:none"><span style="color:white;font-size:11px">User: <?=$currentUser->name?> (<span style="font-style:italic"><a href="logout.php">logout</a></span>)</span></li>
+						<li class="" style="float: none"><span
+							style="color: white; font-size: 11px">User: <?=$currentUser->name?> (<span
+								style="font-style: italic"><a href="logout.php">logout</a></span>)
+						</span></li>
 
 						<li class="" style="padding-top: 10px"><a href="select_qa.php"
-							style="padding: 0px 0px 0px 0px"
-							class="">
-							<i class="icon-chevron-left"></i> Back to Project Select
+							style="padding: 0px 0px 0px 0px" class=""> <i
+								class="icon-chevron-left"></i> Back to Project Select
 
 						</a></li>
 
@@ -463,7 +474,7 @@ window.onload = function() {
 	</div>
 
 
- 
+
 	<div class="main">
 
 
@@ -483,140 +494,150 @@ window.onload = function() {
 							<div class="widget-content">
 								<div class="tabbable">
 									<ul class="nav nav-tabs">
-							  <li class="active" ><a href="#<?='cat_'.$currentCategory->categoryID?>"
+										<li class="active"><a
+											href="#<?='cat_'.$currentCategory->categoryID?>"
 											data-toggle="tab"><?=$currentCategory->categoryName?></a></li>
-						</ul>
+									</ul>
 
 
 
 									<br>
 
 									<div class="tab-content">
-								<div class="tab-pane active" id="<?='cat_'.$currentCategory->categoryID?>">
+										<div class="tab-pane active"
+											id="<?='cat_'.$currentCategory->categoryID?>">
 
-								<form action="submit_qa.php" id="uploadform" method="post" class="form-horizontal" enctype="multipart/form-data">
+											<form action="submit_qa.php" id="uploadform"
+												name="uploadform" method="post" class="form-horizontal"
+												enctype="multipart/form-data">
 
-									<!-- standard data -->
-									<input type="hidden" name="uploadedBy" id="uploadedBy" value="<?=$currentUser->userID?>"/>
-									<input type="hidden" name="projectID" id="projectID" value="<?=$setCurrentProjectID?>"/>
-									<input type="hidden" name="categoryID" id="categoryID" value="<?=$setCurrentCategoryID?>"/>
-								
+												<!-- standard data -->
+												<input type="hidden" name="uploadedBy" id="uploadedBy"
+													value="<?=$currentUser->userID?>" /> <input type="hidden"
+													name="projectID" id="projectID"
+													value="<?=$setCurrentProjectID?>" /> <input type="hidden"
+													name="categoryID" id="categoryID"
+													value="<?=$setCurrentCategoryID?>" />
+
 												<fieldset>
 
 										
 
 									<?php
-							
-							while ( $categoryOption = $categoryOptions->iterate () ) {
-								
-								if ($categoryOption->formType == 'TEXT') 
-
-								{
 									
-									?>
+									while ( $categoryOption = $categoryOptions->iterate () ) {
+										
+										if ($categoryOption->formType == 'TEXT') 
+
+										{
+											
+											?>
 
 									
 
-											<a name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
-											<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+											<a
+														name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
+													<div class="control-group"
+														id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
 
 														<label class="control-label"
 															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>">
 															<?=$categoryOption->title;?>
-												<div id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" class="errorLabel" style="display:none">
-													* Required Field
-												</div>
-															</label>
+												<div
+																id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																class="errorLabel" style="display: none">* Required
+																Field</div>
+														</label>
 
 														<div class="controls">
 
 															<input type="text" class="span6 disabled"
 																id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																value="" 
-																<?php if ($categoryOption->isRequired)
-																{	
-																	print ' onkeyup="clearErrorDivText(\''.$setOptionPrefix.$categoryOption->categoryOptionID.'\')" ';
-																}?>
-																
-																<?php 
-																if ((!$detect->isMobile() || $detect->isTablet())  && !empty($categoryOption->styleClass))
-																{	
-																	print " style='$categoryOption->styleClass'";
-																}
-																
-																if ($detect->isMobile() && !$detect->isTablet())
-																{
-																	print " style='".$mobileTextStyle."'";
-																}
-																
-																?>
-																>
+																value=""
+																<?php
+											
+if ($categoryOption->isRequired) {
+												print ' onkeyup="clearErrorDivText(\'' . $setOptionPrefix . $categoryOption->categoryOptionID . '\')" ';
+											}
+											?>
+																<?php
+											if ((! $detect->isMobile () || $detect->isTablet ()) && ! empty ( $categoryOption->styleClass )) {
+												print " style='$categoryOption->styleClass'";
+											}
+											
+											if ($detect->isMobile () && ! $detect->isTablet ()) {
+												print " style='" . $mobileTextStyle . "'";
+											}
+											
+											?>>
 
 														</div>
 
 													</div>
 
 											<?php
-								}
-								if ($categoryOption->formType == 'LABEL_AREA')
-								
-								{
-							
-							?>
-								<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
-								<input type="hidden" id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" value="<?=$categoryOption->title;?>"/>
-														
-											<label class="control-label">
-											</label>
+										}
+										if ($categoryOption->formType == 'LABEL_AREA') 
 
-											<div class="controls">
-											<hr/>
-											<span style="font-size:15px"><?=$categoryOption->title;?></span>
-											<hr/>
-											</div>
+										{
+											
+											?>
+								<div class="control-group"
+														id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+														<input type="hidden"
+															id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>"
+															name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>"
+															value="<?=$categoryOption->title;?>" /> <label
+															class="control-label"> </label>
 
-										</div>
+														<div class="controls">
+															<hr />
+															<span style="font-size: 15px"><?=$categoryOption->title;?></span>
+															<hr />
+														</div>
+
+													</div>
 
 								<?php
-					}
-																
-								if ($categoryOption->formType == 'RADIO') 
+										}
+										
+										if ($categoryOption->formType == 'RADIO') 
 
-								{
-									
-									?>
+										{
+											
+											?>
 
-										<a name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
-											<div class="control-group"  id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+										<a
+														name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
+													<div class="control-group"
+														id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
 
-														<div class="controls" 
-														<?php 
-														if ($detect->isMobile() && !$detect->isTablet())
-														{
-															print " style='".$mobileLabelStyle."'";
-														}else{
-															print 'style="font-weight: bold"';
-														}
-														?>
-														>
+														<div class="controls"
+															<?php
+											if ($detect->isMobile () && ! $detect->isTablet ()) {
+												print " style='" . $mobileLabelStyle . "'";
+											} else {
+												print 'style="font-weight: bold"';
+											}
+											?>>
 												<?=$categoryOption->title;?>
 												</div>
 
-														<label class="control-label"><div id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" class="errorLabel" style="display:none">
-													* Required Field
-												</div>
-												</label>
+														<label class="control-label"><div
+																id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																class="errorLabel" style="display: none">* Required
+																Field</div> </label>
 
 														<div class="controls">
 
 												<?php
-									
-									$radioOptions = $stringUtils->commaSeperatedValuesToArray ( $categoryOption->formOptions );
-									
-									foreach ( $radioOptions as $radioOption ) {
-										
-										?>
+											
+											$radioOptions = $stringUtils->commaSeperatedValuesToArray ( $categoryOption->formOptions );
+											
+											foreach ( $radioOptions as $radioOption ) {
+												
+												?>
 
 													<label class="radio inline"> <input type="radio"
 																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
@@ -626,61 +647,65 @@ window.onload = function() {
 													</label>
 
 												<?php
-									}
-									
-									?>
+											}
+											
+											?>
 
 											  </div>
 
 													</div>
 
 											<?php
-								}
-								
-								if ($categoryOption->formType == 'TEXTAREA') 
+										}
+										
+										if ($categoryOption->formType == 'TEXTAREA') 
 
-								{
-									
-									?>
+										{
+											
+											?>
 
-															<a name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
-											<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+															<a
+														name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
+													<div class="control-group"
+														id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
 
 														<label class="control-label"
 															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>">
 															<?=$categoryOption->title;?>														
-												<div id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" class="errorLabel" style="display:none">
-													* Required Field
-												</div>															
-															</label>
+												<div
+																id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																class="errorLabel" style="display: none">* Required
+																Field</div>
+														</label>
 
 														<div class="controls">
 
 															<textarea class="controls-textarea"
 																id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																rows="5" <?php if ($categoryOption->isRequired)
-																{	
-																	print ' onkeyup="clearErrorDivText(\''.$setOptionPrefix.$categoryOption->categoryOptionID.'\')" ';
-																} 
-																if ($detect->isMobile() && !$detect->isTablet())
-																{
-																	print " style='".$mobileLabelStyle."'";
-																}
-																?>																></textarea>
+																rows="5"
+																<?php
+											
+if ($categoryOption->isRequired) {
+												print ' onkeyup="clearErrorDivText(\'' . $setOptionPrefix . $categoryOption->categoryOptionID . '\')" ';
+											}
+											if ($detect->isMobile () && ! $detect->isTablet ()) {
+												print " style='" . $mobileLabelStyle . "'";
+											}
+											?>></textarea>
 
 														</div>
 
 													</div>
 
 											<?php
-								}
-								
-								if ($categoryOption->formType == 'USERLIST') 
+										}
+										
+										if ($categoryOption->formType == 'USERLIST') 
 
-								{
-									
-									?>
+										{
+											
+											?>
 
 											<div class="control-group">
 
@@ -692,35 +717,34 @@ window.onload = function() {
 															<select
 																id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																<?php 
-																if ($detect->isMobile() && !$detect->isTablet())
-																{
-																	print " style='".$mobileDropDownStyle."'";
-																}
-																?>>
+																<?php
+											if ($detect->isMobile () && ! $detect->isTablet ()) {
+												print " style='" . $mobileDropDownStyle . "'";
+											}
+											?>>
 
 													<?php
-									
-									while ( $user = $users->iterate () ) {
-										
-										?>
+											
+											while ( $user = $users->iterate () ) {
+												
+												?>
 
 														<option value="<?=$user->userID;?>"
 																	<?php
-										
-if ($user->userID == $currentUser->userID) 
+												
+												if ($user->userID == $currentUser->userID) 
 
-										{
-											
-											print 'selected';
-										}
-										?>><?=$user->name;?>
+												{
+													
+													print 'selected';
+												}
+												?>><?=$user->name;?>
 
 														</option>
 
 												<?php
-									}
-									?>
+											}
+											?>
 
 													</select>
 
@@ -729,13 +753,13 @@ if ($user->userID == $currentUser->userID)
 													</div>
 
 											<?php
-								}
-								
-								if ($categoryOption->formType == 'USERLIST_OPEN') 
+										}
+										
+										if ($categoryOption->formType == 'USERLIST_OPEN') 
 
-								{
-									
-									?>
+										{
+											
+											?>
 
 											<div class="control-group">
 
@@ -747,25 +771,26 @@ if ($user->userID == $currentUser->userID)
 															<select
 																id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																<?php if ($detect->isMobile() && !$detect->isTablet())
-																{
-																	print " style='".$mobileDropDownStyle."'";
-																}?>>
+																<?php
+											
+if ($detect->isMobile () && ! $detect->isTablet ()) {
+												print " style='" . $mobileDropDownStyle . "'";
+											}
+											?>>
 
 																<option value=""></option>
 
 													<?php
-									
-									while ( $user = $users->iterate () ) {
-										
-										?>
+											
+											while ( $user = $users->iterate () ) {
+												
+												?>
 
-														<option value="<?=$user->userID;?>"
-																	<?=$user->name;?>></option>
+														<option value="<?=$user->userID;?>" <?=$user->name;?>></option>
 
 												<?php
-									}
-									?>
+											}
+											?>
 
 													</select>
 
@@ -774,40 +799,46 @@ if ($user->userID == $currentUser->userID)
 													</div>
 
 											<?php
-								}
-								
-								if ($categoryOption->formType == 'CONFIRM') 
+										}
+										
+										if ($categoryOption->formType == 'CONFIRM') 
 
-								{
-									
-									?>
+										{
+											
+											?>
 
 											
 
- 									<a name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
-                                        <div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+ 									<a
+														name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
+													<div class="control-group"
+														id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
 
 														<label class="control-label">
-												<div id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" class="errorLabel" style="display:none">
-													* Required Field
-												</div>
+															<div
+																id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																class="errorLabel" style="display: none">* Required
+																Field</div>
 														</label>
 
 
 
-														<div class="controls" 
-														<?php 
-																if ($detect->isMobile() && !$detect->isTablet())
-																{
-																	print " style='".$mobileLabelStyle."'";
-																}?>>
+														<div class="controls"
+															<?php
+											if ($detect->isMobile () && ! $detect->isTablet ()) {
+												print " style='" . $mobileLabelStyle . "'";
+											}
+											?>>
 
-															<label class="checkbox inline"> <input type="checkbox" id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" 
-															 name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-															 <?php if ($categoryOption->isRequired)
-																{	
-																	print ' onclick="clearErrorDivCheck(\''.$setOptionPrefix.$categoryOption->categoryOptionID.'\')" ';
-																}?>> <?=$categoryOption->title;?>
+															<label class="checkbox inline"> <input type="checkbox"
+																id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																<?php
+											
+if ($categoryOption->isRequired) {
+												print ' onclick="clearErrorDivCheck(\'' . $setOptionPrefix . $categoryOption->categoryOptionID . '\')" ';
+											}
+											?>> <?=$categoryOption->title;?>
 
                                             </label>
 
@@ -818,15 +849,15 @@ if ($user->userID == $currentUser->userID)
 											
 
 											<?php
-								}
-								
-								if ($categoryOption->formType == 'PHOTOS') 
-
-								{
-									
-									for($x = 1; $x <= $num_images; $x ++) {
+										}
 										
-										?>
+										if ($categoryOption->formType == 'PHOTOS') 
+
+										{
+											
+											for($x = 1; $x <= $num_images; $x ++) {
+												
+												?>
 
 											
 
@@ -834,46 +865,44 @@ if ($user->userID == $currentUser->userID)
 														id="file_display_<?=$setOptionPrefix.$categoryOption->categoryOptionID.'_'.$x?>"
 														name="file_display_<?=$setOptionPrefix.$categoryOption->categoryOptionID.'_'.$x?>"
 														<?php
-										
-										if ($x > 1) 
+												
+												if ($x > 1) 
 
-										{
-											
-											print " style='display:none'";
-										}
-										
-										?>>
+												{
+													
+													print " style='display:none'";
+												}
+												
+												?>>
 
 														<label class="control-label"
 															for="file_<?=$setOptionPrefix.$categoryOption->categoryOptionID.'_'.$x?>"><?php
-										
-										if ($x > 1) 
+												
+												if ($x > 1) 
 
-										{
-											
-											print "Photo " . $x;
-										} else {
-											
-											print "Photo";
-										}
-										
-										?>
-										&nbsp;<i class="icon-camera"></i>
-											</label>
+												{
+													
+													print "Photo " . $x;
+												} else {
+													
+													print "Photo";
+												}
+												
+												?>
+										&nbsp;<i class="icon-camera"></i> </label>
 
 														<div class="controls">
 
 															<input type="file"
 																id="file_<?=$setOptionPrefix.$categoryOption->categoryOptionID.'_'.$x;?>"
 																name="file_<?=$setOptionPrefix.$categoryOption->categoryOptionID.'_'.$x;?>"
-																placeholder="Select Photo" style="width:250px"
-																<?php 
-																 if($x <  $num_images)
-																 {
-																 print ' onchange="showNextDate(\'file_display_'.$setOptionPrefix.$categoryOption->categoryOptionID.'_'.($x+1).'\')" ';
-																 }
-																?>/>
-			
+																placeholder="Select Photo" style="width: 250px"
+																<?php
+												if ($x < $num_images) {
+													print ' onchange="showNextDate(\'file_display_' . $setOptionPrefix . $categoryOption->categoryOptionID . '_' . ($x + 1) . '\')" ';
+												}
+												?> />
+
 														</div>
 
 													</div>
@@ -881,47 +910,52 @@ if ($user->userID == $currentUser->userID)
 											
 
 											<?php
-									}
-								}
-								
-								if ($categoryOption->formType == 'DATETIME') 
+											}
+										}
+										
+										if ($categoryOption->formType == 'DATETIME') 
 
-								{
-									
-									?>
+										{
+											
+											?>
 								
-											<a name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
-											<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+											<a
+														name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
+													<div class="control-group"
+														id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
 
 														<label class="control-label"
 															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"><?=$categoryOption->title;?>
-												<div id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" class="errorLabel" style="display:none">
-													* Invalid Date
-												</div>															
+												<div
+																id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																class="errorLabel" style="display: none">* Invalid Date
+															</div>															
 															<?php
-																$day = date("j");
-																$month = date("M");
-																$year = date('Y');
-															?>
-															</label>
-														<input type="hidden" id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" value="<?=$day.'-'.$month.'-'.$year?>"/>
+											$day = date ( "j" );
+											$month = date ( "M" );
+											$year = date ( 'Y' );
+											?>
+															</label> <input type="hidden"
+															id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>"
+															name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>"
+															value="<?=$day.'-'.$month.'-'.$year?>" />
 														<div class="controls">
 														<?php
-																$dayDrop = $htmlUtil->getDayDropdown ( $setOptionPrefix.$categoryOption->categoryOptionID );
-																$monthDrop = $htmlUtil->getMonthDropdown ($setOptionPrefix.$categoryOption->categoryOptionID );
-																$yearDrop = $htmlUtil->getYearDropdown ( $setOptionPrefix.$categoryOption->categoryOptionID );
-																
-																print $dayDrop."&nbsp;".$monthDrop."&nbsp;".$yearDrop;
-														?>	
+											$dayDrop = $htmlUtil->getDayDropdown ( $setOptionPrefix . $categoryOption->categoryOptionID );
+											$monthDrop = $htmlUtil->getMonthDropdown ( $setOptionPrefix . $categoryOption->categoryOptionID );
+											$yearDrop = $htmlUtil->getYearDropdown ( $setOptionPrefix . $categoryOption->categoryOptionID );
+											
+											print $dayDrop . "&nbsp;" . $monthDrop . "&nbsp;" . $yearDrop;
+											?>	
 															<span style="padding-left: 15px">Time:</span>	
 
 													<?php
-									
-									$timeDrop = $htmlUtil->getTimeDropdown ($setOptionPrefix . $categoryOption->categoryOptionID );
-									
-									print $timeDrop;
-									
-									?>
+											
+											$timeDrop = $htmlUtil->getTimeDropdown ( $setOptionPrefix . $categoryOption->categoryOptionID );
+											
+											print $timeDrop;
+											
+											?>
 
 												</div>
 													</div>
@@ -929,70 +963,76 @@ if ($user->userID == $currentUser->userID)
 											
 
 											<?php
-								}
-								
-								if ($categoryOption->formType == 'DATE') 
+										}
+										
+										if ($categoryOption->formType == 'DATE') 
 
-								{
-									
-									?>
+										{
+											
+											?>
 
 											
-											<a name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
-											<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+											<a
+														name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
+													<div class="control-group"
+														id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
 
 														<label class="control-label"
 															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"><?=$categoryOption->title;?>
-												<div id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" class="errorLabel" style="display:none">
-													* Invalid Date
-												</div>															
+												<div
+																id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																class="errorLabel" style="display: none">* Invalid Date
+															</div>															
 															<?php
-																$day = date("j");
-																$month = date("M");
-																$year = date('Y');
-															?>
-															</label>
-														<input type="hidden" id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" value="<?=$day.'-'.$month.'-'.$year?>"/>
+											$day = date ( "j" );
+											$month = date ( "M" );
+											$year = date ( 'Y' );
+											?>
+															</label> <input type="hidden"
+															id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>"
+															name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>"
+															value="<?=$day.'-'.$month.'-'.$year?>" />
 														<div class="controls">
 														<?php
-																$dayDrop = $htmlUtil->getDayDropdown ( $setOptionPrefix.$categoryOption->categoryOptionID );
-																$monthDrop = $htmlUtil->getMonthDropdown ($setOptionPrefix.$categoryOption->categoryOptionID );
-																$yearDrop = $htmlUtil->getYearDropdown ( $setOptionPrefix.$categoryOption->categoryOptionID );
-																
-																print $dayDrop."&nbsp;".$monthDrop."&nbsp;".$yearDrop;
-														?>	
+											$dayDrop = $htmlUtil->getDayDropdown ( $setOptionPrefix . $categoryOption->categoryOptionID );
+											$monthDrop = $htmlUtil->getMonthDropdown ( $setOptionPrefix . $categoryOption->categoryOptionID );
+											$yearDrop = $htmlUtil->getYearDropdown ( $setOptionPrefix . $categoryOption->categoryOptionID );
+											
+											print $dayDrop . "&nbsp;" . $monthDrop . "&nbsp;" . $yearDrop;
+											?>	
 	
 
 												</div>
 													</div>
 
 											<?php
-								}
-								
-								
-							if ($categoryOption->formType == 'TIME') 
+										}
+										
+										if ($categoryOption->formType == 'TIME') 
 
-								{
-									
-									?>
+										{
+											
+											?>
 								
-											<a name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
-											<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+											<a
+														name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
+													<div class="control-group"
+														id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
 
 														<label class="control-label"
 															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"><?=$categoryOption->title;?>
-												<div id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>" class="errorLabel" style="display:none">
-													* Required Field
-												</div>															
-															</label>
+												<div
+																id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																class="errorLabel" style="display: none">* Required
+																Field</div> </label>
 														<div class="controls">
 													<?php
-									
-									$timeDrop = $htmlUtil->getTimeDropdownOnly($setOptionPrefix . $categoryOption->categoryOptionID );
-									
-									print $timeDrop;
-									
-									?>
+											
+											$timeDrop = $htmlUtil->getTimeDropdownOnly ( $setOptionPrefix . $categoryOption->categoryOptionID );
+											
+											print $timeDrop;
+											
+											?>
 
 												</div>
 													</div>
@@ -1000,37 +1040,43 @@ if ($user->userID == $currentUser->userID)
 											
 
 											<?php
-								}
-							
-							if ($categoryOption->formType == 'LABEL') 
+										}
+										
+										if ($categoryOption->formType == 'LABEL') 
 
-								{
-									
-									?>
-											<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
-											<input type="hidden" id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>" value="<?=$categoryOption->formOptions;?>"/>
+										{
+											
+											?>
+											<div class="control-group"
+														id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+														<input type="hidden"
+															id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>"
+															name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>"
+															value="<?=$categoryOption->formOptions;?>" />
 
-											<?php 
-											if ($detect->isMobile() && !$detect->isTablet())
-											{?>
-														<label class="control-label" style="padding-top:2px"
+											<?php
+											if ($detect->isMobile () && ! $detect->isTablet ()) {
+												?>
+														<label class="control-label" style="padding-top: 2px"
 															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>">
-															</label>
+														</label>
 
 														<div class="controls">
-															<span class="dinamo-label" style="font-weight:bold;font-style:italic">
+															<span class="dinamo-label"
+																style="font-weight: bold; font-style: italic">
 															<?=$categoryOption->title;?>/<?=$categoryOption->formOptions;?>
 															</span>
 														</div>
 											<?php }else{?>
 																
-														<label class="control-label" style="padding-top:2px"
+														<label class="control-label" style="padding-top: 2px"
 															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>">
-															<span style="font-weight:bold;font-style:italic"><?=$categoryOption->title;?></span>
-															</label>
+															<span style="font-weight: bold; font-style: italic"><?=$categoryOption->title;?></span>
+														</label>
 
 														<div class="controls">
-															<span class="dinamo-label" style="font-weight:bold;font-style:italic">
+															<span class="dinamo-label"
+																style="font-weight: bold; font-style: italic">
 															<?=$categoryOption->formOptions;?>
 															</span>
 														</div>
@@ -1039,23 +1085,22 @@ if ($user->userID == $currentUser->userID)
 											
 
 											<?php
-								}
-																		
-
-											
-								
-							}
-							
-							?>										
+										}
+									}
+									
+									?>										
 
 											
 
 										<div class="form-actions">
 
-														<button type="button" class="btn btn-primary" id="submitButton" name="submitButton" onclick="submitForm()">Submit</button>
+														<button type="button" class="btn btn-primary"
+															id="submitButton" name="submitButton"
+															onclick="submitForm()">Submit</button>
 
 														<!-- <button class="btn">Cancel</button>-->
-														<span id="submitSpan" name="submitSpan" style="display:none"><img src="img/squares.gif"/></span>
+														<span id="submitSpan" name="submitSpan"
+															style="display: none"><img src="img/squares.gif" /></span>
 													</div>
 													<!-- /form-actions -->
 
@@ -1065,10 +1110,10 @@ if ($user->userID == $currentUser->userID)
 
 										</div>
 
-								
-								
 
-							</div>
+
+
+									</div>
 
 
 
@@ -1192,11 +1237,11 @@ if ($user->userID == $currentUser->userID)
 			<!-- /container -->
 
 
-	<div class="modal" style="display: none">
-		<div class="center">
-			<img alt="" src="img/loader.gif" />
-		</div>
-	</div>
+			<div class="modal" style="display: none" id="loader" name="loader">
+				<div class="center">
+					<img alt="" src="img/loader.gif" />
+				</div>
+			</div>
 
 		</div>
 		<!-- /footer-inner -->

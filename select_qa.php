@@ -6,59 +6,66 @@
 <?php include_once("mobile_detect/Mobile_Detect.php");?>
 
 <?php
-    $webUtil = new WebUtil();
-    $webUtil->srcPage = "select_qa.php";
-    set_error_handler(array($webUtil, 'handleError'));
-    
-	$detect = new Mobile_Detect();
-	
-	$user = $webUtil->getLoggedInUser();
-	//refresh the cookie
-	$webUtil->addLoggedInUser($user->login, ConfigUtil::getCookieExpDays());
-		
-	//echo $fileUtil->getNumberOfUploadFiles()
-	//echo realpath('.');
-	//print_r($_SERVER);
-	//$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-	
-	//echo $actual_link;
-	//echo "$_SERVER[HTTP_HOST]";
-	$projectDelegate = new ProjectDelegate ();
-	$projects = $projectDelegate->getAllProjectsLite();
-	$mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle();
-	
+$webUtil = new WebUtil ();
+$webUtil->srcPage = "select_qa.php";
+set_error_handler ( array (
+		$webUtil,
+		'handleError' 
+) );
+
+$detect = new Mobile_Detect ();
+
+$user = $webUtil->getLoggedInUser ();
+// refresh the cookie
+$webUtil->addLoggedInUser ( $user->login, ConfigUtil::getCookieExpDays () );
+
+// echo $fileUtil->getNumberOfUploadFiles()
+// echo realpath('.');
+// print_r($_SERVER);
+// $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+// echo $actual_link;
+// echo "$_SERVER[HTTP_HOST]";
+$projectDelegate = new ProjectDelegate ();
+$projects = $projectDelegate->getAllProjectsLite ();
+$mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
+
 ?>
 
 
 <html>
 
-  
-<head>
-    <meta charset="utf-8">
-    <title>Dinomo QA</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes"> 
-    
-	<script src="js/jquery-1.7.2.min.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/base.js"></script>
-	
-	
-	
-	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	
-	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="css/dinamo.css">
-	
-	<link href="css/font-awesome.css" rel="stylesheet">
-	    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-	
-	<link href="css/style.css" rel="stylesheet" type="text/css">
-	
-	<link href="css/pages/signin.css" rel="stylesheet" type="text/css">
-	
-	
+<head>
+<meta charset="utf-8">
+<title>Dinomo QA</title>
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/base.js"></script>
+
+
+
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet"
+	type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+
+<link href="css/font-awesome.css" rel="stylesheet">
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	rel="stylesheet">
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<link href="css/pages/signin.css" rel="stylesheet" type="text/css">
+
+
 <script>
 
 
@@ -80,14 +87,15 @@ function setCategoryDropdown()
 
 function hideAllCategories()
 {
-	<?php 
+	<?php
 	while ( $project = $projects->iterate () ) 
-	
-	{							
-				?>
+
+	{
+		?>
 	document.getElementById('project_row_<?=$project->projectID?>').style.display='none';								
-				<?php 
-	}?>
+				<?php
+	}
+	?>
 	
 }
 
@@ -102,64 +110,77 @@ function selectCategory(projectID)
 }
 
 window.onload = function() {
-	document.getElementById('projectID').selectedIndex = 0;
-	<?php 
-	while ( $project = $projects->iterate () ) 
-	
-	{							
-				?>
-	document.getElementById('project_<?=$project->projectID?>').selectedIndex=0;		
-	try{
-		$(".modal").hide();
-	}catch(e){}						
-				<?php 
-	}?>
+
+	clearData();
 	
 };
 
-</script>	
+function clearData()
+{
+	document.getElementById('projectID').selectedIndex = 0;
+	<?php
+	while ( $project = $projects->iterate () ) 
+	
+	{
+		?>
+	document.getElementById('project_<?=$project->projectID?>').selectedIndex=0;		
+	try{
+		$('.projectRow').hide();
+		$(".modal").hide();
+	}catch(e){}						
+				<?php
+	}
+	?>
+}
+
+$(window).bind("pageshow", function(event) {
+    if (event.originalEvent.persisted) {
+    	clearData(); 
+    }
+});
+
+</script>
 
 
 <style>
-	.modal
-	{
-		position: fixed;
-		z-index: 999;
-		height: 100%;
-		width: 100%;
-		top: 0;
-		left: 0;
-		background-color: Black;
-		filter: alpha(opacity=60);
-		opacity: 0.6;
-		-moz-opacity: 0.8;
-	}
-	.center
-	{
-		z-index: 1000;
-		margin: 300px auto;
-		padding: 10px;
-		width: 330px;
-		background-color: White;
-		border-radius: 10px;
-		filter: alpha(opacity=100);
-		opacity: 1;
-		-moz-opacity: 1;
-	}
-	.center img
-	{
-		height: 128px;
-		width: 128px;
-	}
+.modal {
+	position: fixed;
+	z-index: 999;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: Black;
+	filter: alpha(opacity = 60);
+	opacity: 0.6;
+	-moz-opacity: 0.8;
+}
+
+.center {
+	z-index: 1000;
+	margin: 300px auto;
+	padding: 10px;
+	width: 330px;
+	background-color: White;
+	border-radius: 10px;
+	filter: alpha(opacity = 100);
+	opacity: 1;
+	-moz-opacity: 1;
+}
+
+.center img {
+	height: 128px;
+	width: 128px;
+}
 </style>
 
 
 </head>
 
 <body>
-	
+
 	<div class="navbar navbar-fixed-top">
-	
+
 		<div class="navbar-inner">
 
 			<div class="container" style="background-color: #181717">
@@ -179,9 +200,12 @@ window.onload = function() {
 
 					<ul class="nav pull-right">
 
-						<li class="" style="float:none"></li>
+						<li class="" style="float: none"></li>
 
-						<li class="" style="padding-top: 20px"><span style="color:white;font-size:11px">User: <?=$user->name?> (<span style="font-style:italic"><a href="logout.php">logout</a></span>)</span></li>
+						<li class="" style="padding-top: 20px"><span
+							style="color: white; font-size: 11px">User: <?=$user->name?> (<span
+								style="font-style: italic"><a href="logout.php">logout</a></span>)
+						</span></li>
 
 
 					</ul>
@@ -198,87 +222,93 @@ window.onload = function() {
 
 		</div>
 		<!-- /navbar-inner -->
-			
-</div> <!-- /navbar -->
+
+	</div>
+	<!-- /navbar -->
 
 
 
-<div class="account-container">
-	
-	<div class="content clearfix">
-				
-			<h3>Select QA Project/Report Type</h3>		
-			
+	<div class="account-container">
+
+		<div class="content clearfix">
+
+			<h3>Select QA Project/Report Type</h3>
+
 			<div class="login-fields">
 				<p></p>
-				<table style="font-size:14px; border 1px solid;padding-top:10px;padding-bottom:10px;width:100%">
+				<table
+					style="font-size: 14px; border 1px solid; padding-top: 10px; padding-bottom: 10px; width: 100%">
 					<tr>
-						<td style="font-weight:bold;width:50%;padding-bottom:10px">Project:</td>
-						<td>
-							<select name="projectID" id="projectID" onchange="setCategoryDropdown()" <?php 
-																if ($detect->isMobile() && !$detect->isTablet())
-																{
-																	print " style='".$mobileDropDownStyle."'";
-																}
-																?>>
+						<td style="font-weight: bold; width: 50%; padding-bottom: 10px">Project:</td>
+						<td><select name="projectID" id="projectID"
+							onchange="setCategoryDropdown()"
+							<?php
+							if ($detect->isMobile () && ! $detect->isTablet ()) {
+								print " style='" . $mobileDropDownStyle . "'";
+							}
+							?>>
 								<option value="" selected></option>
-							<?php 
+							<?php
 							while ( $project = $projects->iterate () ) 
-							
-							{							
-							?>
+
+							{
+								?>
 								<option value="<?=$project->projectID?>"><?=$project->projectName?></option>
-							<?php 		
+							<?php
 							}
 							?>
-							</select>
-						</td>
+							</select></td>
 					</tr>
-							<?php 
+							<?php
 							while ( $project = $projects->iterate () ) 
-							
-							{							
-							?>
-								<tr id="project_row_<?=$project->projectID?>" style="display:none">
-									<td style="font-weight:bold;width:50%;padding-bottom:10px">Report Type:</td>
-									<td align="right">
-								<select name="project_<?=$project->projectID?>" id="project_<?=$project->projectID?>" onchange="selectCategory(<?=$project->projectID?>)" <?php 
-																if ($detect->isMobile() && !$detect->isTablet())
-																{
-																	print " style='".$mobileDropDownStyle."'";
-																}
-																?>>
+
+							{
+								?>
+								<tr id="project_row_<?=$project->projectID?>"
+						style="display: none" class="projectRow">
+						<td style="font-weight: bold; width: 50%; padding-bottom: 10px">Report
+							Type:</td>
+						<td align="right"><select name="project_<?=$project->projectID?>"
+							id="project_<?=$project->projectID?>"
+							onchange="selectCategory(<?=$project->projectID?>)"
+							<?php
+								if ($detect->isMobile () && ! $detect->isTablet ()) {
+									print " style='" . $mobileDropDownStyle . "'";
+								}
+								?>>
 								<option value="" selected></option>
-								<?php 
-									while ( $category = $project->categories->iterate () ) 
-									
-									{							
+								<?php
+								while ( $category = $project->categories->iterate () ) 
+
+								{
 									?>
 										<option value="<?=$category->categoryID?>"><?=$category->categoryName?></option>
-									<?php 		
-									}
-									?>		
-									</select>			
-									</td>
-								</tr>
+									<?php
+								}
+								?>		
+									</select></td>
+					</tr>
 								
-							<?php 		
+							<?php
 							}
 							?>					
 				</table>
 				<p></p>
-				
-			</div> <!-- /login-fields -->
 
-	<div class="modal" style="display: none">
-		<div class="center">
-			<img alt="" src="img/loader.gif" />
+			</div>
+			<!-- /login-fields -->
+
+			<div class="modal" style="display: none">
+				<div class="center">
+					<img alt="" src="img/loader.gif" />
+				</div>
+			</div>
+
 		</div>
+		<!-- /content -->
+
 	</div>
-				
-	</div> <!-- /content -->
-	
-</div> <!-- /account-container -->
+	<!-- /account-container -->
 
 
 </body>
