@@ -1,4 +1,5 @@
 <?php include_once("util/DateUtil.php"); ?>
+<?php include_once("util/StringUtils.php"); ?>
 <?php
 	/**
 	 * Manages file interactions
@@ -56,7 +57,7 @@
 		}
 
 
-		function generateUploadEmail($webUrl,$pdfUrl,$project,$currentCategory,$uploadedUser)
+		function generateUploadEmail($webUrl,$pdfUrl,$project,$currentCategory,$uploadedUser,$forUser)
 		{
 			$dateUtil = new DateUtil();
 			$html = "<html><body><table>";
@@ -70,12 +71,23 @@
 			$html = $html."</tr>";
 			$html = $html."<tr>";
 			$html = $html."<td>";
-			$html = $html."<b>Submitted By:</b>";
+			$html = $html."<b>Uploaded By:</b>";
 			$html = $html."</td>";
 			$html = $html."<td>";
 			$html = $html.$uploadedUser->name;
 			$html = $html."</td>";
 			$html = $html."</tr>";
+			if(!empty($forUser) && $forUser != "" && !StringUtils::equalsCaseInsensitive(trim($forUser),trim($uploadedUser->name)))
+			{
+				$html = $html."<tr>";
+				$html = $html."<td>";
+				$html = $html."<b>On Behalf Of:</b>";
+				$html = $html."</td>";
+				$html = $html."<td>";
+				$html = $html.$forUser;
+				$html = $html."</td>";
+				$html = $html."</tr>";
+			}
 			$html = $html."<tr>";
 			$html = $html."<td>";
 			$html = $html."<b>Submitted On:</b>";

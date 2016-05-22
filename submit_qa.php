@@ -154,6 +154,8 @@ $selectedOption->optionFormID = "Submitted On";
 $selectedOption->optionValue = $dateTimeStr;
 $options->add ( $selectedOption );
 
+$forUser = "";
+
 while ( $categoryOption = $categoryOptions->iterate () ) 
 
 {
@@ -177,6 +179,12 @@ while ( $categoryOption = $categoryOptions->iterate () )
 			{
 				$selectedOption->valueOnly = true;
 				$selectedOption->optionValue = $label;
+			}
+			if ($categoryOption->formType == 'USERLIST' && $categoryOption->title == 'Submitted By')
+			
+			{
+				$forUser = $userDelegate->getUser($value)->name;
+				LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Setting submitted by = " .$forUser);
 			}
 			
 			$options->add ( $selectedOption );
@@ -211,7 +219,7 @@ $webUrl = $webUtil->getBaseURI () . "/" . $webUrl;
 $pdfUrl = $webUtil->getBaseURI () . "/" . $pdfUrl;
 
 LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Generating Email, Web URL = " . $webUtil->getBaseURI () . "/" . $webUrl );
-$emailHTML = $htmlUtil->generateUploadEmail ( $webUrl, $pdfUrl, $project, $currentCategory, $uploadedUser );
+$emailHTML = $htmlUtil->generateUploadEmail ( $webUrl, $pdfUrl, $project, $currentCategory, $uploadedUser, $forUser );
 
 $email->From = $uploadedUser->email;
 $email->FromName = $uploadedUser->name;
@@ -223,7 +231,7 @@ $recipients = "";
 $email->AddAddress ( 'stephen.price@credit-suisse.com' );
 $recipients = $recipients . " stephen.price@credit-suisse.com";
 // $email->AddAddress( 'sprice_D24@yahoo.com' );
-$email->AddAddress ( 'patricknoonan@dinomoformwork.com.au' );
+//$email->AddAddress ( 'patricknoonan@dinomoformwork.com.au' );
 $recipients = $recipients . ", patricknoonan@dinomoformwork.com.au";
 $email->AddAddress ( 'stefdogd24@gmail.com' );
 $recipients = $recipients . ", stefdogd24@gmail.com";
