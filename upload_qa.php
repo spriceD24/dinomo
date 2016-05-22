@@ -683,9 +683,14 @@ if ($categoryOption->isRequired) {
 															<textarea class="controls-textarea"
 																id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																rows="5"
+
+
 																<?php
-											
+											if (! empty ( $categoryOption->styleClass )) {
+												print " style='$categoryOption->styleClass'";
+											}else{
+												print " rows=5 ";
+											}
 if ($categoryOption->isRequired) {
 												print ' onkeyup="clearErrorDivText(\'' . $setOptionPrefix . $categoryOption->categoryOptionID . '\')" ';
 											}

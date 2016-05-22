@@ -99,7 +99,7 @@ class ProjectDAO {
 		// TODO replace with call to DB
 		if ($categoryID == 1) {
 			// Deck Handover
-			$categoryOptions->add ( new CategoryOption ( 1, 1, 1, 1, 'Location', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 1, 1, 1, 'Location', '', 'TEXTAREA', '', true, '', 'height:55px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 2, 2, 'Submitted By', '', 'USERLIST', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 3, 3, 'Formwork deck fully complete with no gaps or holes', '', 'RADIO', 'Yes,No,N/A', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 4, 4, 'All decking panels and formwork sheets firmly secured', '', 'RADIO', 'Yes,No,N/A', true, '', '', '' ) );
@@ -120,13 +120,13 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 19, 19, 'Comments', '', 'TEXTAREA', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 20, 20, 'I confirm that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).', 'The submitter of this report has confirmed that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).', 'CONFIRM', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 21, 21, 'I confirm the deck has been inspected to ensure that all required actions and controls have been implemented.', 'The person who has submitted this report has confirmed the deck has been inspected to ensure that all required actions and controls have been implemented.', 'CONFIRM', '', true, '', '', '' ) );
-			$categoryOptions->add ( new CategoryOption ( 1, 1, 22, 22, 'Verified By', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 1, 22, 22, 'Verified By', '', 'TEXT', '', true, '', 'width:250px', '' ) );
 			// $categoryOptions->add(new CategoryOption(1,1,23,23,'Verified On','','DATETIME','',true,'','',''));
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 24, 24, 'Photos', '', 'PHOTOS', '', true, '', '', '' ) );
 		}
 		if ($categoryID == 2) {
 			// Lift and Stair Boxes
-			$categoryOptions->add ( new CategoryOption ( 1, 2, 30, 1, 'Location', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 2, 30, 1, 'Location', '', 'TEXTAREA', '', true, '', 'height:55px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 2, 31, 2, 'Submitted By', '', 'USERLIST', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 2, 32, 3, 'Length', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 2, 33, 4, 'Width', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
@@ -152,7 +152,7 @@ class ProjectDAO {
 		}
 		if ($categoryID == 3) {
 			// Pre Pour Checklist
-			$categoryOptions->add ( new CategoryOption ( 1, 3, 60, 1, 'Location', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 3, 60, 1, 'Location', '', 'TEXTAREA', '', true, '', 'height:55px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 61, 2, 'Submitted By', '', 'USERLIST', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 63, 3, 'Pour No', '', 'TEXT', '', true, '', 'width:100px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 64, 4, 'Pour Date', '', 'DATE', '', true, '', '', '' ) );
@@ -181,13 +181,13 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 90, 30, 'Structural Outline', '', 'TEXT', '', true, '', 'width:150px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 91, 31, 'Formwork Certificate', '', 'TEXT', '', true, '', 'width:150px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 92, 32, 'Comments', '', 'TEXTAREA', '', true, '', '', '' ) );
-			$categoryOptions->add ( new CategoryOption ( 1, 3, 93, 33, 'Verified By', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 3, 93, 33, 'Verified By', '', 'TEXT', '', true, '', 'width:250px', '' ) );
 			// $categoryOptions->add(new CategoryOption(1,1,23,23,'Verified On','','DATETIME','',true,'','',''));
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 94, 34, 'Photos', '', 'PHOTOS', '', true, '', '', '' ) );
 		}
 		if ($categoryID == 4) {
 			// Stairs
-			$categoryOptions->add ( new CategoryOption ( 1, 4, 100, 1, 'Location', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 4, 100, 1, 'Location', '', 'TEXTAREA', '', true, '', 'height:55px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 4, 101, 2, 'Submitted By', '', 'USERLIST', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 4, 103, 3, 'Pour No', '', 'TEXT', '', true, '', 'width:100px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 4, 104, 4, 'Stairmaster correct position', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
@@ -199,12 +199,12 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 1, 4, 110, 10, 'I confirm that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour).', 'The submitter of this report has confirmed that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour).', 'CONFIRM', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 4, 112, 11, 'I have inspected the Stairs and confirm that all required actions and controls have been implemented.', 'The person who has submitted this report has inspected the Stairs and confirms that all required actions and controls have been implemented.', 'CONFIRM', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 4, 113, 12, 'Comments', '', 'TEXTAREA', '', true, '', '', '' ) );
-			$categoryOptions->add ( new CategoryOption ( 1, 4, 114, 13, 'Verified By', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 4, 114, 13, 'Verified By', '', 'TEXT', '', true, '', 'width:250px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 4, 115, 14, 'Photos', '', 'PHOTOS', '', true, '', '', '' ) );
 		}
 		if ($categoryID == 5) {
 			// Stairs
-			$categoryOptions->add ( new CategoryOption ( 1, 5, 120, 1, 'Location', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 5, 120, 1, 'Location', '', 'TEXTAREA', '', true, '', 'height:55px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 5, 121, 2, 'Submitted By', '', 'USERLIST', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 5, 122, 3, 'Length', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 5, 123, 4, 'Width', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
@@ -225,13 +225,13 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 1, 5, 138, 19, 'Z bars tied off', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 5, 139, 20, 'Stop end nailed', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 5, 140, 21, 'Comments', '', 'TEXTAREA', '', true, '', '', '' ) );
-			$categoryOptions->add ( new CategoryOption ( 1, 5, 141, 22, 'Verified By', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 5, 141, 22, 'Verified By', '', 'TEXT', '', true, '', 'width:250px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 5, 142, 23, 'Photos', '', 'PHOTOS', '', true, '', '', '' ) );
 		}
 		
 		if ($categoryID == 6) {
 			// Deck Handover
-			$categoryOptions->add ( new CategoryOption ( 2, 6, 111, 1, 'Location', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 2, 6, 111, 1, 'Location', '', 'TEXTAREA', '', true, '', 'height:55px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 112, 2, 'Submitted By', '', 'USERLIST', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 113, 3, 'Formwork deck fully complete with no gaps or holes', '', 'RADIO', 'Yes,No,N/A', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 114, 4, 'All decking panels and formwork sheets firmly secured', '', 'RADIO', 'Yes,No,N/A', true, '', '', '' ) );
@@ -252,13 +252,13 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 1119, 19, 'Comments', '', 'TEXTAREA', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 1120, 20, 'I confirm that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).', 'The submitter of this report has confirmed that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).', 'CONFIRM', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 1121, 21, 'I confirm the deck has been inspected to ensure that all required actions and controls have been implemented.', 'The person who has submitted this report has confirmed the deck has been inspected to ensure that all required actions and controls have been implemented.', 'CONFIRM', '', true, '', '', '' ) );
-			$categoryOptions->add ( new CategoryOption ( 2, 6, 1122, 22, 'Verified By', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 2, 6, 1122, 22, 'Verified By', '', 'TEXT', '', true, '', 'width:250px', '' ) );
 			// $categoryOptions->add(new CategoryOption(2,6,1123,23,'Verified On','','DATETIME','',true,'','',''));
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 1124, 24, 'Photos', '', 'PHOTOS', '', true, '', '', '' ) );
 		}
 		if ($categoryID == 7) {
 			// Lift and Stair Boxes
-			$categoryOptions->add ( new CategoryOption ( 2, 7, 1130, 1, 'Location', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 2, 7, 1130, 1, 'Location', '', 'TEXTAREA', '', true, '', 'height:55px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 7, 1131, 2, 'Submitted By', '', 'USERLIST', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 7, 1132, 3, 'Length', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 7, 1133, 4, 'Width', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
@@ -284,7 +284,7 @@ class ProjectDAO {
 		}
 		if ($categoryID == 8) {
 			// Pre Pour Checklist
-			$categoryOptions->add ( new CategoryOption ( 2, 8, 1160, 1, 'Location', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 2, 8, 1160, 1, 'Location', '', 'TEXTAREA', '', true, '', 'height:55px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 8, 1161, 2, 'Submitted By', '', 'USERLIST', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 8, 1163, 3, 'Pour No', '', 'TEXT', '', true, '', 'width:100px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 8, 1164, 4, 'Pour Date', '', 'DATE', '', true, '', '', '' ) );
@@ -313,13 +313,13 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 2, 8, 1190, 30, 'Structural Outline', '', 'TEXT', '', true, '', 'width:150px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 8, 1191, 31, 'Formwork Certificate', '', 'TEXT', '', true, '', 'width:150px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 8, 1192, 32, 'Comments', '', 'TEXTAREA', '', true, '', '', '' ) );
-			$categoryOptions->add ( new CategoryOption ( 2, 8, 1193, 33, 'Verified By', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 2, 8, 1193, 33, 'Verified By', '', 'TEXT', '', true, '', 'width:250px', '' ) );
 			// $categoryOptions->add(new CategoryOption(2,6,1123,23,'Verified On','','DATETIME','',true,'','',''));
 			$categoryOptions->add ( new CategoryOption ( 2, 8, 1194, 34, 'Photos', '', 'PHOTOS', '', true, '', '', '' ) );
 		}
 		if ($categoryID == 9) {
 			// Stairs
-			$categoryOptions->add ( new CategoryOption ( 2, 9, 11100, 1, 'Location', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 2, 9, 11100, 1, 'Location', '', 'TEXTAREA', '', true, '', 'height:55px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 9, 11101, 2, 'Submitted By', '', 'USERLIST', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 9, 11103, 3, 'Pour No', '', 'TEXT', '', true, '', 'width:100px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 9, 11104, 4, 'Stairmaster correct position', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
@@ -331,12 +331,12 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 2, 9, 11110, 10, 'I confirm that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour).', 'The submitter of this report has confirmed that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour).', 'CONFIRM', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 9, 11112, 11, 'I have inspected the Stairs and confirm that all required actions and controls have been implemented.', 'The person who has submitted this report has inspected the Stairs and confirms that all required actions and controls have been implemented.', 'CONFIRM', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 9, 11113, 12, 'Comments', '', 'TEXTAREA', '', true, '', '', '' ) );
-			$categoryOptions->add ( new CategoryOption ( 2, 9, 11114, 13, 'Verified By', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 2, 9, 11114, 13, 'Verified By', '', 'TEXT', '', true, '', 'width:250px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 9, 11115, 14, 'Photos', '', 'PHOTOS', '', true, '', '', '' ) );
 		}
 		if ($categoryID == 10) {
 			// Stairs
-			$categoryOptions->add ( new CategoryOption ( 2, 10, 11120, 1, 'Location', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 2, 10, 11120, 1, 'Location', '', 'TEXTAREA', '', true, '', 'height:55px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 10, 11121, 2, 'Submitted By', '', 'USERLIST', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 10, 11122, 3, 'Length', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 10, 11123, 4, 'Width', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
@@ -357,7 +357,7 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 2, 10, 11138, 19, 'Z bars tied off', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 10, 11139, 20, 'Stop end nailed', '', 'RADIO', 'Yes,No', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 10, 11140, 21, 'Comments', '', 'TEXTAREA', '', true, '', '', '' ) );
-			$categoryOptions->add ( new CategoryOption ( 2, 10, 11141, 22, 'Verified By', '', 'TEXT', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 2, 10, 11141, 22, 'Verified By', '', 'TEXT', '', true, '', 'width:250px', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 10, 11142, 23, 'Photos', '', 'PHOTOS', '', true, '', '', '' ) );
 		}
 		
