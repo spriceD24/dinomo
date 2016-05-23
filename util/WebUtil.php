@@ -8,10 +8,12 @@
 class WebUtil {
 	const DINAMO_USER = "dinamo_user";
 	public $srcPage;
+	
 	function getBaseURI() {
 		$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		return substr ( $url, 0, strrpos ( $url, '/' ) );
 	}
+	
 	function isProduction() {
 		$host = $_SERVER ["HTTP_HOST"];
 		$pos = strpos ( $host, "localhost" );
@@ -21,6 +23,7 @@ class WebUtil {
 		}
 		return 1;
 	}
+	
 	function getLoggedInUser() {
 		LogUtil::debug ( 'WebUtil', 'Checking cookies' );
 		if (isset ( $_COOKIE [self::DINAMO_USER] )) {
@@ -40,17 +43,29 @@ class WebUtil {
 		header ( "Location: login.php" );
 		exit ();
 	}
+	
 	function addLoggedInUser($login, $numDays) {
 		LogUtil::debug ( 'WebUtil', 'Setting NEW cookie for ' . $login . ', for ' . $numDays . ' days' );
 		setcookie ( self::DINAMO_USER, StringUtils::encode ( strtolower ( trim ( $login ) ) ), time () + (86400 * $numDays), "/" );
 	}
+
 	function removeLoggedInUser() {
 		setcookie ( self::DINAMO_USER, "", time () - 3600 );
 	}
+	
 	function handleError($errno, $errstr) {
 		// add logging
 		header ( "Location: error.php?errorNo=" . $errno . "&src=" . $this->srcPage . "&errorMsg=" . urlencode ( $errstr ) );
 		exit ();
 	}
+	
+	function getDeviceIP()
+	{
+		$ipAddress = $_SERVER['REMOTE_ADDR'];
+		if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
+			$ipAddress = array_pop(explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']));
+		}
+		return $ipAddress;
+	}	
 }
 ?>

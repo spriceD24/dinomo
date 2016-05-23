@@ -107,6 +107,13 @@ class ConfigUtil {
 		$email_dinamo_from_name = self::$ini_array ["email_dinamo_from_name"];
 		return $email_dinamo_from_name;
 	}
+	
+	static function getCacheFolder()
+	{
+		self::loadINIArray();
+		$cache_folder = self::$ini_array["cache_folder"];
+		return $cache_folder;
+	}	
 }
 
 ?>
