@@ -2,6 +2,7 @@
 <?php include_once("dao/UserDAO.php"); ?>
 <?php include_once("util/LogUtil.php"); ?>
 <?php include_once("util/StringUtils.php"); ?>
+<?php include_once("util/CacheUtil.php"); ?>
 <?php
 
 class UserDelegate {
@@ -41,8 +42,18 @@ class UserDelegate {
 	function getUserPass($userID) {
 		return $this->userDAO->getUserPass ( $userID );
 	}
-	function getAllUsers() {
-		return $this->userDAO->getAllUsers ();
+	function getAllUsers() 
+	{
+		$users = CacheUtil::getCachedUsers();
+		if(empty($users))
+		{
+			LogUtil::debug ( 'UserDelegate', 'Loading users from DB' );
+			$users = $this->userDAO->getAllUsers ();
+			CacheUtil::addCachedUsers($users);
+		}else{
+			LogUtil::debug ( 'UserDelegate', 'Loading users from Cache' );
+		}
+		return $users;
 	}
 	function isValidLogin($login, $password) {
 		return $this->userDAO->isValidLogin ( strtolower ( $login ), strtolower ( $password ) );
