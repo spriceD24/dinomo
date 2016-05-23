@@ -3,6 +3,7 @@
 <?php include_once("util/StringUtils.php"); ?>
 <?php include_once("util/LogUtil.php"); ?>
 <?php include_once("util/ConfigUtil.php"); ?>
+<?php include_once("util/CacheUtil.php"); ?>
 <?php
 
 class WebUtil {
@@ -37,16 +38,32 @@ class WebUtil {
 				return $user;
 			}
 			LogUtil::debug ( 'WebUtil', 'No user found for login - ' . $login );
-		} else {
-			LogUtil::debug ( 'WebUtil', 'No cookie set....' );
-		}
+		} 
+		LogUtil::debug ( 'WebUtil', 'No cookie set, checking cache....' );
+		$deviceID = $this->getDeviceIP();
+		$user = CacheUtil::getCachedDeviceUser($deviceID);
+		if (! empty ( $user )) {
+			LogUtil::debug ( 'WebUtil', 'Found user for login in cache - ' . $user->login );
+			return $user;
+		}		
+		
 		header ( "Location: login.php" );
 		exit ();
 	}
 	
-	function addLoggedInUser($login, $numDays) {
-		LogUtil::debug ( 'WebUtil', 'Setting NEW cookie for ' . $login . ', for ' . $numDays . ' days' );
-		setcookie ( self::DINAMO_USER, StringUtils::encode ( strtolower ( trim ( $login ) ) ), time () + (86400 * $numDays), "/" );
+	function addLoggedInUser($user, $numDays) {
+		//add to cache
+		$deviceID = $this->getDeviceIP();
+		if(empty($user) || empty($user->login))
+		{
+			LogUtil::debug ( 'WebUtil', 'Resetting cookie for device ' . $deviceID  . ', for ' . $numDays . ' days' );
+			CacheUtil::removeCachedDeviceUser($deviceID);
+			setcookie ( self::DINAMO_USER, "", time () + (86400 * $numDays), "/" );
+		}else{
+			LogUtil::debug ( 'WebUtil', 'Setting NEW cookie for ' . $user->login . ', device = '.$deviceID .',  for ' . $numDays . ' days' );
+			CacheUtil::addCachedDeviceUser($deviceID, $user);				
+			setcookie ( self::DINAMO_USER, StringUtils::encode ( strtolower ( trim ( $user->login ) ) ), time () + (86400 * $numDays), "/" );
+		}
 	}
 
 	function removeLoggedInUser() {
