@@ -131,7 +131,7 @@ class Cache {
    * @param string $key
    * @return object
    */
-  public function erase($key) {
+  public function erase($key) {  	if(!$this->isCached($key))  		return;  	
     $cacheData = $this->_loadCache();
     if (true === is_array($cacheData)) {
       if (true === isset($cacheData[$key])) {

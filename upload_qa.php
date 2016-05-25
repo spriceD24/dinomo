@@ -8,9 +8,9 @@
 <?php include_once("dao/model/Category.php"); ?>
 <?php include_once("dao/model/CategoryOption.php"); ?>
 <?php include_once("dao/model/Project.php"); ?>
-<?php include_once("dao/ProjectDAO.php"); ?>
+<?php include_once("delegate/ProjectDelegate.php"); ?>
 <?php include_once("dao/model/User.php"); ?>
-<?php include_once("dao/UserDAO.php"); ?>
+<?php include_once("delegate/UserDelegate.php"); ?>
 <?php include_once("mobile_detect/Mobile_Detect.php");?>
 
 <?php
@@ -39,11 +39,11 @@ $setOptionPrefix = HTMLConst::STANDARD_OPT_ID_PREFIX;
 
 // get project info
 
-$projectDAO = new ProjectDAO ();
+$projectDelegate = new ProjectDelegate ();
 
-$project = $projectDAO->getProject ( $setCurrentProjectID );
-$currentCategory = $projectDAO->getCategory ( $setCurrentProjectID, $setCurrentCategoryID );
-$categoryOptions = $projectDAO->getCategoryOptions ( $setCurrentProjectID, $setCurrentCategoryID );
+$project = $projectDelegate->getProject ( $setCurrentProjectID );
+$currentCategory = $projectDelegate->getCategory ( $setCurrentProjectID, $setCurrentCategoryID );
+$categoryOptions = $projectDelegate->getCategoryOptions ( $setCurrentProjectID, $setCurrentCategoryID );
 
 LogUtil::debug ( "upload_qa", "Opening ALL details for project = " . $project->projectName . ", category = " . $currentCategory->categoryName . ", num options = " . $categoryOptions->getNumObjects () . ", user = " . $currentUser->login );
 
@@ -53,8 +53,8 @@ $mobileLabelStyle = ConfigUtil::getMobileLabelStyle ();
 $mobileTextAreaStyle = ConfigUtil::getMobileTextAreaStyle ();
 $mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
 
-$userDAO = new UserDAO ();
-$users = $userDAO->getAllUsers ();
+$userDelegate = new UserDelegate ();
+$users = $userDelegate->getAllUsers ();
 
 $num_images = ConfigUtil::getNumberOfUploadFiles ();
 ?>
@@ -730,8 +730,12 @@ if ($categoryOption->isRequired) {
 
 													<?php
 											
-											while ( $user = $users->iterate () ) {
-												
+											while ( $user = $users->iterate () ) 
+											{
+												if(!$user->hasRole('user'))
+												{
+														continue;
+												}
 												?>
 
 														<option value="<?=$user->userID;?>"

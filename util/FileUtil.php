@@ -11,7 +11,8 @@ class FileUtil {
 	/**
 	 * Save text to file
 	 */
-	function saveHTMLToWebFile($html, $filename) {
+	function saveHTMLToWebFile($html, $filename) 
+	{
 		$folder = ConfigUtil::getWebFolder ();
 		$file = $folder . "/" . $filename . ".html";
 		$myfile = fopen ( $file, "w" );
@@ -19,7 +20,9 @@ class FileUtil {
 		fclose ( $myfile );
 		return $file;
 	}
-	function getFilename($user, $prefix) {
+	
+	function getFilename($user, $prefix) 
+	{
 		LogUtil::debug ( "FileUtil", "Getting file name for " . $user->login . ", prefix = " . $prefix );
 		$folder = ConfigUtil::getWebFolder ();
 		for($x = 0; $x <= 10; $x ++) {
@@ -32,8 +35,27 @@ class FileUtil {
 		
 		return round ( microtime ( true ) );
 	}
-	function getUniqueName($user, $prefix, $add) {
+	
+	function getUniqueName($user, $prefix, $add) 
+	{
 		return $user->login . '_' . StringUtils::cleanString ( $prefix ) . '_' . (rand () + $add);
 	}
+	
+	function sortFiles($dir) 
+	{
+		$ignored = array('.', '..');
+	
+		$files = array();
+		foreach (scandir($dir) as $file) 
+		{
+			if (in_array($file, $ignored)) continue;
+			$files[$file] = filemtime($dir . '/' . $file);
+		}
+	
+		arsort($files);
+		$files = array_keys($files);
+	
+		return ($files) ? $files : false;
+	}	
 }
 ?>

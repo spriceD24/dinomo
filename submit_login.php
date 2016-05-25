@@ -5,7 +5,7 @@
 <?php include_once("util/StringUtils.php"); ?>
 <?php include_once("dao/model/User.php"); ?>
 <?php include_once("delegate/UserDelegate.php"); ?>
-
+<?php include_once("util/LogUtil.php"); ?>
 <?php
 
 // print_r($_FILES);
@@ -21,6 +21,8 @@ set_error_handler ( array (
 // get the login details
 $login = $_POST ["login"];
 $password = $_POST ["password"];
+
+LogUtil::debug ( "submit_login", "Checking login for =  " . $login );
 
 if (empty ( $login ) && empty ( $password )) {
 	header ( "Location: login.php?errorcode=1" );
@@ -49,7 +51,9 @@ if (! $userDelegate->isValidLogin ( $login, $password )) {
 }
 
 // login OK, now add to cookies
-$webUtil->addLoggedInUser ( $login, ConfigUtil::getCookieExpDays () );
+LogUtil::debug ( "submit_login", "LOGIN success, setting cookies for = " .$user->login );
+
+$webUtil->addLoggedInUser ( $user, ConfigUtil::getCookieExpDays () );
 
 header ( "Location: select_qa.php" );
 exit ();

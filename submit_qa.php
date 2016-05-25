@@ -157,7 +157,6 @@ $options->add ( $selectedOption );
 $forUser = "";
 
 while ( $categoryOption = $categoryOptions->iterate () ) 
-
 {
 	if (isset ( $_POST [$setOptionPrefix . $categoryOption->categoryOptionID] )) {
 		$value = $_POST [$setOptionPrefix . $categoryOption->categoryOptionID];
@@ -228,13 +227,20 @@ $email->Body = $emailHTML;
 $email->IsHTML ( true );
 
 $recipients = "";
-$email->AddAddress ( 'stephen.price@credit-suisse.com' );
-$recipients = $recipients . " stephen.price@credit-suisse.com";
-// $email->AddAddress( 'sprice_D24@yahoo.com' );
-//$email->AddAddress ( 'patricknoonan@dinomoformwork.com.au' );
-$recipients = $recipients . ", patricknoonan@dinomoformwork.com.au";
-$email->AddAddress ( 'stefdogd24@gmail.com' );
-$recipients = $recipients . ", stefdogd24@gmail.com";
+$allUsers = $userDelegate->getAllUsers();
+while ( $user = $allUsers->iterate () )
+{
+	if($user->hasRole('recipient'))
+	{
+		LogUtil::debug ( "submit_qa", "Adding email recipient = " . $user->login . "[".$user->email."], user has role 'recipient'");
+		$email->AddAddress ($user->email);
+		if($recipients != '')
+		{
+			$recipients = $recipients.", ";
+		}
+		$recipients = $recipients . $user->email;
+	}
+}
 
 $pdf_folder = ConfigUtil::getPDFFolder ();
 $path = realpath ( '.' );
