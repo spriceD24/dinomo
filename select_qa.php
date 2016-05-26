@@ -17,7 +17,8 @@ $detect = new Mobile_Detect ();
 
 $user = $webUtil->getLoggedInUser ();
 // refresh the cookie
-$webUtil->addLoggedInUser ( $user->login, ConfigUtil::getCookieExpDays () );
+$webUtil->addLoggedInUser ( $user, ConfigUtil::getCookieExpDays () );
+
 
 // echo $fileUtil->getNumberOfUploadFiles()
 // echo realpath('.');

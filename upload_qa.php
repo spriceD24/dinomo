@@ -125,6 +125,17 @@ function clearErrorDivText(id)
 	}
 }
 
+function clearErrorDivDrop(id)
+{
+	var val = getSelectedVaue(id);
+	if(val && val != '')
+	{
+		clearErrorDiv(id);
+	}else{
+		setErrorDiv(id);
+	}
+}
+
 function clearErrorDivCheck(id)
 {
 	var val = document.getElementById(id).checked;
@@ -332,6 +343,27 @@ function submitForm()
 	 		}
  		<?php
 			}
+			if ($categoryOption->formType == 'USERLIST')
+			{
+				?>
+	
+				checkedVal = document.getElementById("<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").selectedIndex;
+	
+		 		if(!checkedVal || checkedVal == 0)
+	
+		 		{
+	
+			 		//alert('Select - <?=$categoryOption->title?>');
+			 		setErrorDiv('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>')
+			 		if(errorAnchor == '')
+			 		{
+			 			errorAnchor = 'anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>';	
+			 			hasError = true;
+			 		}
+			 		//return false;
+		 		}
+	 		<?php
+			}			
 		}
 	}
 	
@@ -707,27 +739,34 @@ if ($categoryOption->isRequired) {
 										}
 										
 										if ($categoryOption->formType == 'USERLIST') 
-
 										{
-											
 											?>
+												<a
+											name="anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"></a>
+								<div class="control-group" id="div_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>">
+											<label class="control-label"
+												for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>">
+												<?=$categoryOption->title;?>														
 
-											<div class="control-group">
+									<div
+											id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+													class="errorLabel" style="display: none">* Required
+													Field</div>
+											</label>
+											<div class="controls">
+												<select
+													id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+													name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+												<?php
+												if ($detect->isMobile () && ! $detect->isTablet ()) {
+													print " style='" . $mobileDropDownStyle . "'";
+												}
+												if ($categoryOption->isRequired) {
+													print ' onchange="clearErrorDivDrop(\'' . $setOptionPrefix . $categoryOption->categoryOptionID . '\')" ';
+												}
+												?>>
 
-														<label class="control-label"
-															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"><?=$categoryOption->title;?></label>
-
-														<div class="controls">
-
-															<select
-																id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																<?php
-											if ($detect->isMobile () && ! $detect->isTablet ()) {
-												print " style='" . $mobileDropDownStyle . "'";
-											}
-											?>>
-
+													<option value=""></option>
 													<?php
 											
 											while ( $user = $users->iterate () ) 
@@ -843,7 +882,6 @@ if ($detect->isMobile () && ! $detect->isTablet ()) {
 																id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																<?php
-											
 if ($categoryOption->isRequired) {
 												print ' onclick="clearErrorDivCheck(\'' . $setOptionPrefix . $categoryOption->categoryOptionID . '\')" ';
 											}
