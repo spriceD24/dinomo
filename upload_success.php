@@ -4,6 +4,8 @@
 <?php include_once("dao/model/Category.php"); ?>
 <?php include_once("dao/model/Project.php"); ?>
 <?php include_once("delegate/ProjectDelegate.php"); ?>
+<?php include_once("mobile_detect/Mobile_Detect.php");?>
+
 <?php
 
 $webUtil = new WebUtil ();
@@ -28,6 +30,17 @@ $id = $_GET ['id'];
 $webUrl = ConfigUtil::getWebFolder () . "/" . urlencode ( $id ) . ".html";
 $pdfUrl = ConfigUtil::getPDFFolder () . "/" . urlencode ( $id ) . ".pdf";
 
+$detect = new Mobile_Detect ();
+$isMobile = ($detect->isMobile() && !$detect->isTablet());
+$isTablet = $detect->isTablet();
+
+if (isset ( $_GET ["isMobile"] )) {
+	$isMobile = ( $_GET ["isMobile"] == "true" );
+}
+if (isset ( $_GET ["isTablet"] )) {
+	$isTablet = ( $_GET ["isTablet"] == "true" );
+}
+
 ?>
 
 
@@ -45,22 +58,41 @@ $pdfUrl = ConfigUtil::getPDFFolder () . "/" . urlencode ( $id ) . ".pdf";
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
 
-
-
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet"
-	type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+<?php 
+	if($isMobile && !$isTablet)
+	{
+?>
+	<link href="css/bootstrap-phone.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive-phone.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo-phone.css">
+	<link href="css/style-phone.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin-phone.css" rel="stylesheet" type="text/css">	
+<?php 
+	}
+	else if($isTablet && !$isMobile)
+	{
+?>
+	<link href="css/bootstrap-tablet.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive-tablet.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo-tablet.css">
+	<link href="css/style-tablet.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin-tablet.css" rel="stylesheet" type="text/css">	
+<?php 
+	}else{		
+?>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin.css" rel="stylesheet" type="text/css">	
+<?php 
+	}
+?>
 
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
 	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
 	rel="stylesheet">
-
-<link href="css/style.css" rel="stylesheet" type="text/css">
-
-<link href="css/pages/signin.css" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -89,13 +121,13 @@ $pdfUrl = ConfigUtil::getPDFFolder () . "/" . urlencode ( $id ) . ".pdf";
 					<ul class="nav pull-right">
 
 						<li class="" style="float: none"><span
-							style="color: white; font-size: 11px">User: <?=$currentUser->name?> (<span
+							style="color: white;">User: <?=$currentUser->name?> (<span
 								style="font-style: italic"><a href="logout.php">logout</a></span>)
 						</span></li>
 
 						<li class="" style="padding-top: 10px"><a href="select_qa.php"
 							style="padding: 0px 0px 0px 0px" class=""> <i
-								class="icon-chevron-left"></i> Back to Project Select
+								class="icon-chevron-left"></i> Submit Another QA Report
 
 						</a></li>
 					</ul>
@@ -124,21 +156,21 @@ $pdfUrl = ConfigUtil::getPDFFolder () . "/" . urlencode ( $id ) . ".pdf";
 
 			<h3>QA Report Submitted Succesfully</h3>
 
-			<div class="login-fields">
+			<div class="login-fields label-display">
 				<p></p>
 				<table
 					style="font-size: 14px; border 1px solid; padding-top: 10px; padding-bottom: 10px; width: 80%">
 					<tr>
-						<td style="font-weight: bold">Project:</td>
-						<td align="right"><?=$project->projectName;?></td>
+						<td style="font-weight: bold" class="label-display">Project:</td>
+						<td align="right" class="label-display"><?=$project->projectName;?></td>
 					</tr>
 					<tr>
-						<td style="font-weight: bold">Report Type:</td>
-						<td align="right"><?=$currentCategory->categoryName;?></td>
+						<td style="font-weight: bold" class="label-display">Report Type:</td>
+						<td align="right" class="label-display"><?=$currentCategory->categoryName;?></td>
 					</tr>
 				</table>
 				<p></p>
-				<p style="font-size: 15px">
+				<p style="font-size: 15px" class="label-display">
 					Click <a href='<?=$pdfUrl?>' target='_blank'>here <img
 						src="img/pdf.png" /></a> to view submitted report.
 			

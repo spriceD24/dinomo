@@ -102,9 +102,11 @@
 		width: auto;
 		padding-top: 0;
 		text-align: left;
+		font-size:16px;
 	}
 	.form-horizontal .controls {
 		margin-left: 0;
+		font-size:16px;
 	}
 	.form-horizontal .control-list {
 		padding-top: 0;

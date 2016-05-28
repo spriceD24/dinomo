@@ -155,6 +155,7 @@ $selectedOption->optionValue = $dateTimeStr;
 $options->add ( $selectedOption );
 
 $forUser = "";
+$behalfOfUser = $uploadedUser;
 
 while ( $categoryOption = $categoryOptions->iterate () ) 
 {
@@ -182,6 +183,7 @@ while ( $categoryOption = $categoryOptions->iterate () )
 			if ($categoryOption->formType == 'USERLIST' && $categoryOption->title == 'Submitted By')
 			
 			{
+				$behalfOfUser = $userDelegate->getUser($value);
 				$forUser = $userDelegate->getUser($value)->name;
 				LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Setting submitted by = " .$forUser);
 			}
@@ -228,18 +230,36 @@ $email->IsHTML ( true );
 
 $recipients = "";
 $allUsers = $userDelegate->getAllUsers();
+$emailRecipients = array();
+
 while ( $user = $allUsers->iterate () )
 {
 	if($user->hasRole('recipient'))
 	{
-		LogUtil::debug ( "submit_qa", "Adding email recipient = " . $user->login . "[".$user->email."], user has role 'recipient'");
+		LogUtil::debug ( "submit_qa", "Adding email recipient = " . $user->login . " [".$user->email."], user has role 'recipient'");
 		$email->AddAddress ($user->email);
+		array_push($emailRecipients,$user->email);
 		if($recipients != '')
 		{
 			$recipients = $recipients.", ";
 		}
 		$recipients = $recipients . $user->email;
 	}
+}
+
+$email->addBCC(ConfigUtil::getDinamoSupportEmail());
+
+//check if we need to CC uploaded
+if (!in_array($uploadedUser->email, $emailRecipients)) 
+{
+	LogUtil::debug ( "submit_qa", "Adding email CC recipient = " . $uploadedUser->login . " [".$uploadedUser->email."], user uploaded report");
+	$email->addCC($uploadedUser->email);
+}
+if (!empty($behalfOfUser) && $behalfOfUser->userID != $uploadedUser->userID
+		&& !in_array($behalfOfUser->email, $emailRecipients))
+{
+	LogUtil::debug ( "submit_qa", "Adding email CC recipient = " . $behalfOfUser->login . " [".$behalfOfUser->email."], user is listed as submitter of report");
+	$email->addCC($behalfOfUser->email);
 }
 
 $pdf_folder = ConfigUtil::getPDFFolder ();

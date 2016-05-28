@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once("util/LogUtil.php"); ?>
+<?php include_once("mobile_detect/Mobile_Detect.php");?>
+
 <?php
 
 $errorMsg = "";
@@ -19,6 +21,17 @@ if (isset ( $_GET ["src"] )) {
 
 LogUtil::error ( "ERROR - ", "errorMsg = " . $errorMsg . ", errorNo = " . $errorNo . ", src = " . $src );
 
+$detect = new Mobile_Detect ();
+$isMobile = ($detect->isMobile() && !$detect->isTablet());
+$isTablet = $detect->isTablet();
+
+if (isset ( $_GET ["isMobile"] )) {
+	$isMobile = ( $_GET ["isMobile"] == "true" );
+}
+if (isset ( $_GET ["isTablet"] )) {
+	$isTablet = ( $_GET ["isTablet"] == "true" );
+}
+
 ?>
 
 <head>
@@ -33,13 +46,36 @@ LogUtil::error ( "ERROR - ", "errorMsg = " . $errorMsg . ", errorNo = " . $error
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
 
-
-
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet"
-	type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+<?php 
+	if($isMobile && !$isTablet)
+	{
+?>
+	<link href="css/bootstrap-phone.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive-phone.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo-phone.css">
+	<link href="css/style-phone.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin-phone.css" rel="stylesheet" type="text/css">	
+<?php 
+	}
+	else if($isTablet && !$isMobile)
+	{
+?>
+	<link href="css/bootstrap-tablet.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive-tablet.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo-tablet.css">
+	<link href="css/style-tablet.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin-tablet.css" rel="stylesheet" type="text/css">	
+<?php 
+	}else{		
+?>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin.css" rel="stylesheet" type="text/css">	
+<?php 
+	}
+?>
 
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
@@ -47,8 +83,6 @@ LogUtil::error ( "ERROR - ", "errorMsg = " . $errorMsg . ", errorNo = " . $error
 	rel="stylesheet">
 
 <link href="css/style.css" rel="stylesheet" type="text/css">
-
-<link href="css/pages/signin.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -103,24 +137,24 @@ LogUtil::error ( "ERROR - ", "errorMsg = " . $errorMsg . ", errorNo = " . $error
 
 			<div class="span12">
 
-				<div class="error-container">
+				<div class="error-container label-display">
 
 					<h2>Something went wrong....</h2>
 
 					<div class="error-details">
-						<p>
+						<p class="label-display">
 							<b>Error Message: </b>
 					<?=$errorMsg?>
 				</p>
-						<p>
+						<p class="label-display">
 							<b>Source File: </b>
 					<?=$src?>
 				</p>
-						<p>
+						<p class="label-display">
 							<b>Error No: </b>
 					<?=$errorNo?>
 				</p>
-						<p>Please report this to System Administrator.</p>
+						<p class="label-display">Please report this to System Administrator.</p>
 					</div>
 					<!-- /error-details -->
 

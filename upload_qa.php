@@ -35,6 +35,17 @@ if (empty ( $setCurrentProjectID ) || empty ( $setCurrentCategoryID )) {
 	exit ();
 }
 
+
+$isMobile = ($detect->isMobile() && !$detect->isTablet());
+$isTablet = $detect->isTablet();
+
+if (isset ( $_GET ["isMobile"] )) {
+	$isMobile = ( $_GET ["isMobile"] == "true");
+}
+if (isset ( $_GET ["isTablet"] )) {
+	$isTablet = ( $_GET ["isTablet"] == "true");
+}
+
 $setOptionPrefix = HTMLConst::STANDARD_OPT_ID_PREFIX;
 
 // get project info
@@ -78,28 +89,47 @@ $num_images = ConfigUtil::getNumberOfUploadFiles ();
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-phone-web-app-capable" content="yes">
 
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
 
-
-
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet"
-	type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+<?php 
+	if($isMobile && !$isTablet)
+	{
+?>
+	<link href="css/bootstrap-phone.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive-phone.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo-phone.css">
+	<link href="css/style-phone.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin-phone.css" rel="stylesheet" type="text/css">	
+<?php 
+	}
+	else if($isTablet && !$isMobile)
+	{
+?>
+	<link href="css/bootstrap-tablet.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive-tablet.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo-tablet.css">
+	<link href="css/style-tablet.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin-tablet.css" rel="stylesheet" type="text/css">	
+<?php 
+	}else{		
+?>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin.css" rel="stylesheet" type="text/css">	
+<?php 
+	}
+?>
 
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
 	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
 	rel="stylesheet">
-
-<link href="css/style.css" rel="stylesheet" type="text/css">
-
-<link href="css/pages/signin.css" rel="stylesheet" type="text/css">
 
 <script>
 //submitForm();
@@ -474,13 +504,13 @@ window.onload = function() {
 					<ul class="nav pull-right">
 
 						<li class="" style="float: none"><span
-							style="color: white; font-size: 11px">User: <?=$currentUser->name?> (<span
+							style="color: white; ">User: <?=$currentUser->name?> (<span
 								style="font-style: italic"><a href="logout.php">logout</a></span>)
 						</span></li>
 
 						<li class="" style="padding-top: 10px"><a href="select_qa.php"
 							style="padding: 0px 0px 0px 0px" class=""> <i
-								class="icon-chevron-left"></i> Back to Project Select
+								class="icon-chevron-left"></i> Select Different Project/QA Report
 
 						</a></li>
 
@@ -526,7 +556,7 @@ window.onload = function() {
 							<div class="widget-content">
 								<div class="tabbable">
 									<ul class="nav nav-tabs">
-										<li class="active"><a
+										<li class="active label-display"><a
 											href="#<?='cat_'.$currentCategory->categoryID?>"
 											data-toggle="tab"><?=$currentCategory->categoryName?></a></li>
 									</ul>
@@ -594,11 +624,11 @@ if ($categoryOption->isRequired) {
 											}
 											?>
 																<?php
-											if ((! $detect->isMobile () || $detect->isTablet ()) && ! empty ( $categoryOption->styleClass )) {
+											if ((! $isMobile || $isTablet) && ! empty ( $categoryOption->styleClass )) {
 												print " style='$categoryOption->styleClass'";
 											}
 											
-											if ($detect->isMobile () && ! $detect->isTablet ()) {
+											if ($isMobile && ! $isTablet) {
 												print " style='" . $mobileTextStyle . "'";
 											}
 											
@@ -647,7 +677,7 @@ if ($categoryOption->isRequired) {
 
 														<div class="controls"
 															<?php
-											if ($detect->isMobile () && ! $detect->isTablet ()) {
+											if ($isMobile && ! $isTablet) {
 												print " style='" . $mobileLabelStyle . "'";
 											} else {
 												print 'style="font-weight: bold"';
@@ -726,7 +756,7 @@ if ($categoryOption->isRequired) {
 if ($categoryOption->isRequired) {
 												print ' onkeyup="clearErrorDivText(\'' . $setOptionPrefix . $categoryOption->categoryOptionID . '\')" ';
 											}
-											if ($detect->isMobile () && ! $detect->isTablet ()) {
+											if ($isMobile && !$isTablet) {
 												print " style='" . $mobileLabelStyle . "'";
 											}
 											?>></textarea>
@@ -758,13 +788,14 @@ if ($categoryOption->isRequired) {
 													id="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 													name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 												<?php
-												if ($detect->isMobile () && ! $detect->isTablet ()) {
+												if ($isMobile && ! $isTablet) {
 													print " style='" . $mobileDropDownStyle . "'";
 												}
 												if ($categoryOption->isRequired) {
 													print ' onchange="clearErrorDivDrop(\'' . $setOptionPrefix . $categoryOption->categoryOptionID . '\')" ';
 												}
-												?>>
+												?>
+													class="controls-select">
 
 													<option value=""></option>
 													<?php
@@ -821,10 +852,11 @@ if ($categoryOption->isRequired) {
 																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																<?php
 											
-if ($detect->isMobile () && ! $detect->isTablet ()) {
+if ($isMobile && ! $isTablet) {
 												print " style='" . $mobileDropDownStyle . "'";
 											}
-											?>>
+											?>
+												class="controls-select">
 
 																<option value=""></option>
 
@@ -873,7 +905,7 @@ if ($detect->isMobile () && ! $detect->isTablet ()) {
 
 														<div class="controls"
 															<?php
-											if ($detect->isMobile () && ! $detect->isTablet ()) {
+											if ($isMobile && ! $isTablet) {
 												print " style='" . $mobileLabelStyle . "'";
 											}
 											?>>
@@ -1102,7 +1134,7 @@ if ($categoryOption->isRequired) {
 															value="<?=$categoryOption->formOptions;?>" />
 
 											<?php
-											if ($detect->isMobile () && ! $detect->isTablet ()) {
+											if ($isMobile && !$isTablet) {
 												?>
 														<label class="control-label" style="padding-top: 2px"
 															for="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>">

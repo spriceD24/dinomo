@@ -31,6 +31,16 @@ $projectDelegate = new ProjectDelegate ();
 $projects = $projectDelegate->getAllProjectsLite ();
 $mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
 
+
+$isMobile = ($detect->isMobile() && !$detect->isTablet());
+$isTablet = $detect->isTablet();
+
+if (isset ( $_GET ["isMobile"] )) {
+	$isMobile = ( $_GET ["isMobile"] == "true" );
+}
+if (isset ( $_GET ["isTablet"] )) {
+	$isTablet = ( $_GET ["isTablet"] == "true" );
+}
 ?>
 
 
@@ -43,26 +53,44 @@ $mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-phone-web-app-capable" content="yes">
 
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
 
-
-
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet"
-	type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/dinamo.css">
-
+<?php 
+	if($isMobile && !$isTablet)
+	{
+?>
+	<link href="css/bootstrap-phone.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive-phone.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo-phone.css">
+	<link href="css/style-phone.css" rel="stylesheet" type="text/css">
+<?php 
+	}
+	else if($isTablet && !$isMobile)
+	{
+?>
+	<link href="css/bootstrap-tablet.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive-tablet.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo-tablet.css">
+	<link href="css/style-tablet.css" rel="stylesheet" type="text/css">
+<?php 
+	}else{		
+?>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+<?php 
+	}
+?>
+	
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
 	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
 	rel="stylesheet">
-
-<link href="css/style.css" rel="stylesheet" type="text/css">
 
 <link href="css/pages/signin.css" rel="stylesheet" type="text/css">
 
@@ -204,8 +232,8 @@ $(window).bind("pageshow", function(event) {
 						<li class="" style="float: none"></li>
 
 						<li class="" style="padding-top: 20px"><span
-							style="color: white; font-size: 11px">User: <?=$user->name?> (<span
-								style="font-style: italic"><a href="logout.php">logout</a></span>)
+							style="color: white;">User: <?=$user->name?> (<span
+								style="font-style: italic"><a href="logout.php" class="controls-href">logout</a></span>)
 						</span></li>
 
 
@@ -240,14 +268,15 @@ $(window).bind("pageshow", function(event) {
 				<table
 					style="font-size: 14px; border 1px solid; padding-top: 10px; padding-bottom: 10px; width: 100%">
 					<tr>
-						<td style="font-weight: bold; width: 50%; padding-bottom: 10px">Project:</td>
+						<td style="font-weight: bold; width: 50%; padding-bottom: 10px" class="label-display">Project:</td>
 						<td><select name="projectID" id="projectID"
 							onchange="setCategoryDropdown()"
 							<?php
-							if ($detect->isMobile () && ! $detect->isTablet ()) {
+							if ($isMobile && ! $isTablet) {
 								print " style='" . $mobileDropDownStyle . "'";
 							}
-							?>>
+							?>
+							class="controls-select">
 								<option value="" selected></option>
 							<?php
 							while ( $project = $projects->iterate () ) 
@@ -266,17 +295,17 @@ $(window).bind("pageshow", function(event) {
 							{
 								?>
 								<tr id="project_row_<?=$project->projectID?>"
-						style="display: none" class="projectRow">
-						<td style="font-weight: bold; width: 50%; padding-bottom: 10px">Report
+						style="display: none" class="projectRow controls-select">
+						<td style="font-weight: bold; width: 50%; padding-bottom: 10px" class="label-display">Report
 							Type:</td>
 						<td align="right"><select name="project_<?=$project->projectID?>"
 							id="project_<?=$project->projectID?>"
 							onchange="selectCategory(<?=$project->projectID?>)"
 							<?php
-								if ($detect->isMobile () && ! $detect->isTablet ()) {
+								if ($isMobile && ! $isTablet) {
 									print " style='" . $mobileDropDownStyle . "'";
 								}
-								?>>
+								?> class="controls-select">
 								<option value="" selected></option>
 								<?php
 								while ( $category = $project->categories->iterate () ) 

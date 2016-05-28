@@ -48,6 +48,16 @@ if (isset ( $_GET ["forgot"] )) {
 
 $detect = new Mobile_Detect ();
 $mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
+
+$isMobile = ($detect->isMobile() && !$detect->isTablet());
+$isTablet = $detect->isTablet();
+
+if (isset ( $_GET ["isMobile"] )) {
+	$isMobile = ( $_GET ["isMobile"] == "true" );
+}
+if (isset ( $_GET ["isTablet"] )) {
+	$isTablet = ( $_GET ["isTablet"] == "true" );
+}
 ?>
 
   
@@ -64,22 +74,41 @@ $mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
 
-
-
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet"
-	type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+<?php 
+	if($isMobile && !$isTablet)
+	{
+?>
+	<link href="css/bootstrap-phone.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive-phone.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo-phone.css">
+	<link href="css/style-phone.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin-phone.css" rel="stylesheet" type="text/css">	
+<?php 
+	}
+	else if($isTablet && !$isMobile)
+	{
+?>
+	<link href="css/bootstrap-tablet.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive-tablet.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo-tablet.css">
+	<link href="css/style-tablet.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin-tablet.css" rel="stylesheet" type="text/css">	
+<?php 
+	}else{		
+?>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/pages/signin.css" rel="stylesheet" type="text/css">	
+<?php 
+	}
+?>
 
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
 	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
 	rel="stylesheet">
-
-<link href="css/style.css" rel="stylesheet" type="text/css">
-
-<link href="css/pages/signin.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -154,7 +183,7 @@ $mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
 							name="login" value="<?=$login;?>" placeholder="Username"
 							class="login username-field"
 							<?php
-							if ($detect->isMobile () && ! $detect->isTablet ()) {
+							if ($isMobile && ! $isTablet) {
 								print " style='" . $mobileDropDownStyle . "'";
 							}
 							?> />
@@ -166,7 +195,7 @@ $mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
 							id="password" name="password" value="" placeholder="Password"
 							class="login password-field"
 							<?php
-							if ($detect->isMobile () && ! $detect->isTablet ()) {
+							if ($isMobile && ! $isTablet) {
 								print " style='" . $mobileDropDownStyle . "'";
 							}
 							?> />
