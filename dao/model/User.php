@@ -16,7 +16,7 @@ class User {
 		$this->email = $email;
 		$this->mobile = $mobile;
 		$this->address = $address;
-		if(!empty(roles))
+		if(!empty($roles))
 		{
 			$this->roles = explode ( '|', $roles );
 		}else{

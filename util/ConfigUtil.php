@@ -97,11 +97,13 @@ class ConfigUtil {
 		$log_folder = self::$ini_array ["log_folder"];
 		return $log_folder;
 	}
+	
 	static function getDinamoFromEmail() {
 		self::loadINIArray ();
 		$email_dinamo_from_email = self::$ini_array ["email_dinamo_from_email"];
 		return $email_dinamo_from_email;
 	}
+
 	static function getDinamoFromName() {
 		self::loadINIArray ();
 		$email_dinamo_from_name = self::$ini_array ["email_dinamo_from_name"];
@@ -114,6 +116,48 @@ class ConfigUtil {
 		$cache_folder = self::$ini_array["cache_folder"];
 		return $cache_folder;
 	}	
+	
+	static function getDinamoSupportEmail() {
+		self::loadINIArray ();
+		$support_email = self::$ini_array ["support_email"];
+		return $support_email;
+	}
+	
+	static function getDBServer() {
+		self::loadINIArray ();
+		$prod_db_server = self::$ini_array ["prod_db_server"];
+		return $prod_db_server;
+	}
+	
+	static function getDBName() {
+		self::loadINIArray ();
+		$prod_db_db = self::$ini_array ["prod_db_db"];
+		return $prod_db_db;
+	}
+	
+	static function getDBUser() {
+		self::loadINIArray ();
+		$prod_db_user = self::$ini_array ["prod_db_user"];
+		return $prod_db_user;
+	}
+	
+	static function getLocalDBServer() {
+		self::loadINIArray ();
+		$local_db_server = self::$ini_array ["local_db_server"];
+		return $local_db_server;
+	}
+	
+	static function getLocalDBUser() {
+		self::loadINIArray ();
+		$local_db_user = self::$ini_array ["local_db_user"];
+		return $local_db_user;
+	}
+	
+	static function getLocalDBName() {
+		self::loadINIArray ();
+		$local_db_db = self::$ini_array ["local_db_db"];
+		return $local_db_db;
+	}
 }
 
 ?>

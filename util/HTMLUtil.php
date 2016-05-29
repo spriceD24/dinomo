@@ -140,7 +140,7 @@
 		
 		function getTimeDropdown($id)
 		{
-			$html="<select name='time_".$id."' id='time_".$id."' onchange='setDate(\"".$id."\")' style='width:100px;height:25px'>";
+			$html="<select name='time_".$id."' id='time_".$id."' onchange='setDate(\"".$id."\")' style='width:100px;height:25px' class='controls-select'>";
 			$html = $html."<option value=''></option>";
 			$html = $html."<option value='05:00'>05:00</option>";
 			$html = $html."<option value='05:15'>05:15</option>";
@@ -221,7 +221,7 @@
 
 		function getTimeDropdownOnly($id)
 		{
-			$html="<select name='".$id."' id='".$id."' onchange='checkTime(\"".$id."\")'  style='width:100px;height:25px'>";
+			$html="<select name='".$id."' id='".$id."' onchange='checkTime(\"".$id."\")'  style='width:100px;height:25px' class='controls-select'>";
 			$html = $html."<option value=''></option>";
 			$html = $html."<option value='05:00'>05:00</option>";
 			$html = $html."<option value='05:15'>05:15</option>";
@@ -312,7 +312,7 @@
 		function getDayDropdown($id)
 		{
 			$dayNumber = date("j");
-			$html="<select name='day_".$id."' id='day_".$id."' onchange=\"setDate('".$id."')\"  style='width:50px'>";
+			$html="<select name='day_".$id."' id='day_".$id."' onchange=\"setDate('".$id."')\"  style='width:50px'  class='controls-select'>";
 			for($x = 1; $x <= 31; $x ++)
 			{
 				$html = $html.$this->getDropdownElement($x,$dayNumber);
@@ -324,7 +324,7 @@
 		function getMonthDropdown($id)
 		{
 			$month = date("M");
-			$html="<select name='month_".$id."' id='month_".$id."' onchange=\"setDate('".$id."')\" style='width:75px'>";
+			$html="<select name='month_".$id."' id='month_".$id."' onchange=\"setDate('".$id."')\" style='width:75px' class='controls-select'>";
 			$html = $html.$this->getDropdownElement('Jan',$month);
 			$html = $html.$this->getDropdownElement('Feb',$month);
 			$html = $html.$this->getDropdownElement('Mar',$month);
@@ -345,7 +345,7 @@
 		{
 			$year = date('Y');
 			
-			$html="<select name='year_".$id."' id='year_".$id."' onchange='setDate(\"".$id."\")' style='width:100px'>";
+			$html="<select name='year_".$id."' id='year_".$id."' onchange='setDate(\"".$id."\")' style='width:100px' class='controls-select'>";
 			$html = $html."<option value='".($year-1)."'>".($year-1)."</option>";
 			$html = $html."<option value='".$year."' selected>".$year."</option>";
 			$html = $html."</select>";
