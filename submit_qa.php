@@ -21,12 +21,17 @@
 <?php include_once("delegate/UserDelegate.php"); ?>
 <?php include_once("util/HTMLConst.php"); ?>
 <?php include_once("util/LogUtil.php"); ?>
+<?php include_once("dao/model/Report.php"); ?>
+<?php include_once("dao/ReportDAO.php"); ?>
 
 <?php
 
 $webUtil = new WebUtil ();
 $webUtil->srcPage = "submit_qa.php";
 // set_error_handler(array($webUtil, 'handleError'));
+
+$reportDAO = new ReportDAO();
+$report = new Report();
 
 // print_r($_FILES);
 $pdfUtil = new PDFUtil ();
@@ -52,6 +57,10 @@ $images = new Collection ();
 $uploadedUserID = intval ( $_POST ["uploadedBy"] );
 $projectID = intval ( $_POST ["projectID"] );
 $categoryID = intval ( $_POST ["categoryID"] );
+
+$report->categoryID = $categoryID;
+$report->projectID = $projectID;
+$report->uploadedBy= $uploadedUserID;
 
 LogUtil::debug ( "submit_qa", "Uploading details for project ID = " . $projectID . ", category id = " . $categoryID . ",upload user ID = " . $uploadedUserID );
 
@@ -193,6 +202,8 @@ while ( $categoryOption = $categoryOptions->iterate () )
 	}
 }
 
+$report->uploadedForUser= $behalfOfUser->userID;
+
 $htmlUtil = new HTMLUtil ();
 
 LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Generating HTML, id = " . $unique_id );
@@ -218,6 +229,11 @@ $pdfUrl = ConfigUtil::getPDFFolder () . "/" . urlencode ( $unique_id ) . ".pdf";
 
 $webUrl = $webUtil->getBaseURI () . "/" . $webUrl;
 $pdfUrl = $webUtil->getBaseURI () . "/" . $pdfUrl;
+
+$report->pdfURL= $pdfUrl;
+$report->webURL= $webUrl;
+$report->reportKey= $unique_id;
+$report->reportName= urlencode ( $unique_id ) . ".pdf";
 
 LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Generating Email, Web URL = " . $webUtil->getBaseURI () . "/" . $webUrl );
 $emailHTML = $htmlUtil->generateUploadEmail ( $webUrl, $pdfUrl, $project, $currentCategory, $uploadedUser, $forUser );
@@ -276,8 +292,12 @@ if ($webUtil->isProduction ()) {
 } else {
 	LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Not Sending Email to " . $recipients . " as not in PRODUCTION" );
 }
-
 LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Sent Email OK" );
+
+LogUtil::debug ( "submit_qa", "Saving report to DB" );
+$reportDAO->saveReport($report);
+LogUtil::debug ( "submit_qa", "Saved report to DB" );
+
 header ( "Location: upload_success.php?id=" . $unique_id . "&projectID=" . $projectID . "&categoryID=" . $categoryID );
 exit ();
 ?>

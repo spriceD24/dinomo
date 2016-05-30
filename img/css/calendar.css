@@ -22,8 +22,7 @@
 	text-align: center;
 }
 
-.calendar .prev-month,
-.calendar .next-month {
+.calendar .prev-month, .calendar .next-month {
 	padding: 0;
 }
 
@@ -39,8 +38,7 @@
 	margin: 0 auto;
 }
 
-.calendar .months .prev-month,
-.calendar .months .next-month {
+.calendar .months .prev-month, .calendar .months .next-month {
 	color: #FFF;
 	text-decoration: none;
 	padding: 0 0.4em;
@@ -50,8 +48,8 @@
 	cursor: pointer;
 }
 
-.calendar .months .prev-month:hover,
-.calendar .months .next-month:hover {
+.calendar .months .prev-month:hover, .calendar .months .next-month:hover
+	{
 	background-color: #FDF5CE;
 	color: #C77405;
 }

@@ -12,19 +12,35 @@ class ReportDAO {
 		$dbUtil = new DBUtil ();
 		$conn = $dbUtil->getDBConnection();
 		
-		$sql = "SELECT * from Report";
+		$sql = "SELECT * from Report order by ReportID desc";
 		$result = $conn->query($sql);
 		
+		$reports = new Collection ();
+		
+		// replace with call to Database
 		if ($result->num_rows > 0) {
 		    // output data of each row
 		    while($row = $result->fetch_assoc()) {
-		        echo "id: " . $row["ReportID"]. " - Name: " . $row["ReportKey"]. " " . $row["UploadedDateString"]. "<br>";
+		    	$report = new Report();
+		    	$report->reportID = $row["ReportID"];
+		    	$report->categoryID = $row["CategoryID"];
+		    	$report->projectID = $row["ProjectID"];
+		    	$report->pdfURL = $row["PDFUrl"];
+		    	$report->webURL = $row["WebUrl"];
+		    	$report->reportKey = $row["ReportKey"];
+		    	//$report->reportName = $row["reportName"];
+		    	$report->uploadedBy = $row["UploadedBy"];
+		    	$report->uploadedForUser = $row["UploadedForUser"];
+		    	$report->uploadedDateString = $row["UploadedDateString"];
+		    	$report->uploadedDate = $row["UploadedDate"];
+				$reports->add ( $report );
+		
+		        //echo "id: " . $row["ReportID"]. " - Name: " . $row["ReportKey"]. " " . $row["UploadedDateString"]. "<br>";
 		    }
-		} else {
-		    echo "0 results";
-		}
+		} 
 		$conn->close();
 
+		return $reports;
 	}
 	
 	function saveReport($report) 
