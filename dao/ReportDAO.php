@@ -1,5 +1,6 @@
 <?php include_once("util/CollectionsUtil.php"); ?>
 <?php include_once("util/DBUtil.php"); ?>
+<?php include_once("util/StringUtils.php"); ?>
 <?php include_once("util/DateUtil.php"); ?>
 <?php include_once("dao/model/Report.php"); ?>
 <?php
@@ -35,7 +36,7 @@ class ReportDAO {
 		$dateUtil = new DateUtil();
 		
 		$sql = "insert into Report(UploadedDate,ProjectID,CategoryID,ReportKey,UploadedBy,UploadedDateString,UploadedForUser,PDFUrl,WebUrl) ";
-		$sql = $sql." values (now(),".$report->projectID.",".$report->categoryID.",'".mysql_real_escape_string($report->reportKey)."',".$report->uploadedBy.",'".$dateUtil->getCurrentDateTimeString()."',".$report->uploadedForUser.",'".mysql_real_escape_string($report->pdfURL)."','".mysql_real_escape_string($report->webURL)."')";
+		$sql = $sql." values (now(),".$report->projectID.",".$report->categoryID.",'".StringUtils::escapeDB($report->reportKey)."',".$report->uploadedBy.",'".$dateUtil->getCurrentDateTimeString()."',".$report->uploadedForUser.",'".StringUtils::escapeDB($report->pdfURL)."','".StringUtils::escapeDB($report->webURL)."')";
 		
 		if ($conn->query($sql) === TRUE) {
 			return "New record created successfully";
