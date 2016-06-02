@@ -223,7 +223,13 @@ $(window).bind("pageshow", function(event) {
 
 				</a>
 
-
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li class="" style="padding-top: 30px"><a href="view_reports.php"
+							style="padding: 0px 0px 0px 0px" class=""><u>View All Submitted QA Reports</u>
+						</a></li>
+					</ul>
+				</div>
 
 				<div class="nav-collapse">
 
@@ -231,7 +237,7 @@ $(window).bind("pageshow", function(event) {
 
 						<li class="" style="float: none"></li>
 
-						<li class="" style="padding-top: 20px"><span
+						<li class="" style="padding-top: 30px"><span
 							style="color: white;">User: <?=$user->name?> (<span
 								style="font-style: italic"><a href="logout.php" class="controls-href">logout</a></span>)
 						</span></li>
@@ -261,7 +267,7 @@ $(window).bind("pageshow", function(event) {
 
 		<div class="content clearfix">
 
-			<h3>Select QA Project/Report Type</h3>
+			<h3>Submit QA Report</h3>
 
 			<div class="login-fields">
 				<p></p>

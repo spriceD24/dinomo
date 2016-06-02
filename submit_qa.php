@@ -48,6 +48,7 @@ $userDelegate = new UserDelegate ();
 // add images to collection
 $images = new Collection ();
 
+$metaData = array();
 // echo "checking files";
 // loop through possible uploaded files and save
 
@@ -57,6 +58,11 @@ $images = new Collection ();
 $uploadedUserID = intval ( $_POST ["uploadedBy"] );
 $projectID = intval ( $_POST ["projectID"] );
 $categoryID = intval ( $_POST ["categoryID"] );
+
+if(empty($projectID) || empty($categoryID))
+{
+	header ( "Location: select_qa.php");
+}
 
 $report->categoryID = $categoryID;
 $report->projectID = $projectID;
@@ -106,7 +112,8 @@ foreach ( $_FILES as $file ) {
 			$info = pathinfo ( $file_name );
 			$ext = $info ['extension']; // get the extension of the file
 			$newname = "photo_" . $idx . "_" . $unique_id . "." . $ext;
-			
+			$idx=$idx+1;
+			$metaData[$file_name]=$newname;
 			// $target = $target_dir."/".$unique_id."/".$newname;
 			// mkdir("testing");
 			$target = $target_dir . "/" . $newname;
@@ -159,6 +166,12 @@ $options->add ( $selectedOption );
 
 $selectedOption = new SelectedOption ();
 $selectedOption->valueOnly = false;
+$selectedOption->optionFormID = "Submitted By";
+$selectedOption->optionValue = $uploadedUser->name;
+$options->add ( $selectedOption );
+
+$selectedOption = new SelectedOption ();
+$selectedOption->valueOnly = false;
 $selectedOption->optionFormID = "Submitted On";
 $selectedOption->optionValue = $dateTimeStr;
 $options->add ( $selectedOption );
@@ -178,11 +191,13 @@ while ( $categoryOption = $categoryOptions->iterate () )
 			$label = $categoryOption->title;
 			$selectedOption->valueOnly = false;
 			$selectedOption->formType = $categoryOption->formType;
-			if (! is_null ( $categoryOption->pdfTitle ) && ! empty ( $categoryOption->pdfTitle )) {
-				$label = $categoryOption->pdfTitle;
+			if (! is_null ( $categoryOption->getSetting("pdfTitle") ) && ! empty ( $categoryOption->getSetting("pdfTitle") )) {
+				$label = $categoryOption->getSetting("pdfTitle");
 			}
 			$selectedOption->optionFormID = $label;
 			$selectedOption->optionValue = $value;
+			$metaData[$label]=$value;
+			
 			if ($categoryOption->formType == 'CONFIRM') 
 
 			{
@@ -203,6 +218,7 @@ while ( $categoryOption = $categoryOptions->iterate () )
 }
 
 $report->uploadedForUser= $behalfOfUser->userID;
+$report->metaData = json_encode ($metaData);
 
 $htmlUtil = new HTMLUtil ();
 
@@ -287,7 +303,8 @@ LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Generating E
 $email->AddAttachment ( $file_to_attach, $pdfName . '.pdf' );
 
 LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Sending Email to " . $recipients );
-if ($webUtil->isProduction ()) {
+
+if ($webUtil->isProduction ()& !empty($project->projectName)) {
 	$email->Send ();
 } else {
 	LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Not Sending Email to " . $recipients . " as not in PRODUCTION" );

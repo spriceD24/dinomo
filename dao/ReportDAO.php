@@ -12,7 +12,7 @@ class ReportDAO {
 		$dbUtil = new DBUtil ();
 		$conn = $dbUtil->getDBConnection();
 		
-		$sql = "SELECT * from Report order by ReportID desc";
+		$sql = "SELECT * from Report where DeleteFlag = 0 order by ReportID desc";
 		$result = $conn->query($sql);
 		
 		$reports = new Collection ();
@@ -33,6 +33,7 @@ class ReportDAO {
 		    	$report->uploadedForUser = $row["UploadedForUser"];
 		    	$report->uploadedDateString = $row["UploadedDateString"];
 		    	$report->uploadedDate = $row["UploadedDate"];
+		    	$report->metaData = $row["MetaData"];
 				$reports->add ( $report );
 		
 		        //echo "id: " . $row["ReportID"]. " - Name: " . $row["ReportKey"]. " " . $row["UploadedDateString"]. "<br>";
@@ -51,8 +52,8 @@ class ReportDAO {
 		date_default_timezone_set ( 'Australia/Sydney' );
 		$dateUtil = new DateUtil();
 		
-		$sql = "insert into Report(UploadedDate,ProjectID,CategoryID,ReportKey,UploadedBy,UploadedDateString,UploadedForUser,PDFUrl,WebUrl) ";
-		$sql = $sql." values (now(),".$report->projectID.",".$report->categoryID.",'".StringUtils::escapeDB($report->reportKey)."',".$report->uploadedBy.",'".$dateUtil->getCurrentDateTimeString()."',".$report->uploadedForUser.",'".StringUtils::escapeDB($report->pdfURL)."','".StringUtils::escapeDB($report->webURL)."')";
+		$sql = "insert into Report(UploadedDate,ProjectID,CategoryID,ReportKey,UploadedBy,UploadedDateString,UploadedForUser,PDFUrl,WebUrl,DeleteFlag,MetaData) ";
+		$sql = $sql." values (now(),".$report->projectID.",".$report->categoryID.",'".StringUtils::escapeDB($report->reportKey)."',".$report->uploadedBy.",'".$dateUtil->getCurrentDateTimeString()."',".$report->uploadedForUser.",'".StringUtils::escapeDB($report->pdfURL)."','".StringUtils::escapeDB($report->webURL)."',0,'".StringUtils::escapeDB($report->metaData)."')";
 		
 		if ($conn->query($sql) === TRUE) {
 			return "New record created successfully";

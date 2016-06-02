@@ -158,6 +158,19 @@ class ConfigUtil {
 		$local_db_db = self::$ini_array ["local_db_db"];
 		return $local_db_db;
 	}
+	
+	static function getRunMode() {
+		self::loadINIArray ();
+		$run_mode = self::$ini_array ["run_mode"];
+		return $run_mode;
+	}
+	
+	static function getSessionTracking() {
+		self::loadINIArray ();
+		$session_tracking = self::$ini_array ["session_tracking"];
+		return $session_tracking;
+	}
+	
 }
 
 ?>

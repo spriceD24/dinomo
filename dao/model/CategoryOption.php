@@ -10,19 +10,26 @@ class CategoryOption {
 	public $errorMessage;
 	public $styleClass;
 	public $labelStyleClass;
-	function __construct($projectID, $categoryID, $categoryOptionID, $order, $title, $pdfTitle, $formType, $formOptions, $isRequired, $errorMessage, $styleClass, $labelStyleClass) {
+	public $optionSettings;
+	
+	function __construct($projectID, $categoryID, $categoryOptionID, $order, $title, $formType, $isRequired, $optionSettings = array()) {
 		$this->projectID = $projectID;
 		$this->categoryID = $categoryID;
 		$this->categoryOptionID = $categoryOptionID;
 		$this->order = $order;
 		$this->title = $title;
-		$this->pdfTitle = $pdfTitle;
 		$this->formType = $formType;
-		$this->formOptions = $formOptions;
 		$this->isRequired = $isRequired;
-		$this->errorMessage = $errorMessage;
-		$this->styleClass = $styleClass;
-		$this->labelStyleClass = $labelStyleClass;
+		$this->optionSettings = $optionSettings;
+	}
+	
+	function getSetting($settingName)
+	{
+		if(!empty($this->optionSettings) && isset($this->optionSettings[$settingName]))
+		{
+			return $this->optionSettings[$settingName];
+		}
+		return '';
 	}
 }
 

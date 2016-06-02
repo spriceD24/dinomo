@@ -510,7 +510,7 @@ window.onload = function() {
 
 						<li class="" style="padding-top: 10px"><a href="select_qa.php"
 							style="padding: 0px 0px 0px 0px" class=""> <i
-								class="icon-chevron-left"></i> Select Different Project/QA Report
+								class="icon-chevron-left"></i> Select Different QA Report
 
 						</a></li>
 
@@ -584,6 +584,13 @@ window.onload = function() {
 												<fieldset>
 
 										
+										<div class="control-group">											
+											<label class="control-label" for="submittedBy">Submitted By</label>
+											<div class="controls">
+												<label class="control-label" for="submittedBy" style="text-align:left;font-weight:bold"><?=$currentUser->name?></label>
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
 
 									<?php
 									
@@ -624,8 +631,8 @@ if ($categoryOption->isRequired) {
 											}
 											?>
 																<?php
-											if ((! $isMobile || $isTablet) && ! empty ( $categoryOption->styleClass )) {
-												print " style='$categoryOption->styleClass'";
+											if ((! $isMobile || $isTablet) && ! empty ($categoryOption->getSetting("style") )) {
+												print " style='".$categoryOption->getSetting("style")."'";
 											}
 											
 											if ($isMobile && ! $isTablet) {
@@ -695,7 +702,7 @@ if ($categoryOption->isRequired) {
 
 												<?php
 											
-											$radioOptions = $stringUtils->commaSeperatedValuesToArray ( $categoryOption->formOptions );
+											$radioOptions = $stringUtils->commaSeperatedValuesToArray ( $categoryOption->getSetting("radioOptions") );
 											
 											foreach ( $radioOptions as $radioOption ) {
 												
@@ -748,8 +755,8 @@ if ($categoryOption->isRequired) {
 
 
 																<?php
-											if (! empty ( $categoryOption->styleClass )) {
-												print " style='$categoryOption->styleClass'";
+											if (! empty ( $categoryOption->getSetting("style") )) {
+												print " style='".$categoryOption->getSetting("style")."'";
 											}else{
 												print " rows=5 ";
 											}
@@ -1131,7 +1138,7 @@ if ($categoryOption->isRequired) {
 														<input type="hidden"
 															id="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>"
 															name="<?=$setOptionPrefix.$categoryOption->categoryOptionID?>"
-															value="<?=$categoryOption->formOptions;?>" />
+															value="<?=$categoryOption->getSetting("label");?>" />
 
 											<?php
 											if ($isMobile && !$isTablet) {
@@ -1143,7 +1150,7 @@ if ($categoryOption->isRequired) {
 														<div class="controls">
 															<span class="dinamo-label"
 																style="font-weight: bold; font-style: italic">
-															<?=$categoryOption->title;?>/<?=$categoryOption->formOptions;?>
+															<?=$categoryOption->title;?>/<?=$categoryOption->getSetting("label");?>
 															</span>
 														</div>
 											<?php }else{?>
@@ -1156,7 +1163,7 @@ if ($categoryOption->isRequired) {
 														<div class="controls">
 															<span class="dinamo-label"
 																style="font-weight: bold; font-style: italic">
-															<?=$categoryOption->formOptions;?>
+															<?=$categoryOption->getSetting("label");?>
 															</span>
 														</div>
 											<?php } ?>

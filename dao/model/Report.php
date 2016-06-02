@@ -11,6 +11,7 @@
             public $uploadedDateString;
             public $webURL;
             public $pdfURL;
+			public $metaData;
 	}
 
 ?>
