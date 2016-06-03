@@ -186,6 +186,23 @@ function setErrorDiv(id)
 	//alert('set - '+id);
 }
 
+function showCantProceedDiv(id)
+{
+	document.getElementById('div_'+id).style.border='1px solid red';
+	document.getElementById('div_'+id).style.backgroundColor ='#e2cbba';
+	document.getElementById('error_proceed_'+id).style.display ='';
+	
+	//alert('set - '+id);
+}
+
+function clearCantProceedDiv(id)
+{
+	//alert('clear - '+id);
+	document.getElementById('div_'+id).style.border='0px solid white';
+	document.getElementById('div_'+id).style.backgroundColor ='white';
+	document.getElementById('error_proceed_'+id).style.display ='none';
+}
+
 function showNextDate(id)
 {
 	document.getElementById(id).style.display ='';
@@ -245,8 +262,18 @@ function validDate(id)
 function leapYear(year)
 {
 	var isLeap = new Date(year, 1, 29).getMonth() == 1;
-	;
+	
 	return isLeap;
+}
+
+function showDiv(id)
+{
+	document.getElementById(id).style.display='';
+}
+
+function hideDiv(id)
+{
+	document.getElementById(id).style.display='none';
 }
 
 function submitForm()
@@ -271,6 +298,7 @@ function submitForm()
 			{
 				?>	
 			selectedRadio = $("input[name=<?=$setOptionPrefix.$categoryOption->categoryOptionID?>]:checked").length;
+			var value = $("input[name=<?=$setOptionPrefix.$categoryOption->categoryOptionID?>]:checked").val();
 	 		if(selectedRadio == 0)
 	 		{
 		 		//alert('Select - <?=$categoryOption->title?>');
@@ -282,6 +310,43 @@ function submitForm()
 		 		setErrorDiv('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>')
 		 		//return false;
 	 		}
+	 	   <?php 
+	 		if (! empty ( $categoryOption->getSetting("commentOn") ))
+	 		{
+	 			?>
+	 			if(value == '<?=$categoryOption->getSetting("commentOn")?>')
+	 			{
+	 				selectedVal = document.getElementById("commentOnText_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").value;
+	 				if(!selectedVal || selectedVal == '')
+	 		 		{
+	 		 			setErrorDiv('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>')
+	 			 		if(errorAnchor == '')
+	 			 		{
+	 			 			errorAnchor = 'anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>';	
+	 			 			hasError = true;
+	 			 		}
+	 		 		}
+	 			}else{
+	 				document.getElementById("commentOnText_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").value = '';
+	 			}
+	 			<?php
+	 		}
+	 		if (! empty ( $categoryOption->getSetting("cannotProceedOn") ))
+	 		{
+	 			?>
+	 			if(value == '<?=$categoryOption->getSetting("cannotProceedOn")?>')
+	 			{
+ 			 		if(errorAnchor == '')
+ 			 		{
+ 			 			errorAnchor = 'anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>';	
+ 			 			hasError = true;
+ 			 		}
+	 			}
+	 			<?php
+	 		}
+	 		?>
+	 				
+	 		
  		<?php
 			}
 			if ($categoryOption->formType == 'TEXT') 
@@ -696,7 +761,12 @@ if ($categoryOption->isRequired) {
 														<label class="control-label"><div
 																id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																class="errorLabel" style="display: none">* Required
-																Field</div> </label>
+																Field</div> 
+																
+																<div
+																id="error_proceed_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																class="errorLabel" style="display: none">* CANNOT SUBMIT</div> 
+																</label>
 
 														<div class="controls">
 
@@ -712,15 +782,65 @@ if ($categoryOption->isRequired) {
 																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																id="<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																value="<?=$radioOption?>"
-																onchange="clearErrorDiv('<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>')"> <?=$radioOption;?>
+																<?php 
+																$onchange = "";
+																if (! empty ( $categoryOption->getSetting("commentOn") )
+																		&& $stringUtils->equalsCaseInsensitive($categoryOption->getSetting("commentOn"),$radioOption))
+																{
+																	
+																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."');showDiv('commentOn_".$setOptionPrefix.$categoryOption->categoryOptionID."')";
+																}
+																else if (! empty ( $categoryOption->getSetting("commentOn") )
+																		&& !$stringUtils->equalsCaseInsensitive($categoryOption->getSetting("commentOn"),$radioOption))
+																{
+																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."');hideDiv('commentOn_".$setOptionPrefix.$categoryOption->categoryOptionID."')";
+																}
+																else{
+																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."')";
+																}
+																
+																//check cannot proceed
+																if (! empty ( $categoryOption->getSetting("cannotProceedOn") )
+																		&& $stringUtils->equalsCaseInsensitive($categoryOption->getSetting("cannotProceedOn"),$radioOption))
+																{
+																		
+																	$onchange=$onchange.";showCantProceedDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."')";
+																}
+																else if (! empty ( $categoryOption->getSetting("cannotProceedOn") )
+																		&& !$stringUtils->equalsCaseInsensitive($categoryOption->getSetting("cannotProceedOn"),$radioOption))
+																{
+																	$onchange=$onchange.";clearCantProceedDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."')";
+																}
+																?>
+																onchange="<?=$onchange?>";																	onchange="clearErrorDiv('<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>')"
+																> <?=$radioOption;?>
 													</label>
 
 												<?php
 											}
-											
+											if (! empty ( $categoryOption->getSetting("commentOn") ))
+											{
 											?>
-
-											  </div>
+											<div id="commentOn_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>" style='display:none'>
+												<div class="controls" 
+																<?php
+												if ($isMobile && ! $isTablet) {
+													print " style='" . $mobileLabelStyle . ";margin-left:0px;margin-top:5px;'";
+												} else {
+													print 'style="font-weight: bold;margin-left:0px;margin-top:5px;"';
+												}
+												?>>
+													<font style="color:red">*&nbsp;</font><?=$categoryOption->getSetting("commentTitle");?>
+												</div>
+												<textarea rows="5" cols="10" id="commentOnText_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>"
+												name="commentOnText_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>"
+												onkeyup="clearErrorDivText('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>');clearErrorDiv('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>');" 
+												></textarea>
+											</div>			
+										<?php
+											}
+										
+											?>							  </div>
 
 													</div>
 

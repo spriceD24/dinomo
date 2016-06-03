@@ -171,6 +171,11 @@ class ConfigUtil {
 		return $session_tracking;
 	}
 	
+	static function getSessionTrackingTimeoutMins() {
+		self::loadINIArray ();
+		$session_timeout_mins = self::$ini_array ["session_timeout_mins"];
+		return intval($session_timeout_mins) * 60;
+	}
 }
 
 ?>

@@ -195,7 +195,22 @@ while ( $categoryOption = $categoryOptions->iterate () )
 				$label = $categoryOption->getSetting("pdfTitle");
 			}
 			$selectedOption->optionFormID = $label;
+			
+			if(!empty($categoryOption->getSetting("commentOn")))
+			{
+				LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Checking comment on..." );
+				if (isset ( $_POST ["commentOnText_".$setOptionPrefix . $categoryOption->categoryOptionID] ))
+				{
+					LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Checking comment on val is - ".$_POST ["commentOnText_".$setOptionPrefix . $categoryOption->categoryOptionID] );
+					$details = $_POST ["commentOnText_".$setOptionPrefix . $categoryOption->categoryOptionID] ;
+					if(!empty($details))
+					{
+						$value = $value.": ".$details;
+					}
+				}
+			}
 			$selectedOption->optionValue = $value;
+				
 			$metaData[$label]=$value;
 			
 			if ($categoryOption->formType == 'CONFIRM') 

@@ -120,15 +120,17 @@ class ProjectDAO {
 			// Deck Handover
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 1, 1, 'Core No', 'TEXT', true, array("style"=>"width:150px")));
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 2, 2, 'Level No', 'TEXT', true, array("style"=>"width:150px")));
+			$categoryOptions->add ( new CategoryOption ( 1, 1, 3333, 33333, 'Is it full deck handover', 'RADIO', true,  array("radioOptions"=>"Yes,No","commentOn"=>"No","commentTitle"=>"Provide Details Of Handover") ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 1, 43333, 433333, 'All props/pins checked', 'RADIO', true,  array("radioOptions"=>"Yes,No","cannotProceedOn"=>"No") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 3, 3, 'Formwork deck fully complete with no gaps or holes', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 4, 4, 'All decking panels and formwork sheets firmly secured', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 5, 5, 'Edge boards complete and firmly secured', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 6, 6, 'Edge protection in place and adequate', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
-			$categoryOptions->add ( new CategoryOption ( 1, 1, 7, 7, 'Scaffold and perimeter safety screens in place with no gaps', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 1, 7, 7, 'Scaffold and perimeter safety screens in place with no gaps', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A","cannotProceedOn"=>"No") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 8, 8, 'Deck fully extends to edge of scaffold', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
-			$categoryOptions->add ( new CategoryOption ( 1, 1, 9, 9, 'Hand railing complete, firmly fixed and of adequate strength', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 1, 9, 9, 'Hand railing complete, firmly fixed and of adequate strength', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A","cannotProceedOn"=>"No") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 10, 10, 'Steel safety mesh installed in all service penetrations ', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
-			$categoryOptions->add ( new CategoryOption ( 1, 1, 11, 11, 'All penetrations covered, secured and clearly stencilled ', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 1, 11, 11, 'All penetrations covered, screwed down and clearly stencilled ', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A","cannotProceedOn"=>"No") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 12, 12, 'Soffit surveyed', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 13, 13, 'Fencing/cordons in place in areas not ready for handover', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 14, 14, 'Required signage in place in areas not ready for handover', 'RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
@@ -145,7 +147,7 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 11190, 11130, 'Structural Outline', 'TEXT', true, array("style"=>"width:150px") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 11191, 11131, 'Formwork Certificate', 'TEXT', true, array("style"=>"width:150px") ) );			
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 19, 19, 'Comments', 'TEXTAREA', true ) );
-			$categoryOptions->add ( new CategoryOption ( 1, 1, 20, 20, 'I confirm that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).', 'CONFIRM', '', true,  array("pdfTitle"=>"The submitter of this report has confirmed that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).") ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 1, 20, 20, 'I confirm that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).', 'CONFIRM',  true,  array("pdfTitle"=>"The submitter of this report has confirmed that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 21, 21, 'I confirm the deck has been inspected to ensure that all required actions and controls have been implemented.','CONFIRM', true,  array("pdfTitle"=>"The submitter of this report has confirmed the deck has been inspected to ensure that all required actions and controls have been implemented.")) );
 			// $categoryOptions->add(new CategoryOption(1,1,23,23,'Verified On','','DATETIME','',true,'','',''));
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 24, 24, 'Photos', 'PHOTOS', true ) );
@@ -186,6 +188,7 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 65, 5, 'Temperature', 'TEXT', true, array("style"=>"width:100px") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 66, 6, 'Start of Pour', '', 'TIME', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 67, 7, 'Finish of Pour', '', 'TIME', '', true, '', '', '' ) );
+			$categoryOptions->add ( new CategoryOption ( 1, 3, 743333,7433333, 'Are all props/pins checked', 'RADIO', true,  array("radioOptions"=>"Yes,No","cannotProceedOn"=>"No") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 68, 8, 'CAST INS', '', 'LABEL_AREA', '', true, '', '', '' ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 69, 9, 'Hob for post fix spandrals and cast ins','RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 3, 70, 10, 'Construction joints / dowels','RADIO', true,  array("radioOptions"=>"Yes,No,N/A") ) );

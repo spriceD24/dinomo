@@ -41,7 +41,16 @@ class WebUtil {
 					$user = $userDelegate->getUserByLogin ( $login );
 					if (! empty ( $user )) {
 						LogUtil::debug ( 'WebUtil.getLoggedInUser', 'Found user for login - ' . $login );
-						return $user;
+						//check if we've timed out
+						$timeout = ConfigUtil::getSessionTrackingTimeoutMins();
+						if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $timeout)) {
+							LogUtil::debug ( 'WebUtil.getLoggedInUser', 'User timed out - ' . $login.', last activity = '.$_SESSION['LAST_ACTIVITY'] );
+							self::removeLoggedInUser();
+						}else{
+							LogUtil::debug ( 'WebUtil.getLoggedInUser', 'User NOT timed out - ' . $login );
+							$_SESSION['LAST_ACTIVITY'] = time();					
+							return $user;
+						}
 					}else{
 						LogUtil::debug ( 'WebUtil.getLoggedInUser', 'old user in session');					
 					}
@@ -100,6 +109,7 @@ class WebUtil {
 				}
 				LogUtil::debug ( 'WebUtil.addLoggedInUser', 'Adding user to session' );
 				$_SESSION[self::DINAMO_USER] = $user->login;
+				$_SESSION['LAST_ACTIVITY'] = time();
 			}
 		}else{
 			//add to cache/cookies
