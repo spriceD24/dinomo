@@ -4,12 +4,9 @@ class CategoryOption {
 	public $categoryID;
 	public $categoryOptionID;
 	public $order;
+	public $title;
 	public $formType;
-	public $formOptions;
 	public $isRequired;
-	public $errorMessage;
-	public $styleClass;
-	public $labelStyleClass;
 	public $optionSettings;
 	
 	function __construct($projectID, $categoryID, $categoryOptionID, $order, $title, $formType, $isRequired, $optionSettings = array()) {

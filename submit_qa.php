@@ -191,13 +191,15 @@ while ( $categoryOption = $categoryOptions->iterate () )
 			$label = $categoryOption->title;
 			$selectedOption->valueOnly = false;
 			$selectedOption->formType = $categoryOption->formType;
-			if (! is_null ( $categoryOption->getSetting("pdfTitle") ) && ! empty ( $categoryOption->getSetting("pdfTitle") )) {
-				$label = $categoryOption->getSetting("pdfTitle");
+			$pdfTitle = $categoryOption->getSetting("pdfTitle");
+			if (! is_null ( $pdfTitle ) && ! empty ( $pdfTitle )) {
+				$label = $pdfTitle;
 			}
 			$selectedOption->optionFormID = $label;
 			
-			if(!empty($categoryOption->getSetting("commentOn")))
-			{
+			$commentOn = $categoryOption->getSetting("commentOn");
+	 		if (! empty ( $commentOn ))
+	 		{
 				LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Checking comment on..." );
 				if (isset ( $_POST ["commentOnText_".$setOptionPrefix . $categoryOption->categoryOptionID] ))
 				{

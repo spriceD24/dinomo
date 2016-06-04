@@ -311,10 +311,11 @@ function submitForm()
 		 		//return false;
 	 		}
 	 	   <?php 
-	 		if (! empty ( $categoryOption->getSetting("commentOn") ))
+	 	    $commentOn = $categoryOption->getSetting("commentOn");
+	 		if (! empty ( $commentOn ))
 	 		{
 	 			?>
-	 			if(value == '<?=$categoryOption->getSetting("commentOn")?>')
+	 			if(value == '<?=$commentOn?>')
 	 			{
 	 				selectedVal = document.getElementById("commentOnText_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").value;
 	 				if(!selectedVal || selectedVal == '')
@@ -331,7 +332,8 @@ function submitForm()
 	 			}
 	 			<?php
 	 		}
-	 		if (! empty ( $categoryOption->getSetting("cannotProceedOn") ))
+	 		$cannotProceedOn = $categoryOption->getSetting("cannotProceedOn");
+	 		if (! empty ( $cannotProceedOn  ))
 	 		{
 	 			?>
 	 			if(value == '<?=$categoryOption->getSetting("cannotProceedOn")?>')
@@ -651,9 +653,9 @@ window.onload = function() {
 										
 										<div class="control-group">											
 											<label class="control-label" for="submittedBy">Submitted By</label>
-											<div class="controls">
-												<label class="control-label" for="submittedBy" style="text-align:left;font-weight:bold"><?=$currentUser->name?></label>
-											</div> <!-- /controls -->				
+											<div class="controls" style="font-weight: bold;padding-top:3px">
+												<?=$currentUser->name?><span style="font-weight:normal;font-size:11px">&nbsp;(Not you? - <a href="logout.php">logout</a>)</span>											
+											</div>
 										</div> <!-- /control-group -->
 										
 
@@ -696,8 +698,9 @@ if ($categoryOption->isRequired) {
 											}
 											?>
 																<?php
-											if ((! $isMobile || $isTablet) && ! empty ($categoryOption->getSetting("style") )) {
-												print " style='".$categoryOption->getSetting("style")."'";
+											$settingStyle = $categoryOption->getSetting("style");
+											if ((! $isMobile || $isTablet) && ! empty ($settingStyle )) {
+												print " style='".$settingStyle."'";
 											}
 											
 											if ($isMobile && ! $isTablet) {
@@ -762,10 +765,12 @@ if ($categoryOption->isRequired) {
 																id="error_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																class="errorLabel" style="display: none">* Required
 																Field</div> 
-																
+																<?php 
+																$cannotProceedOn = $categoryOption->getSetting("cannotProceedOn"); 
+																?>
 																<div
 																id="error_proceed_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																class="errorLabel" style="display: none">* CANNOT SUBMIT</div> 
+																class="errorLabel" style="display: none">* CANNOT SUBMIT IF '<i><?=$cannotProceedOn?></i>'</div> 
 																</label>
 
 														<div class="controls">
@@ -784,30 +789,32 @@ if ($categoryOption->isRequired) {
 																value="<?=$radioOption?>"
 																<?php 
 																$onchange = "";
-																if (! empty ( $categoryOption->getSetting("commentOn") )
-																		&& $stringUtils->equalsCaseInsensitive($categoryOption->getSetting("commentOn"),$radioOption))
+																$commentOn = $categoryOption->getSetting("commentOn");
+																
+																if (! empty ( $commentOn  )
+																		&& $stringUtils->equalsCaseInsensitive($commentOn ,$radioOption))
 																{
 																	
 																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."');showDiv('commentOn_".$setOptionPrefix.$categoryOption->categoryOptionID."')";
 																}
-																else if (! empty ( $categoryOption->getSetting("commentOn") )
-																		&& !$stringUtils->equalsCaseInsensitive($categoryOption->getSetting("commentOn"),$radioOption))
+																else if (! empty ($commentOn  )
+																		&& !$stringUtils->equalsCaseInsensitive($commentOn,$radioOption))
 																{
 																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."');hideDiv('commentOn_".$setOptionPrefix.$categoryOption->categoryOptionID."')";
 																}
 																else{
 																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."')";
 																}
-																
+																$cannotProceedOn = $categoryOption->getSetting("cannotProceedOn"); 
 																//check cannot proceed
-																if (! empty ( $categoryOption->getSetting("cannotProceedOn") )
-																		&& $stringUtils->equalsCaseInsensitive($categoryOption->getSetting("cannotProceedOn"),$radioOption))
+																if (! empty ( $cannotProceedOn )
+																		&& $stringUtils->equalsCaseInsensitive($cannotProceedOn,$radioOption))
 																{
 																		
 																	$onchange=$onchange.";showCantProceedDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."')";
 																}
-																else if (! empty ( $categoryOption->getSetting("cannotProceedOn") )
-																		&& !$stringUtils->equalsCaseInsensitive($categoryOption->getSetting("cannotProceedOn"),$radioOption))
+																else if (! empty ( $cannotProceedOn )
+																		&& !$stringUtils->equalsCaseInsensitive($cannotProceedOn,$radioOption))
 																{
 																	$onchange=$onchange.";clearCantProceedDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."')";
 																}
@@ -818,7 +825,8 @@ if ($categoryOption->isRequired) {
 
 												<?php
 											}
-											if (! empty ( $categoryOption->getSetting("commentOn") ))
+											$commentOn = $categoryOption->getSetting("commentOn");
+											if (! empty ( $commentOn ))
 											{
 											?>
 											<div id="commentOn_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>" style='display:none'>
@@ -875,8 +883,9 @@ if ($categoryOption->isRequired) {
 
 
 																<?php
-											if (! empty ( $categoryOption->getSetting("style") )) {
-												print " style='".$categoryOption->getSetting("style")."'";
+											$settingStyle = $categoryOption->getSetting("style");
+											if (! empty ( $settingStyle )) {
+												print " style='".$settingStyle."'";
 											}else{
 												print " rows=5 ";
 											}

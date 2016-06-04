@@ -4,7 +4,7 @@
 <?php include_once("dao/model/Project.php"); ?>
 <?php
 
-class ProjectDAO {
+class ProjectDAO_Fixed {
 	function getAllProjectsLite() {
 		$projects = new Collection ();
 		$categories = new Collection ();
