@@ -2,6 +2,10 @@
 <?php include_once("dao/model/Category.php"); ?>
 <?php include_once("dao/model/CategoryOption.php"); ?>
 <?php include_once("dao/model/Project.php"); ?>
+<?php include_once("util/DBUtil.php"); ?>
+<?php include_once("util/StringUtils.php"); ?>
+<?php include_once("util/DateUtil.php"); ?>
+<?php include_once("util/LogUtil.php"); ?>
 <?php
 
 class ProjectDAO {
@@ -439,6 +443,124 @@ class ProjectDAO {
 		}
 		
 		return $categoryOptions;
+	}
+	
+	function saveProject($insertedByID,$project)
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Executing Save Project');
+		$nextProjectID = $this->getNextProjectID();
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+	
+		$sql = "insert into Project(ID,Name,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
+		$sql = $sql." values (".$nextProjectID.",'".StringUtils::escapeDB($project->projectName)."',now(),".$insertedByID.",now(),".$insertedByID.",0) ";
+		LogUtil::debug ( 'ProjectDAO', 'Saving project sql = '.$sql);
+		//now()
+		if ($conn->query($sql) === TRUE) {
+			return "New record created successfully";
+		} else {
+			return "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
+	
+	function saveCategory($insertedByID,$project,$category)
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Executing Save Category');
+		$nextCategoryID = $this->getNextCategoryID($projectID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+	
+		$sql = "insert into Category(ID,ProjectID,Name,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
+		$sql = $sql." values (".$nextCategoryID.",".$projectID.",'".StringUtils::escapeDB($category->categoryName)."',now(),".$insertedByID.",now(),".$insertedByID.",0) ";
+		LogUtil::debug ( 'ProjectDAO', 'Saving project sql = '.$sql);
+		//now()
+		if ($conn->query($sql) === TRUE) {
+			return "New record created successfully";
+		} else {
+			return "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
+	
+	private function getNextProjectID()
+	{
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$result = $conn->query("SELECT MAX(ID) AS max_id FROM Project");
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				return intval($row["max_id"])+1;
+			}
+		}
+		return $max;
+	}
+
+	private function getNextCategoryID($projectID)
+	{
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$result = $conn->query("SELECT MAX(ID) AS max_id FROM Category where ProjectID = ".$projectID);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				return intval($row["max_id"])+1;
+			}
+		}
+		return $max;
+	}	
+
+	private function getNextCategoryOptionID($projectID,$categoryID)
+	{
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$result = $conn->query("SELECT MAX(ID) AS max_id FROM CategoryOption where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				return intval($row["max_id"])+1;
+			}
+		}
+		return $max;
+	}	
+	function deleteProject($projectID) {
+		// replace with call to DB
+		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$conn->query("Update Project set DeleteFlag = 1 where ID = ".$projectID);
+		$conn->query("Update Category set DeleteFlag = 1 where ProjectID = ".$projectID);
+		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID);
+		return true;
+	}	
+
+	function deleteCategory($projectID,$categoryID) {
+		// replace with call to DB
+		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID.', category id = '.$categoryID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
+		return true;
+	}
+
+	function deleteCategoryOptions($projectID,$categoryID) {
+		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID.', category id = '.$categoryID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$conn->query("Update Category set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
+		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
+		return true;
 	}
 }
 

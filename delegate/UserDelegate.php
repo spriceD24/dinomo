@@ -55,8 +55,15 @@ class UserDelegate {
 		}
 		return $users;
 	}
+	
 	function isValidLogin($login, $password) {
 		return $this->userDAO->isValidLogin ( strtolower ( $login ), strtolower ( $password ) );
+	}
+	
+	function saveUser($insertedByID,$user)
+	{
+		$this->userDAO->saveUser($insertedByID, $user);
+		CacheUtil::removeCachedUsers();
 	}
 }
 
