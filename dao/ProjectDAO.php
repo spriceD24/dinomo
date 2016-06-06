@@ -9,116 +9,269 @@
 <?php
 
 class ProjectDAO {
-	function getAllProjectsLite() {
+
+	function getAllProjectsLite() 
+	{
 		$projects = new Collection ();
-		$categories = new Collection ();
-		
-		// replace with call to Database
-		$categories->add ( new Category ( 1, 1, 'Deck Handover', new Collection () ) );
-		$categories->add ( new Category ( 1, 2, 'Lift & Stair Boxes', new Collection () ) );
-		$categories->add ( new Category ( 1, 3, 'Pre Pour Checklist', new Collection () ) );
-		$categories->add ( new Category ( 1, 4, 'Stairs', new Collection () ) );
-		$categories->add ( new Category ( 1, 5, 'Verticals', new Collection () ) );
-		$categories->add ( new Category ( 1, 20, 'Post Construction Pour', new Collection () ) );
-		
-		$categories2 = new Collection ();
-		
-		// replace with call to Database
-		$categories2->add ( new Category ( 2, 6, 'Deck Handover', new Collection () ) );
-		$categories2->add ( new Category ( 2, 7, 'Lift & Stair Boxes', new Collection () ) );
-		$categories2->add ( new Category ( 2, 8, 'Pre Pour Checklist', new Collection () ) );
-		$categories2->add ( new Category ( 2, 9, 'Stairs', new Collection () ) );
-		$categories2->add ( new Category ( 2, 10, 'Verticals', new Collection () ) );
-		$categories2->add ( new Category ( 2, 21, 'Post Construction Pour', new Collection () ) );
-		
-		$projects->add ( new Project ( 2, 'WPM Block G', $categories2, 'Rhodes' ) );
-		$projects->add ( new Project ( 1, 'Zen Block B', $categories, 'Rhodes' ) );
-		
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$project;
+		$result = $conn->query("SELECT * FROM Project where DeleteFlag = 0 order by Name ");
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$project = new Project ( $row["ID"], $row["Name"] );
+				$project->categories = $this->getCategories($project->projectID);
+				$projects->add($project);
+			}
+		}
+		$conn->close();
 		return $projects;
 	}
+	
 	function getProject($projectID) {
-		// replace with call to Database
-		if ($projectID == 1) {
-			// Zen Project
-			return new Project ( 1, 'Zen Plan B', new Collection () );
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$project;
+		$result = $conn->query("SELECT * FROM Project where DeleteFlag = 0 and ID = ".$projectID);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$project = new Project ( $row["ID"], $row["Name"] );
+			}
 		}
-		if ($projectID == 2) {
-			// Zen Project
-			return new Project ( 2, 'WPM Block G', new Collection () );
-		}
+		$conn->close();
+		return $project;
 	}
+	
+	
 	function getCategories($projectID) {
 		$categories = new Collection ();
-		if ($projectID == 1) {
-			
-			// replace with call to Database
-			$categories->add ( new Category ( 1, 1, 'Deck Handover', new Collection () ) );
-			$categories->add ( new Category ( 1, 2, 'Lift & Stair Boxes', new Collection () ) );
-			$categories->add ( new Category ( 1, 3, 'Pre Pour Checklist', new Collection () ) );
-			$categories->add ( new Category ( 1, 4, 'Stairs', new Collection () ) );
-			$categories->add ( new Category ( 1, 5, 'Verticals', new Collection () ) );
-			$categories->add ( new Category ( 1, 20, 'Post Construction Pour', new Collection () ) );
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$project;
+		$result = $conn->query("SELECT * FROM Category where DeleteFlag = 0 and ProjectID = ".$projectID." order by Name ");
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$categories->add(new Category ($projectID,$row["ID"], $row["Name"],new Collection()));
+			}
 		}
-		if ($projectID == 2) {
-			
-			// replace with call to Database
-			$categories->add ( new Category ( 2, 6, 'Deck Handover', new Collection () ) );
-			$categories->add ( new Category ( 2, 7, 'Lift & Stair Boxes', new Collection () ) );
-			$categories->add ( new Category ( 2, 8, 'Pre Pour Checklist', new Collection () ) );
-			$categories->add ( new Category ( 2, 9, 'Stairs', new Collection () ) );
-			$categories->add ( new Category ( 2, 10, 'Verticals', new Collection () ) );
-			$categories->add ( new Category ( 2, 21, 'Post Construction Pour', new Collection () ) );
-		}
-		
+		$conn->close();
 		return $categories;
 	}
+	
 	function getCategory($projectID, $categoryID) {
-		// Not implemented yet
-		// TODO replace with call to DB
-		if ($categoryID == 1) {
-			// Deck Handover
-			return new Category ( 1, 1, 'Deck Handover', new Collection () );
+		$category;
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$project;
+		$result = $conn->query("SELECT * FROM Category where DeleteFlag = 0 and ProjectID = ".$projectID." and ID =  ".$categoryID);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$category = new Category ($projectID,$row["ID"], $row["Name"],new Collection());
+			}
 		}
-		if ($categoryID == 2) {
-			// Lift & Stair Boxes
-			return new Category ( 1, 2, 'Lift & Stair Boxes', new Collection () );
-		}
-		if ($categoryID == 3) {
-			return new Category ( 1, 3, 'Pre Pour Checklist', new Collection () );
-		}
-		if ($categoryID == 4) {
-			return new Category ( 1, 4, 'Stairs', new Collection () );
-		}
-		if ($categoryID == 5) {
-			return new Category ( 1, 5, 'Verticals', new Collection () );
-		}
-		if ($categoryID == 6) {
-			// Deck Handover
-			return new Category ( 2, 6, 'Deck Handover', new Collection () );
-		}
-		if ($categoryID == 7) {
-			// Lift & Stair Boxes
-			return new Category ( 2, 7, 'Lift & Stair Boxes', new Collection () );
-		}
-		if ($categoryID == 8) {
-			return new Category ( 2, 8, 'Pre Pour Checklist', new Collection () );
-		}
-		if ($categoryID == 9) {
-			return new Category ( 2, 9, 'Stairs', new Collection () );
-		}
-		if ($categoryID == 10) {
-			return new Category ( 2, 10, 'Verticals', new Collection () );
-		}
-		if ($categoryID == 20) {
-			return new Category ( 1, 20, 'Post Construction Pour', new Collection () );
-		}
-		if ($categoryID == 21) {
-			return new Category ( 2, 21, 'Post Construction Pour', new Collection () );
-		}
+		$conn->close();
+		return $category;
 	}
+	
 	function getCategoryOptions($projectID, $categoryID) {
 		$categoryOptions = new Collection ();
-		
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$project;
+		$result = $conn->query("SELECT * FROM CategoryOption where DeleteFlag = 0 and ProjectID = ".$projectID." and CategoryID = ".$categoryID." order by CategoryOrder ");
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$optionSettings=array();
+				if(!empty($row["OptionSettings"]) && isset($row["OptionSettings"]))
+				{
+					$optionSettings=json_decode($row["OptionSettings"],true);
+				}
+				
+				$categoryOptions->add(new CategoryOption($projectID,$categoryID,$row["ID"],$row["CategoryOrder"],$row["Title"],$row["FormType"],$row["IsRequired"] == 1,$optionSettings));
+			}
+		}
+		$conn->close();
+		return $categoryOptions;
+	}
+	
+	function saveProject($insertedByID,$project)
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Executing Save Project');
+		$nextProjectID = $this->getNextProjectID();
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+	
+		$sql = "insert into Project(ID,Name,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
+		$sql = $sql." values (".$nextProjectID.",'".StringUtils::escapeDB($project->projectName)."',now(),".$insertedByID.",now(),".$insertedByID.",0) ";
+		LogUtil::debug ( 'ProjectDAO', 'Saving project sql = '.$sql);
+		if ($conn->query($sql) === TRUE) {
+			LogUtil::debug ( 'ProjectDAO', 'New record created successfully');
+		} else {
+			LogUtil::debug ( 'ProjectDAO',"Error: " . $sql . "<br>" . $conn->error);
+		}	
+		$conn->close();
+		return $nextProjectID;
+	}
+	
+	function saveCategory($insertedByID,$projectID,$category)
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Executing Save Category');
+		$nextCategoryID = $this->getNextCategoryID($projectID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+	
+		$sql = "insert into Category(ID,ProjectID,Name,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
+		$sql = $sql." values (".$nextCategoryID.",".$projectID.",'".StringUtils::escapeDB($category->categoryName)."',now(),".$insertedByID.",now(),".$insertedByID.",0) ";
+		LogUtil::debug ( 'ProjectDAO', 'Saving category sql = '.$sql);
+		//now()
+		if ($conn->query($sql) === TRUE) {
+			LogUtil::debug ( 'ProjectDAO', 'New record created successfully');
+		} else {
+			LogUtil::debug ( 'ProjectDAO',"Error: " . $sql . "<br>" . $conn->error);
+		}	
+		$conn->close();
+		return $nextCategoryID;
+	}
+	
+	function saveCategoryOption($insertedByID,$projectID,$categoryID, $categoryOption)
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Executing Save Category Option');
+		$nextCategoryID = $this->getNextCategoryOptionID($projectID, $categoryID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+		$required = 0;
+		if($categoryOption->isRequired)
+		{
+			$required = 1;
+		}
+		$options = '';
+		if(!empty($categoryOption->optionSettings))
+		{
+			$options = StringUtils::escapeDB(json_encode($categoryOption->optionSettings));
+		}
+		$sql = "insert into CategoryOption(ID,CategoryID,ProjectID,CategoryOrder,Title,FormType,IsRequired,OptionSettings,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
+		$sql = $sql." values (".$nextCategoryID.",".$categoryID.",".$projectID.",".$categoryOption->order.",'".StringUtils::escapeDB($categoryOption->title);
+		$sql = $sql."','".$categoryOption->formType."',".$required.",'".$options."',now(),".$insertedByID.",now(),".$insertedByID.",0) ";
+		LogUtil::debug ( 'ProjectDAO', 'Saving category option sql = '.$sql);
+		//now()
+		if ($conn->query($sql) === TRUE) {
+			LogUtil::debug ( 'ProjectDAO', 'New record created successfully');
+		} else {
+			LogUtil::debug ( 'ProjectDAO',"Error: " . $sql . "<br>" . $conn->error);
+		}	
+		$conn->close();
+		return $nextCategoryID;
+	}
+	
+	private function getNextProjectID()
+	{
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$result = $conn->query("SELECT MAX(ID) AS max_id FROM Project");
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$max= intval($row["max_id"])+1;
+			}
+		}
+		$conn->close();
+		return $max;
+	}
+
+	private function getNextCategoryID($projectID)
+	{
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$result = $conn->query("SELECT MAX(ID) AS max_id FROM Category where ProjectID = ".$projectID);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$max= intval($row["max_id"])+1;
+			}
+		}
+		$conn->close();
+		return $max;
+	}	
+
+	private function getNextCategoryOptionID($projectID,$categoryID)
+	{
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$result = $conn->query("SELECT MAX(ID) AS max_id FROM CategoryOption where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$max= intval($row["max_id"])+1;
+			}
+		}
+		$conn->close();
+		return $max;
+	}	
+	function deleteProject($projectID) {
+		// replace with call to DB
+		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$conn->query("Update Project set DeleteFlag = 1 where ID = ".$projectID);
+		$conn->query("Update Category set DeleteFlag = 1 where ProjectID = ".$projectID);
+		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID);
+		$conn->close();
+		return true;
+	}	
+
+	function deleteCategory($projectID,$categoryID) {
+		// replace with call to DB
+		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID.', category id = '.$categoryID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
+		$conn->close();
+		return true;
+	}
+
+	function deleteCategoryOptions($projectID,$categoryID) {
+		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID.', category id = '.$categoryID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$conn->query("Update Category set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
+		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
+		$conn->close();
+		return true;
+	}
+	
+	//temp function
+	function getCategoryOptionsFIXED($projectID, $categoryID) {
+		$categoryOptions = new Collection ();
+	
 		// TODO replace with call to DB
 		if ($categoryID == 1) {
 			// Deck Handover
@@ -151,7 +304,7 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 11188, 11128, 'Architects GA/RCP', 'TEXT', true, array("style"=>"width:150px") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 11189, 11129, 'Architects CS/WS', 'TEXT', true, array("style"=>"width:150px") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 11190, 11130, 'Structural Outline', 'TEXT', true, array("style"=>"width:150px") ) );
-			$categoryOptions->add ( new CategoryOption ( 1, 1, 11191, 11131, 'Formwork Certificate', 'TEXT', true, array("style"=>"width:150px") ) );			
+			$categoryOptions->add ( new CategoryOption ( 1, 1, 11191, 11131, 'Formwork Certificate', 'TEXT', true, array("style"=>"width:150px") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 19, 19, 'Comments', 'TEXTAREA', true ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 20, 20, 'I confirm that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).', 'CONFIRM',  true,  array("pdfTitle"=>"The submitter of this report has confirmed that the specified deck is safe to use and is structurally adequate to support site personnel and design working loads (structural certificate to be provided by structural engineer prior to pour).") ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 1, 21, 21, 'I confirm the deck has been inspected to ensure that all required actions and controls have been implemented.','CONFIRM', true,  array("pdfTitle"=>"The submitter of this report has confirmed the deck has been inspected to ensure that all required actions and controls have been implemented.")) );
@@ -267,7 +420,7 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 1, 5, 140, 21, 'Comments', 'TEXTAREA', true ) );
 			$categoryOptions->add ( new CategoryOption ( 1, 5, 142, 23, 'Photos', 'PHOTOS', true ) );
 		}
-		
+	
 		if ($categoryID == 6) {
 			// Deck Handover
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 111, 1, 'Core No', 'TEXT', true, array("style"=>"width:150px")));
@@ -295,7 +448,7 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 11188, 11128, 'Architects GA/RCP', 'TEXT', true, array("style"=>"width:150px") ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 11189, 11129, 'Architects CS/WS', 'TEXT', true, array("style"=>"width:150px") ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 11190, 11130, 'Structural Outline', 'TEXT', true, array("style"=>"width:150px") ) );
-			$categoryOptions->add ( new CategoryOption ( 2, 6, 11191, 11131, 'Formwork Certificate', 'TEXT', true, array("style"=>"width:150px") ) );			
+			$categoryOptions->add ( new CategoryOption ( 2, 6, 11191, 11131, 'Formwork Certificate', 'TEXT', true, array("style"=>"width:150px") ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 1119, 19, 'Comments', 'TEXTAREA', true ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 1120, 20, 'I confirm that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour).', 'CONFIRM', true,  array("pdfTitle"=>"The submitter of this report has confirmed that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour).")) );
 			$categoryOptions->add ( new CategoryOption ( 2, 6, 1121, 21, 'I have inspected the Stairs and confirm that all required actions and controls have been implemented.','CONFIRM', true, array("pdfTitle"=>"The submitter of this report has inspected the Stairs and confirms that all required actions and controls have been implemented.") ) );
@@ -441,127 +594,10 @@ class ProjectDAO {
 			$categoryOptions->add ( new CategoryOption ( 2, 21, 12292, 12232, 'Comments', 'TEXTAREA', true ) );
 			$categoryOptions->add ( new CategoryOption ( 2, 21, 213024, 13024, 'Photos', 'PHOTOS', true ) );
 		}
-		
+	
 		return $categoryOptions;
 	}
 	
-	function saveProject($insertedByID,$project)
-	{
-		LogUtil::debug ( 'ProjectDAO', 'Executing Save Project');
-		$nextProjectID = $this->getNextProjectID();
-		$dbUtil = new DBUtil ();
-		$conn = $dbUtil->getDBConnection();
-		//mysql_real_escape_string(
-		date_default_timezone_set ( 'Australia/Sydney' );
-		$dateUtil = new DateUtil();
-	
-		$sql = "insert into Project(ID,Name,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
-		$sql = $sql." values (".$nextProjectID.",'".StringUtils::escapeDB($project->projectName)."',now(),".$insertedByID.",now(),".$insertedByID.",0) ";
-		LogUtil::debug ( 'ProjectDAO', 'Saving project sql = '.$sql);
-		//now()
-		if ($conn->query($sql) === TRUE) {
-			return "New record created successfully";
-		} else {
-			return "Error: " . $sql . "<br>" . $conn->error;
-		}
-	}
-	
-	function saveCategory($insertedByID,$project,$category)
-	{
-		LogUtil::debug ( 'ProjectDAO', 'Executing Save Category');
-		$nextCategoryID = $this->getNextCategoryID($projectID);
-		$dbUtil = new DBUtil ();
-		$conn = $dbUtil->getDBConnection();
-		//mysql_real_escape_string(
-		date_default_timezone_set ( 'Australia/Sydney' );
-		$dateUtil = new DateUtil();
-	
-		$sql = "insert into Category(ID,ProjectID,Name,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
-		$sql = $sql." values (".$nextCategoryID.",".$projectID.",'".StringUtils::escapeDB($category->categoryName)."',now(),".$insertedByID.",now(),".$insertedByID.",0) ";
-		LogUtil::debug ( 'ProjectDAO', 'Saving project sql = '.$sql);
-		//now()
-		if ($conn->query($sql) === TRUE) {
-			return "New record created successfully";
-		} else {
-			return "Error: " . $sql . "<br>" . $conn->error;
-		}
-	}
-	
-	private function getNextProjectID()
-	{
-		$dbUtil = new DBUtil ();
-		$conn = $dbUtil->getDBConnection();
-		$max = 1;
-		$result = $conn->query("SELECT MAX(ID) AS max_id FROM Project");
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc())
-			{
-				return intval($row["max_id"])+1;
-			}
-		}
-		return $max;
-	}
-
-	private function getNextCategoryID($projectID)
-	{
-		$dbUtil = new DBUtil ();
-		$conn = $dbUtil->getDBConnection();
-		$max = 1;
-		$result = $conn->query("SELECT MAX(ID) AS max_id FROM Category where ProjectID = ".$projectID);
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc())
-			{
-				return intval($row["max_id"])+1;
-			}
-		}
-		return $max;
-	}	
-
-	private function getNextCategoryOptionID($projectID,$categoryID)
-	{
-		$dbUtil = new DBUtil ();
-		$conn = $dbUtil->getDBConnection();
-		$max = 1;
-		$result = $conn->query("SELECT MAX(ID) AS max_id FROM CategoryOption where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc())
-			{
-				return intval($row["max_id"])+1;
-			}
-		}
-		return $max;
-	}	
-	function deleteProject($projectID) {
-		// replace with call to DB
-		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID);
-		$dbUtil = new DBUtil ();
-		$conn = $dbUtil->getDBConnection();
-		$conn->query("Update Project set DeleteFlag = 1 where ID = ".$projectID);
-		$conn->query("Update Category set DeleteFlag = 1 where ProjectID = ".$projectID);
-		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID);
-		return true;
-	}	
-
-	function deleteCategory($projectID,$categoryID) {
-		// replace with call to DB
-		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID.', category id = '.$categoryID);
-		$dbUtil = new DBUtil ();
-		$conn = $dbUtil->getDBConnection();
-		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
-		return true;
-	}
-
-	function deleteCategoryOptions($projectID,$categoryID) {
-		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID.', category id = '.$categoryID);
-		$dbUtil = new DBUtil ();
-		$conn = $dbUtil->getDBConnection();
-		$conn->query("Update Category set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
-		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
-		return true;
-	}
 }
 
 ?>

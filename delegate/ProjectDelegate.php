@@ -8,9 +8,11 @@
 
 class ProjectDelegate {
 	private $projectDAO;
+	
 	function __construct() {
 		$this->projectDAO = new ProjectDAO ();
 	}
+	
 	function getAllProjectsLite() {
 		//check cache first
 		$projects = CacheUtil::getProjectsList();
@@ -20,7 +22,7 @@ class ProjectDelegate {
 			$projects =  $this->projectDAO->getAllProjectsLite ();
 			CacheUtil::cacheProjectsList($projects);
 		}else{
-			LogUtil::debug ( 'ProjectDelegate', 'Loading project from Cache' );				
+			//LogUtil::debug ( 'ProjectDelegate', 'Loading project from Cache' );				
 		}
 		return $projects;
 	}
@@ -33,7 +35,7 @@ class ProjectDelegate {
 			$project = $this->projectDAO->getProject ( $projectID );
 			CacheUtil::addCachedProject($projectID, $project);
 		}else{
-			LogUtil::debug ( 'ProjectDelegate', 'Loading project from Cache' );
+			//LogUtil::debug ( 'ProjectDelegate', 'Loading project from Cache' );
 				
 		}
 		return $project;
@@ -48,7 +50,7 @@ class ProjectDelegate {
 			$categories = $this->projectDAO->getCategories ( $projectID );
 			CacheUtil::cacheCategoriesList($projectID, $categories);
 		}else{
-			LogUtil::debug ( 'ProjectDelegate', 'Loading categories from Cache' );				
+			//LogUtil::debug ( 'ProjectDelegate', 'Loading categories from Cache' );				
 		}
 		return $categories;
 	}
@@ -62,7 +64,7 @@ class ProjectDelegate {
 			$category = $this->projectDAO->getCategory ( $projectID, $categoryID );
 			CacheUtil::addCachedCategory($projectID, $categoryID, $category);
 		}else{
-			LogUtil::debug ( 'ProjectDelegate', 'Loading categories from Cache' );
+			//LogUtil::debug ( 'ProjectDelegate', 'Loading categories from Cache' );
 		}
 		return $category;
 	}
@@ -74,12 +76,61 @@ class ProjectDelegate {
 		{
 			LogUtil::debug ( 'ProjectDelegate', 'Loading category options from DB' );
 			$categories = $this->projectDAO->getCategoryOptions ( $projectID, $categoryID );
+			LogUtil::debug ( 'ProjectDelegate', 'Number of categories is: '.$categories->getNumObjects());
+				
 			CacheUtil::addCachedCategoryOptions($projectID, $categoryID, $categories);			
 		}else{
-			LogUtil::debug ( 'ProjectDelegate', 'Loading category options from Cache' );
+			LogUtil::debug ( 'ProjectDelegate', 'Number of cached categories is: '.$categories->getNumObjects());
+			//LogUtil::debug ( 'ProjectDelegate', 'Loading category options from Cache' );
 		}
 		return $categories;
 	}
+
+	private function clearProjectCache()
+	{
+		CacheUtil::removeAllCachedProjects();
+		CacheUtil::removeAllCachedCategories();
+		CacheUtil::removeAllCachedCategoryOptions();
+	}
+	
+	function saveProject($insertedByID,$project)
+	{
+		$ret = $this->projectDAO->saveProject($insertedByID, $project);
+		$this->clearProjectCache();
+		return $ret;
+	}
+	
+	function saveCategory($insertedByID,$project,$category)
+	{
+		$ret = $this->projectDAO->saveCategory($insertedByID, $project, $category);
+		$this->clearProjectCache();
+		return $ret;
+	}
+	
+	function saveCategoryOption($insertedByID,$project,$categoryID, $categoryOption)
+	{
+		$ret = $this->projectDAO->saveCategoryOption($insertedByID, $project, $categoryID, $categoryOption);
+		$this->clearProjectCache();
+		return $ret;
+	}
+	
+	function deleteProject($projectID) {
+		$ret = $this->projectDAO->deleteProject($projectID);
+		$this->clearProjectCache();
+		return $ret;		
+	}
+	
+	function deleteCategory($projectID,$categoryID) {
+		$ret = $this->projectDAO->deleteCategory($projectID, $categoryID);
+		$this->clearProjectCache();
+		return $ret;		
+	}
+	
+	function deleteCategoryOptions($projectID,$categoryID) {
+		$ret = $this->projectDAO->deleteCategoryOptions($projectID, $categoryID);
+		$this->clearProjectCache();
+		return $ret;		
+	}	
 }
 
 ?>

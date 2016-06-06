@@ -53,6 +53,8 @@ class UserDelegate {
 		}else{
 			LogUtil::debug ( 'UserDelegate', 'Loading users from Cache' );
 		}
+		LogUtil::debug ( 'UserDelegate', 'Number of users = '.$users->getNumObjects() );
+			
 		return $users;
 	}
 	
@@ -62,8 +64,9 @@ class UserDelegate {
 	
 	function saveUser($insertedByID,$user)
 	{
-		$this->userDAO->saveUser($insertedByID, $user);
+		$ret = $this->userDAO->saveUser($insertedByID, $user);
 		CacheUtil::removeCachedUsers();
+		return $ret;
 	}
 }
 

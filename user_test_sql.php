@@ -15,6 +15,8 @@ set_error_handler ( array (
 		'handleError' 
 ) );
 
+$currentUser = $webUtil->getLoggedInUser ();
+
 $userDAO = new UserDAO();
 
 

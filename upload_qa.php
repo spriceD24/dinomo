@@ -66,6 +66,7 @@ $mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
 
 $userDelegate = new UserDelegate ();
 $users = $userDelegate->getAllUsers ();
+LogUtil::debug ( "upload_qa", "Displaying javascript" );
 
 $num_images = ConfigUtil::getNumberOfUploadFiles ();
 ?>
