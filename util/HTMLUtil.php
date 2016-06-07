@@ -42,6 +42,21 @@
 			return $html;			
 		}
 		
+		function getNAOptionsTable($options)
+		{
+			$userDelegate = new UserDelegate();
+			$html = "<table>";
+			while($option = $options->iterate()) 
+			{
+				if(!empty($option->optionValue) && StringUtils::equals($option->optionValue,'N/A'))
+				{
+					$html = $html.'<tr><td style="border:0px solid black;"><span style="padding-left:15px">'.$option->optionFormID.'</span></td><td style="border:1px dashed black;"><span style="padding-left:15px">&nbsp;'.$option->optionValue.'</span></td></tr>';
+				}
+			}
+			$html = $html."</table>";
+			return $html;			
+		}
+		
 		function getImageTable($images)
 		{
 			if(!$images->isEmpty())
