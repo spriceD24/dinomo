@@ -44,7 +44,7 @@ $num_images = ConfigUtil::getNumberOfUploadFiles ();
 $setOptionPrefix = HTMLConst::STANDARD_OPT_ID_PREFIX;
 $projectDelegate = new ProjectDelegate ();
 $userDelegate = new UserDelegate ();
-
+-
 // add images to collection
 $images = new Collection ();
 
@@ -179,6 +179,8 @@ $options->add ( $selectedOption );
 $forUser = "";
 $behalfOfUser = $uploadedUser;
 
+$hasNA = false;
+
 while ( $categoryOption = $categoryOptions->iterate () ) 
 {
 	if (isset ( $_POST [$setOptionPrefix . $categoryOption->categoryOptionID] )) {
@@ -212,7 +214,10 @@ while ( $categoryOption = $categoryOptions->iterate () )
 				}
 			}
 			$selectedOption->optionValue = $value;
-				
+			if(StringUtils::equals($value, 'N/A'))
+			{
+				$hasNA = true;
+			}
 			$metaData[$label]=$value;
 			
 			if ($categoryOption->formType == 'CONFIRM') 
@@ -270,6 +275,12 @@ $report->reportName= urlencode ( $unique_id ) . ".pdf";
 
 LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Generating Email, Web URL = " . $webUtil->getBaseURI () . "/" . $webUrl );
 $emailHTML = $htmlUtil->generateUploadEmail ( $webUrl, $pdfUrl, $project, $currentCategory, $uploadedUser, $forUser );
+if($hasNA)
+{
+	$hasNAHTML = "<br/>User has responded 'N/A' for following items. Please follow up if necessary.";
+	$hasNAHTML = $hasNAHTML.$htmlUtil->getNAOptionsTable($options);
+	$emailHTML = $emailHTML.$hasNAHTML;
+}
 
 $email->From = $uploadedUser->email;
 $email->FromName = $uploadedUser->name;
@@ -281,18 +292,25 @@ $recipients = "";
 $allUsers = $userDelegate->getAllUsers();
 $emailRecipients = array();
 
-while ( $user = $allUsers->iterate () )
+if($uploadedUser->hasRole('testuser'))
 {
-	if($user->hasRole('recipient'))
+	LogUtil::debug ( "submit_qa", "User is 'testuser' just emailing to this user");
+	$email->AddAddress ($uploadedUser->email);
+	array_push($emailRecipients,$uploadedUser->email);	
+}else{
+	while ( $user = $allUsers->iterate () )
 	{
-		LogUtil::debug ( "submit_qa", "Adding email recipient = " . $user->login . " [".$user->email."], user has role 'recipient'");
-		$email->AddAddress ($user->email);
-		array_push($emailRecipients,$user->email);
-		if($recipients != '')
+		if($user->hasRole('recipient'))
 		{
-			$recipients = $recipients.", ";
+			LogUtil::debug ( "submit_qa", "Adding email recipient = " . $user->login . " [".$user->email."], user has role 'recipient'");
+			$email->AddAddress ($user->email);
+			array_push($emailRecipients,$user->email);
+			if($recipients != '')
+			{
+				$recipients = $recipients.", ";
+			}
+			$recipients = $recipients . $user->email;
 		}
-		$recipients = $recipients . $user->email;
 	}
 }
 
