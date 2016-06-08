@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><?php include_once("util/LogUtil.php"); ?><?php include_once("util/CacheUtil.php"); ?><?php include_once("mobile_detect/Mobile_Detect.php");?><?php$filename = "";
 if (isset ( $_GET ["filename"] )) {	$filename = urldecode( $_GET ["filename"] );}else{	header ( "Location: log_admin.php" );	exit ();	}$path = realpath ( '.' );$fileToOpen = $path . '/' . ConfigUtil::getLogFolder ()."/".$filename;?>
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"><link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
 <title>Dinomo QA</title>
 
 <meta name="viewport"

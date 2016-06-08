@@ -26,6 +26,7 @@
 
 <?php
 
+LogUtil::debug ( "submit_qa", "Starting process..");
 $webUtil = new WebUtil ();
 $webUtil->srcPage = "submit_qa.php";
 // set_error_handler(array($webUtil, 'handleError'));
@@ -294,9 +295,10 @@ $emailRecipients = array();
 
 if($uploadedUser->hasRole('testuser'))
 {
-	LogUtil::debug ( "submit_qa", "User is 'testuser' just emailing to this user");
-	$email->AddAddress ($uploadedUser->email);
+	LogUtil::debug ( "submit_qa", "User is 'testuser' just emailing to this user, email = ".$uploadedUser->email);
+	$email->AddAddress($uploadedUser->email);
 	array_push($emailRecipients,$uploadedUser->email);	
+	$recipients = $recipients . $uploadedUser->email;	
 }else{
 	while ( $user = $allUsers->iterate () )
 	{
@@ -340,6 +342,7 @@ $email->AddAttachment ( $file_to_attach, $pdfName . '.pdf' );
 LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Sending Email to " . $recipients );
 
 if ($webUtil->isProduction ()& !empty($project->projectName)) {
+	LogUtil::debug ( "submit_qa", "In production, sending EMAIL" );
 	$email->Send ();
 } else {
 	LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Not Sending Email to " . $recipients . " as not in PRODUCTION" );

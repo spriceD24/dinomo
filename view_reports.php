@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><?php include_once("util/LogUtil.php"); ?><?php include_once("util/DBUtil.php"); ?><?php include_once("dao/model/Report.php"); ?><?php include_once("dao/ReportDAO.php"); ?><?php include_once("util/DBUtil.php"); ?><?php include_once("delegate/UserDelegate.php"); ?><?php include_once("delegate/ProjectDelegate.php"); ?><?php include_once("delegate/UserDelegate.php"); ?><?php include_once("util/WebUtil.php"); ?><?php include_once("mobile_detect/Mobile_Detect.php");?><?php	$webUtil = new WebUtil ();	$webUtil->srcPage = "view_reports.php";	set_error_handler ( array (			$webUtil,			'handleError' 	) );		$detect = new Mobile_Detect ();	$isMobile = ($detect->isMobile() && !$detect->isTablet());	$isTablet = $detect->isTablet();		$currentUser = $webUtil->getLoggedInUser();	$reportDAO = new ReportDAO();	$reports = $reportDAO->getAllReports();	//$reportDAO->saveReport($report);	$userDelegate = new UserDelegate();	$projectDelegate = new ProjectDelegate();	$userDelegate = new UserDelegate();	?>
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"><link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
 <title>Dinomo QA</title>
 
 <meta name="viewport"
