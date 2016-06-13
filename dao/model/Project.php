@@ -11,7 +11,7 @@ class Project {
 	
 	function addCategory($category)
 	{
-		$this->$categories->add($category);
+		$this->categories->add($category);
 	}
 }
 

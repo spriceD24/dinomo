@@ -200,20 +200,38 @@ while ( $categoryOption = $categoryOptions->iterate () )
 			}
 			$selectedOption->optionFormID = $label;
 			
-			$commentOn = $categoryOption->getSetting("commentOn");
-	 		if (! empty ( $commentOn ))
-	 		{
-				LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Checking comment on..." );
-				if (isset ( $_POST ["commentOnText_".$setOptionPrefix . $categoryOption->categoryOptionID] ))
+			if ($categoryOption->formType == 'RADIO')
+			{
+				$radioOptions = $categoryOption->getSetting("radioOptions");
+				if(!empty($radioOptions))
 				{
-					LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Checking comment on val is - ".$_POST ["commentOnText_".$setOptionPrefix . $categoryOption->categoryOptionID] );
-					$details = $_POST ["commentOnText_".$setOptionPrefix . $categoryOption->categoryOptionID] ;
-					if(!empty($details))
+					foreach ( $radioOptions as $radioOption )
 					{
-						$value = $value.": ".$details;
+						if(StringUtils::equals($radioOption["radioOption"],$value))
+						{
+							$commentOn = false;
+							if(isset($radioOption["commentOn"])
+									&& !empty($radioOption["commentOn"])
+									&& $radioOption["commentOn"] == true)
+							{
+								LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Checking comment on..." );
+								if (isset ( $_POST ["commentOnText_".$radioOption["radioOption"].$setOptionPrefix . $categoryOption->categoryOptionID] ))
+								{
+									LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Checking comment on val is - ".$_POST ["commentOnText_".$radioOption["radioOption"].$setOptionPrefix . $categoryOption->categoryOptionID] );
+									$details = $_POST ["commentOnText_".$radioOption["radioOption"].$setOptionPrefix . $categoryOption->categoryOptionID] ;
+									if(!empty($details))
+									{
+										$value = $value.": ".$details;
+									}
+								}
+								
+							}
+						}
 					}
-				}
+				}				
 			}
+			
+			
 			$selectedOption->optionValue = $value;
 			if(StringUtils::equals($value, 'N/A'))
 			{

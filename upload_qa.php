@@ -187,21 +187,27 @@ function setErrorDiv(id)
 	//alert('set - '+id);
 }
 
-function showCantProceedDiv(id)
+function showCantProceedDiv(myID,id,vals)
 {
+	clearCantProceedDiv(id,vals);
 	document.getElementById('div_'+id).style.border='1px solid red';
 	document.getElementById('div_'+id).style.backgroundColor ='#e2cbba';
-	document.getElementById('error_proceed_'+id).style.display ='';
+	document.getElementById('error_proceed_'+myID).style.display ='';
 	
 	//alert('set - '+id);
 }
 
-function clearCantProceedDiv(id)
+function clearCantProceedDiv(id,divs)
 {
 	//alert('clear - '+id);
-	document.getElementById('div_'+id).style.border='0px solid white';
-	document.getElementById('div_'+id).style.backgroundColor ='white';
-	document.getElementById('error_proceed_'+id).style.display ='none';
+	var vals = divs.split(',');
+	var arrayLength = vals.length;
+	for (var i = 0; i < arrayLength; i++) 
+	{
+		document.getElementById('div_'+id).style.border='0px solid white';
+		document.getElementById('div_'+id).style.backgroundColor ='white';
+		document.getElementById('error_proceed_'+vals[i]+id).style.display ='none';
+	}	
 }
 
 function showNextDate(id)
@@ -267,14 +273,20 @@ function leapYear(year)
 	return isLeap;
 }
 
-function showDiv(id)
+function showDiv(myId,id,divs)
 {
-	document.getElementById(id).style.display='';
+	hideDiv(id,divs);
+	
+	document.getElementById(myId).style.display='';
 }
 
-function hideDiv(id)
+function hideDiv(id,divs)
 {
-	document.getElementById(id).style.display='none';
+	var vals = divs.split(',');
+	var arrayLength = vals.length;
+	for (var i = 0; i < arrayLength; i++) {
+		document.getElementById(id+vals[i]).style.display='none';
+	}	
 }
 
 function submitForm()
@@ -312,41 +324,51 @@ function submitForm()
 		 		//return false;
 	 		}
 	 	   <?php 
-	 	    $commentOn = $categoryOption->getSetting("commentOn");
-	 		if (! empty ( $commentOn ))
-	 		{
-	 			?>
-	 			if(value == '<?=$commentOn?>')
-	 			{
-	 				selectedVal = document.getElementById("commentOnText_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").value;
-	 				if(!selectedVal || selectedVal == '')
-	 		 		{
-	 		 			setErrorDiv('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>')
+	 	   
+	 	   $radioOptions = $categoryOption->getSetting("radioOptions");
+	 	   if(!empty($radioOptions))
+	 	   {
+	 	   	foreach ( $radioOptions as $radioOption )
+	 	   	{
+		 	   if (isset($radioOption["commentOn"]) 
+		 				&& !empty ($radioOption["commentOn"]) 
+		 				&& $radioOption["commentOn"] == true)
+		 		{
+		 			?>
+		 			if(value == '<?=$radioOption["radioOptionTitle"]?>')
+		 			{
+		 				selectedVal = document.getElementById("commentOnText_<?=$radioOption["radioOption"].$setOptionPrefix.$categoryOption->categoryOptionID?>").value;
+		 				if(!selectedVal || selectedVal == '')
+		 		 		{
+		 		 			setErrorDiv('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>')
+		 			 		if(errorAnchor == '')
+		 			 		{
+		 			 			errorAnchor = 'anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>';	
+		 			 			hasError = true;
+		 			 		}
+		 		 		}
+		 			}else{
+		 				document.getElementById("commentOnText_<?=$radioOption["radioOption"].$setOptionPrefix.$categoryOption->categoryOptionID?>").value = '';
+		 			}
+		 			<?php
+		 		}
+		 	    if (isset($radioOption["cannotProceedOn"]) 
+		 				&& !empty ($radioOption["cannotProceedOn"]) 
+		 				&& $radioOption["cannotProceedOn"] == true)
+		 		{
+		 			?>
+		 			if(value == '<?=$radioOption["radioOption"]?>')
+		 			{
 	 			 		if(errorAnchor == '')
 	 			 		{
 	 			 			errorAnchor = 'anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>';	
 	 			 			hasError = true;
 	 			 		}
-	 		 		}
-	 			}else{
-	 				document.getElementById("commentOnText_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>").value = '';
-	 			}
-	 			<?php
-	 		}
-	 		$cannotProceedOn = $categoryOption->getSetting("cannotProceedOn");
-	 		if (! empty ( $cannotProceedOn  ))
-	 		{
-	 			?>
-	 			if(value == '<?=$categoryOption->getSetting("cannotProceedOn")?>')
-	 			{
- 			 		if(errorAnchor == '')
- 			 		{
- 			 			errorAnchor = 'anchor_<?=$setOptionPrefix.$categoryOption->categoryOptionID?>';	
- 			 			hasError = true;
- 			 		}
-	 			}
-	 			<?php
-	 		}
+		 			}
+		 			<?php
+		 		}
+			  }
+		}
 	 		?>
 	 				
 	 		
@@ -743,7 +765,41 @@ if ($categoryOption->isRequired) {
 										if ($categoryOption->formType == 'RADIO') 
 
 										{
-											
+											$hasCommentOn = false;
+											$hasCommentOnArray = array();
+											$hasCannotProceedOn = false;
+											$hasCannotProceedOnArray = array();
+											$hasCommentOnArrayStr = "";
+											$hasCannotProceedOnArrayStr = "";
+											$radioOptions = $categoryOption->getSetting("radioOptions");
+											if(!empty($radioOptions))
+											{
+												foreach ( $radioOptions as $radioOption )
+												{
+													if(isset($radioOption["commentOn"])
+															&& !empty($radioOption["commentOn"])
+														 		&& $radioOption["commentOn"] == true)
+													{
+														$hasCommentOn = true;
+														array_push($hasCommentOnArray,$radioOption["radioOption"]);
+													}
+													if(isset($radioOption["cannotProceedOn"]) 
+														&& !empty($radioOption["cannotProceedOn"])
+															&& $radioOption["cannotProceedOn"] == true)
+													{
+														$hasCannotProceedOn = true;
+														array_push($hasCannotProceedOnArray,$radioOption["radioOption"]);
+													}
+												}
+											}
+											if($hasCommentOn)
+											{
+												$hasCommentOnArrayStr = implode(",", $hasCommentOnArray);
+											}
+											if($hasCannotProceedOn)
+											{
+												$hasCannotProceedOnArrayStr = implode(",", $hasCannotProceedOnArray);
+											}
 											?>
 
 										<a
@@ -767,70 +823,102 @@ if ($categoryOption->isRequired) {
 																class="errorLabel" style="display: none">* Required
 																Field</div> 
 																<?php 
-																$cannotProceedOn = $categoryOption->getSetting("cannotProceedOn"); 
+																if(!empty($radioOptions))
+																{
+																	foreach ( $radioOptions as $radioOption )
+																	{
+																		if(isset($radioOption["cannotProceedOn"]) 
+																			&& !empty($radioOption["cannotProceedOn"])
+																				&& $radioOption["cannotProceedOn"] == true)
+																		{ 
 																?>
 																<div
-																id="error_proceed_<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																class="errorLabel" style="display: none">* CANNOT SUBMIT IF '<i><?=$cannotProceedOn?></i>'</div> 
+																id="error_proceed_<?=$radioOption["radioOption"].$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+																class="errorLabel" style="display: none">* CANNOT SUBMIT IF '<i><?=$radioOption["radioOption"]?></i>'</div>
+																<?php 
+																		}
+																	}
+																}
+																?> 
 																</label>
 
 														<div class="controls">
 
 												<?php
 											
-											$radioOptions = $stringUtils->commaSeperatedValuesToArray ( $categoryOption->getSetting("radioOptions") );
-											
-											foreach ( $radioOptions as $radioOption ) {
-												
+											//$radioOptions = $stringUtils->commaSeperatedValuesToArray ( $categoryOption->getSetting("radioOptions") );
+											if(!empty($radioOptions))
+											{
+												foreach ( $radioOptions as $radioOption )
+												{
 												?>
 
 													<label class="radio inline"> <input type="radio"
 																name="<?=$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 																id="<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>"
-																value="<?=$radioOption?>"
+																value="<?=$radioOption["radioOption"]?>"
 																<?php 
 																$onchange = "";
-																$commentOn = $categoryOption->getSetting("commentOn");
+																$commentOn = false;
+																if(!empty($radioOption["commentOn"])
+																		&& isset($radioOption["commentOn"]) && $radioOption["commentOn"] == true)
+																{
+																	$commentOn = true;
+																}
 																
-																if (! empty ( $commentOn  )
-																		&& $stringUtils->equalsCaseInsensitive($commentOn ,$radioOption))
+																if ($commentOn)
 																{
 																	
-																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."');showDiv('commentOn_".$setOptionPrefix.$categoryOption->categoryOptionID."')";
+																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."');showDiv('commentOn_".$setOptionPrefix.$categoryOption->categoryOptionID.$radioOption["radioOption"]."','commentOn_".$setOptionPrefix.$categoryOption->categoryOptionID."','".$hasCommentOnArrayStr."')";
 																}
-																else if (! empty ($commentOn  )
-																		&& !$stringUtils->equalsCaseInsensitive($commentOn,$radioOption))
+																else if (!$commentOn && $hasCommentOn)
 																{
-																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."');hideDiv('commentOn_".$setOptionPrefix.$categoryOption->categoryOptionID."')";
+																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."');hideDiv('commentOn_".$setOptionPrefix.$categoryOption->categoryOptionID."','".$hasCommentOnArrayStr."')";
 																}
 																else{
 																	$onchange="clearErrorDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."')";
 																}
-																$cannotProceedOn = $categoryOption->getSetting("cannotProceedOn"); 
+																$cannotProceedOn = false; 
 																//check cannot proceed
-																if (! empty ( $cannotProceedOn )
-																		&& $stringUtils->equalsCaseInsensitive($cannotProceedOn,$radioOption))
+																if(!empty($radioOption["cannotProceedOn"])
+																		&& isset($radioOption["cannotProceedOn"]) && $radioOption["cannotProceedOn"] == true)
+																{
+																	$cannotProceedOn = true;
+																}
+																
+																if ($cannotProceedOn)
 																{
 																		
-																	$onchange=$onchange.";showCantProceedDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."')";
+																	$onchange=$onchange.";showCantProceedDiv('".$radioOption["radioOption"].$setOptionPrefix.$categoryOption->categoryOptionID."','".$setOptionPrefix.$categoryOption->categoryOptionID."','".$hasCannotProceedOnArrayStr."')";
 																}
-																else if (! empty ( $cannotProceedOn )
-																		&& !$stringUtils->equalsCaseInsensitive($cannotProceedOn,$radioOption))
+																else if (!$cannotProceedOn && $hasCannotProceedOn)
 																{
-																	$onchange=$onchange.";clearCantProceedDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."')";
+																	$onchange=$onchange.";clearCantProceedDiv('".$setOptionPrefix.$categoryOption->categoryOptionID."','".$hasCannotProceedOnArrayStr."')";
 																}
 																?>
 																onchange="<?=$onchange?>";																	onchange="clearErrorDiv('<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>')"
-																> <?=$radioOption;?>
+																> <?=$radioOption["radioOptionTitle"];?>
 													</label>
 
 												<?php
+												}
 											}
-											$commentOn = $categoryOption->getSetting("commentOn");
-											if (! empty ( $commentOn ))
+											if ($hasCommentOn)
 											{
+												foreach ( $radioOptions as $radioOption )
+												{
+												
+													$commentOn = false;
+													if(isset($radioOption["commentOn"])
+															&& !empty($radioOption["commentOn"])
+															&& $radioOption["commentOn"] == true)
+													{
+														$commentOn = true;
+													}
+													if($commentOn)
+													{
 											?>
-											<div id="commentOn_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>" style='display:none'>
+											<div id="commentOn_<?=$setOptionPrefix.$categoryOption->categoryOptionID.$radioOption["radioOption"];?>" style='display:none'>
 												<div class="controls" 
 																<?php
 												if ($isMobile && ! $isTablet) {
@@ -839,14 +927,16 @@ if ($categoryOption->isRequired) {
 													print 'style="font-weight: bold;margin-left:0px;margin-top:5px;"';
 												}
 												?>>
-													<font style="color:red">*&nbsp;</font><?=$categoryOption->getSetting("commentTitle");?>
+													<font style="color:red">*&nbsp;</font><?=$radioOption["commentTitle"];?>
 												</div>
-												<textarea rows="5" cols="10" id="commentOnText_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>"
-												name="commentOnText_<?= $setOptionPrefix.$categoryOption->categoryOptionID;?>"
+												<textarea rows="5" cols="10" id="commentOnText_<?=$radioOption["radioOption"].$setOptionPrefix.$categoryOption->categoryOptionID;?>"
+												name="commentOnText_<?=$radioOption["radioOption"].$setOptionPrefix.$categoryOption->categoryOptionID;?>"
 												onkeyup="clearErrorDivText('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>');clearErrorDiv('<?=$setOptionPrefix.$categoryOption->categoryOptionID?>');" 
 												></textarea>
 											</div>			
 										<?php
+													}
+												}
 											}
 										
 											?>							  </div>
