@@ -21,21 +21,22 @@ $currentUser = $webUtil->getLoggedInUser ();
 
 $userDAO = new UserDAO();
 
+set_time_limit(300);
 
 //echo "Saving Projects...";
 $projects = new Collection();
-$projects->add ( new Project ( 1, 'Bellevue Hill PS', new Collection(), '' ) );
-$projects->add ( new Project ( 2, 'Cranbrook Care', new Collection(), '' ) );
-$projects->add ( new Project ( 3, 'WPM Block C', new Collection(), '' ) );
+$projects->add ( new Project ( 1, 1,'Bellevue Hill PS', new Collection(), '' ) );
+$projects->add ( new Project ( 2, 1,'Cranbrook Care', new Collection(), '' ) );
+$projects->add ( new Project ( 3, 1,'WPM Block C', new Collection(), '' ) );
 
 $categories = new Collection ();
 
 // replace with call to Database
-$categories->add ( new Category ( 1, 1, 'Deck Handover', new Collection () ) );
-$categories->add ( new Category ( 1, 2, 'Lift & Stair Boxes', new Collection () ) );
-$categories->add ( new Category ( 1, 3, 'Pre Pour Checklist', new Collection () ) );
-$categories->add ( new Category ( 1, 4, 'Stairs', new Collection () ) );
-$categories->add ( new Category ( 1, 5, 'Verticals', new Collection () ) );
+$categories->add ( new Category (1, 1, 'Deck Handover', new Collection () ) );
+$categories->add ( new Category (1, 2, 'Lift & Stair Boxes', new Collection () ) );
+$categories->add ( new Category (1, 3, 'Pre Pour Checklist', new Collection () ) );
+$categories->add ( new Category (1, 4, 'Stairs', new Collection () ) );
+$categories->add ( new Category (1, 5, 'Verticals', new Collection () ) );
 
 while ( $project = $projects->iterate () ) {
 	

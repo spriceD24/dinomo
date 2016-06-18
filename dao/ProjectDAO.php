@@ -10,18 +10,20 @@
 
 class ProjectDAO {
 
-	function getAllProjectsLite() 
+	function getAllProjectsLite($clientID) 
 	{
 		$projects = new Collection ();
 		$dbUtil = new DBUtil ();
 		$conn = $dbUtil->getDBConnection();
 		$project;
-		$result = $conn->query("SELECT * FROM Project where DeleteFlag = 0 order by Name ");
+		$query = "SELECT * FROM Project where DeleteFlag = 0 and ClientID = ".$clientID." order by Name ";
+		$result = $conn->query($query);
+		LogUtil::debug ( 'ProjectDAO', 'getAllProjectsLite: Executing '.$query.', num results = '.$result->num_rows);
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc())
 			{
-				$project = new Project ( $row["ID"], $row["Name"] );
+				$project = new Project ( $row["ID"], $row["ClientID"], $row["Name"] );
 				$project->categories = $this->getCategories($project->projectID);
 				$projects->add($project);
 			}
@@ -35,12 +37,14 @@ class ProjectDAO {
 		$conn = $dbUtil->getDBConnection();
 		$max = 1;
 		$project;
-		$result = $conn->query("SELECT * FROM Project where DeleteFlag = 0 and ID = ".$projectID);
+		$query = "SELECT * FROM Project where DeleteFlag = 0 and ID = ".$projectID;
+		$result = $conn->query($query);
+		LogUtil::debug ( 'ProjectDAO', 'getProject: Executing '.$query.', num results = '.$result->num_rows);
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc())
 			{
-				$project = new Project ( $row["ID"], $row["Name"] );
+				$project = new Project ( $row["ID"], $row["ClientID"], $row["Name"] );
 			}
 		}
 		$conn->close();
@@ -54,7 +58,9 @@ class ProjectDAO {
 		$conn = $dbUtil->getDBConnection();
 		$max = 1;
 		$project;
-		$result = $conn->query("SELECT * FROM Category where DeleteFlag = 0 and ProjectID = ".$projectID." order by Name ");
+		$query = "SELECT * FROM Category where DeleteFlag = 0 and ProjectID = ".$projectID." order by Name ";
+		$result = $conn->query($query);
+		LogUtil::debug ( 'ProjectDAO', 'getCategories: Executing '.$query.', num results = '.$result->num_rows);
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc())
@@ -72,7 +78,9 @@ class ProjectDAO {
 		$conn = $dbUtil->getDBConnection();
 		$max = 1;
 		$project;
-		$result = $conn->query("SELECT * FROM Category where DeleteFlag = 0 and ProjectID = ".$projectID." and ID =  ".$categoryID);
+		$query = "SELECT * FROM Category where DeleteFlag = 0 and ProjectID = ".$projectID." and ID =  ".$categoryID;
+		$result = $conn->query($query);
+		LogUtil::debug ( 'ProjectDAO', 'getCategory: Executing '.$query.', num results = '.$result->num_rows);
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc())
@@ -90,7 +98,9 @@ class ProjectDAO {
 		$conn = $dbUtil->getDBConnection();
 		$max = 1;
 		$project;
-		$result = $conn->query("SELECT * FROM CategoryOption where DeleteFlag = 0 and ProjectID = ".$projectID." and CategoryID = ".$categoryID." order by CategoryOrder ");
+		$query = "SELECT * FROM CategoryOption where DeleteFlag = 0 and ProjectID = ".$projectID." and CategoryID = ".$categoryID." order by CategoryOrder ";
+		$result = $conn->query($query);
+		LogUtil::debug ( 'ProjectDAO', 'getCategoryOptions: Executing '.$query.', num results = '.$result->num_rows);
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc())
@@ -118,8 +128,8 @@ class ProjectDAO {
 		date_default_timezone_set ( 'Australia/Sydney' );
 		$dateUtil = new DateUtil();
 	
-		$sql = "insert into Project(ID,Name,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
-		$sql = $sql." values (".$nextProjectID.",'".StringUtils::escapeDB($project->projectName)."',now(),".$insertedByID.",now(),".$insertedByID.",0) ";
+		$sql = "insert into Project(ID,ClientID,Name,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
+		$sql = $sql." values (".$nextProjectID.",".$project->clientID.",'".StringUtils::escapeDB($project->projectName)."',now(),".$insertedByID.",now(),".$insertedByID.",0) ";
 		LogUtil::debug ( 'ProjectDAO', 'Saving project sql = '.$sql);
 		if ($conn->query($sql) === TRUE) {
 			LogUtil::debug ( 'ProjectDAO', 'New record created successfully');

@@ -30,6 +30,7 @@ class UserDelegate {
 		}
 		LogUtil::debug ( "UserDelegate", "No match found" );
 	}
+	
 	function getUserByEmail($email) {
 		$email = strtolower ( $email );
 		$allUsers = $this->getAllUsers ();
@@ -39,6 +40,20 @@ class UserDelegate {
 			}
 		}
 	}
+	
+	function getAllUsersForClient($clientID) 
+	{
+		$clientUsers = new Collection();
+		$allUsers = $this->getAllUsers ();
+		while ( $user = $allUsers->iterate () ) {
+			if($user->clientID == $clientID)
+			{
+				$clientUsers->add($user);
+			}
+		}
+		return $clientUsers;
+	}
+	
 	function getUserPass($userID) {
 		return $this->userDAO->getUserPass ( $userID );
 	}

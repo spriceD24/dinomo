@@ -29,7 +29,7 @@ $projects->add ( new Project ( 1, 'Bellevue Hill PS', new Collection(), '' ) );
 $projects->add ( new Project ( 2, 'Cranbrook Care', new Collection(), '' ) );
 $projects->add ( new Project ( 3, 'WPM Block C', new Collection(), '' ) );
 */
-$projects = $projectDelegate->getAllProjectsLite();
+$projects = $projectDelegate->getAllProjectsLite(1);
 
 $categories = new Collection ();
 

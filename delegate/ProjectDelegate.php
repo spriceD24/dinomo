@@ -13,17 +13,19 @@ class ProjectDelegate {
 		$this->projectDAO = new ProjectDAO ();
 	}
 	
-	function getAllProjectsLite() {
+	function getAllProjectsLite($clientID) {
 		//check cache first
-		$projects = CacheUtil::getProjectsList();
+		$projects = CacheUtil::getProjectsList($clientID);
 		if(empty($projects))
 		{
 			LogUtil::debug ( 'ProjectDelegate', 'Loading projects from DB' );
-			$projects =  $this->projectDAO->getAllProjectsLite ();
-			CacheUtil::cacheProjectsList($projects);
+			$projects =  $this->projectDAO->getAllProjectsLite($clientID);
+			CacheUtil::cacheProjectsList($clientID,$projects);
 		}else{
 			//LogUtil::debug ( 'ProjectDelegate', 'Loading project from Cache' );				
 		}
+		
+		
 		return $projects;
 	}
 	

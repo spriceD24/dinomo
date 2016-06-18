@@ -1,6 +1,7 @@
 CREATE TABLE User 
 (
 ID INT PRIMARY KEY,
+ClientID int,
 Name VARCHAR(255) NOT NULL,
 Login VARCHAR(255) NOT NULL,
 Password VARCHAR(255) NOT NULL,
@@ -12,5 +13,6 @@ RecordDate TIMESTAMP,
 CreatedBy int,
 LastUpdated TIMESTAMP,
 LastUpdatedBy int,
-DeleteFlag int not null
+DeleteFlag int not null,
+CONSTRAINT FKUser_ClientID FOREIGN KEY (ClientID) REFERENCES Client(ID)
 )

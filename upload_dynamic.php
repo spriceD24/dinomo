@@ -15,7 +15,7 @@ $webUtil = new WebUtil ();
 // echo $actual_link;
 // echo "$_SERVER[HTTP_HOST]";
 $projectDAO = new ProjectDAO ();
-$projects = $projectDAO->getAllProjectsLite ();
+$projects = $projectDAO->getAllProjectsLite (1);
 ?>
 
 

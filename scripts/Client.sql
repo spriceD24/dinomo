@@ -1,0 +1,13 @@
+CREATE TABLE Client 
+(
+ID INT,
+Name VARCHAR(255) NOT NULL,
+Description VARCHAR(1000) NULL,
+Address VARCHAR(500) NULL, 
+Img VARCHAR(500) NULL, 
+Email VARCHAR(100) NULL, 
+Phone VARCHAR(50) NULL, 
+RecordDate TIMESTAMP,
+DeleteFlag int,
+PRIMARY KEY(ID)
+)

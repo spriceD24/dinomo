@@ -1,97 +1,54 @@
 <?php include_once("util/ConfigUtil.php"); ?>
-<?php include_once("util/WebUtil.php"); ?>
 <?php include_once("dao/model/Category.php"); ?>
 <?php include_once("dao/model/Project.php"); ?>
-<?php include_once("delegate/ProjectDelegate.php"); ?>
-<?php include_once("mobile_detect/Mobile_Detect.php");?>
-
+<?php include_once("dao/ProjectDAO.php"); ?>
 <?php
-$webUtil = new WebUtil ();
-$webUtil->srcPage = "select_qa.php";
-set_error_handler ( array (
-		$webUtil,
-		'handleError' 
-) );
 
-$detect = new Mobile_Detect ();
-
-$user = $webUtil->getLoggedInUser ();
-// refresh the cookie
-$webUtil->addLoggedInUser ( $user, ConfigUtil::getCookieExpDays () );
-
-
+$configUtil = new ConfigUtil ();
 // echo $fileUtil->getNumberOfUploadFiles()
 // echo realpath('.');
 // print_r($_SERVER);
 // $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-// echo $user->clientID;
+// echo $actual_link;
 // echo "$_SERVER[HTTP_HOST]";
-$projectDelegate = new ProjectDelegate ();
-$projects = $projectDelegate->getAllProjectsLite ($user->clientID);
-$mobileDropDownStyle = ConfigUtil::getMobileDropDownStyle ();
+$projectDAO = new ProjectDAO ();
+$projects = $projectDAO->getAllProjectsLite ();
 
-
-$isMobile = ($detect->isMobile() && !$detect->isTablet());
-$isTablet = $detect->isTablet();
-
-if (isset ( $_GET ["isMobile"] )) {
-	$isMobile = ( $_GET ["isMobile"] == "true" );
-}
-if (isset ( $_GET ["isTablet"] )) {
-	$isTablet = ( $_GET ["isTablet"] == "true" );
-}
 ?>
 
 
 <html>
-
+<head>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 <meta charset="utf-8">
-<link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
 <title>Dinomo QA</title>
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-phone-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
 
-<?php 
-	if($isMobile && !$isTablet)
-	{
-?>
-	<link href="css/bootstrap-phone.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/bootstrap-responsive-phone.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="css/dinamo-phone.css">
-	<link href="css/style-phone.css" rel="stylesheet" type="text/css">
-<?php 
-	}
-	else if($isTablet && !$isMobile)
-	{
-?>
-	<link href="css/bootstrap-tablet.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/bootstrap-responsive-tablet.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="css/dinamo-tablet.css">
-	<link href="css/style-tablet.css" rel="stylesheet" type="text/css">
-<?php 
-	}else{		
-?>
-	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="css/dinamo.css">
-	<link href="css/style.css" rel="stylesheet" type="text/css">
-<?php 
-	}
-?>
-	
+
+
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet"
+	type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/dinamo.css">
+
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
 	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
 	rel="stylesheet">
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
 
 <link href="css/pages/signin.css" rel="stylesheet" type="text/css">
 
@@ -136,41 +93,25 @@ function selectCategory(projectID)
 		$('.modal').css('margin',0);
 		$(".modal").show();
 	}catch(e){}
-	window.location="upload_qa.php?projectID="+projectID+"&categoryID="+selected;
+	
+	window.location="TEST_upload_qa.php?projectID="+projectID+"&categoryID="+selected;
 }
 
 window.onload = function() {
-
-	clearData();
-	
-};
-
-function clearData()
-{
 	document.getElementById('projectID').selectedIndex = 0;
 	<?php
 	while ( $project = $projects->iterate () ) 
-	
+
 	{
 		?>
-	document.getElementById('project_<?=$project->projectID?>').selectedIndex=0;		
-	try{
-		$('.projectRow').hide();
-		$(".modal").hide();
-	}catch(e){}						
+	document.getElementById('project_<?=$project->projectID?>').selectedIndex=0;								
 				<?php
 	}
 	?>
-}
-
-$(window).bind("pageshow", function(event) {
-    if (event.originalEvent.persisted) {
-    	clearData(); 
-    }
-});
+	
+};
 
 </script>
-
 
 <style>
 .modal {
@@ -204,7 +145,6 @@ $(window).bind("pageshow", function(event) {
 }
 </style>
 
-
 </head>
 
 <body>
@@ -224,25 +164,15 @@ $(window).bind("pageshow", function(event) {
 
 				</a>
 
-				<div class="nav-collapse">
-					<ul class="nav">
-						<li class="" style="padding-top: 30px"><a href="view_reports.php"
-							style="padding: 0px 0px 0px 0px" class=""><u>View All Submitted QA Reports</u>
-						</a></li>
-					</ul>
-				</div>
+
 
 				<div class="nav-collapse">
 
 					<ul class="nav pull-right">
 
-						<li class="" style="float: none"></li>
+						<li class=""></li>
 
-						<li class="" style="padding-top: 30px"><span
-							style="color: white;">User: <?=$user->name?> (<span
-								style="font-style: italic"><a href="logout.php" class="controls-href">logout</a></span>)
-						</span></li>
-
+						<li class="" style="padding-top: 20px"></li>
 
 					</ul>
 
@@ -268,22 +198,16 @@ $(window).bind("pageshow", function(event) {
 
 		<div class="content clearfix">
 
-			<h3>Submit QA Report</h3>
+			<h3>Select QA Project/Report Type</h3>
 
 			<div class="login-fields">
 				<p></p>
 				<table
 					style="font-size: 14px; border 1px solid; padding-top: 10px; padding-bottom: 10px; width: 100%">
 					<tr>
-						<td style="font-weight: bold; width: 50%; padding-bottom: 10px" class="label-display">Project:</td>
+						<td style="font-weight: bold; width: 50%; padding-bottom: 10px">Project:</td>
 						<td><select name="projectID" id="projectID"
-							onchange="setCategoryDropdown()"
-							<?php
-							if ($isMobile && ! $isTablet) {
-								print " style='" . $mobileDropDownStyle . "'";
-							}
-							?>
-							class="controls-select">
+							onchange="setCategoryDropdown()">
 								<option value="" selected></option>
 							<?php
 							while ( $project = $projects->iterate () ) 
@@ -302,17 +226,12 @@ $(window).bind("pageshow", function(event) {
 							{
 								?>
 								<tr id="project_row_<?=$project->projectID?>"
-						style="display: none" class="projectRow controls-select">
-						<td style="font-weight: bold; width: 50%; padding-bottom: 10px" class="label-display">Report
+						style="display: none">
+						<td style="font-weight: bold; width: 50%; padding-bottom: 10px">Report
 							Type:</td>
 						<td align="right"><select name="project_<?=$project->projectID?>"
 							id="project_<?=$project->projectID?>"
-							onchange="selectCategory(<?=$project->projectID?>)"
-							<?php
-								if ($isMobile && ! $isTablet) {
-									print " style='" . $mobileDropDownStyle . "'";
-								}
-								?> class="controls-select">
+							onchange="selectCategory(<?=$project->projectID?>)">
 								<option value="" selected></option>
 								<?php
 								while ( $category = $project->categories->iterate () ) 
@@ -322,8 +241,8 @@ $(window).bind("pageshow", function(event) {
 										<option value="<?=$category->categoryID?>"><?=$category->categoryName?></option>
 									<?php
 								}
-								?>		
-									</select></td>
+								?>					
+									</td>
 					</tr>
 								
 							<?php
@@ -335,14 +254,14 @@ $(window).bind("pageshow", function(event) {
 			</div>
 			<!-- /login-fields -->
 
-			<div class="modal" style="display: none">
-				<div class="center">
-					<img alt="" src="img/loader.gif" />
-				</div>
-			</div>
-
 		</div>
 		<!-- /content -->
+
+		<div class="modal" style="display: none">
+			<div class="center">
+				<img alt="" src="img/loader.gif" />
+			</div>
+		</div>
 
 	</div>
 	<!-- /account-container -->
@@ -351,4 +270,4 @@ $(window).bind("pageshow", function(event) {
 </body>
 
 </html>
-
+</html>

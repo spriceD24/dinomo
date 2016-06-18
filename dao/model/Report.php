@@ -2,7 +2,8 @@
 
 	class Report {
 			public $reportID;
-            public $uploadedDate;
+			public $clientID;
+			public $uploadedDate;
             public $projectID;
             public $categoryID;
             public $reportKey;

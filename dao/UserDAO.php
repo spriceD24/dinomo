@@ -17,13 +17,13 @@ class UserDAO {
 			// output data of each row
 			while($row = $result->fetch_assoc())
 			{
-				$users->add ( new User($row["ID"],$row["Name"],$row["Login"],$row["Email"],$row["Mobile"],$row["Address"],$row["Roles"]));
+				$users->add ( new User($row["ID"],$row["ClientID"],$row["Name"],$row["Login"],$row["Email"],$row["Mobile"],$row["Address"],$row["Roles"]));
 			}
 		}
 		$conn->close();
 		return $users;
-	}	
-
+	}
+	
 	function getUserPass($userID) {
 		// replace with call to DB
 		$dbUtil = new DBUtil ();
@@ -72,8 +72,8 @@ class UserDAO {
 		date_default_timezone_set ( 'Australia/Sydney' );
 		$dateUtil = new DateUtil();
 		
-		$sql = "insert into User(ID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
-		$sql = $sql." values (".$nextUserID.",'".StringUtils::escapeDB($user->name)."','".StringUtils::escapeDB($user->login)."','".StringUtils::escapeDB(StringUtils::encode($user->password))."'";
+		$sql = "insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) ";
+		$sql = $sql." values (".$nextUserID.",".$user->clientID.",'".StringUtils::escapeDB($user->name)."','".StringUtils::escapeDB($user->login)."','".StringUtils::escapeDB(StringUtils::encode($user->password))."'";
 		$sql = $sql.",'".StringUtils::escapeDB($user->email)."','".StringUtils::escapeDB($user->mobile)."','".StringUtils::escapeDB($user->address)."'";
 		$sql = $sql.",'".implode("|",$user->roles)."',now(),".$insertedByID.",now(),".$insertedByID.",0) ";
 		LogUtil::debug ( 'UserDAO', 'Saving user sql = '.$sql);

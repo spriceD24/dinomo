@@ -76,7 +76,7 @@ $uploadedUser = $userDelegate->getUser ( $uploadedUserID );
 $project = $projectDelegate->getProject ( $projectID );
 $currentCategory = $projectDelegate->getCategory ( $projectID, $categoryID );
 $categoryOptions = $projectDelegate->getCategoryOptions ( $projectID, $categoryID );
-
+$report->clientID = $uploadedUser->clientID;
 LogUtil::debug ( "submit_qa", "Submitting details for user = " . $uploadedUser->login . ", project = " . $project->projectName . ", category = " . $currentCategory->categoryName . ", num options = " . $categoryOptions->getNumObjects () );
 
 LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", getting date details" );
@@ -308,7 +308,7 @@ $email->Body = $emailHTML;
 $email->IsHTML ( true );
 
 $recipients = "";
-$allUsers = $userDelegate->getAllUsers();
+$allUsers = $userDelegate->getAllUsers($uploadedUser->clientID);
 $emailRecipients = array();
 
 if($uploadedUser->hasRole('testuser'))

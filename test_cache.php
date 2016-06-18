@@ -20,16 +20,16 @@
 	
 	echo "<BR/><BR/>LISTS TESTS";
 	$projectDelegate = new ProjectDelegate ();
-	$projects = $projectDelegate->getAllProjectsLite();
+	$projects = $projectDelegate->getAllProjectsLite(1);
 	while ( $project = $projects->iterate () ) 
 	
 	{							
 		print "<br/>project name = ".$project->projectName;								
 	}
 		
-	CacheUtil::cacheProjectsList($projects);
+	CacheUtil::cacheProjectsList(1,$projects);
 	echo "<BR/>FROM CACHE";
-	$projects2 = CacheUtil::getProjectsList();
+	$projects2 = CacheUtil::getProjectsList(1);
 	while ( $project = $projects2->iterate () ) 
 	
 	{							
@@ -51,7 +51,7 @@
 	$cat2 = CacheUtil::getCategoriesList($project->projectID);
 	while ( $cat = $cat2->iterate () ) 	{									print "<br/>category name = ".$cat->categoryName;									}
 	echo "<br/><br/>";	echo "<BR/><BR/>CATEGORY TEST";		$category = $projectDelegate->getCategory($project->projectID,1);		print "<br/>category name = ".$category->categoryName;			echo "<BR/>FROM CACHE";	CacheUtil::addCachedCategory($project->projectID,$category->categoryID,$category);	$category2 = CacheUtil::getCachedCategory($project->projectID,$category->categoryID);	print "<br/>category name = ".$category2->categoryName;		echo "<BR/><BR/>CATEGORY OPTIONS TEST";		$categoryOptions = $projectDelegate->getCategoryOptions($project->projectID,$category2->categoryID);		while ( $cat = $categoryOptions->iterate () ) 	{									print "<br/>category title = ".$cat->title;									}	echo "<BR/>FROM CACHE";	CacheUtil::addCachedCategoryOptions($project->projectID,$category->categoryID,$categoryOptions);	$categoryOptions2 = CacheUtil::getCachedCategoryOptions($project->projectID,$category2->categoryID);		while ( $cat = $categoryOptions2->iterate () )	{		print "<br/>category title = ".$cat->title;	}			echo "<br/><br/>";		echo "<br/><br/>";
-	echo "<BR/>USERS TEST";	$userDelegate = new UserDelegate ();	$users = $userDelegate->getAllUsers();	while ( $user = $users->iterate () )	{		print "<br/>name = ".$user->name;	}
+	echo "<BR/>USERS TEST";	$userDelegate = new UserDelegate ();	$users = $userDelegate->getAllUsers(1);	while ( $user = $users->iterate () )	{		print "<br/>name = ".$user->name;	}
 	CacheUtil::addCachedUsers($users);	$users2 = CacheUtil::getCachedUsers($users);	echo "<BR/>FROM CACHE";	while ( $user = $users2->iterate () )	{		print "<br/>name = ".$user->name;	}				?>
 
 </body>

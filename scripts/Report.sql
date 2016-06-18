@@ -1,5 +1,6 @@
 CREATE TABLE Report (
 ReportID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ClientID int,
 UploadedDate TIMESTAMP,
 CategoryID int,
 ProjectID int,
@@ -14,5 +15,6 @@ MetaData TEXT null,
 CONSTRAINT FKReport_ProjectID FOREIGN KEY (ProjectID) REFERENCES Project(ID),
 CONSTRAINT FKReport_CategoryID FOREIGN KEY (CategoryID) REFERENCES Category(ID),
 CONSTRAINT FKReport_UploadedBy FOREIGN KEY (UploadedBy) REFERENCES User(ID),
-CONSTRAINT FKReport_UploadedFor FOREIGN KEY (UploadedForUser) REFERENCES User(ID)
+CONSTRAINT FKReport_UploadedFor FOREIGN KEY (UploadedForUser) REFERENCES User(ID),
+CONSTRAINT FKReport_ClientID FOREIGN KEY (ClientID) REFERENCES Client(ID)
 )
