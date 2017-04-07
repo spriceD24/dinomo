@@ -25,6 +25,14 @@
 <?php include_once("dao/ReportDAO.php"); ?>
 
 <?php
+$webUtil = new WebUtil ();
+$webUtil->srcPage = "submit_qa_sql.php";
+set_error_handler ( array (
+		$webUtil,
+		'handleError'
+) );
+
+
 
 LogUtil::debug ( "submit_qa", "Starting process..");
 $webUtil = new WebUtil ();
@@ -45,9 +53,9 @@ $num_images = ConfigUtil::getNumberOfUploadFiles ();
 $setOptionPrefix = HTMLConst::STANDARD_OPT_ID_PREFIX;
 $projectDelegate = new ProjectDelegate ();
 $userDelegate = new UserDelegate ();
--
+
 // add images to collection
-$images = new Collection ();
+$images = new Collection();
 
 $metaData = array();
 // echo "checking files";

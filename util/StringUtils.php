@@ -37,11 +37,38 @@ class StringUtils {
 	}
 	
 	static function encode($string) {
+		if (version_compare(PHP_VERSION, '5.6.0') >= 0) 
+		{
+			return $string;
+			//return mcrypt_encrypt ( MCRYPT_RIJNDAEL_128, self::CIPHER, self::padKey($string), MCRYPT_MODE_CBC, self::DINAMO_IV );
+		}
 		return mcrypt_encrypt ( MCRYPT_RIJNDAEL_128, self::CIPHER, $string, MCRYPT_MODE_CBC, self::DINAMO_IV );
 	}
 	
 	static function decode($string) {
+		if (version_compare(PHP_VERSION, '5.6.0') >= 0) 
+		{
+			//return mcrypt_decrypt ( MCRYPT_RIJNDAEL_128, self::CIPHER, self::padKey($string), MCRYPT_MODE_CBC, self::DINAMO_IV );
+			return $string;
+		}
 		return mcrypt_decrypt ( MCRYPT_RIJNDAEL_128, self::CIPHER, $string, MCRYPT_MODE_CBC, self::DINAMO_IV );
+	}
+	
+	static function padKey($key){
+		// key is too large
+		if(strlen($key) > 32) return false;
+	
+		// set sizes
+		$sizes = array(16,24,32);
+	
+		// loop through sizes and pad key
+		foreach($sizes as $s){
+			while(strlen($key) < $s) $key = $key."\0";
+			if(strlen($key) == $s) break; // finish if the key matches a size
+		}
+	
+		// return
+		return $key;
 	}
 	
 	static function replace($search, $replace, $value)

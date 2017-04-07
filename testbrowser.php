@@ -1,8 +1,17 @@
+<?php include_once("util/StringUtils.php"); ?>
 <?php
 
 // Include and instantiate the class.
 require_once 'mobile_detect/Mobile_Detect.php';
 $detect = new Mobile_Detect ();
+
+echo 'Current PHP version: ' . phpversion().'<br/>';
+echo ' Version greater = '.version_compare(PHP_VERSION, '5.6.0') .'<br/>';
+echo ' Pass = '.StringUtils::padKey('stef').'<br/>';
+echo ' Pass = '.strlen(StringUtils::padKey('stef')).'<br/>';
+echo ' Pass = '.StringUtils::encode('stef').'<br/>';
+
+//strlen().
 
 // Any mobile device (phones or tablets).
 if ($detect->isMobile ()) {
