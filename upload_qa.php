@@ -12,6 +12,7 @@
 <?php include_once("dao/model/User.php"); ?>
 <?php include_once("delegate/UserDelegate.php"); ?>
 <?php include_once("mobile_detect/Mobile_Detect.php");?>
+<?php include_once("dao/ReportDAO.php"); ?>
 
 <?php
 
@@ -192,7 +193,10 @@ function showCantProceedDiv(myID,id,vals)
 	clearCantProceedDiv(id,vals);
 	document.getElementById('div_'+id).style.border='1px solid red';
 	document.getElementById('div_'+id).style.backgroundColor ='#e2cbba';
-	document.getElementById('error_proceed_'+myID).style.display ='';
+	if(document.getElementById('error_proceed_'+myID))
+	{
+		document.getElementById('error_proceed_'+myID).style.display ='';
+	}
 	
 	//alert('set - '+id);
 }
@@ -206,7 +210,10 @@ function clearCantProceedDiv(id,divs)
 	{
 		document.getElementById('div_'+id).style.border='0px solid white';
 		document.getElementById('div_'+id).style.backgroundColor ='white';
-		document.getElementById('error_proceed_'+vals[i]+id).style.display ='none';
+		if(document.getElementById('error_proceed_'+vals[i]+id))
+		{
+			document.getElementById('error_proceed_'+vals[i]+id).style.display ='none';
+		}
 	}	
 }
 
@@ -221,13 +228,27 @@ function getSelectedVaue(id)
 	return e.options[e.selectedIndex].value;
 }
 
+function loadDate(id,dateVal)
+{
+	var dates = dateVal.split("-");
+	if(dates && dates.length == 3)
+	{
+		$('#day_'+id).val(dates[0]);	
+		$('#month_'+id).val(dates[1]);	
+		$('#year_'+id).val(dates[2]);	
+	}
+}
+
 function setDate(id)
 {
 	var day = getSelectedVaue("day_"+id);
 	var month = getSelectedVaue("month_"+id);
 	var year = parseInt(getSelectedVaue("year_"+id));
 
-	var time = getSelectedVaue("time_"+id);
+	var time = '';
+	try{
+		time = getSelectedVaue("time_"+id);
+	}catch(e){}
 	document.getElementById(id).value = day+"-"+month+"-"+year+" "+time;
 	validDate(id);
 }
@@ -284,9 +305,53 @@ function hideDiv(id,divs)
 {
 	var vals = divs.split(',');
 	var arrayLength = vals.length;
-	for (var i = 0; i < arrayLength; i++) {
+	for (var i = 0; i < arrayLength; i++) 
+	{
 		document.getElementById(id+vals[i]).style.display='none';
 	}	
+}
+
+function cleanArr(id,val)
+{
+	var str = document.getElementById(id).value;
+	if(str && str.length > 0)
+	{
+		var arr = str.split(",");
+		var pos = -1;
+		for(var i=0;i!=arr.length;i++)
+		{
+			if(arr[i] == val)
+			{
+				pos = i;
+			}
+		}
+		if(pos > -1)
+		{
+			arr.splice(pos);
+		}
+		return arr.join();
+	}	
+	return str;
+}
+
+function removeImage(name,file,idx)
+{
+	document.getElementById('savedImages').value = cleanArr('savedImages',file);
+	document.getElementById('savedImageNames').value = cleanArr('savedImageNames',name);
+	
+	//alert(document.getElementById('savedImages').value);
+	//alert(document.getElementById('savedImageNames').value);
+	document.getElementById("uploaded_files_table").deleteRow(idx);
+}
+
+function addImage(file,name,idx) 
+{
+    var table = document.getElementById("uploaded_files_table");
+    var row = table.insertRow(idx);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = "<a href='uploaded_images/"+file+"' target='_blank'>"+name+"<a>";
+    cell2.innerHTML = "<img src='img/notification_error.png' onclick=\"removeImage('"+name+"','"+file+"',"+idx+")\" style='margin-left:10px'>";
 }
 
 function submitForm()
@@ -503,6 +568,8 @@ function submitForm()
 		}catch(e){}
 		//document.getElementById("submitSpan").style.display='';
 		//$("#id").css("display", "none");
+		$('#saveButton').attr("disabled", true); 
+		$('#saveButton').prop("disabled", true); 
 		$('#submitButton').attr("disabled", true); 
 		$('#submitButton').prop("disabled", true); 
 		$('#uploadform').submit();
@@ -518,6 +585,24 @@ $(window).bind("pageshow", function(event) {
 		$('#submitButton').prop("disabled",false);
     }
 });
+
+function saveReport()
+{
+	//submit form
+	try{
+		$('.modal').css('margin',0);
+		$('.modal').show();
+	}catch(e){}
+	//document.getElementById("submitSpan").style.display='';
+	//$("#id").css("display", "none");
+	$('#submitButton').attr("disabled", true); 
+	$('#submitButton').prop("disabled", true); 
+	$('#saveButton').attr("disabled", true); 
+	$('#saveButton').prop("disabled", true); 
+	$('#uploadform').attr('action', 'save_qa.php');
+	$('#uploadform').submit();
+}
+
 
 //Extra Javascript ENDS here
 window.onload = function() {
@@ -587,7 +672,16 @@ window.onload = function() {
 
 				</a>
 
-
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li class="" style="padding-top: 30px"><a href="view_reports.php"
+							style="padding: 0px 0px 0px 0px" class=""><u>View Submitted Reports</u>
+						</a></li>
+						<li class="" style="padding-top: 30px;padding-left:20px"><a href="view_preliminary_reports.php"
+							style="padding: 0px 0px 0px 0px" class=""><u>View Saved Reports</u>
+						</a></li>
+					</ul>
+				</div>
 
 				<div class="nav-collapse">
 
@@ -670,7 +764,15 @@ window.onload = function() {
 													value="<?=$setCurrentProjectID?>" /> <input type="hidden"
 													name="categoryID" id="categoryID"
 													value="<?=$setCurrentCategoryID?>" />
-
+													<?php
+														if (isset ( $_GET ["preliminaryReportID"] ))
+														{
+															$setCurrentPrelimID = intval ( $_GET ["preliminaryReportID"] );
+															?>
+															<input type="hidden" name="preliminaryReportID" id="preliminaryReportID"	value="<?=$setCurrentPrelimID?>" />
+															<?php		
+														}
+													?>		
 												<fieldset>
 
 										
@@ -1165,6 +1267,16 @@ if ($categoryOption->isRequired) {
 												
 												?>
 
+											<div class="control-group"
+														id="uploaded_files_div"
+														name="uploaded_files_div" style="display:none">
+											<label class="control-label"
+												for="file_uploaded_files_div">Saved Files</label>
+												<div class="controls">
+												<table id="uploaded_files_table" name="uploaded_files_table">
+												</table>
+												</div>
+											</div>
 											
 
 											<div class="control-group"
@@ -1402,14 +1514,18 @@ if ($categoryOption->isRequired) {
 
 														<button type="button" class="btn btn-primary"
 															id="submitButton" name="submitButton"
-															onclick="submitForm()">Submit</button>
-
+															onclick="submitForm()">Submit Report</button>
+														
+														<button type="button" class="btn btn-success"
+															id="saveButton" name="saveButton"
+															onclick="saveReport()" style="margin-left:50px">Save Report</button>
 														<!-- <button class="btn">Cancel</button>-->
 														<span id="submitSpan" name="submitSpan"
 															style="display: none"><img src="img/squares.gif" /></span>
 													</div>
 													<!-- /form-actions -->
-
+<input type="hidden" name="savedImages" id="savedImages" value="" />
+<input type="hidden" name="savedImageNames" id="savedImageNames" value="" />
 												</fieldset>
 
 											</form>
@@ -1576,29 +1692,147 @@ if ($categoryOption->isRequired) {
 
 <?php
 
-
-/*
- *
- * var selectedVal = $j("input[name=companyMeeting]:checked").val()
- *
- * if(selectedVal != true && selectedVal != 'true' && selectedVal != false && selectedVal != 'false')
- *
- * {
- *
- * alert('Please indicate whether you spoke with the Company');
- *
- * return false;
- *
- * }
- *
- */
-
+if (isset ( $_GET ["preliminaryReportID"] )) {
+	$setCurrentPrelimID = intval ( $_GET ["preliminaryReportID"] );
+	$reportDAO = new ReportDAO();
+	$savedReport = $reportDAO->getPreliminaryReportByID($setCurrentPrelimID);
+	if(!is_null($savedReport))
+	{
+		$savedOptions = json_decode($savedReport->metaData, true);
+		
+		//Start form pre-load here
+		
+		while ( $categoryOption = $categoryOptions->iterate () ) {
+			if(isset($savedOptions[$setOptionPrefix.$categoryOption->categoryOptionID]))
+			{
+				$val = $savedOptions[$setOptionPrefix.$categoryOption->categoryOptionID];
+				if(!is_null($val))
+				{
+					$val = str_replace("'", "\'", $val);
+				}
+				if ($categoryOption->formType == 'TEXT')
+				{
+					if(!is_null($val))
+					{
+						echo"$('#".$setOptionPrefix.$categoryOption->categoryOptionID."').val('".$val."')\n";
+						//echo "TEXT - ".$setOptionPrefix.$categoryOption->categoryOptionID." text val = ".$val."\n";
+					}
+				}
+				if ($categoryOption->formType == 'TEXTAREA')
+				{
+					if(!is_null($val))
+					{
+						echo"$('#".$setOptionPrefix.$categoryOption->categoryOptionID."').text('".$val."')\n";
+					}
+				}
+				if ($categoryOption->formType == 'RADIO')
+				{
+					if(!is_null($val))
+					{
+						//echo "RADIO - ".$setOptionPrefix.$categoryOption->categoryOptionID."  val = ".$val."\n";
+						
+						//$('input:radio[name="gender"][value="Male"]').prop('checked', true);
+						echo "$('input:radio[name=\"".$setOptionPrefix.$categoryOption->categoryOptionID."\"][value=\"".$val."\"]').trigger(\"click\")\n";
+						
+						$radioOptions = $categoryOption->getSetting("radioOptions");
+						if(!empty($radioOptions))
+						{
+							foreach ( $radioOptions as $radioOption )
+							{
+								if (isset($radioOption["commentOn"])
+										&& !empty ($radioOption["commentOn"])
+										&& $radioOption["commentOn"] == true
+										&& isset( $savedOptions["commentOnText_".$radioOption["radioOption"].$setOptionPrefix.$categoryOption->categoryOptionID]))
+								{
+									$commentVal = $savedOptions["commentOnText_".$radioOption["radioOption"].$setOptionPrefix.$categoryOption->categoryOptionID];
+									if(!is_null($commentVal))
+									{
+										$commentVal = str_replace("'", "\'", $commentVal);
+										echo"document.getElementById('commentOnText_".$radioOption["radioOption"].$setOptionPrefix.$categoryOption->categoryOptionID."').value='".$commentVal."'\n";
+										//echo "COMMENT RADIO - "."commentOnText_".$radioOption["radioOption"].$setOptionPrefix.$categoryOption->categoryOptionID." val = ".$commentVal."\n";										
+									}
+								}
+							}
+						}					
+					}
+				}
+				if ($categoryOption->formType == 'CONFIRM') 
+				{
+					if(!is_null($val))
+					{
+						echo"$('#".$setOptionPrefix.$categoryOption->categoryOptionID."').prop('checked', true)\n";
+						echo"$('#".$setOptionPrefix.$categoryOption->categoryOptionID."').attr('checked', true)\n";
+						//echo "CONFIRM - ".$setOptionPrefix.$categoryOption->categoryOptionID." text val = ".$val."\n";
+					}
+				}
+				if ($categoryOption->formType == 'PHOTOS') 
+				{
+					//not implemented
+				}													
+				if ($categoryOption->formType == 'DATETIME') 
+				{
+					if(!is_null($val))
+					{
+						//echo "DATETIME - ".$setOptionPrefix.$categoryOption->categoryOptionID." text val = ".$val."\n";
+					}
+				}
+				if ($categoryOption->formType == 'DATE') 
+				{
+					if(!is_null($val))
+					{
+						echo "loadDate('".$setOptionPrefix.$categoryOption->categoryOptionID."','".$val."')\n";
+					}
+				}
+			}
+		}
+		//End form pre load here
+		
+		
+		
+		$photoFiles = "";
+		$photoNames = "";
+		$imageCount = 0;
+		foreach ($savedOptions as $key => $value) {
+			 //echo "//{$key} => {$value} \n";
+		 	if (0 === strpos($value, 'photo_')) 
+		 	{
+		 		if($photoFiles != "")
+		 		{
+		 			$photoFiles = $photoFiles.",";
+		 		}
+ 			 	if($photoNames != "")
+		 		{
+		 			$photoNames = $photoNames.",";		 			
+		 		}
+		 		$photoNames = $photoNames.$key;
+		 		$photoFiles = $photoFiles.$value;
+		 		echo "addImage('".$value."','".$key."',".$imageCount.")\n";
+		 		 
+		 		$imageCount;
+		 	}
+		}
+				
+		if($photoFiles != "")
+		{
+			echo "document.getElementById('uploaded_files_div').style.display=''\n";
+			echo "document.getElementById('savedImages').value = '".$photoFiles."'\n";
+		}
+		if($photoNames != "")
+		{
+			echo "document.getElementById('savedImageNames').value = '".$photoNames."'\n";
+		}
+		
+		?>
+			
+		<?php
+	}
+}
+ 
 ?>
  
 </script>
 
-
-
+<br/>
 </body>
 
 </html>

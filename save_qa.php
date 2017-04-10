@@ -26,7 +26,7 @@
 
 <?php
 $webUtil = new WebUtil ();
-$webUtil->srcPage = "submit_qa.php";
+$webUtil->srcPage = "save_qa.php";
 set_error_handler ( array (
 		$webUtil,
 		'handleError'
@@ -34,7 +34,9 @@ set_error_handler ( array (
 
 
 
-LogUtil::debug ( "submit_qa", "Starting process..");
+LogUtil::debug ( "save_qa", "Starting save..");
+
+// set_error_handler(array($webUtil, 'handleError'));
 
 $reportDAO = new ReportDAO();
 $report = new Report();
@@ -74,7 +76,7 @@ $report->categoryID = $categoryID;
 $report->projectID = $projectID;
 $report->uploadedBy= $uploadedUserID;
 
-LogUtil::debug ( "submit_qa", "Uploading details for project ID = " . $projectID . ", category id = " . $categoryID . ",upload user ID = " . $uploadedUserID );
+LogUtil::debug ( "save_qa", "Saving details for project ID = " . $projectID . ", category id = " . $categoryID . ",upload user ID = " . $uploadedUserID );
 
 // get the data
 $uploadedUser = $userDelegate->getUser ( $uploadedUserID );
@@ -82,17 +84,16 @@ $project = $projectDelegate->getProject ( $projectID );
 $currentCategory = $projectDelegate->getCategory ( $projectID, $categoryID );
 $categoryOptions = $projectDelegate->getCategoryOptions ( $projectID, $categoryID );
 $report->clientID = $uploadedUser->clientID;
-LogUtil::debug ( "submit_qa", "Submitting details for user = " . $uploadedUser->login . ", project = " . $project->projectName . ", category = " . $currentCategory->categoryName . ", num options = " . $categoryOptions->getNumObjects () );
+LogUtil::debug ( "save_qa", "Saving details for user = " . $uploadedUser->login . ", project = " . $project->projectName . ", category = " . $currentCategory->categoryName . ", num options = " . $categoryOptions->getNumObjects () );
 
-LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", getting date details" );
+LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", getting date details" );
 $dateStr = $dateUtil->getCurrentDateString ();
 $dateTimeStr = $dateUtil->getCurrentDateTimeString ();
 $pdfName = "Report_" . $project->projectName . "_" . $currentCategory->categoryName . "_" . $dateStr;
-LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", pdf shall be = " . $pdfName );
 
 $unique_id = $fileUtil->getFilename ( $uploadedUser, $pdfName );
 
-LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", checking for attached images" );
+LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", checking for attached images" );
 
 // $count = count($_FILES['files']['tmp_name']);
 $idx = 1;
@@ -103,7 +104,7 @@ foreach ( $_FILES as $file ) {
 	$file_size = $file ['size'];
 	$file_tmp_name = $file ['tmp_name'];
 	
-	LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", checking image = " . $file_name . ", size = " . $file_size . ", type = " . $file_type );
+	LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", checking image = " . $file_name . ", size = " . $file_size . ", type = " . $file_type );
 	if ($file_size) {
 		$check = getimagesize ( $file_tmp_name );
 		if ($check !== false) {
@@ -123,7 +124,7 @@ foreach ( $_FILES as $file ) {
 			// $target = $target_dir."/".$unique_id."/".$newname;
 			// mkdir("testing");
 			$target = $target_dir . "/" . $newname;
-			LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", image " . $file_name . " OK, saving to " . $target );
+			LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", image " . $file_name . " OK, saving to " . $target );
 			// echo $target_dir;
 			move_uploaded_file ( $file_tmp_name, $target );
 			
@@ -138,16 +139,16 @@ foreach ( $_FILES as $file ) {
 			$pdfImageWidthHeight = $pdfUtil->getBestPDFWidthHeight ( $uploadedImage );
 			$uploadedImage->width = $pdfImageWidthHeight->width;
 			$uploadedImage->height = $pdfImageWidthHeight->height;
-			LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", original image width =  " . $image_info [0] . ", original height = " . $image_info [1] . ", modified image width =  " . $pdfImageWidthHeight->width . ", modified height = " . $pdfImageWidthHeight->height );
+			LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", original image width =  " . $image_info [0] . ", original height = " . $image_info [1] . ", modified image width =  " . $pdfImageWidthHeight->width . ", modified height = " . $pdfImageWidthHeight->height );
 			
 			$images->add ( $uploadedImage );
 		} else {
 			// file is not an image
-			LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", File " . $file_name . " is NOT an image " );
+			LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", File " . $file_name . " is NOT an image " );
 		}
 	} else {
 		// file is empty
-		LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", File " . $file_name . " is EMPTY " );
+		LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", File " . $file_name . " is EMPTY " );
 	}
 }
 
@@ -169,11 +170,11 @@ if (isset($_POST ["savedImageNames"]) && isset($_POST ["savedImages"]))
 		LogUtil::debug ( "save_qa", "Num Saved Images = ".$numSavedImages);
 		if($numSavedImages == $numSavedImageNames)
 		{
-			for($x = 0; $x < $numSavedImages; $x++)
+			for($x = 0; $x < $numSavedImages; $x++) 
 			{
-				$imageName = $savedImageNamesArr[$x];
-				$image = $savedImagesArr[$x];
-				$imageFile = $target_dir . "/".$image;
+		    	$imageName = $savedImageNamesArr[$x];
+		    	$image = $savedImagesArr[$x];
+		    	$imageFile = $target_dir . "/".$image;
 				LogUtil::debug ( "save_qa", "Processing Saved Image: Name = ".$imageName.", location = ".$imageFile);
 				$fileExists = file_exists($imageFile);
 				LogUtil::debug ( "save_qa", "File exists = ".$fileExists);
@@ -213,7 +214,7 @@ if (isset($_POST ["savedImageNames"]) && isset($_POST ["savedImages"]))
 					} else {
 						// file is not an image
 						LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", File " . $file_name . " is NOT an image " );
-					}
+					}					
 				}
 			}
 		}
@@ -221,6 +222,7 @@ if (isset($_POST ["savedImageNames"]) && isset($_POST ["savedImages"]))
 }
 
 //end process any pre-saved images
+
 
 
 $options = new Collection ();
@@ -265,16 +267,12 @@ while ( $categoryOption = $categoryOptions->iterate () )
 		$value = $_POST [$setOptionPrefix . $categoryOption->categoryOptionID];
 		// echo $setOptionPrefix.$categoryOption->categoryOptionID.' = '.$value.'<br/>';
 		if (! is_null ( $value )) {
-			LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Adding value id = " . $setOptionPrefix . $categoryOption->categoryOptionID . ", name =  " . $categoryOption->title . ", value = " . $value );
+			LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", Adding value id = " . $setOptionPrefix . $categoryOption->categoryOptionID . ", name =  " . $categoryOption->title . ", value = " . $value );
 			
 			$selectedOption = new SelectedOption ();
-			$label = $categoryOption->title;
+			$label = $setOptionPrefix . $categoryOption->categoryOptionID;
 			$selectedOption->valueOnly = false;
 			$selectedOption->formType = $categoryOption->formType;
-			$pdfTitle = $categoryOption->getSetting("pdfTitle");
-			if (! is_null ( $pdfTitle ) && ! empty ( $pdfTitle )) {
-				$label = $pdfTitle;
-			}
 			$selectedOption->optionFormID = $label;
 			
 			if ($categoryOption->formType == 'RADIO')
@@ -291,14 +289,15 @@ while ( $categoryOption = $categoryOptions->iterate () )
 									&& !empty($radioOption["commentOn"])
 									&& $radioOption["commentOn"] == true)
 							{
-								LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Checking comment on..." );
+								LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", Checking comment on..." );
 								if (isset ( $_POST ["commentOnText_".$radioOption["radioOption"].$setOptionPrefix . $categoryOption->categoryOptionID] ))
 								{
-									LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Checking comment on val is - ".$_POST ["commentOnText_".$radioOption["radioOption"].$setOptionPrefix . $categoryOption->categoryOptionID] );
+									LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", Checking comment on val is - ".$_POST ["commentOnText_".$radioOption["radioOption"].$setOptionPrefix . $categoryOption->categoryOptionID] );
 									$details = $_POST ["commentOnText_".$radioOption["radioOption"].$setOptionPrefix . $categoryOption->categoryOptionID] ;
 									if(!empty($details))
 									{
-										$value = $value.": ".$details;
+										$selectedOption->comment = $details;
+										$metaData["commentOnText_".$radioOption["radioOption"].$setOptionPrefix . $categoryOption->categoryOptionID]=$details;
 									}
 								}
 								
@@ -327,7 +326,7 @@ while ( $categoryOption = $categoryOptions->iterate () )
 			{
 				$behalfOfUser = $userDelegate->getUser($value);
 				$forUser = $userDelegate->getUser($value)->name;
-				LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Setting submitted by = " .$forUser);
+				LogUtil::debug ( "save_qa", "user = " . $uploadedUser->login . ", Setting submitted by = " .$forUser);
 			}
 			
 			$options->add ( $selectedOption );
@@ -338,119 +337,14 @@ while ( $categoryOption = $categoryOptions->iterate () )
 $report->uploadedForUser= $behalfOfUser->userID;
 $report->metaData = json_encode ($metaData);
 
-$htmlUtil = new HTMLUtil ();
-
-LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Generating HTML, id = " . $unique_id );
-$optionsHTML = $htmlUtil->getOptionsTable ( $options );
-$imageHTML = $htmlUtil->getImageTable ( $images );
-$html = "<html><body> ";
-$html = $html . $optionsHTML;
-$html = $html . '<br/><br/><h2>PHOTOS</h2><hr/><br/>';
-$html = $html . $imageHTML;
-$html = $html . " </html></body>";
-
-$link = $fileUtil->saveHTMLToWebFile ( $html, $unique_id );
-echo "<a href='" . $link . ">" . $link . "</a>";
-LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Generating PDF, id = " . $unique_id );
-
-$pdfUtil->generatePDF ( $optionsHTML, $imageHTML, $unique_id, 'Quality Assurance - ' . $currentCategory->categoryName );
-
-// now send the email
-$email = new PHPMailer ();
-
-$webUrl = ConfigUtil::getWebFolder () . "/" . urlencode ( $unique_id ) . ".html";
-$pdfUrl = ConfigUtil::getPDFFolder () . "/" . urlencode ( $unique_id ) . ".pdf";
-
-$webUrl = $webUtil->getBaseURI () . "/" . $webUrl;
-$pdfUrl = $webUtil->getBaseURI () . "/" . $pdfUrl;
-
-$report->pdfURL= $pdfUrl;
-$report->webURL= $webUrl;
 $report->reportKey= $unique_id;
-$report->reportName= urlencode ( $unique_id ) . ".pdf";
+$report->reportName= urlencode ( $unique_id ) . ".prelim";
 
-LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Generating Email, Web URL = " . $webUtil->getBaseURI () . "/" . $webUrl );
-$emailHTML = $htmlUtil->generateUploadEmail ( $webUrl, $pdfUrl, $project, $currentCategory, $uploadedUser, $forUser );
-if($hasNA)
-{
-	$hasNAHTML = "<br/>User has responded 'N/A' for following items. Please follow up if necessary.";
-	$hasNAHTML = $hasNAHTML.$htmlUtil->getNAOptionsTable($options);
-	$emailHTML = $emailHTML.$hasNAHTML;
-}
-
-$email->From = $uploadedUser->email;
-$email->FromName = $uploadedUser->name;
-$email->Subject = 'QA Report - ' . $project->projectName . ': ' . $currentCategory->categoryName;
-$email->Body = $emailHTML;
-$email->IsHTML ( true );
-
-$recipients = "";
-$allUsers = $userDelegate->getAllUsers($uploadedUser->clientID);
-$emailRecipients = array();
-
-if($uploadedUser->hasRole('testuser'))
-{
-	LogUtil::debug ( "submit_qa", "User is 'testuser' just emailing to this user, email = ".$uploadedUser->email);
-	$email->AddAddress($uploadedUser->email);
-	array_push($emailRecipients,$uploadedUser->email);	
-	$recipients = $recipients . $uploadedUser->email;	
-}else{
-	while ( $user = $allUsers->iterate () )
-	{
-		if($user->hasRole('recipient'))
-		{
-			LogUtil::debug ( "submit_qa", "Adding email recipient = " . $user->login . " [".$user->email."], user has role 'recipient'");
-			$email->AddAddress ($user->email);
-			array_push($emailRecipients,$user->email);
-			if($recipients != '')
-			{
-				$recipients = $recipients.", ";
-			}
-			$recipients = $recipients . $user->email;
-		}
-	}
-}
-
-$email->addBCC(ConfigUtil::getDinamoSupportEmail());
-
-//check if we need to CC uploaded
-if (!in_array($uploadedUser->email, $emailRecipients)) 
-{
-	LogUtil::debug ( "submit_qa", "Adding email CC recipient = " . $uploadedUser->login . " [".$uploadedUser->email."], user uploaded report");
-	$email->addCC($uploadedUser->email);
-}
-if (!empty($behalfOfUser) && $behalfOfUser->userID != $uploadedUser->userID
-		&& !in_array($behalfOfUser->email, $emailRecipients))
-{
-	LogUtil::debug ( "submit_qa", "Adding email CC recipient = " . $behalfOfUser->login . " [".$behalfOfUser->email."], user is listed as submitter of report");
-	$email->addCC($behalfOfUser->email);
-}
-
-$pdf_folder = ConfigUtil::getPDFFolder ();
-$path = realpath ( '.' );
-
-$file_to_attach = $path . '/' . $pdf_folder . '/' . $unique_id . '.pdf';
-
-LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Generating Email, Add attachment = " . $file_to_attach );
-$email->AddAttachment ( $file_to_attach, $pdfName . '.pdf' );
-
-LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Sending Email to " . $recipients );
-
-if ($webUtil->isProduction ()& !empty($project->projectName)) {
-	LogUtil::debug ( "submit_qa", "In production, sending EMAIL" );
-	$email->Send ();
-} else {
-	LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Not Sending Email to " . $recipients . " as not in PRODUCTION" );
-}
-LogUtil::debug ( "submit_qa", "user = " . $uploadedUser->login . ", Sent Email OK" );
-
-LogUtil::debug ( "submit_qa", "Saving report to DB" );
-$reportDAO->saveReport($report);
-LogUtil::debug ( "submit_qa", "Saved report to DB" );
+LogUtil::debug ( "save_qa", "Saving preliminary report to DB" );
+$reportDAO->savePreliminaryReport($report);
 
 if (isset($_POST ["preliminaryReportID"]))
 {
-	
 	$preliminaryReportID = intval ( $_POST ["preliminaryReportID"] );
 	if(!empty($preliminaryReportID))
 	{
@@ -458,8 +352,8 @@ if (isset($_POST ["preliminaryReportID"]))
 		$reportDAO->removePreliminaryReport($preliminaryReportID);
 	}
 }
-
-header ( "Location: upload_success.php?id=" . $unique_id . "&projectID=" . $projectID . "&categoryID=" . $categoryID );
+	
+header ( "Location: view_preliminary_reports.php?reportKey=" . $unique_id."&message=Report Saved Successfully");
 exit ();
 ?>
 </body>

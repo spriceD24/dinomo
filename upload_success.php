@@ -116,14 +116,15 @@ if (isset ( $_GET ["isTablet"] )) {
 				</a>
 
 				<div class="nav-collapse">
-					<ul class="nav">					
+					<ul class="nav">
 						<li class="" style="padding-top: 30px"><a href="view_reports.php"
-							style="padding: 0px 0px 0px 0px" class=""><u>View All Submitted QA Reports</u>
+							style="padding: 0px 0px 0px 0px" class=""><u>View Submitted Reports</u>
+						</a></li>
+						<li class="" style="padding-top: 30px;padding-left:20px"><a href="view_preliminary_reports.php"
+							style="padding: 0px 0px 0px 0px" class=""><u>View Saved Reports</u>
 						</a></li>
 					</ul>
 				</div>
-
-
 
 				<div class="nav-collapse">
 

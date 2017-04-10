@@ -43,10 +43,8 @@
 					class="icon-bar"></span> <span class="icon-bar"></span>
 
 				</a> <a class="brand" href="index.html"> <img
-					src="img/dinamo_small.png" />
-
-				</a>
-
+					src="img/dinamo_small.png" />				</a>
+				<div class="nav-collapse">					<ul class="nav">						<li class="" style="padding-top: 30px;padding-left:20px"><a href="view_preliminary_reports.php"							style="padding: 0px 0px 0px 0px" class=""><u>View Saved Reports</u>						</a></li>					</ul>				</div>
 
 
 				<div class="nav-collapse">
@@ -73,8 +71,8 @@
 		<div class="row">
 
 			<div class="span12">
-				<br/>				<h3>All Uploaded Reports</h3>
-				<div class="error-container" style="margin-top:0;margin-bottom:0;text-align:left">					<?php 						if($reports->getNumObjects() == 0)						{							?>							No QA Reports Uploaded Yet					<?php 								}else{					?>						<br/>						<table style="padding-left:10px; border: 1px dashed black;background-color:white">									<tr class="tr-header">								<td>Project</td>								<td>QA Report</td>								<td>Submitted By</td>								<td>Submitted On</td>								<td>View Report</td>								<?php									if(!$isMobile && !$isTablet)									{								?>									<td>Download</td>								<?php									}								?>															</tr>					<?php 									$count = 1;							while ( $report = $reports->iterate () )							{								$project = $projectDelegate->getProject($report->projectID);								$category = $projectDelegate->getCategory($report->projectID,$report->categoryID);					?>							<tr							<?php 							if($count % 2 == 0)							{								echo " class='tr-even' ";							}else{								echo " class='tr-odd' ";							}							?>							>								<td><?=$project->projectName?></td>								<td><?=$category->categoryName?></td>								<td><?php 										$user = $userDelegate->getUser($report->uploadedBy);										$val = $user->name;										if($report->uploadedBy != $report->uploadedForUser)										{											$userFor = $userDelegate->getUser($report->uploadedForUser);											$val = $val." (on behalf of ".$userFor->name.") ";										}										echo $val;									?>								</td>								<td><?=$report->uploadedDateString?></td>								<td><a href='<?=$report->pdfURL?>' target='_blank'><img										src="img/pdf.png" /></a></td>								<?php									if(!$isMobile && !$isTablet)									{								?>								<td><a href='download_pdf.php?report=<?=urlencode($report->reportKey)?>' target='_blank'><img										src="img/download.png" /></a></td>								<?php									}								?>							</tr>					<?php 											$count = $count+1;							}					?>						</table>							<?php						}					?>
+				<br/>				<h3>Uploaded Reports</h3>
+				  <input type="radio" name="show" value="all" checked onclick="checkShowReports()"> Show All Reports 				  <input type="radio" name="show" value="me" onclick="checkShowReports()"> Show Only My Reports  				<div class="error-container" style="margin-top:0;margin-bottom:0;text-align:left">					<?php 						if($reports->getNumObjects() == 0)						{							?>							No QA Reports Uploaded Yet					<?php 								}else{					?>						<br/>						<table style="padding-left:10px; border: 1px dashed black;background-color:white">									<tr class="tr-header">								<td>Project</td>								<td>QA Report</td>								<td>Submitted By</td>								<td>Submitted On</td>								<td>View Report</td>								<?php									if(!$isMobile && !$isTablet)									{								?>									<td>Download</td>								<?php									}								?>															</tr>					<?php 									$count = 1;							while ( $report = $reports->iterate () )							{								$project = $projectDelegate->getProject($report->projectID);								$category = $projectDelegate->getCategory($report->projectID,$report->categoryID);					?>							<tr							<?php 							echo " id = '".$report->reportID."' ";							if($count % 2 == 0)							{								echo " class='tr-even' ";							}else{								echo " class='tr-odd' ";							}							?>							>								<td><?=$project->projectName?></td>								<td><?=$category->categoryName?></td>								<td><?php 										$user = $userDelegate->getUser($report->uploadedBy);										$val = $user->name;										if($report->uploadedBy != $report->uploadedForUser)										{											$userFor = $userDelegate->getUser($report->uploadedForUser);											$val = $val." (on behalf of ".$userFor->name.") ";										}										echo $val;									?>								</td>								<td><?=$report->uploadedDateString?></td>								<td><a href='<?=$report->pdfURL?>' target='_blank'><img										src="img/pdf.png" /></a></td>								<?php									if(!$isMobile && !$isTablet)									{								?>								<td><a href='download_pdf.php?report=<?=urlencode($report->reportKey)?>' target='_blank'><img										src="img/download.png" /></a></td>								<?php									}								?>							</tr>					<?php 											$count = $count+1;							}					?>						</table>							<?php						}					?>
 				</div>
 				<!-- /error-container -->
 
@@ -92,5 +90,5 @@
 	<script src="js/bootstrap.js"></script>
 
 </body>
-
+<script>function checkShowReports(){	val = $('input[name="show"]:checked').val();	if(val == 'me')	{		showMine();	}else{		showAll();	}}function showAll(){	//alert('show all');	<?php 	while ( $report = $reports->iterate () )	{		echo " document.getElementById('".$report->reportID."').style.display = ''\n";	}	?>}function showMine(){	<?php 	while ( $report = $reports->iterate () )	{		if($report->uploadedBy != $currentUser->userID)		{			echo " document.getElementById('".$report->reportID."').style.display = 'none'\n";		}	}	?>}</script>
 </html>

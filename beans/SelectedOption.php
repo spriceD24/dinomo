@@ -13,5 +13,6 @@
 		public $colspan;
 		public $valueOnly;
 		public $formType;
+		public $comment;
 	}
 ?>
