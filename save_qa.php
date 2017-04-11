@@ -341,6 +341,14 @@ $report->reportKey= $unique_id;
 $report->reportName= urlencode ( $unique_id ) . ".prelim";
 
 LogUtil::debug ( "save_qa", "Saving preliminary report to DB" );
+if (isset($_POST ["preliminaryReportID"]))
+{
+	$preliminaryReportID = intval ( $_POST ["preliminaryReportID"] );
+	$report->parentID = $preliminaryReportID;
+}
+else{
+	$report->parentID = 0;
+}
 $reportDAO->savePreliminaryReport($report);
 
 if (isset($_POST ["preliminaryReportID"]))

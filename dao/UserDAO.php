@@ -24,6 +24,25 @@ class UserDAO {
 		return $users;
 	}
 	
+	function getUser($clientID,$id) {
+		$user = new User(0, 0, "", "", "", "", "", "");
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$sql = "SELECT * FROM User where DeleteFlag = 0 and ID = ".$id." and ClientID = ".$clientID;
+		$result = $conn->query($sql);
+		LogUtil::debug ( 'UserDAO', ' get user sql = '.$sql);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$user = new User($row["ID"],$row["ClientID"],$row["Name"],$row["Login"],$row["Email"],$row["Mobile"],$row["Address"],$row["Roles"]);
+			}
+		}
+		$conn->close();
+		
+		return $user;
+	}
+	
 	function getUserPass($userID) {
 		// replace with call to DB
 		$dbUtil = new DBUtil ();
@@ -81,6 +100,33 @@ class UserDAO {
 		$ret = "";
 		if ($conn->query($sql) === TRUE) {
 			$ret =  "New record created successfully";
+		} else {
+			$ret =  "Error: " . $sql . "<br>" . $conn->error;
+		}	
+		$conn->close();
+		return $ret;
+	}
+	
+	function updateUser($insertedByID,$user)
+	{
+		LogUtil::debug ( 'UserDAO', 'Executing Update User');
+		$nextUserID = $this->getNextUserID();
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+		
+		$sql = "update User set Name = '".StringUtils::escapeDB($user->name)."', Login = '".StringUtils::escapeDB($user->login)."',Password = '".StringUtils::escapeDB(StringUtils::encode($user->password))."'";
+		$sql = $sql.", Email = '".StringUtils::escapeDB($user->email)."', Mobile = '".StringUtils::escapeDB($user->mobile)."', Address = '".StringUtils::escapeDB($user->address)."'";
+		$sql = $sql.", Roles = '".implode("|",$user->roles)."',LastUpdated = now(),LastUpdatedBy = ".$insertedByID;
+		$sql = $sql." where ClientID = ".$user->clientID." and ID = ".$user->userID;
+		
+		LogUtil::debug ( 'UserDAO', 'Updating user sql = '.$sql);
+		//now()
+		$ret = "";
+		if ($conn->query($sql) === TRUE) {
+			$ret =  "Record updated successfully";
 		} else {
 			$ret =  "Error: " . $sql . "<br>" . $conn->error;
 		}	

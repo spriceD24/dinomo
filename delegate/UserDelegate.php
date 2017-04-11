@@ -83,6 +83,19 @@ class UserDelegate {
 		CacheUtil::removeCachedUsers();
 		return $ret;
 	}
+	
+	function updateUser($insertedByID,$user)
+	{
+		$ret = $this->userDAO->updateUser($insertedByID, $user);
+		CacheUtil::removeCachedUsers();
+		return $ret;
+	}
+	
+	function getUserForClient($clientID,$id) 
+	{
+		return $this->userDAO->getUser($clientID,$id);
+	}
+	
 }
 
 ?>

@@ -69,6 +69,7 @@ class ReportDAO {
 		    	$report->uploadedDateString = $row["UploadedDateString"];
 		    	$report->uploadedDate = $row["UploadedDate"];
 		    	$report->metaData = $row["MetaData"];
+		    	$report->parentID = $row["ParentID"];
 				$reports->add ( $report );
 		
 		    }
@@ -103,7 +104,8 @@ class ReportDAO {
 		    	$report->uploadedDateString = $row["UploadedDateString"];
 		    	$report->uploadedDate = $row["UploadedDate"];
 		    	$report->metaData = $row["MetaData"];
-				$reports->add ( $report );
+		    	$report->parentID = $row["ParentID"];
+		    	$reports->add ( $report );
 		
 		    }
 		} 
@@ -139,8 +141,8 @@ class ReportDAO {
 		date_default_timezone_set ( 'Australia/Sydney' );
 		$dateUtil = new DateUtil();
 	
-		$sql = "insert into PreliminaryReport(UploadedDate,ProjectID,ClientID,CategoryID,ReportKey,UploadedBy,UploadedDateString,UploadedForUser,DeleteFlag,MetaData) ";
-		$sql = $sql." values (now(),".$report->projectID.",".$report->clientID.",".$report->categoryID.",'".StringUtils::escapeDB($report->reportKey)."',".$report->uploadedBy.",'".$dateUtil->getCurrentDateTimeString()."',".$report->uploadedForUser.",0,'".StringUtils::escapeDB($report->metaData)."')";
+		$sql = "insert into PreliminaryReport(UploadedDate,ProjectID,ClientID,CategoryID,ReportKey,UploadedBy,UploadedDateString,UploadedForUser,DeleteFlag,ParentID,MetaData) ";
+		$sql = $sql." values (now(),".$report->projectID.",".$report->clientID.",".$report->categoryID.",'".StringUtils::escapeDB($report->reportKey)."',".$report->uploadedBy.",'".$dateUtil->getCurrentDateTimeString()."',".$report->uploadedForUser.",0,".$report->parentID.",'".StringUtils::escapeDB($report->metaData)."')";
 	
 		if ($conn->query($sql) === TRUE) {
 			return "New record created successfully";

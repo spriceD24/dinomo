@@ -10,7 +10,6 @@ class User {
 	public $password;
 	public $roles;
 
-	
 	function __construct($userID, $clientID, $name, $login, $email, $mobile, $address, $roles) {
 		$this->userID = $userID;
 		$this->clientID = $clientID;

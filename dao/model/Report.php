@@ -13,6 +13,7 @@
             public $webURL;
             public $pdfURL;
 			public $metaData;
+			public $parentID;
 	}
 
 ?>
