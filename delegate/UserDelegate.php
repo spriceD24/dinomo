@@ -91,11 +91,35 @@ class UserDelegate {
 		return $ret;
 	}
 	
+	function deleteUser($userID,$deletedBy)
+	{
+		$ret = $this->userDAO->deleteUser($userID, $deletedBy);
+		CacheUtil::removeCachedUsers();
+		return $ret;
+	}
+	
+	function activateUser($userID,$deletedBy)
+	{
+		$ret = $this->userDAO->activateUser($userID, $deletedBy);
+		CacheUtil::removeCachedUsers();
+		return $ret;
+	}
+	
 	function getUserForClient($clientID,$id) 
 	{
 		return $this->userDAO->getUser($clientID,$id);
 	}
 	
+	function getAllUsersIncludingDeleted($clientID) 	
+	{
+		$allUsers = $this->userDAO->getAllUsersIncludingDeleted($clientID);	
+		$usersMap = array();
+		while ( $user = $allUsers->iterate () ) 
+		{
+			$usersMap[$user->userID] = $user;
+		}
+		return $usersMap;
+	}
 }
 
 ?>

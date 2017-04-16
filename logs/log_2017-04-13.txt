@@ -1,0 +1,979 @@
+[2017-04-13 8:33:05.247906] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:33:05.249944] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:33:05.253508] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:33:05.253819] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:33:05.254079] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:33:05.254375] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:33:05.254688] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:33:05.254976] [7] WebUtil.getLoggedInUser - User timed out - sprice, last activity = 1491950711
+[2017-04-13 8:33:05.255461] [7] WebUtil.removeLoggedInUser - Removing Session Details
+[2017-04-13 8:33:05.255650] [7] WebUtil.removeLoggedInUser - Setting empty session for User
+[2017-04-13 8:33:05.255841] [7] WebUtil.getLoggedInUser - No user in session
+[2017-04-13 8:33:05.256030] [7] WebUtil.getLoggedInUser - No user found going to login
+[2017-04-13 8:33:05.299124] [7] login.php - Opening Login Page
+[2017-04-13 8:33:08.227148] [7] submit_login - Checking login for =  sprice
+[2017-04-13 8:33:08.227364] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:33:08.229271] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:33:08.229415] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:33:08.229573] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:33:08.229720] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:33:08.232068] [7] submit_login - LOGIN success, setting cookies for = sprice
+[2017-04-13 8:33:08.233148] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:33:08.328484] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:33:08.329216] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:33:08.331481] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:33:08.331657] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:33:08.331790] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:33:08.331904] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:33:08.332062] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:33:08.332201] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:33:08.332360] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:33:08.332510] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:33:15.736794] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:33:15.737729] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:33:15.739808] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:33:15.739953] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:33:15.740097] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:33:15.740245] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:33:15.740398] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:33:15.740567] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:33:15.740732] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:33:15.740883] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:33:23.099052] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:33:23.100011] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:33:23.102246] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:33:23.102401] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:33:23.102550] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:33:23.102699] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:33:23.102855] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:33:23.103034] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:33:23.103301] [7] upload_qa - Opening details for project ID = 1, category id = 1, user = sprice
+[2017-04-13 8:33:23.110099] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:33:23.111603] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:33:23.113395] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-13 8:33:23.118617] [7] ProjectDelegate - Number of cached categories is: 34
+[2017-04-13 8:33:23.118762] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Deck Handover, num options = 34, user = sprice
+[2017-04-13 8:33:23.118918] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:33:23.120094] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:33:23.120261] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:33:23.120414] [7] upload_qa - Displaying javascript
+[2017-04-13 8:33:53.068156] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:33:53.069072] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:33:53.070403] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:33:53.070559] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:33:53.070705] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:33:53.070858] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:33:53.071022] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:33:53.071181] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:33:53.071367] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:33:53.071559] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:34:02.220036] [7] submit_login - Checking login for =  sprice
+[2017-04-13 8:34:02.220309] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:34:02.221976] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:34:02.222398] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:34:02.222680] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:34:02.222798] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:34:02.226541] [7] submit_login - LOGIN success, setting cookies for = sprice
+[2017-04-13 8:34:02.227300] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:34:02.288311] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:34:02.290148] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:34:02.293018] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:34:02.293209] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:34:02.293374] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:34:02.293524] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:34:02.293673] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:34:02.293823] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:34:02.293981] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:34:02.294131] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:35:24.724229] [7] submit_login - Checking login for =  sprice
+[2017-04-13 8:35:24.724426] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:35:24.726213] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:35:24.726326] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:35:24.726427] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:35:24.726525] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:35:24.728482] [7] submit_login - LOGIN success, setting cookies for = sprice
+[2017-04-13 8:35:24.729423] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:35:24.783282] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:35:24.783963] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:35:24.785082] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:35:24.785193] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:35:24.785290] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:35:24.785382] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:35:24.785479] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:35:24.785598] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:35:24.785820] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:35:24.785918] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:35:37.326555] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:35:37.327497] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:35:37.329200] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:35:37.329361] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:35:37.329509] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:35:37.329653] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:35:37.329791] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:35:37.329901] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:35:37.330482] [7] upload_qa - Opening details for project ID = 1, category id = 1, user = sprice
+[2017-04-13 8:35:37.341593] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:35:37.343578] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:35:37.345402] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-13 8:35:37.350805] [7] ProjectDelegate - Number of cached categories is: 34
+[2017-04-13 8:35:37.351067] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Deck Handover, num options = 34, user = sprice
+[2017-04-13 8:35:37.351221] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:35:37.352926] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:35:37.353112] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:35:37.353249] [7] upload_qa - Displaying javascript
+[2017-04-13 8:36:10.546600] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:36:10.547575] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:36:10.549233] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:36:10.549364] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:36:10.549472] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:36:10.549572] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:36:10.549679] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:36:10.549776] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:36:10.549963] [7] upload_qa - Opening details for project ID = 1, category id = 1, user = sprice
+[2017-04-13 8:36:10.562671] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:36:10.564430] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:36:10.565660] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-13 8:36:10.569403] [7] ProjectDelegate - Number of cached categories is: 34
+[2017-04-13 8:36:10.570724] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Deck Handover, num options = 34, user = sprice
+[2017-04-13 8:36:10.571038] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:36:10.572926] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:36:10.573070] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:36:10.573177] [7] upload_qa - Displaying javascript
+[2017-04-13 8:36:46.211370] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:36:46.212563] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:36:46.214118] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:36:46.214317] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:36:46.214485] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:36:46.214672] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:36:46.214859] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:36:46.215039] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:36:46.215229] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:36:54.094455] [7] WebUtil.addLoggedInUser - Removing Session Details
+[2017-04-13 8:36:54.095382] [7] WebUtil.addLoggedInUser - Setting empty session for User
+[2017-04-13 8:36:54.128468] [7] login.php - Opening Login Page
+[2017-04-13 8:36:56.091480] [7] submit_login - Checking login for =  sprice
+[2017-04-13 8:36:56.091727] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:36:56.094110] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:36:56.094309] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:36:56.094465] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:36:56.094614] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:36:56.096790] [7] submit_login - LOGIN success, setting cookies for = sprice
+[2017-04-13 8:36:56.097528] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:36:56.149202] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:36:56.149899] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:36:56.152039] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:36:56.152204] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:36:56.152357] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:36:56.152506] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:36:56.152661] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:36:56.152827] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:36:56.153034] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:36:56.153215] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:43:21.883730] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:43:21.884803] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:43:21.887176] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:43:21.887322] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:43:21.887449] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:43:21.887600] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:43:21.887737] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:43:21.887902] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:43:21.888077] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:43:21.933296] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:43:21.933953] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:43:21.935415] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:43:21.935568] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:43:21.935722] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:43:21.935868] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:43:21.936027] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:43:21.936177] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:43:21.936330] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:43:21.936477] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:43:35.216707] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:43:35.217616] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:43:35.220197] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:43:35.220371] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:43:35.220506] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:43:35.220664] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:43:35.220818] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:43:35.220966] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:43:35.221123] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:46:27.264067] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:46:27.264990] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:46:27.267407] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:46:27.267553] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:46:27.267703] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:46:27.267863] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:46:27.268069] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:46:27.268388] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:46:27.268570] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:46:32.486955] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:46:32.487835] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:46:32.489890] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:46:32.490041] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:46:32.490186] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:46:32.490334] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:46:32.490487] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:46:32.490650] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:46:32.490844] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:46:32.491024] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:46:35.679233] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:46:35.680075] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:46:35.681823] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:46:35.681996] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:46:35.682112] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:46:35.682218] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:46:35.682327] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:46:35.682495] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:46:35.682652] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:46:35.682847] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:48:59.189093] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:48:59.190007] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:48:59.192097] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:48:59.192249] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:48:59.192397] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:48:59.192552] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:48:59.192723] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:48:59.192884] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:48:59.193058] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:48:59.193227] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:49:05.133795] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:49:05.134767] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:49:05.136979] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:49:05.137124] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:49:05.137265] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:49:05.137419] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:49:05.137622] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:49:05.137795] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:49:05.137943] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:49:22.786607] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:49:22.797296] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:49:22.799468] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:49:22.799623] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:49:22.799777] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:49:22.799932] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:49:22.800091] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:49:22.800250] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:49:22.800391] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:49:23.663949] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:49:23.664712] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:49:23.666352] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:49:23.666495] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:49:23.666619] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:49:23.666764] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:49:23.666909] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:49:23.667073] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:49:23.667238] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:49:23.667399] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:49:27.038222] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:49:27.039154] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:49:27.040822] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:49:27.040977] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:49:27.041121] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:49:27.041302] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:49:27.041471] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:49:27.041629] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:49:27.041867] [7] upload_qa - Opening details for project ID = 1, category id = 1, user = sprice
+[2017-04-13 8:49:27.048589] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:49:27.050179] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:49:27.051369] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-13 8:49:27.055375] [7] ProjectDelegate - Number of cached categories is: 34
+[2017-04-13 8:49:27.055602] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Deck Handover, num options = 34, user = sprice
+[2017-04-13 8:49:27.055772] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:49:27.058274] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:49:27.058454] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:49:27.058600] [7] upload_qa - Displaying javascript
+[2017-04-13 8:50:59.253576] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:50:59.254209] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:50:59.255892] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:50:59.256036] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:50:59.256191] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:50:59.256330] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:50:59.256464] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:50:59.256618] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:50:59.303379] [3] ERROR -  - errorMsg = Undefined variable: user, errorNo = 8, src = view_reports.php
+[2017-04-13 8:51:03.065649] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:51:03.066905] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:03.068881] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:03.069008] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:03.069156] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:51:03.069310] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:51:03.069463] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:51:03.069611] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:51:03.069883] [7] upload_qa - Opening details for project ID = 1, category id = 1, user = sprice
+[2017-04-13 8:51:03.075731] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:03.076977] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:03.078185] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-13 8:51:03.082564] [7] ProjectDelegate - Number of cached categories is: 34
+[2017-04-13 8:51:03.082746] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Deck Handover, num options = 34, user = sprice
+[2017-04-13 8:51:03.082948] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:03.084650] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:03.084863] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:03.085028] [7] upload_qa - Displaying javascript
+[2017-04-13 8:51:04.185060] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:51:04.185715] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:04.187391] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:04.187535] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:04.187675] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:51:04.187819] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:51:04.187994] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:51:04.188131] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:51:04.207954] [3] ERROR -  - errorMsg = Undefined variable: user, errorNo = 8, src = view_saved_reports.php
+[2017-04-13 8:51:35.599957] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:51:35.600894] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:35.603449] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:35.603674] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:35.603872] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:51:35.604032] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:51:35.604216] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:51:35.604372] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:51:35.604543] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:51:35.604702] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:36.802103] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:51:36.802978] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:36.804725] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:36.804872] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:36.805015] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:51:36.805160] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:51:36.805325] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:51:36.805485] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:51:36.807832] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:36.809361] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:36.810709] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:36.812696] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:36.812858] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:36.813038] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:36.814322] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:36.815474] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:36.817287] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:36.817446] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:36.817580] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:36.819058] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:36.820122] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:36.821491] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:36.821640] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:36.821806] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:36.823396] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:36.824392] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:36.826071] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:36.826242] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:36.826428] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:36.827797] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:36.828898] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:36.830326] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:36.830466] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:36.830621] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:36.831967] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:36.833208] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:36.834551] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:36.834707] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:36.834866] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:36.836407] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:36.837351] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:36.838584] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:36.838728] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:36.838886] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:36.840467] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:36.841392] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:36.843143] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:36.843357] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:36.843626] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:36.846168] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:36.847506] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:36.848862] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:36.848982] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:40.571696] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:51:40.572525] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:40.574033] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:40.574187] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:40.574320] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:51:40.574469] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:51:40.574634] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:51:40.574785] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:51:40.576952] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:40.578783] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:40.579797] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:40.581402] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:40.581562] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:42.089881] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:51:42.090723] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:42.092466] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:42.092624] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:42.092767] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:51:42.092922] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:51:42.093056] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:51:42.093158] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:51:42.093259] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:51:47.727787] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:51:47.728573] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:47.730529] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:47.730711] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:47.730889] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:51:47.731045] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:51:47.731209] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:51:47.731374] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:51:47.731704] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:51:47.731915] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:50.978351] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:51:50.979101] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:50.980551] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:50.980715] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:50.980875] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:51:50.981026] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:51:50.981183] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:51:50.981343] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:51:50.981672] [7] upload_qa - Opening details for project ID = 1, category id = 1, user = sprice
+[2017-04-13 8:51:50.987884] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:50.989483] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:50.990431] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-13 8:51:50.994175] [7] ProjectDelegate - Number of cached categories is: 34
+[2017-04-13 8:51:50.994353] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Deck Handover, num options = 34, user = sprice
+[2017-04-13 8:51:50.994533] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:50.996110] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:50.996301] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:50.996473] [7] upload_qa - Displaying javascript
+[2017-04-13 8:51:54.388569] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:51:54.389400] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:54.391261] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:54.391412] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:54.391555] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:51:54.391717] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:51:54.391870] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:51:54.392015] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:51:54.392167] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 8:51:54.392335] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:58.444663] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:51:58.445498] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:58.447418] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:58.447594] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:58.447736] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:51:58.447861] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:51:58.448009] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:51:58.448157] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:51:58.448385] [7] upload_qa - Opening details for project ID = 1, category id = 4, user = sprice
+[2017-04-13 8:51:58.454797] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:51:58.456296] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:51:58.457426] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-13 8:51:58.461518] [7] ProjectDelegate - Number of cached categories is: 20
+[2017-04-13 8:51:58.461726] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Stairs, num options = 20, user = sprice
+[2017-04-13 8:51:58.461888] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:51:58.463260] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:51:58.463407] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:51:58.463553] [7] upload_qa - Displaying javascript
+[2017-04-13 8:52:31.084099] [7] submit_qa - Starting process..
+[2017-04-13 8:52:31.084372] [7] submit_qa - Uploading details for project ID = 1, category id = 4,upload user ID = 1
+[2017-04-13 8:52:31.084682] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:52:31.086301] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:52:31.086466] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:52:31.086649] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:52:31.088133] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:52:31.089885] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-13 8:52:31.093614] [7] ProjectDelegate - Number of cached categories is: 20
+[2017-04-13 8:52:31.093784] [7] submit_qa - Submitting details for user = sprice, project = Bellevue Hill PS, category = Stairs, num options = 20
+[2017-04-13 8:52:31.093952] [7] submit_qa - user = sprice, getting date details
+[2017-04-13 8:52:31.094158] [7] submit_qa - user = sprice, pdf shall be = Report_Bellevue Hill PS_Stairs_13_Apr_2017
+[2017-04-13 8:52:31.094304] [7] FileUtil - Getting file name for sprice, prefix = Report_Bellevue Hill PS_Stairs_13_Apr_2017
+[2017-04-13 8:52:31.094686] [7] FileUtil - returning ID = sprice_Report_Bellevue_Hill_PS_Stairs_13_Apr_2017_31811
+[2017-04-13 8:52:31.094816] [7] submit_qa - user = sprice, checking for attached images
+[2017-04-13 8:52:31.094959] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.095187] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.095357] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.095504] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.095673] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.095905] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.096074] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.096235] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.096399] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.096564] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.096728] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.096923] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.097115] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.097304] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.097492] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.097680] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.097868] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.098036] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.098217] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.098414] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.098604] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.098792] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.098984] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.099169] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.099359] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.099548] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.099739] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.099925] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.100131] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.100317] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.100507] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.100692] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.100883] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.101202] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.101397] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.101583] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.101774] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.101965] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.102157] [7] submit_qa - user = sprice, checking image = , size = 0, type = 
+[2017-04-13 8:52:31.102341] [7] submit_qa - user = sprice, File  is EMPTY 
+[2017-04-13 8:52:31.102536] [7] save_qa - Saved Image Names = 
+[2017-04-13 8:52:31.102725] [7] save_qa - Saved Images = 
+[2017-04-13 8:52:31.102952] [7] submit_qa - user = sprice, Adding value id = opt_id_1, name =  Core No, value = 1
+[2017-04-13 8:52:31.103168] [7] submit_qa - user = sprice, Adding value id = opt_id_2, name =  Level No, value = 2
+[2017-04-13 8:52:31.103373] [7] submit_qa - user = sprice, Adding value id = opt_id_3, name =  Pour No, value = 3
+[2017-04-13 8:52:31.103586] [7] submit_qa - user = sprice, Adding value id = opt_id_4, name =  Stairmaster correct position, value = Yes
+[2017-04-13 8:52:31.103802] [7] submit_qa - user = sprice, Adding value id = opt_id_5, name =  Is the bottom and top riser in correct position, value = Yes
+[2017-04-13 8:52:31.104015] [7] submit_qa - user = sprice, Adding value id = opt_id_6, name =  Checked stairmaster/handrail description and confimed is intalled in the correct location, value = Yes
+[2017-04-13 8:52:31.104232] [7] submit_qa - user = sprice, Adding value id = opt_id_7, name =  Edge boards braced, value = Yes
+[2017-04-13 8:52:31.104441] [7] submit_qa - user = sprice, Adding value id = opt_id_8, name =  Centre of stairmaster flights installed, value = Yes
+[2017-04-13 8:52:31.104654] [7] submit_qa - user = sprice, Adding value id = opt_id_9, name =  Pins and props, value = Yes
+[2017-04-13 8:52:31.104867] [7] submit_qa - user = sprice, Adding value id = opt_id_10, name =  Z Bars in walls tight, value = Yes
+[2017-04-13 8:52:31.105078] [7] submit_qa - user = sprice, Adding value id = opt_id_11, name =  Stairs cleaned, value = Yes
+[2017-04-13 8:52:31.105288] [7] submit_qa - user = sprice, Adding value id = opt_id_12, name =  CONSTRUCTION, value = DRAWING NO.
+[2017-04-13 8:52:31.105492] [7] submit_qa - user = sprice, Adding value id = opt_id_13, name =  Architects GA/RCP, value = 1
+[2017-04-13 8:52:31.105695] [7] submit_qa - user = sprice, Adding value id = opt_id_14, name =  Architects CS/WS, value = 12
+[2017-04-13 8:52:31.105905] [7] submit_qa - user = sprice, Adding value id = opt_id_15, name =  Structural Outline, value = 2
+[2017-04-13 8:52:31.106107] [7] submit_qa - user = sprice, Adding value id = opt_id_16, name =  Formwork Certificate, value = 3
+[2017-04-13 8:52:31.106311] [7] submit_qa - user = sprice, Adding value id = opt_id_17, name =  I confirm that the specified stairs are safe to use and are structurally adequate to support site personnel and design and working loads (structural certificate to be provided by structural engineer prior to pour)., value = on
+[2017-04-13 8:52:31.106515] [7] submit_qa - user = sprice, Adding value id = opt_id_18, name =  I have inspected the Stairs and confirm that all required actions and controls have been implemented., value = on
+[2017-04-13 8:52:31.106723] [7] submit_qa - user = sprice, Adding value id = opt_id_19, name =  Comments, value = Test
+[2017-04-13 8:52:31.106951] [7] submit_qa - user = sprice, Generating HTML, id = sprice_Report_Bellevue_Hill_PS_Stairs_13_Apr_2017_31811
+[2017-04-13 8:52:31.109740] [7] submit_qa - user = sprice, Generating PDF, id = sprice_Report_Bellevue_Hill_PS_Stairs_13_Apr_2017_31811
+[2017-04-13 8:52:31.455537] [7] submit_qa - user = sprice, Generating Email, Web URL = http://localhost/dinomo/dinomo/http://localhost/dinomo/dinomo/web_pages/sprice_Report_Bellevue_Hill_PS_Stairs_13_Apr_2017_31811.html
+[2017-04-13 8:52:31.455780] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:52:31.458065] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:52:31.458255] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:52:31.458369] [7] submit_qa - User is 'testuser' just emailing to this user, email = stephen.price@credit-suisse.com
+[2017-04-13 8:52:31.460078] [7] submit_qa - user = sprice, Generating Email, Add attachment = C:\stef\xampp\htdocs\dinomo\dinomo/pdf/sprice_Report_Bellevue_Hill_PS_Stairs_13_Apr_2017_31811.pdf
+[2017-04-13 8:52:31.460728] [7] submit_qa - user = sprice, Sending Email to stephen.price@credit-suisse.com
+[2017-04-13 8:52:31.460841] [7] submit_qa - user = sprice, Not Sending Email to stephen.price@credit-suisse.com as not in PRODUCTION
+[2017-04-13 8:52:31.460947] [7] submit_qa - user = sprice, Sent Email OK
+[2017-04-13 8:52:31.461138] [7] submit_qa - Saving report to DB
+[2017-04-13 8:52:31.483078] [7] submit_qa - Saved report to DB
+[2017-04-13 8:52:31.551924] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:52:31.552567] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:52:31.554285] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:52:31.554399] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:52:31.554502] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:52:31.554651] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:52:31.554804] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:52:31.554955] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:52:31.555118] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 8:52:31.556608] [7] CacheUtil - Getting cache for name categories
+[2017-04-13 8:52:31.558228] [7] upload_success - Upload success for project = Bellevue Hill PS, category = Stairs, user = sprice
+[2017-04-13 8:52:36.110641] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 8:52:36.111433] [7] CacheUtil - Getting cache for name users
+[2017-04-13 8:52:36.114033] [7] UserDelegate - Loading users from Cache
+[2017-04-13 8:52:36.114237] [7] UserDelegate - Number of users = 11
+[2017-04-13 8:52:36.114392] [7] UserDelegate - looking for user - sprice
+[2017-04-13 8:52:36.114542] [7] UserDelegate - checking against user - sprice
+[2017-04-13 8:52:36.114682] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 8:52:36.114834] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 8:52:36.114978] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:24:37.485418] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:24:37.495625] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:24:37.518002] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:24:37.518157] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:24:37.518261] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:24:37.518356] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:24:37.518455] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:24:37.518552] [7] WebUtil.getLoggedInUser - User timed out - sprice, last activity = 1492037556
+[2017-04-13 17:24:37.518640] [7] WebUtil.removeLoggedInUser - Removing Session Details
+[2017-04-13 17:24:37.518728] [7] WebUtil.removeLoggedInUser - Setting empty session for User
+[2017-04-13 17:24:37.518814] [7] WebUtil.getLoggedInUser - No user in session
+[2017-04-13 17:24:37.518901] [7] WebUtil.getLoggedInUser - No user found going to login
+[2017-04-13 17:24:37.574168] [7] login.php - Opening Login Page
+[2017-04-13 17:24:40.052402] [7] submit_login - Checking login for =  sprice
+[2017-04-13 17:24:40.052598] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:24:40.054023] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:24:40.054152] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:24:40.054253] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:24:40.054358] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:24:40.056696] [7] submit_login - LOGIN success, setting cookies for = sprice
+[2017-04-13 17:24:40.057357] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:24:40.109879] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:24:40.110822] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:24:40.112406] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:24:40.112545] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:24:40.112651] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:24:40.112746] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:24:40.112844] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:24:40.112941] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:24:40.113038] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:24:40.113132] [7] CacheUtil - Getting cache for name projects
+[2017-04-13 17:24:42.092669] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:24:42.093555] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:24:42.095736] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:24:42.095916] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:24:42.096079] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:24:42.096239] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:24:42.096390] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:24:42.096539] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:24:42.096692] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:26:53.869337] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:26:53.870512] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:26:53.873245] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:26:53.873395] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:26:53.873502] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:26:53.873599] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:26:53.873699] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:26:53.873795] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:26:53.873894] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:27:24.697720] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:27:24.698663] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:27:24.700968] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:27:24.701122] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:27:24.701272] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:27:24.701433] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:27:24.701596] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:27:24.701755] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:27:24.701917] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:29:11.496371] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:29:11.497283] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:29:11.499891] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:29:11.500093] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:29:11.500248] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:29:11.500601] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:29:11.500777] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:29:11.500932] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:29:11.501255] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:29:57.124171] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:29:57.125062] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:29:57.127439] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:29:57.127728] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:29:57.127875] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:29:57.128048] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:29:57.128201] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:29:57.128350] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:29:57.128501] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:30:18.982980] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:30:18.983860] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:30:18.985627] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:30:18.985791] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:30:18.985953] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:30:18.986140] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:30:18.986321] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:30:18.986494] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:30:18.986671] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:30:31.685378] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:30:31.686204] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:30:31.687872] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:30:31.688024] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:30:31.688141] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:30:31.688287] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:30:31.688467] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:30:31.688615] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:30:31.688734] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:31:48.659781] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:31:48.660595] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:31:48.662049] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:31:48.662213] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:31:48.662360] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:31:48.662509] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:31:48.662662] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:31:48.662810] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:31:48.663003] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:32:38.353221] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:32:38.354160] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:32:38.356400] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:32:38.356547] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:32:38.356693] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:32:38.356841] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:32:38.356993] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:32:38.357160] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:32:38.357336] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:33:01.697108] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:33:01.697890] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:33:01.699392] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:33:01.699544] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:33:01.699686] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:33:01.699831] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:33:01.699982] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:33:01.700130] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:33:01.700280] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:33:33.341159] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:33:33.342468] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:33:33.344504] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:33:33.344672] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:33:33.344826] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:33:33.344995] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:33:33.345177] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:33:33.345330] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:33:33.345490] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:33:59.701982] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:33:59.702816] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:33:59.704252] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:33:59.704380] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:33:59.704511] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:33:59.704659] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:33:59.704812] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:33:59.704965] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:33:59.705116] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:34:39.025989] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:34:39.026896] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:34:39.029304] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:34:39.029448] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:34:39.029588] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:34:39.029737] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:34:39.029916] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:34:39.030057] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:34:39.030278] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:39:30.456181] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:39:30.457140] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:39:30.459259] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:39:30.459402] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:39:30.459542] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:39:30.459697] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:39:30.459861] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:39:30.460007] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:39:30.460160] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:39:32.500796] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:39:32.501511] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:39:32.503575] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:39:32.503782] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:39:32.503942] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:39:32.504089] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:39:32.504240] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:39:32.504374] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:39:32.504527] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:40:14.365668] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:40:14.366708] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:40:14.368908] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:40:14.369054] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:40:14.369196] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:40:14.369343] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:40:14.369494] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:40:14.369765] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:40:14.369920] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:41:18.983093] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:41:18.983901] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:41:18.985716] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:41:18.985878] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:41:18.986085] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:41:18.986205] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:41:18.986325] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:41:18.986459] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:41:18.986623] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:41:21.790741] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:41:21.791419] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:41:21.793132] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:41:21.793315] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:41:21.793498] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:41:21.793683] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:41:21.793878] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:41:21.794095] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:41:21.794302] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:43:36.813536] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:43:36.814481] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:43:36.816890] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:43:36.817038] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:43:36.817178] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:43:36.817346] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:43:36.817483] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:43:36.817637] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:43:36.817796] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:43:39.228661] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:43:39.229437] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:43:39.231111] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:43:39.231283] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:43:39.231406] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:43:39.231547] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:43:39.231702] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:43:39.231851] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:43:39.232003] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:43:41.394133] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:43:41.395021] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:43:41.396549] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:43:41.396699] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:43:41.396830] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:43:41.396975] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:43:41.397129] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:43:41.397284] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:43:41.397450] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:45:24.007874] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:45:24.009071] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:45:24.012284] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:45:24.012509] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:45:24.012813] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:45:24.012964] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:45:24.013118] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:45:24.013292] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:45:24.013447] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:45:26.152673] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:45:26.153299] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:45:26.155009] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:45:26.155159] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:45:26.155313] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:45:26.155483] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:45:26.155642] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:45:26.155793] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:45:26.155950] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:45:48.076973] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:45:48.078010] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:45:48.079986] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:45:48.080130] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:45:48.080229] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:45:48.080323] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:45:48.080424] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:45:48.080517] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:45:48.080616] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:46:02.094182] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:46:02.094809] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:46:02.096466] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:46:02.096647] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:46:02.096807] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:46:02.096930] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:46:02.097037] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:46:02.097141] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:46:02.097281] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:46:05.833728] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:46:05.834525] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:46:05.835968] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:46:05.836126] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:46:05.836272] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:46:05.836426] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:46:05.836575] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:46:05.836730] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:46:05.836893] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:46:17.412659] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:46:17.413508] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:46:17.415438] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:46:17.415590] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:46:17.415760] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:46:17.415930] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:46:17.416096] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:46:17.416246] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:46:17.416415] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:46:23.253851] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:46:23.254674] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:46:23.256517] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:46:23.256673] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:46:23.256822] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:46:23.256968] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:46:23.257132] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:46:23.257292] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:46:23.257415] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:46:25.912503] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:46:25.913341] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:46:25.915098] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:46:25.915260] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:46:25.915412] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:46:25.915570] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:46:25.915736] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:46:25.915894] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:46:25.916104] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:46:40.347371] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:46:40.348027] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:46:40.349725] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:46:40.349873] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:46:40.350018] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:46:40.350152] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:46:40.350277] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:46:40.350387] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:46:40.350517] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:47:06.393817] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:47:06.394675] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:47:06.396610] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:47:06.396791] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:47:06.396918] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:47:06.397063] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:47:06.397217] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:47:06.397361] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:47:06.397515] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:47:21.048926] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:47:21.049818] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:47:21.053905] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:47:21.054073] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:47:21.054229] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:47:21.054389] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:47:21.054543] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:47:21.054702] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:47:21.054869] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:47:58.534506] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:47:58.535670] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:47:58.538216] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:47:58.538398] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:47:58.538604] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:47:58.538757] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:47:58.538892] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:47:58.539141] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:47:58.539284] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:48:36.310992] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:48:36.311819] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:48:36.315547] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:48:36.315707] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:48:36.315879] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:48:36.316025] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:48:36.316185] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:48:36.316353] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:48:36.316524] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:49:29.769520] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:49:29.770286] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:49:29.771891] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:49:29.772033] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:49:29.772175] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:49:29.772322] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:49:29.772452] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:49:29.772608] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:49:29.772780] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:52:59.634960] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:52:59.635833] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:52:59.639585] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:52:59.639729] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:52:59.639868] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:52:59.640014] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:52:59.640149] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:52:59.640295] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:52:59.640448] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:53:46.829703] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:53:46.830610] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:53:46.832514] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:53:46.832658] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:53:46.832804] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:53:46.832950] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:53:46.833101] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:53:46.833247] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:53:46.833401] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:54:57.071384] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:54:57.072096] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:54:57.075705] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:54:57.075872] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:54:57.075994] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:54:57.076092] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:54:57.076195] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:54:57.076291] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:54:57.076390] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:55:56.630578] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:55:56.631577] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:55:56.634974] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:55:56.635107] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:55:56.635252] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:55:56.635525] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:55:56.635682] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:55:56.635832] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:55:56.635984] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:56:14.455718] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:56:14.456499] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:56:14.460071] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:56:14.460202] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:56:14.460345] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:56:14.460488] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:56:14.460980] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:56:14.461148] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:56:14.461318] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:56:14.612004] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:56:14.612839] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:56:14.619071] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:56:14.619263] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:56:14.619399] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:56:14.619508] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:56:14.619638] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:56:14.619765] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:56:14.619893] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-13 17:56:16.440598] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-13 17:56:16.441518] [7] CacheUtil - Getting cache for name users
+[2017-04-13 17:56:16.445103] [7] UserDelegate - Loading users from Cache
+[2017-04-13 17:56:16.445317] [7] UserDelegate - Number of users = 11
+[2017-04-13 17:56:16.445472] [7] UserDelegate - looking for user - sprice
+[2017-04-13 17:56:16.445627] [7] UserDelegate - checking against user - sprice
+[2017-04-13 17:56:16.445780] [7] WebUtil.getLoggedInUser - Found user for login - sprice
+[2017-04-13 17:56:16.445924] [7] WebUtil.getLoggedInUser - User NOT timed out - sprice
+[2017-04-13 17:56:16.446088] [7] WebUtil.addLoggedInUser - Adding user to session

@@ -23,6 +23,25 @@ class UserDAO {
 		$conn->close();
 		return $users;
 	}
+
+	function getAllUsersIncludingDeleted($clientID) 
+	{
+		$users = new Collection ();
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$result = $conn->query("SELECT * FROM User where ClientID = ".$clientID." order by Name asc ");
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$user = new User($row["ID"],$row["ClientID"],$row["Name"],$row["Login"],$row["Email"],$row["Mobile"],$row["Address"],$row["Roles"]);
+				$user->deleteFlag = $row["DeleteFlag"];
+				$users->add($user);
+			}
+		}
+		$conn->close();
+		return $users;
+	}	
 	
 	function getUser($clientID,$id) {
 		$user = new User(0, 0, "", "", "", "", "", "");
@@ -104,7 +123,7 @@ class UserDAO {
 			$ret =  "Error: " . $sql . "<br>" . $conn->error;
 		}	
 		$conn->close();
-		return $ret;
+		return $nextUserID;
 	}
 	
 	function updateUser($insertedByID,$user)
@@ -151,12 +170,22 @@ class UserDAO {
 		return $max;
 	}
 
-	function deleteUser($userID) {
+	function deleteUser($userID,$deletedBy) {
 		// replace with call to DB
 		$dbUtil = new DBUtil ();
 		$conn = $dbUtil->getDBConnection();
 		$max = 1;
-		$conn->query("Update User set DeleteFlag = 1 where ID = ".$userID);
+		$conn->query("Update User set DeleteFlag = 1, LastUpdated =  now(), LastUpdatedBy =".$deletedBy." where ID = ".$userID);
+		$conn->close();
+		return true;
+	}
+
+	function activateUser($userID,$deletedBy) {
+		// replace with call to DB
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$conn->query("Update User set DeleteFlag = 0, LastUpdated =  now(), LastUpdatedBy =".$deletedBy." where ID = ".$userID);
 		$conn->close();
 		return true;
 	}

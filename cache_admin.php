@@ -13,15 +13,7 @@ if($cacheItem > 0)
 
 <link href="css/style.css" rel="stylesheet" type="text/css"><link href="css/pages/signin.css" rel="stylesheet" type="text/css">
 </head>
-<body>	<div class="navbar navbar-fixed-top">		<div class="navbar-inner">			<div class="container" style="background-color: #181717">				<a class="btn btn-navbar" data-toggle="collapse"					data-target=".nav-collapse"> <span class="icon-bar"></span> <span					class="icon-bar"></span> <span class="icon-bar"></span>				</a> <a class="brand" href="index.html"> <img			src="img/dinamo_small.png" />				</a>
-
-				<div class="nav-collapse">					<ul class="nav pull-right">						<li class=""></li>						<li class="" style="padding-top: 20px"></li>					</ul>				</div>				<!--/.nav-collapse -->
-			</div>
-			<!-- /container -->		</div>
-		<!-- /navbar-inner -->	</div>
-	<!-- /navbar -->
-
-	<div class="container">
+<body>	<div class="container">
 
 		<div class="row">
 
@@ -55,10 +47,10 @@ if($cacheItem > 0)
 						</table>
 					</div>
 <br/><br/>
-					<div class="error-actions">
+					<div class="error-actions">					<!-- 
 						<a href="index.html" class="btn btn-large btn-primary"> <i
 							class="icon-chevron-left"></i> &nbsp; Back to Homepage
-						</a>
+						</a> 					-->
 
 
 

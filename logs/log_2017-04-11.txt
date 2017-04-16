@@ -1,0 +1,1100 @@
+[2017-04-11 8:10:35.043211] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:10:35.045139] [7] WebUtil.getLoggedInUser - No user in session
+[2017-04-11 8:10:35.045423] [7] WebUtil.getLoggedInUser - No user found going to login
+[2017-04-11 8:10:35.078555] [7] login.php - Opening Login Page
+[2017-04-11 8:10:37.851007] [7] submit_login - Checking login for =  pnoonan
+[2017-04-11 8:10:37.851254] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:10:37.855389] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:10:37.855711] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:10:37.856120] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:10:37.856298] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:10:37.856477] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:10:37.859421] [7] submit_login - LOGIN success, setting cookies for = pnoonan
+[2017-04-11 8:10:37.860476] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 8:10:37.904572] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:10:37.905380] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:10:37.906934] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:10:37.907077] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:10:37.907217] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:10:37.907361] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:10:37.907526] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:10:37.907641] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:10:37.907741] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:10:37.907841] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 8:10:37.908004] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:10:41.322756] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:10:41.323498] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:10:41.325265] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:10:41.325409] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:10:41.325582] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:10:41.325731] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:10:41.325886] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:10:41.326055] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:10:41.326183] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:10:41.345165] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:10:41.347126] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:10:41.348825] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:10:41.350313] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:10:41.350476] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:10:41.350642] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:10:41.352245] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:10:41.353523] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:10:41.355042] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:10:41.355232] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:10:41.355386] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:10:41.356641] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:10:41.358115] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:10:41.359328] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:10:41.359471] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:10:49.316493] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:10:49.317336] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:10:49.318892] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:10:49.319005] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:10:49.319145] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:10:49.319298] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:10:49.319561] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:10:49.319710] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:10:49.319859] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:10:49.320039] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 8:10:49.320250] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:10:58.158163] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:10:58.158943] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:10:58.160469] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:10:58.160607] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:10:58.160764] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:10:58.160911] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:10:58.161056] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:10:58.161201] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:10:58.161358] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:10:58.161602] [7] upload_qa - Opening details for project ID = 2, category id = 2, user = pnoonan
+[2017-04-11 8:10:58.168284] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:10:58.170044] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:10:58.171266] [7] ProjectDelegate - Loading category from DB
+[2017-04-11 8:10:58.177355] [7] ProjectDAO - getCategory: Executing SELECT * FROM Category where DeleteFlag = 0 and ProjectID = 2 and ID =  2, num results = 1
+[2017-04-11 8:10:58.177789] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:10:58.180762] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:10:58.185827] [7] ProjectDelegate - Loading category options from DB
+[2017-04-11 8:10:58.206866] [7] ProjectDAO - getCategoryOptions: Executing SELECT * FROM CategoryOption where DeleteFlag = 0 and ProjectID = 2 and CategoryID = 2 order by CategoryOrder , num results = 29
+[2017-04-11 8:10:58.207662] [7] ProjectDelegate - Number of categories is: 29
+[2017-04-11 8:10:58.207887] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:10:58.216579] [7] upload_qa - Opening ALL details for project = Cranbrook Care, category = Lift & Stair Boxes, num options = 29, user = pnoonan
+[2017-04-11 8:10:58.216795] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:10:58.218471] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:10:58.218638] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:10:58.218805] [7] upload_qa - Displaying javascript
+[2017-04-11 8:12:03.738863] [7] save_qa - Starting save..
+[2017-04-11 8:12:03.739135] [7] save_qa - Saving details for project ID = 2, category id = 2,upload user ID = 2
+[2017-04-11 8:12:03.739286] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:12:03.740791] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:12:03.740938] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:12:03.741095] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:12:03.742680] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:12:03.743963] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:12:03.747503] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:12:03.747684] [7] save_qa - Saving details for user = pnoonan, project = Cranbrook Care, category = Lift & Stair Boxes, num options = 29
+[2017-04-11 8:12:03.747833] [7] save_qa - user = pnoonan, getting date details
+[2017-04-11 8:12:03.748028] [7] FileUtil - Getting file name for pnoonan, prefix = Report_Cranbrook Care_Lift & Stair Boxes_11_Apr_2017
+[2017-04-11 8:12:03.748367] [7] FileUtil - returning ID = pnoonan_Report_Cranbrook_Care_Lift_Stair_Boxes_11_Apr_2017_2242
+[2017-04-11 8:12:03.748538] [7] save_qa - user = pnoonan, checking for attached images
+[2017-04-11 8:12:03.748688] [7] save_qa - user = pnoonan, checking image = 37258_rectangularfamilypool_web(1).jpg, size = 2791, type = image/jpeg
+[2017-04-11 8:12:03.750725] [7] save_qa - user = pnoonan, image 37258_rectangularfamilypool_web(1).jpg OK, saving to uploaded_images/photo_1_pnoonan_Report_Cranbrook_Care_Lift_Stair_Boxes_11_Apr_2017_2242.jpg
+[2017-04-11 8:12:03.752141] [7] save_qa - user = pnoonan, original image width =  75, original height = 75, modified image width =  75, modified height = 75
+[2017-04-11 8:12:03.752341] [7] save_qa - user = pnoonan, checking image = 37258_rectangularfamilypool_web(2).jpg, size = 117625, type = image/jpeg
+[2017-04-11 8:12:03.753506] [7] save_qa - user = pnoonan, image 37258_rectangularfamilypool_web(2).jpg OK, saving to uploaded_images/photo_2_pnoonan_Report_Cranbrook_Care_Lift_Stair_Boxes_11_Apr_2017_2242.jpg
+[2017-04-11 8:12:03.755069] [7] save_qa - user = pnoonan, original image width =  560, original height = 560, modified image width =  550, modified height = 550
+[2017-04-11 8:12:03.755259] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.755415] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.755551] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.755676] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.755801] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.755976] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.756165] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.756340] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.756521] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.756704] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.756894] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.757040] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.757191] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.757358] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.757515] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.757669] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.757826] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.758011] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.758199] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.758394] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.758584] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.758773] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.758961] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.759146] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.759339] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.759525] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.759715] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.759898] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.760088] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.760277] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.760478] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.760663] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.760853] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.761039] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.761228] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:12:03.761374] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:12:03.761554] [7] save_qa - Saved Image Names = 
+[2017-04-11 8:12:03.761908] [7] save_qa - Saved Images = 
+[2017-04-11 8:12:03.762130] [7] save_qa - user = pnoonan, Adding value id = opt_id_1, name =  Core No, value = 1111
+[2017-04-11 8:12:03.762343] [7] save_qa - user = pnoonan, Adding value id = opt_id_2, name =  Level No, value = 222
+[2017-04-11 8:12:03.762576] [7] save_qa - user = pnoonan, Adding value id = opt_id_23, name =  CONSTRUCTION, value = DRAWING NO.
+[2017-04-11 8:12:03.762777] [7] save_qa - user = pnoonan, Adding value id = opt_id_24, name =  Architects GA/RCP, value = 
+[2017-04-11 8:12:03.762975] [7] save_qa - user = pnoonan, Adding value id = opt_id_25, name =  Architects CS/WS, value = 
+[2017-04-11 8:12:03.763175] [7] save_qa - user = pnoonan, Adding value id = opt_id_26, name =  Structural Outline, value = 
+[2017-04-11 8:12:03.763381] [7] save_qa - user = pnoonan, Adding value id = opt_id_27, name =  Formwork Certificate, value = 
+[2017-04-11 8:12:03.763591] [7] save_qa - user = pnoonan, Adding value id = opt_id_28, name =  Comments, value = 
+[2017-04-11 8:12:03.763808] [7] save_qa - Saving preliminary report to DB
+[2017-04-11 8:12:03.843426] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:12:03.844237] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:12:03.845829] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:12:03.845979] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:12:03.846118] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:12:03.846265] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:12:03.846421] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:12:03.846594] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:12:03.846760] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:12:03.849467] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:12:03.851285] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:12:03.852472] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:12:03.853626] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:12:03.853766] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:12:03.853923] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:12:03.855310] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:12:03.856699] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:12:03.857856] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:12:03.857990] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:12:03.858146] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:12:03.859780] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:12:03.860959] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:12:03.862319] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:12:03.862504] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:12:03.862699] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:12:03.864371] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:12:03.865936] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:12:03.867824] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:12:03.868015] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:12:39.275427] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:12:39.276227] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:12:39.278022] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:12:39.278132] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:12:39.278228] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:12:39.278325] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:12:39.278426] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:12:39.278518] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:12:39.278613] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:12:39.278788] [7] upload_qa - Opening details for project ID = 2, category id = 2, user = pnoonan
+[2017-04-11 8:12:39.285723] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:12:39.287924] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:12:39.289175] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:12:39.293082] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:12:39.293263] [7] upload_qa - Opening ALL details for project = Cranbrook Care, category = Lift & Stair Boxes, num options = 29, user = pnoonan
+[2017-04-11 8:12:39.293387] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:12:39.294662] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:12:39.294773] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:12:39.294871] [7] upload_qa - Displaying javascript
+[2017-04-11 8:12:44.662955] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:12:44.663686] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:12:44.665153] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:12:44.665333] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:12:44.665448] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:12:44.665565] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:12:44.665668] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:12:44.665770] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:12:44.665868] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:12:44.665977] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 8:12:44.666078] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:13:15.657803] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:13:15.658596] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:13:15.660196] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:13:15.660342] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:13:15.660487] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:13:15.660636] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:13:15.660758] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:13:15.660907] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:13:15.661058] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:13:15.663614] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:13:15.665826] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:13:15.667198] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:13:15.668829] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:13:15.669008] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:13:15.669168] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:13:15.670495] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:13:15.671747] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:13:15.672971] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:13:15.673098] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:13:15.673252] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:13:15.674427] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:13:15.675587] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:13:15.676804] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:13:15.676963] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:13:15.677133] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:13:15.678909] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:13:15.680351] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:13:15.681504] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:13:15.681643] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:13:59.259932] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:13:59.260616] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:13:59.261936] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:13:59.262130] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:13:59.262224] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:13:59.262319] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:13:59.262419] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:13:59.262531] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:13:59.262624] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:13:59.262798] [7] upload_qa - Opening details for project ID = 2, category id = 2, user = pnoonan
+[2017-04-11 8:13:59.270560] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:13:59.271953] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:13:59.273158] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:13:59.276693] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:13:59.276808] [7] upload_qa - Opening ALL details for project = Cranbrook Care, category = Lift & Stair Boxes, num options = 29, user = pnoonan
+[2017-04-11 8:13:59.276915] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:13:59.278079] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:13:59.278183] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:13:59.278280] [7] upload_qa - Displaying javascript
+[2017-04-11 8:33:56.006197] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:33:56.007131] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.009097] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.009248] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.009392] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:33:56.009537] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:33:56.009711] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:33:56.009856] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:33:56.010005] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:33:56.013871] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:33:56.015939] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:33:56.017437] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.018737] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.018861] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.019031] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:33:56.020431] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:33:56.022015] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.023684] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.023870] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.024034] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:33:56.025429] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:33:56.026748] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.027939] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.028080] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.028235] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:33:56.029978] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:33:56.031393] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.032891] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.033036] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.033190] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:33:56.034759] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:33:56.035948] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.037111] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.037254] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.037406] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:33:56.039027] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:33:56.040410] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.041914] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.042085] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.042249] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:33:56.043678] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:33:56.045061] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.046231] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.046375] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.046569] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:33:56.048141] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:33:56.049289] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.050544] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.050698] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.050863] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:33:56.052503] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:33:56.054152] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.055471] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.055618] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.966707] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:33:56.967497] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:56.969429] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:56.969604] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:56.969750] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:33:56.969898] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:33:56.970046] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:33:56.970208] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:33:56.970359] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:33:58.986331] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:33:58.987123] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:33:58.989115] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:33:58.989320] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:33:58.989463] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:33:58.989581] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:33:58.989726] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:33:58.989917] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:33:58.990067] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:33:58.990210] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 8:33:58.990339] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:34:02.013010] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:34:02.013837] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:34:02.015471] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:34:02.015615] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:34:02.015732] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:34:02.015882] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:34:02.016042] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:34:02.016197] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:34:02.016354] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:34:02.016601] [7] upload_qa - Opening details for project ID = 1, category id = 2, user = pnoonan
+[2017-04-11 8:34:02.023524] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:34:02.025028] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:34:02.026287] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:34:02.030147] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:34:02.030349] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Lift & Stair Boxes, num options = 29, user = pnoonan
+[2017-04-11 8:34:02.030632] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:34:02.032100] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:34:02.032254] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:34:02.032387] [7] upload_qa - Displaying javascript
+[2017-04-11 8:34:10.632616] [7] save_qa - Starting save..
+[2017-04-11 8:34:10.632884] [7] save_qa - Saving details for project ID = 1, category id = 2,upload user ID = 2
+[2017-04-11 8:34:10.633058] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:34:10.635870] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:34:10.636038] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:34:10.636200] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:34:10.637605] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:34:10.639043] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:34:10.642653] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:34:10.642818] [7] save_qa - Saving details for user = pnoonan, project = Bellevue Hill PS, category = Lift & Stair Boxes, num options = 29
+[2017-04-11 8:34:10.642966] [7] save_qa - user = pnoonan, getting date details
+[2017-04-11 8:34:10.643167] [7] FileUtil - Getting file name for pnoonan, prefix = Report_Bellevue Hill PS_Lift & Stair Boxes_11_Apr_2017
+[2017-04-11 8:34:10.643507] [7] FileUtil - returning ID = pnoonan_Report_Bellevue_Hill_PS_Lift_Stair_Boxes_11_Apr_2017_32459
+[2017-04-11 8:34:10.643635] [7] save_qa - user = pnoonan, checking for attached images
+[2017-04-11 8:34:10.643790] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.643918] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.644079] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.644268] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.644463] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.644649] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.644840] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.645035] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.645198] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.645332] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.645507] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.645699] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.645889] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.646038] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.646171] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.646300] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.646441] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.646569] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.646716] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.646855] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.647017] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.647207] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.647392] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.647572] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.647756] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.647936] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.648130] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.648319] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.648509] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.648858] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.649061] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.649247] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.649439] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.649626] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.649862] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.650151] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.650312] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.650444] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.650582] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:34:10.650819] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:34:10.651011] [7] save_qa - Saved Image Names = 
+[2017-04-11 8:34:10.651187] [7] save_qa - Saved Images = 
+[2017-04-11 8:34:10.651314] [7] save_qa - user = pnoonan, Adding value id = opt_id_1, name =  Core No, value = 111
+[2017-04-11 8:34:10.651422] [7] save_qa - user = pnoonan, Adding value id = opt_id_2, name =  Level No, value = 222
+[2017-04-11 8:34:10.651586] [7] save_qa - user = pnoonan, Adding value id = opt_id_23, name =  CONSTRUCTION, value = DRAWING NO.
+[2017-04-11 8:34:10.651767] [7] save_qa - user = pnoonan, Adding value id = opt_id_24, name =  Architects GA/RCP, value = 
+[2017-04-11 8:34:10.651870] [7] save_qa - user = pnoonan, Adding value id = opt_id_25, name =  Architects CS/WS, value = 
+[2017-04-11 8:34:10.652019] [7] save_qa - user = pnoonan, Adding value id = opt_id_26, name =  Structural Outline, value = 
+[2017-04-11 8:34:10.652122] [7] save_qa - user = pnoonan, Adding value id = opt_id_27, name =  Formwork Certificate, value = 
+[2017-04-11 8:34:10.652339] [7] save_qa - user = pnoonan, Adding value id = opt_id_28, name =  Comments, value = 
+[2017-04-11 8:34:10.652501] [7] save_qa - Saving preliminary report to DB
+[2017-04-11 8:34:10.724795] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:34:10.725662] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:34:10.727412] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:34:10.727587] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:34:10.727726] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:34:10.727875] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:34:10.728025] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:34:10.728173] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:34:10.728322] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:34:10.730732] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:34:10.732673] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:34:10.734915] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:34:10.736397] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:34:10.736582] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:34:13.660542] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:34:13.661238] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:34:13.662640] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:34:13.662753] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:34:13.662848] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:34:13.662945] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:34:13.663041] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:34:13.663131] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:34:13.663223] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:34:13.663400] [7] upload_qa - Opening details for project ID = 1, category id = 2, user = pnoonan
+[2017-04-11 8:34:13.669684] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:34:13.671179] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:34:13.672465] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:34:13.676026] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:34:13.676156] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Lift & Stair Boxes, num options = 29, user = pnoonan
+[2017-04-11 8:34:13.676266] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:34:13.677778] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:34:13.677936] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:34:13.678039] [7] upload_qa - Displaying javascript
+[2017-04-11 8:40:45.198589] [7] save_qa - Starting save..
+[2017-04-11 8:40:45.198884] [7] save_qa - Saving details for project ID = 1, category id = 2,upload user ID = 2
+[2017-04-11 8:40:45.199045] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:40:45.201371] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:40:45.201545] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:40:45.201709] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:40:45.203007] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:40:45.204288] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:40:45.207607] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:40:45.207751] [7] save_qa - Saving details for user = pnoonan, project = Bellevue Hill PS, category = Lift & Stair Boxes, num options = 29
+[2017-04-11 8:40:45.207895] [7] save_qa - user = pnoonan, getting date details
+[2017-04-11 8:40:45.208071] [7] FileUtil - Getting file name for pnoonan, prefix = Report_Bellevue Hill PS_Lift & Stair Boxes_11_Apr_2017
+[2017-04-11 8:40:45.208369] [7] FileUtil - returning ID = pnoonan_Report_Bellevue_Hill_PS_Lift_Stair_Boxes_11_Apr_2017_1704
+[2017-04-11 8:40:45.208498] [7] save_qa - user = pnoonan, checking for attached images
+[2017-04-11 8:40:45.208667] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.208856] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.209057] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.209249] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.209439] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.209626] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.209822] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.210032] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.210225] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.210413] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.210603] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.210798] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.210989] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.211174] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.211365] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.211553] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.211743] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.211927] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.212125] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.212310] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.212505] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.212690] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.212879] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.213078] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.213430] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.213619] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.213809] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.214004] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.214193] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.214380] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.214570] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.214755] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.214947] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.215136] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.215369] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.215524] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.215661] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.215786] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.215910] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:45.216032] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:45.216160] [7] save_qa - Saved Image Names = 
+[2017-04-11 8:40:45.216340] [7] save_qa - Saved Images = 
+[2017-04-11 8:40:45.216578] [7] save_qa - user = pnoonan, Adding value id = opt_id_1, name =  Core No, value = 111
+[2017-04-11 8:40:45.216780] [7] save_qa - user = pnoonan, Adding value id = opt_id_2, name =  Level No, value = 222
+[2017-04-11 8:40:45.217029] [7] save_qa - user = pnoonan, Adding value id = opt_id_23, name =  CONSTRUCTION, value = DRAWING NO.
+[2017-04-11 8:40:45.217183] [7] save_qa - user = pnoonan, Adding value id = opt_id_24, name =  Architects GA/RCP, value = 
+[2017-04-11 8:40:45.217307] [7] save_qa - user = pnoonan, Adding value id = opt_id_25, name =  Architects CS/WS, value = 
+[2017-04-11 8:40:45.217425] [7] save_qa - user = pnoonan, Adding value id = opt_id_26, name =  Structural Outline, value = 
+[2017-04-11 8:40:45.217550] [7] save_qa - user = pnoonan, Adding value id = opt_id_27, name =  Formwork Certificate, value = 
+[2017-04-11 8:40:45.217664] [7] save_qa - user = pnoonan, Adding value id = opt_id_28, name =  Comments, value = 
+[2017-04-11 8:40:45.217791] [7] save_qa - Saving preliminary report to DB
+[2017-04-11 8:40:45.222812] [7] save_qa - Removing previous preliminary report
+[2017-04-11 8:40:45.284887] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:40:45.285892] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:40:45.287508] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:40:45.287652] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:40:45.287796] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:40:45.287945] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:40:45.288095] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:40:45.288273] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:40:45.288439] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:40:45.291003] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:40:45.292840] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:40:45.294439] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:40:45.295715] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:40:45.295869] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:40:47.465960] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:40:47.467284] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:40:47.468720] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:40:47.468843] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:40:47.468940] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:40:47.469034] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:40:47.469209] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:40:47.469305] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:40:47.469400] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:40:47.469578] [7] upload_qa - Opening details for project ID = 1, category id = 2, user = pnoonan
+[2017-04-11 8:40:47.480149] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:40:47.482520] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:40:47.483863] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:40:47.490108] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:40:47.490295] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Lift & Stair Boxes, num options = 29, user = pnoonan
+[2017-04-11 8:40:47.490457] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:40:47.492619] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:40:47.492800] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:40:47.492948] [7] upload_qa - Displaying javascript
+[2017-04-11 8:40:54.820590] [7] save_qa - Starting save..
+[2017-04-11 8:40:54.820846] [7] save_qa - Saving details for project ID = 1, category id = 2,upload user ID = 2
+[2017-04-11 8:40:54.820993] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:40:54.822623] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:40:54.822767] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:40:54.822921] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:40:54.824621] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:40:54.825874] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:40:54.830207] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:40:54.830389] [7] save_qa - Saving details for user = pnoonan, project = Bellevue Hill PS, category = Lift & Stair Boxes, num options = 29
+[2017-04-11 8:40:54.830497] [7] save_qa - user = pnoonan, getting date details
+[2017-04-11 8:40:54.830646] [7] FileUtil - Getting file name for pnoonan, prefix = Report_Bellevue Hill PS_Lift & Stair Boxes_11_Apr_2017
+[2017-04-11 8:40:54.831105] [7] FileUtil - returning ID = pnoonan_Report_Bellevue_Hill_PS_Lift_Stair_Boxes_11_Apr_2017_13761
+[2017-04-11 8:40:54.831360] [7] save_qa - user = pnoonan, checking for attached images
+[2017-04-11 8:40:54.831479] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.831576] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.831721] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.831947] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.832251] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.832397] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.832576] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.832712] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.832906] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.833049] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.833220] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.833360] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.833530] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.833695] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.833865] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.834034] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.834173] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.834330] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.834517] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.834862] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.835057] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.835256] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.835445] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.835635] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.835824] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.836011] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.836209] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.836395] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.836585] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.836771] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.836963] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.837156] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.837344] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.837532] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.837723] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.837908] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.838104] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.838293] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.838483] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:40:54.838673] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:40:54.838865] [7] save_qa - Saved Image Names = 
+[2017-04-11 8:40:54.839051] [7] save_qa - Saved Images = 
+[2017-04-11 8:40:54.839274] [7] save_qa - user = pnoonan, Adding value id = opt_id_1, name =  Core No, value = 111
+[2017-04-11 8:40:54.839482] [7] save_qa - user = pnoonan, Adding value id = opt_id_2, name =  Level No, value = 222
+[2017-04-11 8:40:54.839713] [7] save_qa - user = pnoonan, Adding value id = opt_id_23, name =  CONSTRUCTION, value = DRAWING NO.
+[2017-04-11 8:40:54.839912] [7] save_qa - user = pnoonan, Adding value id = opt_id_24, name =  Architects GA/RCP, value = 
+[2017-04-11 8:40:54.840145] [7] save_qa - user = pnoonan, Adding value id = opt_id_25, name =  Architects CS/WS, value = 
+[2017-04-11 8:40:54.840348] [7] save_qa - user = pnoonan, Adding value id = opt_id_26, name =  Structural Outline, value = 
+[2017-04-11 8:40:54.840547] [7] save_qa - user = pnoonan, Adding value id = opt_id_27, name =  Formwork Certificate, value = 
+[2017-04-11 8:40:54.840747] [7] save_qa - user = pnoonan, Adding value id = opt_id_28, name =  Comments, value = ttttt
+[2017-04-11 8:40:54.840960] [7] save_qa - Saving preliminary report to DB
+[2017-04-11 8:40:54.857191] [7] save_qa - Removing previous preliminary report
+[2017-04-11 8:40:54.938811] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:40:54.939554] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:40:54.941013] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:40:54.941153] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:40:54.941255] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:40:54.941353] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:40:54.941447] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:40:54.941539] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:40:54.941632] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:40:54.944009] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:40:54.946285] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:40:54.948585] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:40:54.950699] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:40:54.951025] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:43:05.035650] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:43:05.036571] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:43:05.038487] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:43:05.038600] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:43:05.038696] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:43:05.038790] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:43:05.038892] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:43:05.038985] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:43:05.039078] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:43:05.039256] [7] upload_qa - Opening details for project ID = 1, category id = 2, user = pnoonan
+[2017-04-11 8:43:05.046679] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:43:05.048201] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:43:05.049474] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:43:05.053208] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:43:05.053349] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Lift & Stair Boxes, num options = 29, user = pnoonan
+[2017-04-11 8:43:05.053457] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:43:05.054733] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:43:05.054843] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:43:05.054939] [7] upload_qa - Displaying javascript
+[2017-04-11 8:43:08.890903] [7] save_qa - Starting save..
+[2017-04-11 8:43:08.891175] [7] save_qa - Saving details for project ID = 1, category id = 2,upload user ID = 2
+[2017-04-11 8:43:08.891310] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:43:08.893832] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:43:08.894020] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:43:08.894138] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:43:08.895761] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:43:08.896956] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:43:08.900460] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:43:08.900614] [7] save_qa - Saving details for user = pnoonan, project = Bellevue Hill PS, category = Lift & Stair Boxes, num options = 29
+[2017-04-11 8:43:08.900758] [7] save_qa - user = pnoonan, getting date details
+[2017-04-11 8:43:08.900962] [7] FileUtil - Getting file name for pnoonan, prefix = Report_Bellevue Hill PS_Lift & Stair Boxes_11_Apr_2017
+[2017-04-11 8:43:08.901272] [7] FileUtil - returning ID = pnoonan_Report_Bellevue_Hill_PS_Lift_Stair_Boxes_11_Apr_2017_15527
+[2017-04-11 8:43:08.901422] [7] save_qa - user = pnoonan, checking for attached images
+[2017-04-11 8:43:08.901571] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.901714] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.901858] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.902007] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.902195] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.902398] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.902590] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.902777] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.902967] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.903152] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.903348] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.903536] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.903726] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.903912] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.904261] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.904464] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.904654] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.904840] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.905030] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.905215] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.905406] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.905592] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.905785] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.905971] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.906160] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.906352] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.906543] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.906728] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.906918] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.907103] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.907294] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.907488] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.907676] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.907850] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.908018] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.908174] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.908338] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.908468] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.908668] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:08.908870] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:08.909064] [7] save_qa - Saved Image Names = 
+[2017-04-11 8:43:08.909231] [7] save_qa - Saved Images = 
+[2017-04-11 8:43:08.909446] [7] save_qa - user = pnoonan, Adding value id = opt_id_1, name =  Core No, value = 111
+[2017-04-11 8:43:08.909663] [7] save_qa - user = pnoonan, Adding value id = opt_id_2, name =  Level No, value = 222
+[2017-04-11 8:43:08.909826] [7] save_qa - user = pnoonan, Adding value id = opt_id_23, name =  CONSTRUCTION, value = DRAWING NO.
+[2017-04-11 8:43:08.909950] [7] save_qa - user = pnoonan, Adding value id = opt_id_24, name =  Architects GA/RCP, value = 
+[2017-04-11 8:43:08.910126] [7] save_qa - user = pnoonan, Adding value id = opt_id_25, name =  Architects CS/WS, value = 
+[2017-04-11 8:43:08.910309] [7] save_qa - user = pnoonan, Adding value id = opt_id_26, name =  Structural Outline, value = 
+[2017-04-11 8:43:08.910501] [7] save_qa - user = pnoonan, Adding value id = opt_id_27, name =  Formwork Certificate, value = 
+[2017-04-11 8:43:08.910681] [7] save_qa - user = pnoonan, Adding value id = opt_id_28, name =  Comments, value = ttttt
+[2017-04-11 8:43:08.910881] [7] save_qa - Saving preliminary report to DB
+[2017-04-11 8:43:08.915643] [7] save_qa - Removing previous preliminary report
+[2017-04-11 8:43:08.978796] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:43:08.979597] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:43:08.981194] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:43:08.981379] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:43:08.981537] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:43:08.981692] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:43:08.981851] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:43:08.982007] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:43:08.982287] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:43:08.984685] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:43:08.986423] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:43:08.988399] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:43:08.989751] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:43:08.989866] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:43:23.906478] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:43:23.907211] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:43:23.909346] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:43:23.909475] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:43:23.909573] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:43:23.909670] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:43:23.909765] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:43:23.909862] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:43:23.909955] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:43:23.910140] [7] upload_qa - Opening details for project ID = 1, category id = 2, user = pnoonan
+[2017-04-11 8:43:23.918827] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:43:23.920813] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:43:23.922364] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:43:23.926131] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:43:23.926280] [7] upload_qa - Opening ALL details for project = Bellevue Hill PS, category = Lift & Stair Boxes, num options = 29, user = pnoonan
+[2017-04-11 8:43:23.926390] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:43:23.927658] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:43:23.927772] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:43:23.927881] [7] upload_qa - Displaying javascript
+[2017-04-11 8:43:28.494662] [7] save_qa - Starting save..
+[2017-04-11 8:43:28.494945] [7] save_qa - Saving details for project ID = 1, category id = 2,upload user ID = 2
+[2017-04-11 8:43:28.495105] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:43:28.496506] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:43:28.496650] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:43:28.496805] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:43:28.498148] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:43:28.499391] [7] CacheUtil - Getting cache for name catoptions
+[2017-04-11 8:43:28.503799] [7] ProjectDelegate - Number of cached categories is: 29
+[2017-04-11 8:43:28.503972] [7] save_qa - Saving details for user = pnoonan, project = Bellevue Hill PS, category = Lift & Stair Boxes, num options = 29
+[2017-04-11 8:43:28.504122] [7] save_qa - user = pnoonan, getting date details
+[2017-04-11 8:43:28.504300] [7] FileUtil - Getting file name for pnoonan, prefix = Report_Bellevue Hill PS_Lift & Stair Boxes_11_Apr_2017
+[2017-04-11 8:43:28.504605] [7] FileUtil - returning ID = pnoonan_Report_Bellevue_Hill_PS_Lift_Stair_Boxes_11_Apr_2017_1849
+[2017-04-11 8:43:28.504748] [7] save_qa - user = pnoonan, checking for attached images
+[2017-04-11 8:43:28.504899] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.505042] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.505244] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.505438] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.505629] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.505814] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.506006] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.506191] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.506537] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.506726] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.506916] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.507102] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.507296] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.507483] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.507673] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.507858] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.508047] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.508199] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.508379] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.508565] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.508754] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.508941] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.509130] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.509517] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.509706] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.509891] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.510080] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.510232] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.510411] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.510597] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.510787] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.510984] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.511190] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.511343] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.511476] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.511603] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.511782] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.512068] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.512228] [7] save_qa - user = pnoonan, checking image = , size = 0, type = 
+[2017-04-11 8:43:28.512372] [7] save_qa - user = pnoonan, File  is EMPTY 
+[2017-04-11 8:43:28.512533] [7] save_qa - Saved Image Names = 
+[2017-04-11 8:43:28.512695] [7] save_qa - Saved Images = 
+[2017-04-11 8:43:28.512881] [7] save_qa - user = pnoonan, Adding value id = opt_id_1, name =  Core No, value = 111
+[2017-04-11 8:43:28.513061] [7] save_qa - user = pnoonan, Adding value id = opt_id_2, name =  Level No, value = 222
+[2017-04-11 8:43:28.513225] [7] save_qa - user = pnoonan, Adding value id = opt_id_23, name =  CONSTRUCTION, value = DRAWING NO.
+[2017-04-11 8:43:28.513422] [7] save_qa - user = pnoonan, Adding value id = opt_id_24, name =  Architects GA/RCP, value = 
+[2017-04-11 8:43:28.513618] [7] save_qa - user = pnoonan, Adding value id = opt_id_25, name =  Architects CS/WS, value = 
+[2017-04-11 8:43:28.513817] [7] save_qa - user = pnoonan, Adding value id = opt_id_26, name =  Structural Outline, value = 
+[2017-04-11 8:43:28.514014] [7] save_qa - user = pnoonan, Adding value id = opt_id_27, name =  Formwork Certificate, value = 
+[2017-04-11 8:43:28.514224] [7] save_qa - user = pnoonan, Adding value id = opt_id_28, name =  Comments, value = ttttt
+[2017-04-11 8:43:28.514439] [7] save_qa - Saving preliminary report to DB
+[2017-04-11 8:43:28.519121] [7] save_qa - Removing previous preliminary report
+[2017-04-11 8:43:28.584798] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 8:43:28.585632] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:43:28.587304] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:43:28.587471] [7] UserDelegate - Number of users = 4
+[2017-04-11 8:43:28.587620] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 8:43:28.587773] [7] UserDelegate - checking against user - sprice
+[2017-04-11 8:43:28.587937] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 8:43:28.588088] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 8:43:28.588243] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 8:43:28.591216] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 8:43:28.593020] [7] CacheUtil - Getting cache for name categories
+[2017-04-11 8:43:28.594543] [7] CacheUtil - Getting cache for name users
+[2017-04-11 8:43:28.595715] [7] UserDelegate - Loading users from Cache
+[2017-04-11 8:43:28.595885] [7] UserDelegate - Number of users = 4
+[2017-04-11 17:43:14.700089] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 17:43:14.701491] [7] CacheUtil - Getting cache for name users
+[2017-04-11 17:43:14.704267] [7] UserDelegate - Loading users from Cache
+[2017-04-11 17:43:14.704405] [7] UserDelegate - Number of users = 4
+[2017-04-11 17:43:14.704507] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 17:43:14.704601] [7] UserDelegate - checking against user - sprice
+[2017-04-11 17:43:14.704695] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 17:43:14.704792] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 17:43:14.704885] [7] WebUtil.getLoggedInUser - User timed out - pnoonan, last activity = 1491864208
+[2017-04-11 17:43:14.704974] [7] WebUtil.removeLoggedInUser - Removing Session Details
+[2017-04-11 17:43:14.705061] [7] WebUtil.removeLoggedInUser - Setting empty session for User
+[2017-04-11 17:43:14.705148] [7] WebUtil.getLoggedInUser - No user in session
+[2017-04-11 17:43:14.705231] [7] WebUtil.getLoggedInUser - No user found going to login
+[2017-04-11 17:43:14.749510] [7] login.php - Opening Login Page
+[2017-04-11 17:54:56.443345] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 17:54:56.444425] [7] WebUtil.getLoggedInUser - No user in session
+[2017-04-11 17:54:56.444565] [7] WebUtil.getLoggedInUser - No user found going to login
+[2017-04-11 17:54:56.476840] [7] login.php - Opening Login Page
+[2017-04-11 17:54:59.096106] [7] submit_login - Checking login for =  pnoonan
+[2017-04-11 17:54:59.096328] [7] CacheUtil - Getting cache for name users
+[2017-04-11 17:54:59.098581] [7] UserDelegate - Loading users from Cache
+[2017-04-11 17:54:59.098768] [7] UserDelegate - Number of users = 4
+[2017-04-11 17:54:59.098931] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 17:54:59.099101] [7] UserDelegate - checking against user - sprice
+[2017-04-11 17:54:59.099270] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 17:54:59.101614] [7] submit_login - LOGIN success, setting cookies for = pnoonan
+[2017-04-11 17:54:59.102494] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 17:54:59.144503] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 17:54:59.145435] [7] CacheUtil - Getting cache for name users
+[2017-04-11 17:54:59.146816] [7] UserDelegate - Loading users from Cache
+[2017-04-11 17:54:59.146969] [7] UserDelegate - Number of users = 4
+[2017-04-11 17:54:59.147119] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 17:54:59.147285] [7] UserDelegate - checking against user - sprice
+[2017-04-11 17:54:59.147439] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 17:54:59.147593] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 17:54:59.147744] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 17:54:59.147903] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 17:54:59.148056] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 17:55:27.961858] [3] ERROR -  - errorMsg = Missing argument 1 for User::__construct(), called in C:\stef\xampp\htdocs\dinomo\dinomo\dao\UserDAO.php on line 28 and defined, errorNo = 2, src = user_update_test_sql.php
+[2017-04-11 17:57:35.186144] [3] ERROR -  - errorMsg = Trying to get property of non-object, errorNo = 8, src = user_update_test_sql.php
+[2017-04-11 17:59:32.992103] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID 1
+[2017-04-11 17:59:33.006639] [3] ERROR -  - errorMsg = Trying to get property of non-object, errorNo = 8, src = user_update_test_sql.php
+[2017-04-11 18:01:29.185311] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID 1
+[2017-04-11 18:01:29.199532] [3] ERROR -  - errorMsg = Trying to get property of non-object, errorNo = 8, src = user_update_test_sql.php
+[2017-04-11 18:01:30.989200] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID 1
+[2017-04-11 18:01:31.004394] [3] ERROR -  - errorMsg = Trying to get property of non-object, errorNo = 8, src = user_update_test_sql.php
+[2017-04-11 18:01:48.220118] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID 1
+[2017-04-11 18:02:26.655337] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:02:43.380551] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:02:43.380908] [7] UserDAO - Executing Update User
+[2017-04-11 18:02:43.384535] [7] UserDAO - Updating user sql = update User set Name = 'Patrick Noonan', Login = 'pnoonan',Password = 'pnoonan11', Email = 'patricknoonan@dinomoformwork.com.au', Mobile = '+61433965870', Address = '', Roles = 'user',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = '1 and ID = 2
+[2017-04-11 18:02:43.384953] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:02:44.862153] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:02:44.862507] [7] UserDAO - Executing Update User
+[2017-04-11 18:02:44.865582] [7] UserDAO - Updating user sql = update User set Name = 'Patrick Noonan', Login = 'pnoonan',Password = 'pnoonan11', Email = 'patricknoonan@dinomoformwork.com.au', Mobile = '+61433965870', Address = '', Roles = 'user',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = '1 and ID = 2
+[2017-04-11 18:02:44.865921] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:02:50.133394] [7] WebUtil.addLoggedInUser - Removing Session Details
+[2017-04-11 18:02:50.134452] [7] WebUtil.addLoggedInUser - Setting empty session for User
+[2017-04-11 18:02:50.168620] [7] login.php - Opening Login Page
+[2017-04-11 18:02:51.652040] [7] submit_login - Checking login for =  pnoonan
+[2017-04-11 18:02:51.652251] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:02:51.654078] [7] UserDelegate - Loading users from DB
+[2017-04-11 18:02:51.656022] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:02:51.658708] [7] UserDelegate - Number of users = 4
+[2017-04-11 18:02:51.658884] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 18:02:51.659048] [7] UserDelegate - checking against user - sprice
+[2017-04-11 18:02:51.659183] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 18:02:51.661408] [7] submit_login - LOGIN success, setting cookies for = pnoonan
+[2017-04-11 18:02:51.662197] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 18:02:51.711911] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 18:02:51.712685] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:02:51.714343] [7] UserDelegate - Loading users from Cache
+[2017-04-11 18:02:51.714488] [7] UserDelegate - Number of users = 4
+[2017-04-11 18:02:51.714600] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 18:02:51.714699] [7] UserDelegate - checking against user - sprice
+[2017-04-11 18:02:51.714828] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 18:02:51.715071] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 18:02:51.715234] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 18:02:51.715400] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 18:02:51.715549] [7] CacheUtil - Getting cache for name projects
+[2017-04-11 18:05:40.488831] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:05:40.490650] [7] UserDAO - Executing Update User
+[2017-04-11 18:05:40.500298] [7] UserDAO - Updating user sql = update User set Name = '', Login = '',Password = '', Email = '', Mobile = '', Address = '', Roles = '',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = ' and ID = 
+[2017-04-11 18:05:40.500765] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:06:05.935041] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:06:05.936748] [7] UserDAO - Executing Update User
+[2017-04-11 18:06:05.947519] [7] UserDAO - Updating user sql = update User set Name = '', Login = '',Password = '', Email = '', Mobile = '', Address = '', Roles = '',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = ' and ID = 
+[2017-04-11 18:06:05.948004] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:06:29.357100] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:06:29.357506] [7] UserDAO - Executing Update User
+[2017-04-11 18:06:29.361645] [7] UserDAO - Updating user sql = update User set Name = 'Patrick Noonan', Login = 'pnoonan',Password = 'pnoonan11', Email = 'patricknoonan@dinomoformwork.com.au', Mobile = '+61433965870', Address = '', Roles = 'user',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = '1 and ID = 2
+[2017-04-11 18:06:29.362098] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:06:31.103354] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:06:31.103733] [7] UserDAO - Executing Update User
+[2017-04-11 18:06:31.106959] [7] UserDAO - Updating user sql = update User set Name = 'Patrick Noonan', Login = 'pnoonan',Password = 'pnoonan11', Email = 'patricknoonan@dinomoformwork.com.au', Mobile = '+61433965870', Address = '', Roles = 'user',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = '1 and ID = 2
+[2017-04-11 18:06:31.107431] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:07:28.883956] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:07:28.884506] [7] UserDAO - Executing Update User
+[2017-04-11 18:07:28.888282] [7] UserDAO - Updating user sql = update User set Name = 'Patrick Noonan', Login = 'pnoonan',Password = 'pnoonan11', Email = 'patricknoonan@dinomoformwork.com.au', Mobile = '+61433965870', Address = '', Roles = 'user',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = '1 and ID = 2
+[2017-04-11 18:07:28.888708] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:07:53.047576] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:07:53.047966] [7] UserDAO - Executing Update User
+[2017-04-11 18:07:53.051369] [7] UserDAO - Updating user sql = update User set Name = 'Patrick Noonan', Login = 'pnoonan',Password = 'pnoonan11', Email = 'patricknoonan@dinomoformwork.com.au', Mobile = '+61433965870', Address = '', Roles = 'user',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = 1 and ID = 2
+[2017-04-11 18:07:53.053817] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:17:23.811897] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:17:23.812262] [7] UserDAO - Executing Update User
+[2017-04-11 18:17:23.815790] [7] UserDAO - Updating user sql = update User set Name = 'Patrick Noonan', Login = 'pnoonan',Password = 'pnoonan11', Email = 'patricknoonan@dinomoformwork.com.au', Mobile = '+61433965870', Address = '', Roles = 'user',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = 1 and ID = 2
+[2017-04-11 18:17:23.818931] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:17:23.821429] [7] UserDAO - Executing Save User
+[2017-04-11 18:17:23.835439] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (3,1,'John Difrancesco','johndi7','','johndi@dinomoformwork.com.au','+61400945426','','user',now(),1,now(),1,0) 
+[2017-04-11 18:17:23.838329] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:17:23.839726] [7] UserDAO - Executing Save User
+[2017-04-11 18:17:23.842792] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (4,1,'Dominic Difrancesco','dominic5','','dominic@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:17:23.845381] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:17:23.846772] [7] UserDAO - Executing Save User
+[2017-04-11 18:17:23.850511] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (5,1,'Thomas Fletcher','fletcherm6','','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:17:23.853342] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:17:23.854631] [7] UserDAO - Executing Save User
+[2017-04-11 18:17:23.857994] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (6,1,'Arti Saren','sarena10','','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:17:23.860793] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:17:23.862219] [7] UserDAO - Executing Save User
+[2017-04-11 18:17:23.865660] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (7,1,'Harry Saren','sarenh11','','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:17:23.868310] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:17:23.870038] [7] UserDAO - Executing Save User
+[2017-04-11 18:17:23.873965] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (8,1,'Sebastion Debono','debonos7','','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:17:23.876524] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:17:23.877937] [7] UserDAO - Executing Save User
+[2017-04-11 18:17:23.881033] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (9,1,'Erick Monslave','monslav15','','erick@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:17:23.883630] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:17:23.885040] [7] UserDAO - Executing Save User
+[2017-04-11 18:17:23.888931] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (10,1,'Padraig Bergin','berginp15','','p.bergin@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:17:23.891823] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:17:23.893399] [7] UserDAO - Executing Save User
+[2017-04-11 18:17:23.897064] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (11,1,'Monica Lemke','lemkem13','','monica@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:17:23.899895] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:59:57.732670] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 18:59:57.733027] [7] UserDAO - Executing Update User
+[2017-04-11 18:59:57.736721] [7] UserDAO - Updating user sql = update User set Name = 'Patrick Noonan', Login = 'pnoonan',Password = 'pnoonan2', Email = 'patricknoonan@dinomoformwork.com.au', Mobile = '+61433965870', Address = '', Roles = 'user',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = 1 and ID = 2
+[2017-04-11 18:59:57.739988] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:59:57.742850] [7] UserDAO - Executing Save User
+[2017-04-11 18:59:57.746197] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (3,1,'John Difrancesco','johndi','johndi3','johndi@dinomoformwork.com.au','+61400945426','','user',now(),1,now(),1,0) 
+[2017-04-11 18:59:57.748882] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:59:57.750376] [7] UserDAO - Executing Save User
+[2017-04-11 18:59:57.754061] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (4,1,'Dominic Difrancesco','dominic','dominic4','dominic@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:59:57.756692] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:59:57.758430] [7] UserDAO - Executing Save User
+[2017-04-11 18:59:57.762150] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (5,1,'Thomas Fletcher','fletchm','fletchm5','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:59:57.764780] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:59:57.766413] [7] UserDAO - Executing Save User
+[2017-04-11 18:59:57.770116] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (6,1,'Arti Saren','sarena','sarena6','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:59:57.772722] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:59:57.774358] [7] UserDAO - Executing Save User
+[2017-04-11 18:59:57.777630] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (7,1,'Harry Saren','sarenh','sarenh7','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:59:57.780390] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:59:57.782078] [7] UserDAO - Executing Save User
+[2017-04-11 18:59:57.785648] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (8,1,'Sebastion Debono','debonos','debonos8','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:59:57.788163] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:59:57.789577] [7] UserDAO - Executing Save User
+[2017-04-11 18:59:57.792979] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (9,1,'Erick Monslave','monslav','monslav9','erick@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:59:57.795603] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:59:57.797290] [7] UserDAO - Executing Save User
+[2017-04-11 18:59:57.800904] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (10,1,'Padraig Bergin','berginp','berginp10','p.bergin@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:59:57.803752] [7] CacheUtil - Getting cache for name users
+[2017-04-11 18:59:57.805927] [7] UserDAO - Executing Save User
+[2017-04-11 18:59:57.809120] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (11,1,'Monica Lemke','lemkem','lemkem11','monica@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 18:59:57.811731] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:16.652190] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 19:00:16.652551] [7] UserDAO - Executing Update User
+[2017-04-11 19:00:16.655986] [7] UserDAO - Updating user sql = update User set Name = 'Patrick Noonan', Login = 'pnoonan',Password = 'pnoonan2', Email = 'patricknoonan@dinomoformwork.com.au', Mobile = '+61433965870', Address = '', Roles = 'user',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = 1 and ID = 2
+[2017-04-11 19:00:16.659339] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:16.662132] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:16.675576] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (3,1,'John Difrancesco','johndi','johndi3','johndi@dinomoformwork.com.au','+61400945426','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:16.678374] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:16.680474] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:16.683913] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (4,1,'Dominic Difrancesco','dominic','dominic4','dominic@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:16.686745] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:16.688549] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:16.691745] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (5,1,'Thomas Fletcher','fletchm','fletchm5','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:16.694472] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:16.696163] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:16.699568] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (6,1,'Arti Saren','sarena','sarena6','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:16.702363] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:16.704164] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:16.707531] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (7,1,'Harry Saren','sarenh','sarenh7','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:16.710680] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:16.712764] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:16.716219] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (8,1,'Sebastion Debono','debonos','debonos8','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:16.718842] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:16.720577] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:16.723891] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (9,1,'Erick Monslave','monslav','monslav9','erick@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:16.726604] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:16.729028] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:16.732738] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (10,1,'Padraig Bergin','berginp','berginp10','p.bergin@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:16.735310] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:16.737019] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:16.740262] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (11,1,'Monica Lemke','lemkem','lemkem11','monica@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:16.742887] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:35.115827] [7] UserDAO -  get user sql = SELECT * FROM User where DeleteFlag = 0 and ID = 2 and ClientID = 1
+[2017-04-11 19:00:35.116142] [7] UserDAO - Executing Update User
+[2017-04-11 19:00:35.119467] [7] UserDAO - Updating user sql = update User set Name = 'Patrick Noonan', Login = 'pnoonan',Password = 'pnoonan2', Email = 'patricknoonan@dinomoformwork.com.au', Mobile = '+61433965870', Address = '', Roles = 'user',LastUpdated = now(),LastUpdatedBy = 1 where ClientID = 1 and ID = 2
+[2017-04-11 19:00:35.122801] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:35.124767] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:35.128201] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (3,1,'John Difrancesco','johndi','johndi3','johndi@dinomoformwork.com.au','+61400945426','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:35.130865] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:35.132682] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:35.136023] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (4,1,'Dominic Difrancesco','dominic','dominic4','dominic@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:35.138674] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:35.140070] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:35.143502] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (5,1,'Thomas Fletcher','fletchm','fletchm5','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:35.146015] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:35.147690] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:35.150981] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (6,1,'Arti Saren','sarena','sarena6','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:35.153744] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:35.155987] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:35.159949] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (7,1,'Harry Saren','sarenh','sarenh7','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:35.162616] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:35.164392] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:35.167985] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (8,1,'Sebastion Debono','debonos','debonos8','info@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:35.170644] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:35.172686] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:35.185365] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (9,1,'Erick Monslave','monslav','monslav9','erick@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:35.188071] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:35.189543] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:35.192909] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (10,1,'Padraig Bergin','berginp','berginp10','p.bergin@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:35.195506] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:00:35.197158] [7] UserDAO - Executing Save User
+[2017-04-11 19:00:35.200376] [7] UserDAO - Saving user sql = insert into User(ID,ClientID,Name,Login,Password,Email,Mobile,Address,Roles,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag)  values (11,1,'Monica Lemke','lemkem','lemkem11','monica@dinomoformwork.com.au','','','user',now(),1,now(),1,0) 
+[2017-04-11 19:00:35.203067] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:02:52.391859] [7] cache_admin.php - executing action number = 4
+[2017-04-11 19:02:52.392101] [7] cache_admin.php - Flushing all User Data
+[2017-04-11 19:02:52.392265] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:03:18.146284] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 19:03:18.147320] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:03:18.149117] [7] UserDelegate - Loading users from DB
+[2017-04-11 19:03:18.152218] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:03:18.154989] [7] UserDelegate - Number of users = 11
+[2017-04-11 19:03:18.155113] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 19:03:18.155215] [7] UserDelegate - checking against user - sprice
+[2017-04-11 19:03:18.155313] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 19:03:18.155472] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 19:03:18.155623] [7] WebUtil.getLoggedInUser - User timed out - pnoonan, last activity = 1491897771
+[2017-04-11 19:03:18.155786] [7] WebUtil.removeLoggedInUser - Removing Session Details
+[2017-04-11 19:03:18.155931] [7] WebUtil.removeLoggedInUser - Setting empty session for User
+[2017-04-11 19:03:18.156095] [7] WebUtil.getLoggedInUser - No user in session
+[2017-04-11 19:03:18.156218] [7] WebUtil.getLoggedInUser - No user found going to login
+[2017-04-11 19:03:18.195853] [7] login.php - Opening Login Page
+[2017-04-11 19:03:19.793876] [7] submit_login - Checking login for =  pnoonan
+[2017-04-11 19:03:19.794111] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:03:19.795644] [7] UserDelegate - Loading users from Cache
+[2017-04-11 19:03:19.795795] [7] UserDelegate - Number of users = 11
+[2017-04-11 19:03:19.795943] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 19:03:19.796091] [7] UserDelegate - checking against user - sprice
+[2017-04-11 19:03:19.796252] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 19:03:19.829499] [7] login.php - Opening Login Page
+[2017-04-11 19:03:23.314455] [7] submit_login - Checking login for =  pnoonan
+[2017-04-11 19:03:23.314728] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:03:23.316920] [7] UserDelegate - Loading users from Cache
+[2017-04-11 19:03:23.317081] [7] UserDelegate - Number of users = 11
+[2017-04-11 19:03:23.317373] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 19:03:23.317521] [7] UserDelegate - checking against user - sprice
+[2017-04-11 19:03:23.317672] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 19:03:23.319796] [7] submit_login - LOGIN success, setting cookies for = pnoonan
+[2017-04-11 19:03:23.320770] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 19:03:23.368402] [7] WebUtil.getLoggedInUser - Checking user in session
+[2017-04-11 19:03:23.369184] [7] CacheUtil - Getting cache for name users
+[2017-04-11 19:03:23.371095] [7] UserDelegate - Loading users from Cache
+[2017-04-11 19:03:23.371262] [7] UserDelegate - Number of users = 11
+[2017-04-11 19:03:23.371367] [7] UserDelegate - looking for user - pnoonan
+[2017-04-11 19:03:23.371473] [7] UserDelegate - checking against user - sprice
+[2017-04-11 19:03:23.371577] [7] UserDelegate - checking against user - pnoonan
+[2017-04-11 19:03:23.371676] [7] WebUtil.getLoggedInUser - Found user for login - pnoonan
+[2017-04-11 19:03:23.371773] [7] WebUtil.getLoggedInUser - User NOT timed out - pnoonan
+[2017-04-11 19:03:23.371879] [7] WebUtil.addLoggedInUser - Adding user to session
+[2017-04-11 19:03:23.371979] [7] CacheUtil - Getting cache for name projects

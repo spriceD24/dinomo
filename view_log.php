@@ -33,49 +33,6 @@ if (isset ( $_GET ["filename"] )) {	$filename = urldecode( $_GET ["filename"] )
 
 <body>
 
-	<div class="navbar navbar-fixed-top">
-
-		<div class="navbar-inner">
-
-			<div class="container" style="background-color: #181717">
-
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-
-				</a> <a class="brand" href="index.html"> <img
-					src="img/dinamo_small.png" />
-
-				</a>
-
-
-
-				<div class="nav-collapse">
-
-					<ul class="nav pull-right">
-
-						<li class=""></li>
-
-						<li class="" style="padding-top: 20px"></li>
-
-					</ul>
-
-
-
-				</div>
-				<!--/.nav-collapse -->
-
-
-
-			</div>
-			<!-- /container -->
-
-		</div>
-		<!-- /navbar-inner -->
-
-	</div>
-	<!-- /navbar -->
-
 	<div class="container">
 
 		<div class="row">
