@@ -30,7 +30,7 @@ if(!$user->hasRole('admin'))
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Startmin - Bootstrap Admin Theme</title>
+    <title>Dinomo Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="admin/css/bootstrap.min.css" rel="stylesheet">
