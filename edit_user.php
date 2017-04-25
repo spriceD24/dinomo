@@ -85,7 +85,7 @@ if (isset ( $_GET ["errorcode"] )) {
 
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
-	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	href="css/google-fonts.css"
 	rel="stylesheet">
 
 </head>
@@ -185,9 +185,13 @@ if (isset ( $_GET ["errorcode"] )) {
 
 				<div class="login-actions">
 
-					<button style="float:left" class="button btn btn-success btn-large" type="button" onclick="checkSaveUser()">Update</button>
+					<button style="float:left" class="button btn btn-success" type="button" onclick="checkSaveUser()">Update</button>
 				</div>
 				<!-- .actions -->
+				<div>
+					<a href="manage_user.php"><< Back to Users</a>
+				</div>
+				
 
 				<input type="hidden" name="roles" id="roles" value="<?=implode("|",$existingUser->roles)?>"/>
 				<input type="hidden" name="userID" id="userID" value="<?=$userID?>"/>

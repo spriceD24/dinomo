@@ -117,6 +117,19 @@ if(!$user->hasRole('admin'))
                             </li>
                         </ul>
                     </li>
+                    <li class="">
+                        <a href="#"><i class="fa fa-table fa-fw"></i>Manage Projects<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href='#' onclick="showPage('new_project.php')"><i class="fa fa-edit fa-fw"></i>Add Project</a>
+                            </li>
+                            <li>
+                                <a href="#" onclick="showPage('manage_project.php?action=view')"><i class="fa fa-files-o fa-fw"></i>Manage Existing Projects</a>
+                            </li>
+                            <li>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="#" onclick="showPage('cache_admin.php')"><i class="fa fa-wrench fa-fw"></i>Cache Admin</a>
                     </li>

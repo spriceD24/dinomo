@@ -4,6 +4,8 @@ class Category {
 	public $categoryID;
 	public $categoryName;
 	public $categoryOptions;
+	public $deleteFlag;
+	
 	
 	function __construct($projectID, $categoryID, $categoryName, $categoryOptions) {
 		$this->projectID = $projectID;

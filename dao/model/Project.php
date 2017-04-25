@@ -4,6 +4,8 @@ class Project {
 	public $clientID;
 	public $projectName;
 	public $categories;
+	public $deleteFlag;
+	
 	function __construct($projectID, $clientID, $projectName, $categories = array()) {
 		$this->projectID = $projectID;
 		$this->clientID = $clientID;

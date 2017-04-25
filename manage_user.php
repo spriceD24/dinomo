@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><?php include_once("util/LogUtil.php"); ?><?php include_once("util/DBUtil.php"); ?><?php include_once("delegate/UserDelegate.php"); ?><?php include_once("util/WebUtil.php"); ?><?php include_once("mobile_detect/Mobile_Detect.php");?><?php	$webUtil = new WebUtil ();	$webUtil->srcPage = "view_users.php";// 	set_error_handler ( array (// 			$webUtil,// 			'handleError' // 	) );		$detect = new Mobile_Detect ();	$isMobile = ($detect->isMobile() && !$detect->isTablet());	$isTablet = $detect->isTablet();		$currentUser = $webUtil->getLoggedInUser();	//$userDAO->saveReport($user);	$userDelegate = new UserDelegate();	$allUsers = $userDelegate->getAllUsersIncludingDeleted($currentUser->clientID);	$editUsers = true;	$deleteUsers = true;	$message = "";	if (isset ( $_GET ["action"] )) 	{		$action = $_GET ["action"];		if($action == "edit")		{			$message = "Select User To Edit";			$deleteUsers = false;		}		if($action == "remove")		{			$message = "Select User To Delete";			$editUsers = false;		}	}	if (isset ( $_GET ["message"] )) 	{		$message = $_GET ["message"];	}	?>
+<!DOCTYPE html><html lang="en"><?php include_once("util/LogUtil.php"); ?><?php include_once("util/DBUtil.php"); ?><?php include_once("delegate/UserDelegate.php"); ?><?php include_once("util/WebUtil.php"); ?><?php include_once("mobile_detect/Mobile_Detect.php");?><?php	$webUtil = new WebUtil ();	$webUtil->srcPage = "manage_user.php";// 	set_error_handler ( array (// 			$webUtil,// 			'handleError' // 	) );		$detect = new Mobile_Detect ();	$isMobile = ($detect->isMobile() && !$detect->isTablet());	$isTablet = $detect->isTablet();		$currentUser = $webUtil->getLoggedInUser();	if(!$currentUser->hasRole('admin'))	{		header ( "Location: select_qa.php" );		exit ();	}		//$userDAO->saveReport($user);	$userDelegate = new UserDelegate();	$allUsers = $userDelegate->getAllUsersIncludingDeleted($currentUser->clientID);	$editUsers = true;	$deleteUsers = true;	$message = "";	if (isset ( $_GET ["action"] )) 	{		$action = $_GET ["action"];		if($action == "edit")		{			$message = "Select User To Edit";			$deleteUsers = false;		}		if($action == "remove")		{			$message = "Select User To Delete";			$editUsers = false;		}	}	if (isset ( $_GET ["message"] )) 	{		$message = $_GET ["message"];	}	?>
 <head>
 <meta charset="utf-8"><link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
 <title>Dinomo QA</title>
@@ -21,7 +21,7 @@
 
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
-	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	href="css/google-fonts.css"
 	rel="stylesheet">
 
 <link href="css/style.css" rel="stylesheet" type="text/css">

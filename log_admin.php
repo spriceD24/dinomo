@@ -24,7 +24,7 @@ $fileUtil = new FileUtil();$detect = new Mobile_Detect ();$path = realpath ( '
 	type="text/css" />
 <link rel="stylesheet" type="text/css" href="css/dinamo.css">
 
-<link href="css/font-awesome.css" rel="stylesheet"><link	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"	rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet"><link	href="css/google-fonts.css"	rel="stylesheet">
 <link href="css/style.css" rel="stylesheet" type="text/css"><link href="css/pages/signin.css" rel="stylesheet" type="text/css"></head>
 <body>
 	<div class="container">		<div class="row">			<div class="span12">				<div class="error-container">					<h3>Select Log file</h3>					<div <?php							if (!$detect->isMobile () ||  $detect->isTablet ()) {								print " style='padding-left:40%'";							}							?>>							<table>					<?php						$index = 0;						foreach ($files as $file) 						{							if($index == 0)							{     							echo "<tr><td><a href='view_log.php?filename=".urlencode($file)."'>" . $file ."</a> <font style='color:red;font-style:italic'>&nbsp;(Latest)</font><br/></td></tr>";     							$index++;							}else{								echo "<tr><td><a href='view_log.php?filename=".urlencode($file)."'>" . $file ."</a><br/></td></tr>";														}    						 						}	 						?>						</table>					</div><br/><br/>

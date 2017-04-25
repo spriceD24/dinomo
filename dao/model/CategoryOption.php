@@ -8,6 +8,8 @@ class CategoryOption {
 	public $formType;
 	public $isRequired;
 	public $optionSettings;
+	public $deleteFlag;
+	
 	
 	function __construct($projectID, $categoryID, $categoryOptionID, $order, $title, $formType, $isRequired, $optionSettings = array()) {
 		$this->projectID = $projectID;

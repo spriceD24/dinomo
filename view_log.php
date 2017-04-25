@@ -22,7 +22,7 @@ if (isset ( $_GET ["filename"] )) {	$filename = urldecode( $_GET ["filename"] )
 
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
-	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	href="css/google-fonts.css"
 	rel="stylesheet">
 
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -37,8 +37,8 @@ if (isset ( $_GET ["filename"] )) {	$filename = urldecode( $_GET ["filename"] )
 
 		<div class="row">
 
-			<div class="span12">
-				<h3><?=$filename?></h3>
+			<div class="span12" style="margin-top:20px">
+				<button class="button btn btn-info"  type="button"  onclick="window.location='view_log.php?filename=<?=urlencode($filename)?>'">Reload</button>								<h3><?=$filename?></h3>				
 				<div class="error-container" style="background-color: white;margin-top:0;margin-bottom:0;text-align:left">
 				<?php 				$file = file($fileToOpen);				$file = array_reverse($file);				foreach($file as $f){				    echo $f."<br />";				}				?>
 				</div>

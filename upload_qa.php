@@ -130,7 +130,7 @@ $num_images = ConfigUtil::getNumberOfUploadFiles ();
 
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
-	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	href="css/google-fonts.css"
 	rel="stylesheet">
 
 <script>

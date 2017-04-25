@@ -158,11 +158,10 @@ $currentUsers = $userDelegate->getAllUsersForClient($user->clientID);
 
 				<div class="login-actions">
 
-					<button style="float:left" class="button btn btn-success btn-large" type="button" onclick="checkSaveUser()">Save</button>
-					<button class="button btn btn-info btn-large"  type="button"  onclick="resetDetails()">Reset</button>
+					<button style="float:left" class="button btn btn-success" type="button" onclick="checkSaveUser()">Save</button>
+					<button class="button btn btn-info"  type="button"  onclick="resetDetails()">Reset</button>
 				</div>
 				<!-- .actions -->
-
 				<input type="hidden" name="roles" id="roles" value="user"/>
 
 			</form>

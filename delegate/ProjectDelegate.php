@@ -87,7 +87,12 @@ class ProjectDelegate {
 		}
 		return $categories;
 	}
-
+	
+	function getCategoryOptionsNotInReport($projectID, $categoryID)
+	{
+		return 	$this->projectDAO->getCategoryOptionsNotInReport($projectID, $categoryID);
+	}
+	
 	private function clearProjectCache()
 	{
 		CacheUtil::removeAllCachedProjects();
@@ -116,23 +121,99 @@ class ProjectDelegate {
 		return $ret;
 	}
 	
-	function deleteProject($projectID) {
-		$ret = $this->projectDAO->deleteProject($projectID);
+	function deleteProject($projectID,$deletedBy) {
+		$ret = $this->projectDAO->deleteProject($projectID,$deletedBy);
 		$this->clearProjectCache();
 		return $ret;		
 	}
 	
-	function deleteCategory($projectID,$categoryID) {
-		$ret = $this->projectDAO->deleteCategory($projectID, $categoryID);
+	function deleteCategory($projectID,$categoryID,$deletedBy) {
+		$ret = $this->projectDAO->deleteCategory($projectID, $categoryID,$deletedBy);
 		$this->clearProjectCache();
 		return $ret;		
 	}
 	
-	function deleteCategoryOptions($projectID,$categoryID) {
-		$ret = $this->projectDAO->deleteCategoryOptions($projectID, $categoryID);
+	function deleteCategoryOptions($projectID,$categoryID,$categoryOptionID,$deletedBy) {
+		$ret = $this->projectDAO->deleteCategoryOptions($projectID, $categoryID,$categoryOptionID,$deletedBy);
 		$this->clearProjectCache();
 		return $ret;		
 	}	
+
+	function activateProject($projectID,$activatedBy) {
+		$ret = $this->projectDAO->activateProject($projectID,$activatedBy);
+		$this->clearProjectCache();
+		return $ret;		
+	}
+	
+	function activateCategory($projectID,$categoryID,$activatedBy) {
+		$ret = $this->projectDAO->activateCategory($projectID, $categoryID,$activatedBy);
+		$this->clearProjectCache();
+		return $ret;		
+	}
+	
+	function activateCategoryOptions($projectID,$categoryID,$categoryOptionID,$activatedBy) {
+		$ret = $this->projectDAO->activateCategoryOptions($projectID, $categoryID,$categoryOptionID,$activatedBy);
+		$this->clearProjectCache();
+		return $ret;		
+	}	
+	
+	function updateProject($project,$updatedBy)
+	{
+		$ret = $this->projectDAO->updateProject($project, $updatedBy);
+		$this->clearProjectCache();
+		return $ret;		
+	}
+	
+	function updateCategory($projectID,$category,$updatedBy)
+	{
+		$ret = $this->projectDAO->updateCategory($projectID, $category,$updatedBy);
+		$this->clearProjectCache();
+		return $ret;		
+	}
+	
+	function backupCategoryOptions($projectID,$categoryID)
+	{
+		$this->projectDAO->backupCategoryOptions($projectID, $categoryID);
+	}
+	
+	function updateCategoryOption($updatedByID,$projectID,$categoryID,$categoryOption)
+	{
+		$this->projectDAO->updateCategoryOption($updatedByID, $projectID, $categoryID, $categoryOption);
+		$this->clearProjectCache();
+	}
+	
+	function deepCopyProject($projectID,$insertedByID,$name)
+	{
+		//copy project
+		$newProjectID = $this->projectDAO->copyProject($projectID, $insertedByID, $name);
+		$categories = $this->getCategories($projectID);
+		
+		while ( $category = $categories->iterate () )
+		{
+			//copy category
+			$newCategoryID = $this->projectDAO->copyCategory($insertedByID, $newProjectID, $projectID, $category->categoryID);
+			$categoryOptions = $this->getCategoryOptions ( $projectID, $category->categoryID );
+			$order = 0;
+			while ( $categoryOption = $categoryOptions->iterate () )
+			{
+				$newCategoryOpyionID = $this->projectDAO->copyCategoryOption($insertedByID, $projectID, $category->categoryID, $categoryOption->categoryOptionID, $newProjectID, $newCategoryID);
+			}
+		}
+		$this->clearProjectCache();
+		
+		return $newProjectID;
+	}
+
+	function getCategoriesIncludingDeleted($projectID) 
+	{
+		return $this->projectDAO->getCategoriesIncludingDeleted($projectID);		
+	}
+	
+	function getAllProjectsLiteIncludingDeleted($clientID)
+	{
+		return $this->projectDAO->getAllProjectsLiteIncludingDeleted($clientID);		
+	}
+	
 }
 
 ?>

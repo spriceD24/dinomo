@@ -79,7 +79,7 @@ $num_images = $configUtil->getNumberOfUploadFiles ();
 
 <link href="css/font-awesome.css" rel="stylesheet">
 <link
-	href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+	href="css/google-fonts.css"
 	rel="stylesheet">
 
 <link href="css/style.css" rel="stylesheet" type="text/css">

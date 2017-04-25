@@ -31,6 +31,7 @@ set_error_handler ( array (
 $userID = intval($_GET ["userID"]);
 $action = $_GET ["action"];
 $deleteUser = $userDelegate->getUser($userID);
+
 if($action == "activate")
 {
 	$userDelegate->activateUser($userID, $user->userID);

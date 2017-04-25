@@ -32,6 +32,28 @@ class ProjectDAO {
 		return $projects;
 	}
 	
+	function getAllProjectsLiteIncludingDeleted($clientID) 
+	{
+		$projects = new Collection ();
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$query = "SELECT * FROM Project where ClientID = ".$clientID." order by Name ";
+		$result = $conn->query($query);
+		LogUtil::debug ( 'ProjectDAO', 'getAllProjectsLite: Executing '.$query.', num results = '.$result->num_rows);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$project = new Project ( $row["ID"], $row["ClientID"], $row["Name"] );
+				$project->deleteFlag = $row["DeleteFlag"];
+				$projects->add($project);
+			}
+		}
+		$conn->close();
+		LogUtil::debug ( 'ProjectDAO', 'getAllProjectsLite: Size of result = '.sizeof($project));
+		return $projects;
+	}
+	
 	function getProject($projectID) {
 		$dbUtil = new DBUtil ();
 		$conn = $dbUtil->getDBConnection();
@@ -66,6 +88,28 @@ class ProjectDAO {
 			while($row = $result->fetch_assoc())
 			{
 				$categories->add(new Category ($projectID,$row["ID"], $row["Name"],new Collection()));
+			}
+		}
+		$conn->close();
+		return $categories;
+	}
+	
+	function getCategoriesIncludingDeleted($projectID) {
+		$categories = new Collection ();
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$project;
+		$query = "SELECT * FROM Category where ProjectID = ".$projectID." order by Name ";
+		$result = $conn->query($query);
+		LogUtil::debug ( 'ProjectDAO', 'getCategories: Executing '.$query.', num results = '.$result->num_rows);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$category = new Category ($projectID,$row["ID"], $row["Name"],new Collection());
+				$category->deleteFlag = $row["DeleteFlag"];
+				$categories->add($category);
 			}
 		}
 		$conn->close();
@@ -112,6 +156,32 @@ class ProjectDAO {
 				}
 				
 				$categoryOptions->add(new CategoryOption($projectID,$categoryID,$row["ID"],$row["CategoryOrder"],$row["Title"],$row["FormType"],$row["IsRequired"] == 1,$optionSettings));
+			}
+		}
+		$conn->close();
+		return $categoryOptions;
+	}
+	
+	function getCategoryOptionsNotInReport($projectID, $categoryID) {
+		$categoryOptions = new Collection ();
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$max = 1;
+		$project;
+		$query = " SELECT Title,FormType,OptionSettings,IsRequired FROM CategoryOption where DeleteFlag = 0 and Title not in (select Title from CategoryOption where ProjectID = ".$projectID." and CategoryID = ".$categoryID.") group by Title,FormType,OptionSettings,IsRequired order by Title ";
+		$result = $conn->query($query);
+		LogUtil::debug ( 'ProjectDAO', 'getCategoryOptions: Executing '.$query.', num results = '.$result->num_rows);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				$optionSettings=array();
+				if(!empty($row["OptionSettings"]) && isset($row["OptionSettings"]))
+				{
+					$optionSettings=json_decode($row["OptionSettings"],true);
+				}
+				
+				$categoryOptions->add(new CategoryOption(-1,-1,-1,-1,$row["Title"],$row["FormType"],$row["IsRequired"] == 1,$optionSettings));
 			}
 		}
 		$conn->close();
@@ -196,6 +266,39 @@ class ProjectDAO {
 		return $nextCategoryID;
 	}
 	
+	
+	function updateCategoryOption($updatedByID,$projectID,$categoryID,$categoryOption)
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Executing Update Category Option');
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+		$required = 0;
+		if($categoryOption->isRequired)
+		{
+			$required = 1;
+		}
+		$options = '';
+		if(!empty($categoryOption->optionSettings))
+		{
+			$options = StringUtils::escapeDB(json_encode($categoryOption->optionSettings));
+		}
+		$sql = "update CategoryOption set CategoryOrder = ".$categoryOption->order.", ";
+		$sql = $sql." Title = '".StringUtils::escapeDB($categoryOption->title)."',IsRequired = ".$required;
+		$sql = $sql." ,OptionSettings = '".$options."' ,LastUpdated = now(), LastUpdatedBy = ".$updatedByID;
+		$sql = $sql." where ID = ".$categoryOption->categoryOptionID." and CategoryID = ".$categoryID." and ProjectID = ".$projectID;
+		LogUtil::debug ( 'ProjectDAO', 'Updating category option sql = '.$sql);
+		//now()
+		if ($conn->query($sql) === TRUE) {
+			LogUtil::debug ( 'ProjectDAO', 'New record created successfully');
+		} else {
+			LogUtil::debug ( 'ProjectDAO',"Error: " . $sql . "<br>" . $conn->error);
+		}	
+		$conn->close();
+	}
+	
 	private function getNextProjectID()
 	{
 		$dbUtil = new DBUtil ();
@@ -246,37 +349,182 @@ class ProjectDAO {
 		$conn->close();
 		return $max;
 	}	
-	function deleteProject($projectID) {
+	
+	function deleteCategory($projectID,$categoryID,$deletedBy) 
+	{
+		// replace with call to DB
+		LogUtil::debug ( 'ProjectDAO', 'Delete Category - project ID = '.$projectID.', category id = '.$categoryID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$sql = "Update Category set DeleteFlag = 1, LastUpdated = now(),LastUpdatedBy = ".$deletedBy." where ID = ".$categoryID." and ProjectID = ".$projectID;
+		LogUtil::debug ( 'ProjectDAO', 'Update sql = '.$sql);
+		$conn->query($sql);
+		$conn->close();
+		return true;
+	}		
+
+	function deleteProject($projectID,$deletedBy) 
+	{
 		// replace with call to DB
 		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID);
 		$dbUtil = new DBUtil ();
 		$conn = $dbUtil->getDBConnection();
-		$conn->query("Update Project set DeleteFlag = 1 where ID = ".$projectID);
-		$conn->query("Update Category set DeleteFlag = 1 where ProjectID = ".$projectID);
-		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID);
+		$conn->query("Update Project set DeleteFlag = 1, LastUpdated = now(),LastUpdatedBy = ".$deletedBy." where ID = ".$projectID);
+		$conn->close();
+		return true;
+	}	
+	function updateProject($project,$updatedBy) 
+	{
+		// replace with call to DB
+		LogUtil::debug ( 'ProjectDAO', 'Update Project - project ID = '.$project->projectID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$sql = "Update Project set Name = '".StringUtils::escapeDB($project->projectName)."', LastUpdated = now(),LastUpdatedBy = ".$updatedBy." where ID = ".$project->projectID;
+		LogUtil::debug ( 'ProjectDAO', 'Update sql = '.$sql);
+		$conn->query($sql);
+		$conn->close();		
+		return true;
+	}	
+	
+	function updateCategory($projectID,$category,$updatedBy) 
+	{
+		// replace with call to DB
+		LogUtil::debug ( 'ProjectDAO', 'Update Category - project ID = '.$projectID.', category id = '.$category->categoryID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$sql = "Update Category set Name = '".StringUtils::escapeDB($category->categoryName)."', LastUpdated = now(),LastUpdatedBy = ".$updatedBy."  where ProjectID = ".$projectID." and ID = ".$category->categoryID;
+		LogUtil::debug ( 'ProjectDAO', 'Update sql = '.$sql);
+		$conn->query($sql);
+		$conn->close();
+		return true;
+	} 
+
+	function deleteCategoryOptions($projectID,$categoryID,$categoryOptionID,$deletedBy) 
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID.', category id = '.$categoryID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$conn->query("Update CategoryOption set DeleteFlag = 1, LastUpdated = now(),LastUpdatedBy = ".$deletedBy." where ProjectID = ".$projectID." and CategoryID = ".$categoryID." and ID = ".$categoryOptionID);
+		$conn->close();
+		return true;
+	}
+
+	function backupCategoryOptions($projectID,$categoryID)
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Executing Backup Category Options');
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+		$sql = " insert into CategoryOptionHistoric(ID,CategoryID,ProjectID,CategoryOrder,Title,FormType,IsRequired,OptionSettings,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) select * from CategoryOption where ProjectID =".$projectID." and CategoryID = ".$categoryID;
+		LogUtil::debug ( 'ProjectDAO', 'Backing up option sql = '.$sql);
+		//now()
+		if ($conn->query($sql) === TRUE) {
+			LogUtil::debug ( 'ProjectDAO', 'Backup ran successfully');
+		} else {
+			LogUtil::debug ( 'ProjectDAO',"Error: " . $sql . "<br>" . $conn->error);
+		}
+		$conn->close();
+	}
+	
+	function activateProject($projectID,$activatedBy) 
+	{
+		// replace with call to DB
+		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		$conn->query("Update Project set DeleteFlag = 0, LastUpdated = now(),LastUpdatedBy = ".$activatedBy." where ID = ".$projectID);
 		$conn->close();
 		return true;
 	}	
 
-	function deleteCategory($projectID,$categoryID) {
+	function activateCategory($projectID,$categoryID,$activatedBy) 
+	{
 		// replace with call to DB
 		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID.', category id = '.$categoryID);
 		$dbUtil = new DBUtil ();
 		$conn = $dbUtil->getDBConnection();
-		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
+		$conn->query("Update Category set DeleteFlag = 0, LastUpdated = now(),LastUpdatedBy = ".$activatedBy." where ProjectID = ".$projectID." and ID = ".$categoryID);
 		$conn->close();
 		return true;
 	}
 
-	function deleteCategoryOptions($projectID,$categoryID) {
+	function activateCategoryOptions($projectID,$categoryID,$categoryOptionID,$activatedBy) 
+	{
 		LogUtil::debug ( 'ProjectDAO', 'Delete Project - project ID = '.$projectID.', category id = '.$categoryID);
 		$dbUtil = new DBUtil ();
 		$conn = $dbUtil->getDBConnection();
-		$conn->query("Update Category set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
-		$conn->query("Update CategoryOption set DeleteFlag = 1 where ProjectID = ".$projectID." and CategoryID = ".$categoryID);
+		$conn->query("Update CategoryOption set DeleteFlag = 0, LastUpdated = now(),LastUpdatedBy = ".$activatedBy." where ProjectID = ".$projectID." and CategoryID = ".$categoryID." and ID = ".$categoryOptionID);
 		$conn->close();
 		return true;
 	}
+
+	function copyProject($projectID,$insertedByID,$name)
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Executing Deep Copy Project');
+		$nextProjectID = $this->getNextProjectID();
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+		$sql = " insert into Project(ID,ClientID,Name,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) select ".$nextProjectID.",ClientID,'".$name."',now(),".$insertedByID.",now(),".$insertedByID.",DeleteFlag from Project where ID =".$projectID." and DeleteFlag = 0 ";
+		
+		LogUtil::debug ( 'ProjectDAO', 'Deep copy project sql 1 = '.$sql);
+		//now()
+		if ($conn->query($sql) === TRUE) {
+			LogUtil::debug ( 'ProjectDAO', 'Copy ran successfully');
+		} else {
+			LogUtil::debug ( 'ProjectDAO',"Error: " . $sql . "<br>" . $conn->error);
+		}
+		$conn->close();
+		return $nextProjectID;
+	}
+	
+	function copyCategory($insertedByID,$newProjectID, $projectID, $categoryID)
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Executing Copy Category');
+		$nextCategoryID = $this->getNextCategoryID($newProjectID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+	
+		$sql = "insert into Category(ID,ProjectID,Name,RecordDate,CreatedBy,LastUpdated,LastUpdatedBy,DeleteFlag) select ".$nextCategoryID.",".$newProjectID.",Name,now(),".$insertedByID.",now(),".$insertedByID.",DeleteFlag from Category where ProjectID = ".$projectID." and ID = ".$categoryID." and DeleteFlag = 0";
+		LogUtil::debug ( 'ProjectDAO', 'Copy category sql = '.$sql);
+		//now()
+		if ($conn->query($sql) === TRUE) {
+			LogUtil::debug ( 'ProjectDAO', 'New record created successfully');
+		} else {
+			LogUtil::debug ( 'ProjectDAO',"Error: " . $sql . "<br>" . $conn->error);
+		}
+		$conn->close();
+		return $nextCategoryID;
+	}
+	
+	function copyCategoryOption($insertedByID,$projectID,$categoryID,$categoryOptionID,$newProjectID, $newCategoryID)
+	{
+		LogUtil::debug ( 'ProjectDAO', 'Executing Copy Category Option');
+		$nextCategoryID = $this->getNextCategoryOptionID($newProjectID, $newCategoryID);
+		$dbUtil = new DBUtil ();
+		$conn = $dbUtil->getDBConnection();
+		//mysql_real_escape_string(
+		date_default_timezone_set ( 'Australia/Sydney' );
+		$dateUtil = new DateUtil();
+		$sql = "insert into CategoryOption select ".$nextCategoryID.",".$newCategoryID.",".$newProjectID.",CategoryOrder,Title,FormType,IsRequired,OptionSettings,now(),".$insertedByID.",now(),".$insertedByID.",DeleteFlag from CategoryOption where DeleteFlag = 0 and ProjectID = ".$projectID." and CategoryID = ".$categoryID." and ID = ".$categoryOptionID ;
+		LogUtil::debug ( 'ProjectDAO', 'Copy category option sql = '.$sql);
+		//now()
+		if ($conn->query($sql) === TRUE) {
+			LogUtil::debug ( 'ProjectDAO', 'New record created successfully');
+		} else {
+			LogUtil::debug ( 'ProjectDAO',"Error: " . $sql . "<br>" . $conn->error);
+		}
+		$conn->close();
+		return $nextCategoryID;
+	}
+	
 	
 	//temp function
 	function getCategoryOptionsFIXED($projectID, $categoryID) {
